@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!--   pos.details -->
+
+        <record id="view_streamline_ame_wizard_report_invoice_summary" model="ir.ui.view">
+            <field name="name">Invoices Summary</field>
+            <field name="model">streamline.ame.report.wizard.invoice.summary</field>
+            <field name="arch" type="xml">
+                <form string="Invoices Summary">
+                    <group col="4" string="Dates">
+                        <field name="date_start"/>
+                        <field name="date_end"/>
+                    </group>
+                    <footer>
+                        <button name="print_report" type="object" string="Print Report" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="action_streamline_ame_wizard_report_invoice_summary" model="ir.actions.act_window">
+            <field name="name">Invoices Summary</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">streamline.ame.report.wizard.invoice.summary</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+        
+        <menuitem icon="STOCK_PRINT" action="action_streamline_ame_wizard_report_invoice_summary"
+                id="menu_action_streamline_ame_wizard_report_invoice_summary" parent="account.menu_finance_reporting" sequence="6" />
+        
+        <report
+            id="streamline_ame_report_invoice_summary_id"
+            string="Invoices Summary"
+            model="account.invoice"
+            report_type="qweb-pdf"
+            name="streamline_ame_modules.report_streamline_ame_invoice_summary"
+            file="streamline_ame_modules.report_streamline_ame_invoice_summary"
+            menu="False"
+         />
+        
+    </data>
+</openerp>
