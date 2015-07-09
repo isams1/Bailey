@@ -1,0 +1,961 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- vim:fdl=1:
+-->
+<templates id="template_pos_custom_view" xml:space="preserve">
+
+    <t class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix" t-name="select-table">
+        <div id="select_table" style="max-height:350px;margin-top:10px;overflow-y: auto;" >
+            <t t-if ="! table.re_assign and ! table.delivery">
+                <label id= "area_table_label" for="area_table" class='label input_label'><b>Area</b></label>&amp;nbsp; 
+                <select  style="height:30px;width:146px;color: #2F4F4F;" id="area_table">
+                    <t t-foreach="table.areas" t-as="area">
+                        <option t-att-value= "area.id"><b><t t-esc="area.name"/></b></option>
+                    </t>
+                </select>
+                <div class="client-detail">
+                    <span id="take_away1" class='label input_label' >Take Away</span>
+                    <input class="chk_take_away" id="chk_chk" type="checkbox" />
+                </div><br/><br/>
+                <div class="client-detail">
+                    <span id="parcel_order_lbl" class='label input_label' >Parcel Order : </span>
+                    <input type="textbox" id="take_away_txt" class="textbox" /><br/>
+                </div>
+            </t>
+            <t t-if="table.re_assign and ! table.delivery">
+                <input class="marge_table" type="checkbox" />
+                <br/>
+                <label for="booked_table" id="booked_table_lbl" class='label input_label' ><b>Booked Table</b></label> 
+                <select  style="height:30px;width:146px;color: #2F4F4F;" id="booked_table">
+                    <option value="" disabled = "disabled" selected = "selected"><b>Select Booked Table</b></option>
+                    <t t-foreach="table.booked_table" t-as="b_table">
+                        <t t-if="b_table[2]">
+                            <option t-att-value= "b_table[2]"><b><t t-esc="b_table[1]"/></b></option>
+                        </t>
+                    </t>
+                </select>
+                <t>
+                    <label for="select_waiter" id="select_waiter_lbl" class='label input_label'><b>Select Waiter</b></label> 
+                    <select  style="height:30px;width:146px;color: #2F4F4F;" id="select_waiter">
+                    <option value=""></option>
+                        <t t-foreach="table.waiter_list" t-as="waiterlist">
+                            <option t-att-value= "waiterlist[0]"><b><t t-esc="waiterlist[1]"/></b></option>
+                        </t> 
+                    </select><br /><br />
+                    <table  id="booked_table_list">  
+                        <t t-if="table.booked_table" t-foreach="table.booked_table" t-as="option"> 
+                            <tr style="width: 239px;margin:3px;float:left;height:36px;background: lightgray;"> 
+                                <td style="height:25px; width:25px;margin: 6px;">
+                                   <input class="field_boolean" type="checkbox" t-att-id="option[0]" t-att-value="option[1]" style="height:25px; width:25px"/>
+                                </td>
+                                <td style="width:160px;text-align: center;color:#2F4F4F;"><b><t t-esc="option[1]"/></b></td>
+                            </tr>
+                        </t>
+                    </table>
+                </t>
+            </t>
+            <table  id="table_list"> 
+                <t t-if="table.empty_table" t-foreach="table.empty_table" t-as="option">
+                    <t t-if="option[5]">
+                        <tr t-att-class="'area_'+option[6]" style="width: 320px;margin:3px;float:left;height:36px;background:red;background: linear-gradient(to bottom, #FFADAD, #FF3333);"> 
+                            <td >
+                                <input class="field_boolean" type="checkbox" t-att-id="option[0]" t-att-value="option[1]" style="height:25px; width:25px;margin: 6px;"/>
+                            </td>
+                            <td style="width:215px;text-align: center;"><b style="color: currentcolor;"><t t-esc="option[1]"/></b></td>
+                            <td style="width: 70px;"><img style="height:10px" src="/web/static/src/img/icons/stock_person.png"/>
+                                <b><span t-att-id="option[0]+'_leaft_seat'" style="color: currentcolor;"><t t-esc="option[3]"/></span><input type="textbox" t-att-booked="option[4]" t-att-id="option[0]+'_reserv_sit'" t-att-value="option[3]" style="margin-left: 5px;width:25px;height: 15px;margin-bottom: 0px;"></input></b>
+                            </td>
+                        </tr>
+                    </t>
+                    <t t-if="!option[5]">
+                        <tr t-att-class="'area_'+option[6]" style="width: 320px;margin:3px;float:left;height:36px;background: lightgray;"> 
+                            <td >
+                                <input class="field_boolean" type="checkbox" t-att-id="option[0]" t-att-value="option[1]" style="height:25px; width:25px;margin: 6px;"/>
+                            </td>
+                            <td style="width:215px; text-align: center;"><b style="color: currentcolor;"><t t-esc="option[1]"/></b></td>
+                            <td style="width: 70px;"><img style="height:10px" src="/web/static/src/img/icons/stock_person.png"/>
+                                <b><span t-att-id="option[0]+'_leaft_seat'" style="color: currentcolor;"><t t-esc="option[3]"/></span><input type="textbox" t-att-booked="option[4]" t-att-id="option[0]+'_reserv_sit'" t-att-value="option[3]" style="margin-left: 5px;width:25px;height: 15px;margin-bottom: 0px;"></input></b>
+                            </td>
+                        </tr>
+                    </t>
+                </t>
+            </table>
+
+            <t t-if = "table.delivery">
+                <div id="add_partner1">
+                    <div id="dialog_partner" class="client-detail">
+                        <span  class='label input_label' >Customer :</span>
+                        <input id="input_customer" class="textbox" type="textbox" style="margin-left: 29px;width:255px;"/><br/>
+                    </div><br/>
+                    <div class="client-detail">
+                        <span id="delivery_order_person_number"  class='label input_label' >Phone : </span>
+                        <input type="textbox" class="textbox" id="person_number_txt" style="margin-left: 56px;width:255px;"/> <br />
+                    </div><br/>
+                    <div id="add_driver" class="client-detail">
+                        <span id="driver"  class='label input_label' >Delivery Boy : </span>
+                        <input id="input_delivery_boy" class="textbox" type="textbox" style="margin-left: 5px;width:255px;"/><br/>
+                    </div><br/>
+                </div>
+            </t>
+        </div>
+    </t>
+
+    <t t-extend="OrderButtonWidget">
+        <t t-jquery=".select-order" t-operation="replace">
+            <span class="order-button select-order" t-att-id="widget.order.get('name').replace(' ', '_')" t-att-name="widget.order.get('creationDate').toString('t')" t-att-data="widget.order.get('reserved_seat')">
+                <t t-if="widget.order.get_client()">
+                    <i class='fa fa-user'/>
+                </t>
+                <t t-if=" ! widget.order.get_client()">
+                    <i class='fa fa-user'/>
+                    <t t-esc="widget.order.get('creationDate').toString('t')"/>
+                </t>
+                <t t-if="widget.order.get_client()">
+                    <t t-esc="(widget.order.get_client() ? widget.order.get_client_name()+' : ':'Unknown Customer: ') + widget.order.get('creationDate').toString('t')"/>
+                </t>
+            </span>
+        </t>
+    </t>
+
+    <t t-extend="PaypadWidget">
+        <t t-jquery=".paypad" t-operation="append">
+            <div id="add_user">
+                <label id="user_selection_label" for="user_selection"><b>Salesman   : </b></label>
+                <select  style="height:30px;width:135px;color: #2F4F4F;" id="user_selection">
+                    <option value=""></option>
+                    <t t-foreach="widget.pos.user_list" t-as="userlist">
+                        <option t-att-value= "userlist.id"><b><t t-esc="userlist.name"/></b></option>
+                    </t>
+                </select>
+            </div>
+            <div>
+                <label id="pricelist_selection_label" for="pricelist_selection"><b>Pricelist   : </b></label>&amp;nbsp;&amp;nbsp;&amp;nbsp;
+                <select  style="height:30px;width:135px;color: #2F4F4F;" id="pricelist_selection">
+                    <option value=""></option>
+                        <t t-foreach="widget.pos.pricelists" t-as="pricelist">
+                            <option t-att-value= "pricelist.id +'-'+ pricelist.name +'-'+ pricelist.currency_id[0]"><b><t t-esc="pricelist.name"/></b></option>
+                        </t>
+                </select>
+            </div>
+
+            <button id="send_to_kitchen"><img src="/web/static/src/img/icons/gtk-jump-to.png"/> Send To Kitchen</button>
+            <button id="print_receipt_button"><img src="/web/static/src/img/icons/gtk-print.png"/> Print Receipt</button>
+            <button id="order_confirm_button"><img src="/web/static/src/img/icons/gtk-print.png"/> Order Confirm</button>
+            <t t-if="widget.pos.config.customer_receipt">
+               <button id="print_customer_receipt"><img src="/web/static/src/img/icons/gtk-print.png"/> Customer Receipt</button><br/>
+           </t>
+        </t>
+    </t>
+
+    <t t-extend="PosTicket">
+        <t t-jquery=".pos-sale-ticket" t-operation="replace">
+            <div class="pos-sale-ticket">
+                <div class="pos-center-align"><t t-esc="new Date().toString(Date.CultureInfo.formatPatterns.shortDate + ' ' +
+                   Date.CultureInfo.formatPatterns.longTime)"/> <t t-esc="order.get('name')"/></div>
+                <br />
+                <t t-if="! widget.pos.kitchen_receipt">
+                    <t t-esc="widget.pos.company.name"/><br />
+                    Phone: <t t-esc="widget.pos.company.phone || ''"/><br />
+                    User: <t t-esc="widget.pos.cashier ? widget.pos.cashier.name : widget.pos.user.name"/><br />
+                    Shop: <t t-esc="widget.pos.shop.name"/><br />
+                </t>
+                <t t-if="! widget.pos.kitchen_receipt or widget.pos.kitchen_receipt">
+                    <t t-if ="order.attributes.parcel">
+                        Parcel: <t t-esc="order.attributes.creationDate"/>
+                    <br />
+                    </t>
+                    <t t-if ="order.attributes.reserved_seat">
+                        Table: <t t-esc="order.attributes.creationDate"/>
+                    <br />
+                    </t>
+                </t>
+                <t t-if="order.get_client() and (order.attributes.parcel or order.attributes.reserved_seat)">
+                    Customer: <t t-esc="order.get_client_name()"/>
+                    <br />
+                </t>
+                <br />
+                <t t-if="order.get_client() and ! order.attributes.parcel and ! order.attributes.reserved_seat ">
+                    Customer: <t t-esc="order.get_client_name()"/><br />
+                    <t t-if="order.get_client().phone and ! widget.pos.kitchen_receipt">
+                       Phone:<t t-esc="order.get_client().phone"/>
+                    </t><br/>
+                    <t t-if="order.get_client().street and ! widget.pos.kitchen_receipt">
+                       Address:<t t-esc="order.get_client().street"/>
+                    </t>
+                    <t t-if="order.get_client().city and ! widget.pos.kitchen_receipt">
+                       ,<t t-esc="order.get_client().city"/>
+                    </t>
+                    <t t-if="order.get_client().zip and ! widget.pos.kitchen_receipt">
+                       ,<t t-esc="order.get_client().zip"/>
+                    </t><br/>
+                   <t t-foreach="order.pos.user_list" t-as="user">
+                       <t t-if="(user.id == order.attributes.driver_name) and ! widget.pos.kitchen_receipt">
+                           Driver Name:<t t-esc="user.name"/>
+                       </t>
+                   </t>
+                   <br />
+                </t>
+                <br />
+                <t t-if="widget.pos.config.receipt_header">
+                    <div style='text-align:center'>
+                        <t t-esc="widget.pos.config.receipt_header" />
+                    </div>
+                    <br />
+                </t>
+                <t t-if="widget.pos.kitchen_receipt">
+                    <table>
+                        <t t-if="orderlines">
+                            <tr style="background: lightgray;">
+                                <td>
+                                    <b><t t-esc="orderlines[0].get_categ_name()"/></b>
+                                </td>
+                            </tr>
+                        </t>
+                        <colgroup>
+                            <col width='50%' />
+                            <col width='50%' />
+                        </colgroup>
+
+                        <tr t-foreach="orderlines" t-if="orderline.get_print_orderline()" t-as="orderline">
+                            <td>
+                                <t t-esc="orderline.get_product().display_name"/>
+                                <t t-if="orderline.get_text()">(wait)</t>
+                                <t t-if="orderline.get_property_desc()"><br/><font size="2px">(<t t-esc="orderline.get_property_desc()"/>)</font></t>
+                            </td>
+                            <td class="pos-right-align">
+                                <t t-esc="orderline.get_quantity_str_with_unit()"/>
+                            </td>
+                        </tr>
+                    </table>
+                    <br />
+                </t>
+                <t t-if="! widget.pos.kitchen_receipt">
+                    <table>
+                        <colgroup>
+                            <col width='50%' />
+                            <col width='25%' />
+                            <col width='25%' />
+                        </colgroup>
+                        <tr t-foreach="orderlines" t-as="orderline">
+                            <td>
+                                <t t-esc="orderline.get_product().display_name"/>
+                                <t t-if="orderline.get_discount() > 0">
+                                   <div class="pos-disc-font">
+                                       With a <t t-esc="orderline.get_discount()"/>% discount
+                                   </div>
+                                </t>
+                            </td>
+                            <td class="pos-right-align">
+                                <t t-esc="orderline.get_quantity_str_with_unit()"/>
+                            </td>
+                            <td class="pos-right-align">
+                                <t t-esc="widget.format_currency(orderline.get_display_price())"/>
+                            </td>
+                        </tr>
+                    </table>
+                    <br />
+                    <table>
+                        <tr>
+                            <td>Subtotal:</td>
+                                <td class="pos-right-align">
+                                    <t t-esc="widget.format_currency(order.getSubtotal())"/>
+                            </td>
+                        </tr>
+                        <t t-foreach="order.getTaxDetails()" t-as="taxdetail">
+                            <tr>
+                                <td><t t-esc="taxdetail.tax.name" /></td>
+                                <td class="pos-right-align">
+                                    <t t-esc="widget.format_currency(taxdetail.amount)" />
+                                </td>
+                            </tr>
+                        </t>
+                        <tr>
+                            <td>Discount:</td>
+                            <td class="pos-right-align">
+                                <t t-esc="widget.format_currency(order.getDiscountTotal())"/>
+                            </td>
+                        </tr>
+                        <tr class="emph">
+                            <td>Total:</td>
+                            <td class="pos-right-align">
+                                <t t-esc="widget.format_currency(order.getTotalTaxIncluded())"/>
+                            </td>
+                        </tr>
+                    </table>
+                    <br />
+                    <table>
+                        <tr t-foreach="paymentlines" t-as="line">
+                            <td>
+                                <t t-esc="line.name"/>
+                            </td>
+                            <td class="pos-right-align">
+                                <t t-esc="widget.format_currency(line.get_amount())"/>
+                            </td>
+                        </tr>
+                    </table>
+                    <br />
+                    <table t-if="! order.customer_receipt">
+                        <tr><td>Change:</td><td class="pos-right-align">
+                            <t t-esc="widget.format_currency(order.getChange())"/>
+                            </td></tr>
+                    </table>
+                    <t t-if="widget.pos.config.receipt_footer">
+                        <br />
+                        <div style='text-align:center'>
+                            <t t-esc="widget.pos.config.receipt_footer" />
+                        </div>
+                    </t>
+                </t>
+            </div>
+        </t>
+    </t>
+
+    <t t-extend="PosWidget">
+        <t t-jquery=".pos-rightheader" t-operation="replace">
+            <div class="pos-rightheader">
+                <table>
+                    <tr>
+                        <td>
+                            <div id="options">
+                                <button style="background-color: #359766;color : white;">Options</button>
+                            </div>
+                        </td>
+                        <td>
+                            <div id="order-selector">
+                                <span class="orders"></span>
+                                <span class="order-button square neworder-button1"><i class='fa fa-plus' /></span>
+                                <span class="order-button square deleteorder-button"><i class='fa fa-minus' /></span>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </t>
+    </t>
+
+    <t t-name="select-properties"> 
+        <table id="select_product_property" style="border-spacing:10px 10px;">
+            <t t-if="product.is_product_description">
+                <tr>
+                    <td>
+                       <br/><div id="add_description">
+                            <label id="free_text_lbl" class='label input_label' for="desc_selection"><b>Description   : </b></label>
+                            <select  style="height:30px;width:135px;color: #2F4F4F;" id="desc_selection">
+                                <option value=""></option>
+                                <t t-foreach="widget.pos.gen_product_description" t-as="desclist">
+                                    <option t-att-value= "desclist.id"><b><t t-esc="desclist.name"/></b></option>
+                                </t>
+                            </select>
+                        </div><br/>
+                    </td>
+                </tr>
+            </t>
+            <t t-if="widget.free_text_bool">
+                <t  t-foreach="widget.final_property" t-as="properties"> 
+                  <tr> 
+                        <t t-foreach="properties" t-as="property"> 
+                            <td valign="top" width='500px'>
+                                <t t-if="property" t-foreach="property" t-as="prop">
+                                    <FIELDSET style="border-radius : 0.0em;box-shadow: 5px 5px 1px 1px #999;"><LEGEND><strong><b><t t-esc="prop"/></b></strong></LEGEND>
+                                        <table >
+                                        <t t-if="property[prop]" t-foreach="property[prop].attirbute" t-as="attr"><tr> 
+                                            <t t-if="attr['image']">
+                                            <td width="40px" style="border-radius : 0.0em;box-shadow: 1px 1px 2px 2px #999;"><img t-att-src="'data:image/gif;base64,'+ attr['image']" style="max-height: 30px;max-width:  50px;"/></td>
+                                            </t>
+                                            <t t-if="! attr['image']">  
+                                                <td width="40px" style="border-radius : 0.0em;box-shadow: 1px 1px 2px 2px #999;"><img src="/point_of_sale_table/static/src/img/pepper1.png" style="max-height: 30px;max-width:  50px;" /></td>
+                                            </t>
+                                            <td width="270px" style="border-radius : 1.6em;box-shadow: 1px 1px 2px 2px #999; text-align: center;"><b><t t-esc="attr['name']"/></b></td>
+                                            <td width="90px" style="border-radius : 1.6em;box-shadow: 1px 1px 2px 2px #999; text-align: center;"><b><t t-esc="attr['price']"/></b></td>
+                                            <td width="30px" style="border-radius : 1.6em;box-shadow: 1px 1px 2px 2px #999; text-align: center;">   
+                                                <t t-if="property[prop].single">    
+                                                    <input t-if="attr['checked']"  class="field_boolean" t-att-checked="attr['checked']" type="radio" t-att-id="attr['id']" t-att-name="prop" t-att-price="attr['price']" t-att-value="attr['price'] +'_'+ attr['name'] "/>
+                                                    <input t-if="! attr['checked']"  class="field_boolean" type="radio" t-att-id="attr['id']" t-att-name="prop" t-att-price="attr['price']" t-att-value="attr['price'] +'_'+ attr['name'] "/>
+                                                </t>
+                                                <t t-if="!property[prop].single">
+                                                        <input t-if="attr['checked']" class="field_boolean" t-att-checked="attr['checked']" type="checkbox" t-att-id="attr['id']" t-att-price="attr['price']" t-att-value="attr['price'] +'_'+ attr['name'] "/>
+                                                        <input t-if="! attr['checked']" class="field_boolean" type="checkbox" t-att-id="attr['id']" t-att-price="attr['price']" t-att-value="attr['price'] +'_'+ attr['name'] "/>
+                                                </t>
+                                            </td>
+                                           </tr>
+                                        </t>
+                                        </table>
+                                    </FIELDSET><br/>
+                                </t>
+                            </td>
+                        </t>
+                    </tr>
+                </t>
+            </t>
+        </table>
+    </t>
+
+    <t t-extend="Orderline">
+        <t t-jquery=".product-name" t-operation="replace"> 
+            <span class="product-name">
+                <t t-esc="line.get_product().display_name"/>
+                <t t-if="line.get_property_desc()"><br/><font size="2px">(<t t-esc="line.get_property_desc()"/>)</font></t>
+            </span>
+        </t>
+        <t t-jquery=".info-list" t-operation="replace"> 
+            <ul class="info-list">
+                <t t-if="line.get_quantity_str() !== '1' || line.selected ">
+                    <li class="info">
+                        <em>
+                            <t t-esc="line.get_quantity_str()" />
+                        </em>
+                        <t t-esc="line.get_unit().name" />
+                        at
+                        <t t-esc="widget.format_currency(line.get_unit_price())" />
+                        /
+                        <t t-esc="line.get_unit().name" />
+                    </li>
+                </t>
+                <t t-if="line.get_discount_str() !== '0'">
+                    <li class="info">
+                        With a 
+                        <em>
+                            <t t-esc="line.get_discount_str()" />%
+                        </em>
+                        discount
+                    </li>
+                </t>
+            </ul>
+        </t>
+    </t>
+
+    <t t-extend="HeaderButtonWidget">
+        <t t-jquery=".header-button" t-operation="replace"> 
+            <div class="header-button" style="margin-top :-52px;height:52px">
+                <t t-esc="widget.label" />
+            </div>
+        </t>
+    </t>
+
+    <t t-extend="SynchNotificationWidget">
+        <t t-jquery=".js_synch" t-operation="replace"> 
+            <div class="oe_status js_synch"  style="margin-top: -52px;margin-right: 65px;">
+                <span class='js_msg oe_hidden'>0</span>
+                <div class="js_connected oe_icon oe_green">
+                    <i class='fa fa-fw fa-rss'></i>
+                </div>
+                <div class="js_connecting oe_icon oe_hidden">
+                    <i class='fa fa-fw fa-spin fa-spinner'></i>
+                </div>
+                <div class="js_disconnected oe_icon oe_red oe_hidden">
+                    <i class='fa fa-fw fa-rss'></i>
+                </div>
+            </div>
+        </t>
+    </t>
+
+    <t t-extend="ProxyStatusWidget">
+        <t t-jquery=".js_proxy" t-operation="replace">
+            <div class="oe_status js_proxy" style="margin-top: -52px;margin-right: 105px;">
+                <span class='js_msg oe_orange oe_hidden'></span>
+                <div class="js_connected oe_icon oe_green">
+                    <i class='fa fa-fw fa-sitemap'></i>
+                </div>
+                <div class="js_connecting oe_icon oe_hidden">
+                    <i class='fa fa-fw fa-spin fa-spinner'></i>
+                </div>
+                <div class="js_warning oe_icon oe_orange oe_hidden">
+                    <i class='fa fa-fw fa-sitemap'></i>
+                </div>
+                <div class="js_disconnected oe_icon oe_red oe_hidden">
+                    <i class='fa fa-fw fa-sitemap'></i>
+                </div>
+            </div>
+        </t>
+    </t>
+
+    <t t-extend="SplitOrderline">
+        <t t-jquery=".product-name" t-operation="replace"> 
+            <span class="product-name">
+                <t t-esc="line.get_product().display_name"/>
+            </span>
+        </t>
+    </t>
+
+    <t t-name="Pincode">
+        <div>
+            <span class='label input_label' for="inputcode"><b>Enter Pin Code</b></span>
+            <input id="inputcode" class="textbox" type="password" style="width: 149px;"/>
+        </div>
+    </t>
+    <t t-name="OrderChangeReceipt">
+        <receipt 
+            align='center' 
+            width='40' 
+            size='double-height' 
+            line-ratio='0.6' 
+            value-decimals='3' 
+            value-thousands-separator=''
+            value-autoint='on' 
+        >
+            <div><t t-esc="changes.name" /></div>
+            <br />
+            <br />
+            <t t-if ="widget.attributes.parcel">
+                Parcel: <t t-esc="widget.attributes.creationDate"/>
+                <br />
+            </t>
+            <t t-if ="widget.attributes.reserved_seat">
+                Table: <t t-esc="widget.attributes.creationDate"/>
+                <br />
+            </t>
+            <br />
+            <t t-if="widget.get_client()">
+                Customer: <t t-esc="widget.get_client_name()"/>
+                <br />
+            </t>
+            <br />
+            <t t-if="changes.cancelled.length > 0">
+                <div color='red'>
+                    <div bold='on' size='double'>CANCELLED</div>
+                    <br />
+                    <br />
+                    <t t-foreach="changes.cancelled" t-as="change">
+                        <line>
+                            <left><t t-esc="change.name" /></left>
+                            <right><value><t t-esc="change.quantity" /></value></right>
+                        </line>
+                    </t>
+                    <br />
+                    <br />
+                </div>
+            </t>
+            <t t-if="changes.new.length > 0">
+                <div bold='on' size='double'>NEW</div>
+                <br />
+                <br />
+                <t t-foreach="changes.new" t-as="change">
+                    <line>
+                        <left><t t-esc="change.name" /></left>
+                        <right><value><t t-esc="change.quantity" /></value></right>
+                    </line>
+                </t>
+                <br />
+                <br />
+            </t>
+        </receipt>
+    </t>
+
+    <t t-name="XmlReceipt">
+        <receipt align='center' width='40' value-thousands-separator='' >
+            <t t-if='receipt.company.logo'>
+                <img t-att-src='receipt.company.logo' />
+                <br/>
+            </t>
+            <t t-if='!receipt.company.logo'>
+                <h1><t t-esc='receipt.company.name' /></h1>
+                <br/>
+            </t>
+            <div font='b'>
+                <t t-if='receipt.shop.name'>
+                    <div><t t-esc='receipt.shop.name' /></div>
+                </t>
+                <t t-if='receipt.company.contact_address'>
+                    <div><t t-esc='receipt.company.contact_address' /></div>
+                </t>
+                <t t-if='receipt.company.phone'>
+                    <div>Tel:<t t-esc='receipt.company.phone' /></div>
+                </t>
+                <t t-if='receipt.company.vat'>
+                    <div>VAT:<t t-esc='receipt.company.vat' /></div>
+                </t>
+                <t t-if='receipt.company.email'>
+                    <div><t t-esc='receipt.company.email' /></div>
+                </t>
+                <t t-if='receipt.company.website'>
+                    <div><t t-esc='receipt.company.website' /></div>
+                </t>
+                <t t-if='receipt.header'>
+                    <div><t t-esc='receipt.header' /></div>
+                </t>
+                <t t-if='receipt.cashier'>
+                    <div>--------------------------------</div>
+                    <div>Served by <t t-esc='receipt.cashier' /></div>
+                </t>
+            </div>
+            <div line-ratio='2.6'> <line><left>
+                <t t-if="! widget.pos.kitchen_receipt or widget.pos.kitchen_receipt">
+                    <t t-if ="order.attributes.parcel">
+                        <b>Parcel:</b> <t t-esc="order.attributes.creationDate"/>
+                        <br />
+                    </t>
+                    <t t-if ="order.attributes.reserved_seat">
+                        <b>Table:</b> <t t-esc="order.attributes.creationDate"/>
+                        <br />
+                    </t>
+                </t>
+                <t t-if="order.get_client() and (order.attributes.parcel or order.attributes.reserved_seat)">
+                    <b>Customer:</b> <t t-esc="order.get_client_name()"/>
+                    <br />
+                </t></left></line>
+            <br />
+            <t t-if="order.get_client() and ! order.attributes.parcel and ! order.attributes.reserved_seat ">
+                 <line><left><b>Customer:</b> <t t-esc="order.get_client_name()"/><br /></left></line>
+                 <line><left>
+                     <t t-if="order.get_client().phone">
+                         <b>Phone:</b><t t-esc="order.get_client().phone"/>
+                     </t>
+                 </left></line>
+                <line><left>
+                    <t t-if="order.get_client().street">
+                        <b>Address:</b><t t-esc="order.get_client().street"/>,
+                    </t>
+                </left></line>
+                <line><left>
+                    <t t-if="order.get_client().city">
+                        <t t-esc="order.get_client().city"/>
+                    </t>
+                    <t t-if="order.get_client().zip">
+                        ,<t t-esc="order.get_client().zip"/>
+                    </t>
+                </left></line>
+                <line><left>
+                    <t t-foreach="order.pos.user_list" t-as="user">
+                        <t t-if="(user.id == order.attributes.driver_name)">
+                            <b>Driver Name:</b><t t-esc="user.name"/>
+                        </t>
+                    </t>
+                </left></line>
+                <br />
+            </t>
+            <br />
+            </div>
+
+            <!-- Orderlines -->
+
+            <div line-ratio='0.6'>
+                <t t-foreach='receipt.orderlines' t-as='line'>
+                    <t t-set='simple' t-value='line.discount === 0 and line.unit_name === "Unit(s)" and line.quantity === 1' />
+                    <t t-if='simple'>
+                        <line>
+                            <left><t t-esc='line.product_name' /></left>
+                            <right><value><t t-esc='line.price_display' /></value></right>
+                        </line>
+                    </t>
+                    <t t-if='!simple'>
+                        <line><left><t t-esc='line.product_name' /></left></line>
+                        <t t-if='line.discount !== 0'>
+                            <line indent='1'><left>Discount: <t t-esc='line.discount' />%</left></line>
+                        </t>
+                        <line indent='1'>
+                            <left>
+                                <value value-decimals='3' value-autoint='on'>
+                                    <t t-esc='line.quantity' />
+                                </value>
+                                <t t-if='line.unit_name !== "Unit(s)"'>
+                                    <t t-esc='line.unit_name' /> 
+                                </t>
+                                x 
+                                <value value-decimals='2'>
+                                    <t t-esc='line.price' />
+                                </value>
+                            </left>
+                            <right>
+                                <value><t t-esc='line.price_display' /></value>
+                            </right>
+                        </line>
+                    </t>
+                </t>
+            </div>
+
+            <!-- Subtotal -->
+
+            <t t-set='taxincluded' t-value='Math.abs(receipt.subtotal - receipt.total_with_tax) &lt;= 0.000001' />
+            <t t-if='!taxincluded'>
+                <line><right>--------</right></line>
+                <line><left>Subtotal</left><right> <value><t t-esc="receipt.subtotal" /></value></right></line>
+                <t t-foreach='receipt.tax_details' t-as='tax'>
+                    <line>
+                        <left><t t-esc='tax.name' /></left>
+                        <right><value><t t-esc='tax.amount' /></value></right>
+                    </line>
+                </t>
+            </t>
+
+            <!-- Total -->
+
+            <line><right>--------</right></line>
+            <line size='double-height'>
+                <left><pre>        TOTAL</pre></left>
+                <right><value><t t-esc='receipt.total_with_tax' /></value></right>
+            </line>
+            <br/><br/>
+
+            <!-- Payment Lines -->
+
+            <t t-foreach='receipt.paymentlines' t-as='line'>
+                <line>
+                    <left><t t-esc='line.journal' /></left>
+                    <right><value><t t-esc='line.amount'/></value></right>
+                </line>
+            </t>
+            <br/> 
+
+            <t t-if="! order.customer_receipt">
+                <line size='double-height'>
+                    <left><pre>        CHANGE</pre></left>
+                    <right><value><t t-esc='receipt.change' /></value></right>
+                </line>
+            <br/></t>
+            
+            <!-- Extra Payment Info -->
+
+            <t t-if='receipt.total_discount'>
+                <line>
+                    <left>Discounts</left>
+                    <right><value><t t-esc='receipt.total_discount'/></value></right>
+                </line>
+            </t>
+            <t t-if='taxincluded'>
+                <t t-foreach='receipt.tax_details' t-as='tax'>
+                    <line>
+                        <left><t t-esc='tax.name' /></left>
+                        <right><value><t t-esc='tax.amount' /></value></right>
+                    </line>
+                </t>
+            </t>
+
+            <!-- Footer -->
+            <t t-if='receipt.footer'>
+                <br/>
+                <pre><t t-esc='receipt.footer' /></pre>
+                <br/>
+                <br/>
+            </t>
+
+            <br/>
+            <div font='b'>
+                <div><t t-esc='receipt.name' /></div>
+                <div><t t-esc='receipt.date.localestring' /></div>
+            </div>
+
+        </receipt>
+    </t>
+    <t t-name="add-customer">
+        <div class="client-details-box clearfix" id="add_customer"> 
+            <br/>
+            <div class='client-detail'>
+                <span class='label input_label' >Name</span>
+                <input id="customer_name" class='detail client-name textbox'  name='name'  type='textbox'></input>
+            </div>
+            <div class='client-detail'>
+                <span class='label input_label' >Street</span>
+                <input id="input_street" class='detail client-address-street textbox'  name='street' ></input>
+            </div>
+            <div class='client-detail'>
+                <span class='label input_label' >Street2</span>
+                <input id="input_street2" class='detail client-address-street textbox'  name='street' ></input>
+            </div>
+            <div class='client-detail'>
+                <span class='label input_label' >City</span>
+                <input id="input_city" class='detail client-address-city textbox'  name='city' ></input>
+            </div>
+            <div class='client-detail'>
+                <span class='label input_label' >Postcode</span>
+                <input id="input_zip" class='detail client-address-zip textbox'  name='zip'  ></input>
+            </div>
+            <div class='client-detail'>
+                <span class='label input_label' >Phone</span>
+                <input id="input_phone" class='detail client-phone textbox'  name='phone'  type='tel'></input>
+            </div>
+            <br/><br/>
+        </div>
+    </t>
+    <t t-name="OrderScreenWidget"> 
+        <div class="order_screen" style="height:500px;">
+            <div style="border-left: 1px solid #c7c7c7;border-bottom: 1px solid #cecece; border-top: 1px solid #cecece;" class="order_dialog">
+                <span style="width:152px;" class='category-button js-category-switch' id="dine_in"> 
+                    <div class="category-img">
+                        <img style="max-width: 152px;width: 152px;" src="/point_of_sale_table/static/src/img/dinein.jpg" height="100px"/>
+                    </div>
+                    <div class="category-name">
+                        <b>Dine In</b>
+                    </div>
+                </span>
+                <span  style="width:152px;" class='category-button js-category-switch' id="take_away"> 
+                    <div class="category-img">
+                        <img style="max-width: 152px;" src="/point_of_sale_table/static/src/img/takeaway.jpg" height="100px"/>
+                    </div>
+                    <div class="category-name">
+                        <b>Take Away</b>
+                    </div>
+                </span>
+                <span  style="width:152px;" class='category-button js-category-switch' id="delivery_order"> 
+                    <div class="category-img">
+                        <img style="max-width: 152px;" src="/point_of_sale_table/static/src/img/deliveryorder.jpg" height="100px"/>
+                    </div>
+                    <div class="category-name">
+                        <b>Delivery</b>
+                    </div>
+                </span>
+                <span style="width:152px;" class='category-button js-category-switch' id="close_pos"> 
+                    <div class="category-img">
+                        <img style="max-width: 152px;width: 152px;" src="/point_of_sale_table/static/src/img/close_pos.jpg" height="100px"/>
+                    </div>
+                    <div class="category-name">
+                        <b>Close Session</b>
+                    </div>
+                </span>
+            </div><br/>
+            <div class="order_screen_content" > 
+            </div>
+        </div>
+    </t>
+    <t t-name="TableScreenWidget"> 
+        <div class="table_screen">
+            <div style="border-left: 1px solid #c7c7c7;border-bottom: 1px solid #cecece; border-top: 1px solid #cecece;" class="table_dialog">
+                <span class='category-button js-category-switch oe_sidebar_print' id="re_assign_order"> 
+                    <div class="category-img">
+                        <img src="/point_of_sale_table/static/src/img/re_assign.jpg" height="100px"/>
+                    </div>
+                    <div class="category-name">
+                        <b>Re-assign Order</b>
+                    </div>
+                </span>
+                <span class='category-button js-category-switch  oe_sidebar_print' id="merge_order"> 
+                    <div class="category-img">
+                        <img src="/point_of_sale_table/static/src/img/dinein.jpg" height="100px"/>
+                    </div>
+                    <div class="category-name">
+                        <b>Merge Order</b>
+                    </div>
+                </span>
+                <span class='category-button js-category-switch  oe_sidebar_print' id="synchronize_order"> 
+                    <div class="category-img">
+                        <img src="/point_of_sale_table/static/src/img/synchronize.jpg" height="100px"/>
+                    </div>
+                    <div class="category-name">
+                        <b>Synchronize Order</b>
+                    </div>
+                </span>
+                <span class='category-button js-category-switch oe_sidebar_print' id="re_assign_waiter"> 
+                    <div class="category-img">
+                        <img src="/point_of_sale_table/static/src/img/reassign_waiter.jpg" height="100px"/>
+                    </div>
+                    <div class="category-name">
+                        <b>Re-assign Waiter</b>
+                    </div>
+                </span>
+                <span class='category-button js-category-switch ' id="back_screen"> 
+                    <div class="category-img"> 
+                        <img src="/point_of_sale/static/src/img/icons/png48/go-previous.png" height="100px"/>
+                    </div>
+                    <div class="category-name">
+                        <b>Back</b>
+                    </div>
+                </span>
+            </div>
+            <div class="table_content" style="height:100px;"> 
+            </div>
+        </div>
+    </t>
+    <t t-name="kitchen_receipt">
+        <receipt align='center' width='40' value-thousands-separator='' > 
+            <div class="pos-center-align"> 
+                <t t-esc="new Date().toString(Date.CultureInfo.formatPatterns.shortDate + ' ' +
+                   Date.CultureInfo.formatPatterns.longTime)"/> <t t-esc="order.get('name')" />
+            </div><br />
+            <t t-if="! widget.pos.kitchen_receipt or widget.pos.kitchen_receipt">
+                <t t-if ="order.attributes.parcel">
+                    Parcel: <t t-esc="order.attributes.creationDate"/><br />
+                </t>
+                <t t-if ="order.attributes.reserved_seat">
+                    Table: <t t-esc="order.attributes.creationDate"/><br />
+                </t>
+            </t>
+            <t t-if="order.get_client() and (order.attributes.parcel or order.attributes.reserved_seat)">
+                'Customer: <t t-esc="order.get_client_name()"/><br />
+            </t>
+            <t t-if="widget.pos.config.receipt_header">
+                <div style='text-align:center'>
+                    <t t-esc="widget.pos.config.receipt_header" />
+                </div>
+                <br />
+            </t>
+            <t t-if="widget.pos.kitchen_receipt">
+                <div> 
+                    <t t-if="orderlines"> 
+                        <div tyle="background: lightgray;">
+                            <b><t t-esc="orderlines[0].get_categ_name()"/></b>
+                        </div>
+                    </t>
+                    <div line-ratio='0.6' font-size="2"> 
+                        <t t-foreach="orderlines" t-if="orderline.get_print_orderline()" t-as="orderline"> 
+                            <line indent='1'>
+                                <left> 
+                                    <t t-esc="orderline.get_product().display_name"/>
+                                    <t t-if="orderline.get_text()">(wait)</t>
+                                    <t t-if="orderline.get_property_desc()"><br/><font size="2px">(<t t-esc="orderline.get_property_desc()"/>)</font></t>
+                                </left>
+                                <right> 
+                                    <t t-esc="orderline.get_quantity_str_with_unit()"/>
+                                </right>
+                            </line>
+                        </t>
+                    </div>
+                </div>
+            </t>
+        </receipt>
+    </t>
+    <t t-name = "customer_Receipt">
+            <receipt  width='40' value-thousands-separator=''>
+                <div class="pos-center-align"><t t-esc="new Date().toString(Date.CultureInfo.formatPatterns.shortDate + ' ' +
+                    Date.CultureInfo.formatPatterns.longTime)"/> <t t-esc="order.get('name')"/>
+                </div>
+                <br />
+                <t t-esc="widget.pos.company.name"/><br />
+                Phone: <t t-esc="widget.pos.company.phone || ''"/><br />
+                User: <t t-esc="widget.pos.cashier ? widget.pos.cashier.name : widget.pos.user.name"/><br />
+                Shop: <t t-esc="widget.pos.shop.name"/><br />
+                Customer : <span t-esc="order.get_client_name()"/><br/><br />
+                <t t-if="widget.pos.config.receipt_header">
+                    <div style='text-align:center'>
+                        <t t-esc="widget.pos.config.receipt_header" />
+                    </div>
+                    <br />
+                </t>
+                <div>
+                    <div t-foreach="orderlines" t-as="orderline">
+                          <t t-esc="orderline.get_product().display_name"/>
+                          <t t-if="orderline.get_discount() > 0">
+                              <div class="pos-disc-font">
+                                  With a <t t-esc="orderline.get_discount()"/>% discount
+                              </div>
+                          </t>
+                          <t t-esc="orderline.get_quantity_str_with_unit()"/>
+                          <t t-esc="widget.format_currency(orderline.get_display_price())"/>
+                    </div>
+                </div>
+                <br />
+                <div> 
+                    <div>
+                        Subtotal:<t t-esc="widget.format_currency(order.getSubtotal())"/>
+                    </div>
+                    <t t-foreach="order.getTaxDetails()" t-as="taxdetail">
+                        <div>
+                            <t t-esc="taxdetail.tax.name" />
+                                <t t-esc="widget.format_currency(taxdetail.amount)" />
+                        </div>
+                    </t>
+                    <div>
+                        Discount:<t t-esc="widget.format_currency(order.getDiscountTotal())"/>
+                    </div>
+                    <div>
+                        Total:<t t-esc="widget.format_currency(order.getTotalTaxIncluded())"/>
+                    </div>
+                </div>
+                <br />
+                <br />
+                <t t-if="widget.pos.config.receipt_footer">
+                   <br />
+                   <div style='text-align:center'>
+                       <t t-esc="widget.pos.config.receipt_footer" />
+                   </div>
+                </t>
+        </receipt>
+    </t>
+</templates>

@@ -1,0 +1,2342 @@
+# Bulgarian translation for openobject-addons
+# Copyright (c) 2014 Rosetta Contributors and Canonical Ltd 2014
+# This file is distributed under the same license as the openobject-addons package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2014.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: openobject-addons\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2014-08-14 13:08+0000\n"
+"PO-Revision-Date: 2014-08-14 16:10+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Bulgarian <bg@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2014-08-15 07:31+0000\n"
+"X-Generator: Launchpad (build 17156)\n"
+
+#. module: point_of_sale_table
+#: model:ir.ui.menu,name:point_of_sale_table.menu_point_config_product
+msgid "Configuration"
+msgstr ""
+
+#. module: point_of_sale_table
+#: model:ir.ui.menu,name:point_of_sale_table.menu_point_root
+msgid "Point of Sale"
+msgstr "Точка на продажба"
+
+#. module: point_of_sale_table
+#: model:ir.ui.menu,name:point_of_sale_table.menu_point_of_sale_table_product
+msgid "Products"
+msgstr "Продукти"
+
+#. module: product_property
+#: model:ir.ui.menu,name:product_property.abc
+msgid "Products Property"
+msgstr "Продукти на имота"
+
+#. module: point_of_sale_table
+#: model:ir.actions.act_window,name:point_of_sale_table.action_pos_order_line_view
+#: model:ir.ui.menu,name:point_of_sale_table.menu_point_of_sale_order_line
+msgid "Kitchen Screen"
+msgstr "Кухня екран"
+
+#. module: point_of_sale_table
+#: model:ir.actions.act_window,name:point_of_sale_table.table_master_action
+#: model:ir.ui.menu,name:point_of_sale_table.menu_table_master
+msgid "Table Master"
+msgstr "Таблица магистър"
+
+#. module: point_of_sale_table
+#: model:ir.actions.act_window,name:point_of_sale_table.product_description_action
+#: model:ir.ui.menu,name:point_of_sale_table.menu_product_description
+msgid "Description"
+msgstr "описание"
+
+#. module: point_of_sale_table
+#: model:ir.actions.act_window,name:point_of_sale_table.action_waiting_queue_view
+#: model:ir.ui.menu,name:point_of_sale_table.menu_point_of_sale_waiting_queue
+msgid "Waiting Queue"
+msgstr "Чакащи на опашката"
+
+#. module: point_of_sale_table
+#: model:ir.actions.act_window,name:point_of_sale_table.action_pin_code_view
+#: model:ir.ui.menu,name:point_of_sale_table.menu_pin_code
+msgid "Pin Code"
+msgstr "ПИН-кодове"
+
+#. module: point_of_sale_table
+#: model:ir.actions.act_window,name:point_of_sale_table.area_area_action
+#: model:ir.ui.menu,name:point_of_sale_table.menu_area_area
+msgid "Area"
+msgstr "област"
+
+#. module: point_of_sale
+#: model:ir.actions.act_window,name:point_of_sale.action_pos_config_pos
+#: model:ir.ui.menu,name:point_of_sale.menu_pos_config_pos
+msgid "Point of Sales"
+msgstr "Точка на продажбите"
+
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/xml/pos.xml:9
+#: view:website:point_of_sale_table.index
+#, python-format
+msgid "Dine In"
+msgstr "Хапнете в"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/xml/pos.xml:11
+#: view:website:point_of_sale_table.index
+#, python-format
+msgid "Take Away"
+msgstr "отнемам"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/xml/pos.xml:13
+#: view:website:point_of_sale_table.index
+#, python-format
+msgid "Delivery"
+msgstr "доставка"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/xml/pos.xml:34
+#: view:website:point_of_sale_table.index
+#, python-format
+msgid "Parcel Order : "
+msgstr "парцел Поръчка"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/xml/pos.xml:21
+#: view:website:point_of_sale_table.index
+#, python-format
+msgid "Area"
+msgstr "област"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/xml/pos.xml:51
+#: view:website:point_of_sale_table.index
+#, python-format
+msgid "Select Waiter	"
+msgstr "Изберете Сервитьор"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/xml/pos.xml:100
+#: view:website:point_of_sale_table.index
+#, python-format
+msgid "Customer :"
+msgstr "Клиент:"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/xml/pos.xml:110
+#: code:pos8/point_of_sale_table/static/src/xml/pos.xml:187
+#: view:website:point_of_sale_table.index
+#, python-format
+msgid "Phone :"
+msgstr "Телефон:"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/xml/pos.xml:118
+#: view:website:point_of_sale_table.index
+#: field:pos.order,driver_name:0
+#, python-format
+msgid "Delivery Boy :"
+msgstr "Доставка Boy:"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/xml/pos.xml:152
+#: view:website:point_of_sale_table.index
+#, python-format
+msgid "Salesman   :"
+msgstr "Продавач:"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/xml/pos.xml:161
+#: view:website:point_of_sale_table.index
+#, python-format
+msgid "Pricelist   :"
+msgstr "Ценова листа:"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/xml/pos.xml:170
+#: view:website:point_of_sale_table.index
+#, python-format
+msgid "Send To Kitchen"
+msgstr "Ценова листа:"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/xml/pos.xml:171
+#: view:website:point_of_sale_table.index
+#, python-format
+msgid "Print Receipt"
+msgstr "получаване печат"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/xml/pos.xml:172
+#: view:website:point_of_sale_table.index
+#, python-format
+msgid "Order Confirm"
+msgstr "Поръчка потвърждават"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/xml/pos.xml:174
+#: view:website:point_of_sale_table.index
+#, python-format
+msgid "Customer Receipt"
+msgstr "Получаване на клиентите"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/xml/pos.xml:174
+#: view:website:point_of_sale_table.index
+#, python-format
+msgid "Customer Receipt"
+msgstr "Получаване на клиентите"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/xml/pos.xml:188
+#: view:website:point_of_sale_table.index
+#, python-format
+msgid "User:"
+msgstr "потребител :"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/xml/pos.xml:189
+#: view:website:point_of_sale_table.index
+#, python-format
+msgid "Shop:"
+msgstr "магазин :"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/xml/pos.xml:192
+#: view:website:point_of_sale_table.index
+#, python-format
+msgid "Tablel"
+msgstr ""
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/xml/pos.xml:197
+#: view:website:point_of_sale_table.index
+#, python-format
+msgid "Customer"
+msgstr "клиент :"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/xml/pos.xml:275
+#: view:website:point_of_sale_table.index
+#, python-format
+msgid "Discount"
+msgstr "отстъпка"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/xml/pos.xml:246
+#: view:website:point_of_sale_table.index
+#, python-format
+msgid "% discount"
+msgstr "% отстъпка"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/xml/pos.xml:261
+#: view:website:point_of_sale_table.index
+#, python-format
+msgid "Subtotal:"
+msgstr "Междинна сума:"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/xml/pos.xml:281
+#: view:website:point_of_sale_table.index
+#, python-format
+msgid "Total:"
+msgstr "общо:"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/xml/pos.xml:51
+#: view:website:point_of_sale_table.index
+#, python-format
+msgid "Select Waiter:"
+msgstr "Изберете Сервитьор:"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/xml/pos.xml:300
+#: view:website:point_of_sale_table.index
+#, python-format
+msgid "Change:"
+msgstr "промяна:"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/xml/pos.xml:322
+#: view:website:point_of_sale_table.index
+#, python-format
+msgid "Options"
+msgstr "Опции"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/xml/pos.xml:324
+#: view:website:point_of_sale_table.index
+#, python-format
+msgid "Re-assign Order"
+msgstr "Re-правоприемник Поръчка"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/xml/pos.xml:325
+#: view:website:point_of_sale_table.index
+#, python-format
+msgid "Merge Order"
+msgstr "Обединяване Поръчка"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/xml/pos.xml:41
+#: view:website:point_of_sale_table.index
+#, python-format
+msgid "Booked Table"
+msgstr "Резервирано Таблица"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/xml/pos.xml:326
+#: view:website:point_of_sale_table.index
+#, python-format
+msgid "Synchronize Order"
+msgstr "Синхронизирайте Поръчка"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/xml/pos.xml:327
+#: view:website:point_of_sale_table.index
+#, python-format
+msgid "Re-assign Waiter"
+msgstr "Re-правоприемник Сервитьор"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:1854
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:2285
+#, python-format
+msgid "Description"
+msgstr "описание"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/xml/pos.xml:350
+#: view:website:point_of_sale_table.index
+#, python-format
+msgid "Description   :"
+msgstr "описание :"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/xml/pos.xml:470
+#: view:website:point_of_sale_table.index
+#, python-format
+msgid "Enter Pin Code"
+msgstr "Въведете ПИН код"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:2208
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:1782
+#, python-format
+msgid "Select Properties"
+msgstr "Изберете имоти"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:870
+#, python-format
+msgid "Delivery Order"
+msgstr "Доставка Поръчка"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:859
+#, python-format
+msgid "Parcel Order"
+msgstr "парцел Поръчка"
+
+#. module: point_of_sale
+#. openerp-web
+#: code:addons/point_of_sale/static/src/js/widgets.js:1258
+#, python-format
+msgid ""
+"Pending orders will be lost.\n"
+"Are you sure you want to leave this session?"
+msgstr 
+"Чакащи поръчки ще бъдат загубени.\n"
+"Сигурни ли сте че искате да напуснете тази сесия?"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:563
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:574
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:732
+#, python-format
+msgid "Please select table , without table user can not make order"
+msgstr "Моля, изберете маса, без маса потребител все още не може да направите поръчка"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:737
+#, python-format
+msgid "Please select Person."
+msgstr "Моля изберете човек"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:1851
+#, python-format
+msgid "<b>Wait For Kitchen</b>"
+msgstr "Изчакайте Кухня"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:743
+#, python-format
+msgid "Please enter phone number"
+msgstr "Моля, въведете телефонния номер"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:747
+#, python-format
+msgid "Please select driver"
+msgstr "Моля изберете шофьор"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:762
+#, python-format
+msgid "Person name is Empty,Please Enter Person Name"
+msgstr "Име на лице е празна, моля, въведете Лице Име"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:773
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:524
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:550
+#, python-format
+msgid "Sorry, we could not create a user session"
+msgstr "За съжаление, ние не може да се създаде потребителска сесия"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:775
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:526
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:552
+#, python-format
+msgid "Sorry, we could not find any PoS Configuration for this session"
+msgstr "За съжаление, ние не може да намери всеки PoS конфигурация за тази сесия"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:815
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:443
+#, python-format
+msgid "There is no other order are available. So please create order!"
+msgstr "Няма друг ред са на разположение. Така че, моля да създадете поръчка!"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:838
+#, python-format
+msgid "There is no table available for this Area"
+msgstr "Няма данни за тази зона на маса"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:1174
+#, python-format
+msgid "Destroy Current Order ?"
+msgstr "Унищожи Текуща поръчка?"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:1175
+#, python-format
+msgid "You will lose any data associated with the current order"
+msgstr "Ще загубите всички данни, свързани с текущата поръчка"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:1235
+#, python-format
+msgid "There is no Draft Order For user!"
+msgstr "Не е проект на заповедта за потребител"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:1341
+#, python-format
+msgid "Order synchronize Process has been Done!"
+msgstr "Поръчка синхронизиране на процеса е направено!"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:1465
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:720
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:1446
+#, python-format
+msgid "Can not create order which have no order line."
+msgstr "Не може да се създаде, за които нямат цел линия."
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:1587
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:1637
+#, python-format
+msgid "Can not Print order which have no order line"
+msgstr "Не можете да отпечатате, за които нямат цел линия"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:1621
+#, python-format
+msgid "Can not confirm order which have no order line"
+msgstr "Не може да се потвърди, за които нямат цел линия"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:2334
+#, python-format
+msgid "Print"
+msgstr "печат"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:2341
+#, python-format
+msgid "Next Order"
+msgstr "Следваща Поръчка"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:2353
+#, python-format
+msgid "Back"
+msgstr "обратно"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:2435
+#, python-format
+msgid "An anonymous order cannot be invoiced"
+msgstr "Един анонимен, за да не може да бъде фактурирана"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:2436
+#, python-format
+msgid "Please select a client for this order. This can be done by clicking the order tab"
+msgstr "Моля изберете клиент за тази цел. Това може да стане като кликнете върху раздела, за"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:2440
+#, python-format
+msgid "The order could not be sent"
+msgstr "Редът не може да бъде изпратен"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:2441
+#, python-format
+msgid "Check your internet connection and try again."
+msgstr "Проверете връзката си с интернет и опитайте отново."
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:2489
+#, python-format
+msgid "Can not Open dialog which have no order line."
+msgstr "Не можете да отворите диалоговия които нямат цел линия."
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:2499
+#, python-format
+msgid "Pin Code"
+msgstr "ПИН код"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:2507
+#, python-format
+msgid "Please Enter Correct Pin code"
+msgstr "Моля, Въведете верния ПИН код"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:2514
+#, python-format
+msgid "Please Enter Pin code"
+msgstr "Моля въведете ПИН код"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:266
+#, python-format
+msgid "Can not remove order"
+msgstr "Не може да се премахне, за"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:337
+#, python-format
+msgid "Select Order Type"
+msgstr "Изберете Тип поръчка"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:355
+#, python-format
+msgid "There is no other order are available. So please select create order!"
+msgstr "Няма друг ред са на разположение. Така че, моля изберете създаде ред!"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:414
+#, python-format
+msgid "There is no more table to merge!"
+msgstr "Няма по масата, за да се слеят!"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:488
+#, python-format
+msgid "You must be add some person in this table"
+msgstr "Трябва да добавите някой човек в тази таблица"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:492
+#, python-format
+msgid "Table capacity is"
+msgstr "Капацитет таблица е"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:492
+#, python-format
+msgid " person you cannot enter more then "
+msgstr "човек, който не може да влезе повече"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:492
+#, python-format
+msgid "or less than 1"
+msgstr "или по-малко от 1"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:514
+#, python-format
+msgid "Parcel Order is Empty,Please Enter Parcel Order Name"
+msgstr "Парцел с поръчка е празно, Моля въведете името Parcel Поръчка"
+
+#. module: point_of_sale
+#. openerp-web
+#: code:addons/point_of_sale/static/src/xml/pos.xml:775
+#, python-format
+msgid "Your shopping cart is empty"
+msgstr "Вашата кошница е празна"
+
+#. module: point_of_sale
+#: model:ir.actions.act_window,name:point_of_sale.action_pos_session_opening
+#: model:ir.ui.menu,name:point_of_sale.menu_pos_session_opening
+msgid "Your Session"
+msgstr "Вашата сесия"
+
+#. module: point_of_sale
+#: view:pos.session.opening:point_of_sale.pos_session_opening_form_view
+msgid "Resume Session"
+msgstr "Възобновяване на сесията"
+
+#. module: point_of_sale
+#: field:pos.session,cash_register_difference:0
+#: view:website:point_of_sale.report_sessionsummary
+msgid "Difference"
+msgstr "разлика"
+
+#. module: point_of_sale
+#: model:ir.actions.act_window,name:point_of_sale.act_pos_session_orders
+#: model:ir.actions.act_window,name:point_of_sale.action_pos_pos_form
+#: model:ir.ui.menu,name:point_of_sale.menu_point_ofsale
+#: field:pos.session,order_ids:0
+msgid "Orders"
+msgstr "заповеди"
+
+#. module: point_of_sale
+#: model:ir.actions.act_window,name:point_of_sale.action_pos_session
+#: model:ir.ui.menu,name:point_of_sale.menu_pos_session_all
+msgid "All Sessions"
+msgstr "Всички сесии"
+
+#. module: point_of_sale
+#: view:pos.session.opening:point_of_sale.pos_session_opening_form_view
+msgid "Close Session"
+msgstr "Затваряне на сесията"
+
+#. module: point_of_sale
+#: model:ir.actions.act_window,name:point_of_sale.product_pos_category_action
+#: model:ir.ui.menu,name:point_of_sale.menu_product_pos_category
+msgid "Pos Product Categories"
+msgstr "Поз Продуктови категории"
+
+#. module: point_of_sale
+#. openerp-web
+#: code:addons/point_of_sale/static/src/xml/pos.xml:215
+#, python-format
+msgid "Search Products"
+msgstr "Търсене на продукти"
+
+#. module: point_of_sale
+#: field:pos.session,cash_journal_id:0
+msgid "Cash Journal"
+msgstr "парични вестник (тест)"
+
+#. module: point_of_sale
+#. openerp-web
+#: code:addons/point_of_sale/static/src/xml/pos.xml:162
+#, python-format
+msgid "Disc"
+msgstr "диск"
+
+#. module: point_of_sale
+#. openerp-web
+#: code:addons/point_of_sale/static/src/js/screens.js:910
+#, python-format
+msgid "Validate"
+msgstr "Валидиране"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:addons/point_of_sale/static/src/xml/pos.xml:584
+#: field:pos.order,invoice_id:0
+#, python-format
+msgid "Invoice"
+msgstr "Фактура"
+
+#. module: point_of_sale
+#: code:addons/point_of_sale/point_of_sale.py:108
+#: selection:pos.session,state:0
+#: selection:pos.session.opening,pos_state:0
+#, python-format
+msgid "Opening Control"
+msgstr "Откриване контрол"
+
+#. module: point_of_sale
+#: code:addons/point_of_sale/point_of_sale.py:109
+#: selection:pos.session,state:0
+#: selection:pos.session.opening,pos_state:0
+#, python-format
+msgid "In Progress"
+msgstr "В процес на извършване"
+
+#. module: point_of_sale
+#: code:addons/point_of_sale/point_of_sale.py:110
+#: selection:pos.session,state:0
+#: selection:pos.session.opening,pos_state:0
+#, python-format
+msgid "Closing Control"
+msgstr "Краен контрол"
+
+#. module: point_of_sale
+#: code:addons/point_of_sale/point_of_sale.py:111
+#: selection:pos.session,state:0
+#: selection:pos.session.opening,pos_state:0
+#, python-format
+msgid "Closed & Posted"
+msgstr "Затворен & Публикувано"
+
+#. module: point_of_sale
+#: view:account.bank.statement:point_of_sale.view_cash_statement_pos_tree
+#: field:pos.session,user_id:0
+#: view:website:point_of_sale.report_sessionsummary
+msgid "Responsible"
+msgstr "отговорен"
+
+#. module: point_of_sale
+#: view:website:point_of_sale.report_sessionsummary
+msgid "Total Transactions"
+msgstr "Общо Сделки"
+
+#. module: point_of_sale
+#: field:pos.session,name:0
+msgid "Session ID"
+msgstr "сесиен идентификатор"
+
+#. module: point_of_sale
+#: code:addons/point_of_sale/wizard/pos_session_opening.py:64
+#: view:pos.order:point_of_sale.view_pos_order_filter
+#: field:pos.order,session_id:0
+#, python-format
+msgid "Session"
+msgstr "сесия"
+
+#. module: point_of_sale_table
+#: code:pos8/point_of_sale_table/point_of_sale_table.py:384
+#: selection:table.master,state:0
+#, python-format
+msgid "Reserved"
+msgstr "Резервирано"
+
+#. module: point_of_sale_table
+#: code:pos8/point_of_sale_table/point_of_sale_table.py:384
+#: selection:table.master,state:0
+#, python-format
+msgid "Available"
+msgstr "наличен"
+
+#. module: point_of_sale
+#: field:pos.category,sequence:0
+msgid "Sequence"
+msgstr "последователност"
+
+#. module: point_of_sale_table
+#: view:pos.order:point_of_sale_table.area_area_tree_view
+#: field:area.area,area_id:0
+#: field:table.master,area_id:0
+msgid "Area"
+msgstr "област"
+
+#. module: point_of_sale_table
+#: field:area.area,name:0
+#: field:table.master,name:0
+#: field:product.description,name:0
+msgid "Description"
+msgstr "описание"
+
+#. module: point_of_sale
+#: field:pos.config,name:0
+msgid "Point of Sale Name"
+msgstr "Точка на продажба Име"
+
+#. module: point_of_sale_table
+#: field:area.area,code:0
+#: field:pin.code,code:0
+#: field:table.master,code:0
+msgid "Code"
+msgstr "код"
+
+#. module: point_of_sale_table
+#: field:waiting.queue,sequence:0
+msgid "Sequence"
+msgstr "последователност"
+
+#. module: point_of_sale_table
+#: field:waiting.queue,partner_id:0
+msgid "Partner"
+msgstr "партньор"
+
+#. module: point_of_sale_table
+#: field:waiting.queue,no_of_person:0
+msgid "No. Of Person"
+msgstr "не. човек"
+
+#. module: point_of_sale_table
+#: field:waiting.queue,Resrvation_date:0
+msgid "Reservation Date"
+msgstr "Резервация Дата"
+
+#. module: point_of_sale_table
+#: field:waiting.queue,state:0
+#: field:table.master,state:0
+msgid "State"
+msgstr "състояние"
+
+#. module: product_property
+#: field:product.property,name:0
+msgid "Product Property"
+msgstr "Каталог на имота"
+
+#. module: product_property
+#: field:product.property,single_choice:0
+msgid "Single Choice"
+msgstr "Единична избор"
+
+#. module: product_property
+#: field:product.property,product_attribute_ids:0
+msgid "Attribute"
+msgstr "атрибут"
+
+#. module: product_property
+#: field:product.property,product_ids:0
+#: field:pos.order.line,product_ids:0
+msgid "Product"
+msgstr "продукт"
+
+#. module: point_of_sale_table
+#: field:pos.config,display_print_receipt:0
+msgid "Display Send To Kitchen Button"
+msgstr "Дисплей Изпрати на бутон Кухня"
+
+#. module: point_of_sale_table
+#: field:pos.config,display_send_to_kitchen:0
+msgid "Display Print Receipt Button"
+msgstr "Бутон за получаване печат дисплей"
+
+#. module: point_of_sale_table
+#: field:pos.config,customer_receipt:0
+msgid "Print Customer Receipt"
+msgstr "печат Получаване на клиенти"
+
+#. module: point_of_sale_table
+#: field:pos.config,manage_delivery:0
+msgid "Manage Delivery"
+msgstr "Управление на доставка"
+
+#. module: point_of_sale_table
+#: field:pos.config,pincode:0
+msgid "Pin Code"
+msgstr "ПИН код"
+
+#. module: point_of_sale_table
+#: field:table.reserverd,table_id:0
+msgid "Table"
+msgstr "маса"
+
+#. module: point_of_sale_table
+#: field:table.reserverd,reserver_seat:0
+#: field:table.master,available_capacities:0
+msgid "Reserved Seat"
+msgstr "запазено място"
+
+#. module: point_of_sale_table
+#: field:table.reserverd,order_id:0
+msgid "POS Order"
+msgstr "POS Поръчка"
+
+#. module: point_of_sale_table
+#: field:pin.code,name:0
+msgid "Name"
+msgstr "име"
+
+#. module: point_of_sale_table
+#: field:pin.code,date_from:0
+msgid "Date From"
+msgstr "От дата"
+
+#. module: point_of_sale_table
+#: field:pin.code,date_to:0
+msgid "Date To"
+msgstr "До дата"
+
+#. module: point_of_sale
+#: view:pos.config:point_of_sale.view_pos_config_form
+msgid "Set to Active"
+msgstr "Задава се активно"
+
+
+#. module: point_of_sale
+#: view:pos.config:point_of_sale.view_pos_config_form
+msgid "Set to Inactive"
+msgstr "Определете до неактивни"
+
+#. module: point_of_sale
+#: view:pos.config:point_of_sale.view_pos_config_form
+msgid "Set to Deprecated"
+msgstr "Определете да Отхвърлена"
+
+#. module: point_of_sale
+#: view:pos.config:point_of_sale.view_pos_config_search
+#: selection:pos.config,state:0
+msgid "Active"
+msgstr "активен"
+
+#. module: point_of_sale
+#: view:pos.config:point_of_sale.view_pos_config_search
+#: selection:pos.config,state:0
+msgid "Inactive"
+msgstr "неактивен"
+
+#. module: point_of_sale
+#: selection:pos.config,state:0
+msgid "Deprecated"
+msgstr "Отхвърлена"
+
+#. module: point_of_sale
+#: view:pos.config:point_of_sale.view_pos_config_form
+msgid "Features"
+msgstr "Удобства"
+
+#. module: point_of_sale
+#: field:pos.config,iface_vkeyboard:0
+msgid "Virtual KeyBoard "
+msgstr "Виртуална клавиатура"
+
+#. module: point_of_sale
+#: field:pos.config,iface_invoicing:0
+msgid "Invoicing"
+msgstr "фактуриране"
+
+#. module: point_of_sale
+#: field:pos.config,iface_big_scrollbars:0
+msgid "Large Scrollbars"
+msgstr "Големи плъзгачите"
+
+#. module: point_of_sale
+#: view:pos.config:point_of_sale.view_pos_config_form
+msgid "Hardware Proxy"
+msgstr "Хардуер Proxy"
+
+#. module: point_of_sale
+#: field:pos.config,proxy_ip:0
+msgid "IP Address"
+msgstr "IP Адрес"
+
+#. module: point_of_sale
+#: field:pos.config,iface_print_via_proxy:0
+msgid "Print via Proxy"
+msgstr "Печат чрез пълномощник"
+
+#. module: point_of_sale
+#: field:pos.config,iface_scan_via_proxy:0
+msgid "Scan via Proxy"
+msgstr "Сканиране чрез пълномощник"
+
+#. module: point_of_sale
+#. openerp-web
+#: code:addons/point_of_sale/static/src/xml/pos.xml:800
+#: field:pos.config,iface_electronic_scale:0
+#, python-format
+msgid "Electronic Scale"
+msgstr "електронна везна"
+
+#. module: point_of_sale
+#: field:pos.config,receipt_header:0
+msgid "Receipt Header"
+msgstr "Получаване хедър"
+
+#. module: point_of_sale
+#: field:pos.config,receipt_footer:0
+msgid "Receipt Footer"
+msgstr "Получаване Footer"
+
+#. module: point_of_sale
+#: help:pos.config,iface_cashdrawer:0
+msgid "Automatically open the cashdrawer"
+msgstr "Автоматично отваряне на cashdrawer"
+
+#. module: point_of_sale
+#: view:pos.config:point_of_sale.view_pos_config_form
+msgid "Barcode Types"
+msgstr "Видове Баркод"
+
+#. module: point_of_sale
+#: field:pos.config,barcode_product:0
+msgid "Product Barcodes"
+msgstr "Каталог на баркодове"
+
+#. module: point_of_sale
+#: field:pos.config,barcode_customer:0
+msgid "Customer Barcodes"
+msgstr "клиент баркодове"
+
+#. module: point_of_sale
+#: field:pos.config,barcode_discount:0
+msgid "Discount Barcodes"
+msgstr "Отстъпка баркодове"
+
+#. module: point_of_sale
+#: field:pos.config,barcode_cashier:0
+msgid "Cashier Barcodes"
+msgstr "Касиер баркодове"
+
+#. module: point_of_sale
+#: field:pos.config,barcode_weight:0
+msgid "Weight Barcodes"
+msgstr "Тегло баркодове"
+
+#. module: point_of_sale
+#: field:pos.config,barcode_price:0
+msgid "Price Barcodes"
+msgstr "Цена баркодове"
+
+#. module: point_of_sale
+#: field:pos.config,journal_id:0
+#: field:pos.order,sale_journal:0
+msgid "Sale Journal"
+msgstr "Продажба вестник"
+
+#. module: pos_restaurant
+#. openerp-web
+#: code:addons/pos_restaurant/static/src/xml/splitbill.xml:64
+#: field:pos.config,iface_splitbill:0
+#, python-format
+msgid "Bill Splitting"
+msgstr "Бил цепене"
+
+#. module: pos_restaurant
+#: field:pos.config,iface_printbill:0
+msgid "Bill Printing"
+msgstr "Бил печат"
+
+#. module: point_of_sale
+#: field:pos.config,picking_type_id:0
+#: field:pos.order,picking_type_id:0
+msgid "Picking Type"
+msgstr "Бране вид"
+
+#. module: point_of_sale
+#: field:pos.config,stock_location_id:0
+#: view:report.pos.order:point_of_sale.view_report_pos_order_search
+msgid "Stock Location"
+msgstr "фондова местоположение"
+
+#. module: point_of_sale
+#: field:pos.config,sequence_id:0
+msgid "Order IDs Sequence"
+msgstr "Поръчка идентификатори последователност"
+
+#. module: point_of_sale
+#: field:pos.config,state:0
+#: field:pos.session,state:0
+#: field:pos.order,state:0
+msgid "Status"
+msgstr "Статус"
+
+#. module: point_of_sale_table
+#: field:table.master,capacities:0
+msgid "Capacities"
+msgstr "Капацитети"
+
+#. module: point_of_sale_table
+#: field:product.template,is_pizza:0
+#: field:product.product,is_pizza:0
+msgid "Is Pizza"
+msgstr "Дали пица"
+
+#. module: point_of_sale_table
+#: field:product.template,large_pizza_price:0
+#: field:product.product,large_pizza_price:0
+msgid "Large Pizza Price"
+msgstr "Голяма пица Цена"
+
+
+#. module: point_of_sale_table
+#: field:product.template,is_product_wait:0
+#: field:product.product,is_product_wait:0
+msgid "Display Wait Button"
+msgstr "бутон дисплей Изчакайте"
+
+#. module: point_of_sale_table
+#: field:product.template,is_product_description:0
+#: field:product.product,is_product_description:0
+msgid "Display Description"
+msgstr "дисплей Описание"
+
+#. module: point_of_sale_table
+#: field:table.master,users_ids:0
+msgid "User"
+msgstr "потребител"
+
+#. module: pos_restaurant
+#: model:ir.actions.act_window,name:pos_restaurant.action_restaurant_printer_form
+#: model:ir.ui.menu,name:pos_restaurant.menu_restaurant_printer_all
+#: field:pos.config,printer_ids:0
+msgid "Order Printers"
+msgstr "Поръчка за принтери"
+
+#. module: pos_restaurant
+#: field:restaurant.printer,name:0
+msgid "Printer Name"
+msgstr "принтер Име"
+
+#. module: pos_restaurant
+#: field:restaurant.printer,proxy_ip:0
+msgid "Proxy IP Address"
+msgstr "прокси IP Адрес"
+
+#. module: pos_restaurant
+#: field:restaurant.printer,product_categories_ids:0
+msgid "Printed Product Categories"
+msgstr "Печатни Продуктови категории"
+
+#. module: point_of_sale_table
+#: field:pos.order,table_name:0
+msgid "Table Name"
+msgstr "име на маса"
+
+#. module: point_of_sale_table
+#: field:pos.order,reserved_table_ids:0
+msgid "Reserved Table"
+msgstr "Запазена маса"
+
+#. module: point_of_sale_table
+#: field:pos.order,pflag:0
+msgid "Flag"
+msgstr "флаг"
+
+#. module: point_of_sale_table
+#: field:pos.order,parcel:0
+msgid "Parcel Order"
+msgstr "парцел Поръчка"
+
+#. module: point_of_sale_table
+#: field:pos.order,phone:0
+msgid "Customer Phone Number"
+msgstr "Телефон на клиента Брой"
+
+#. module: point_of_sale_table
+#: field:pos.order,color:0
+#: field:pos.order.line,color:0
+msgid "Color Index"
+msgstr "индекса на цвета"
+
+#. module: point_of_sale_table
+#: field:pos.order,split_order:0
+msgid "split"
+msgstr "раздвояване"
+
+#. module: point_of_sale_table
+#: field:pos.order.line,property_description:0
+msgid "Property Description"
+msgstr "Описание на имота"
+
+#. module: point_of_sale
+#: field:pos.order,location_id:0
+#: field:report.pos.order,location_id:0
+msgid "Location"
+msgstr "място"
+
+#. module: point_of_sale
+#: field:pos.order,picking_id:0
+msgid "Picking"
+msgstr "Бране"
+
+#. module: point_of_sale
+#: field:pos.order,pos_reference:0
+msgid "Receipt Ref"
+msgstr "Получаване код"
+
+#. module: point_of_sale
+#: field:pos.category,split:0
+msgid "Print Separate Receipt"
+msgstr "Печат самостоятелните Получаване"
+
+#. module: product
+#: field:product.product,qty_available:0
+#: field:product.template,qty_available:0
+msgid "Quantity On Hand"
+msgstr "Брой на ръка"
+
+#. module: product
+#: field:product.template,virtual_available:0
+#: field:product.product,virtual_available:0
+#: field:stock.move,availability:0
+msgid "Quantity Available"
+msgstr "Брой в наличност"
+
+#. module: product
+#: field:product.template,sale_delay:0
+#: field:product.product,sale_delay:0
+msgid "Customer Lead Time"
+msgstr "олово клиент време"
+
+#. module: product
+#: field:product.template,standard_price:0
+#: field:product.product,standard_price:0
+msgid "Cost Price"
+msgstr "Себестойност"
+
+#. module: product
+#: field:product.template,categ_id:0
+#: field:product.product,categ_id:0
+msgid "Internal Category"
+msgstr "Вътрешен Категория"
+
+#. module: product
+#: model:ir.actions.act_window,name:stock.action_routes_form
+#: model:ir.ui.menu,name:stock.menu_stock_routes
+#: field:product.category,route_ids:0
+#: view:product.product:stock.product_form_view_procurement_button
+#: view:product.template:stock.product_template_form_view_procurement_button
+#: field:product.template,route_ids:0
+#: view:stock.location.route:stock.stock_location_route_tree
+#: view:stock.warehouse:stock.view_warehouse
+#: field:stock.warehouse,route_ids:0
+msgid "Routes"
+msgstr "маршрут"
+
+#. module: stock
+#: model:ir.actions.act_window,name:stock.act_stock_warehouse_2_stock_warehouse_orderpoint
+#: model:ir.actions.act_window,name:stock.action_orderpoint_form
+#: model:ir.actions.act_window,name:stock.product_open_orderpoint
+#: model:ir.ui.menu,name:stock.menu_stock_order_points
+#: view:product.product:stock.product_form_view_procurement_button
+#: view:product.template:stock.product_template_form_view_procurement_button
+#: view:stock.warehouse.orderpoint:stock.view_warehouse_orderpoint_form
+#: view:stock.warehouse.orderpoint:stock.view_warehouse_orderpoint_tree
+#: view:stock.warehouse.orderpoint:stock.warehouse_orderpoint_search
+msgid "Reordering Rules"
+msgstr "Преподреждане Правила"
+
+#. module: product
+#: field:product.product,ean13:0
+#: field:product.template,ean13:0
+msgid "EAN13 Barcode"
+msgstr "EAN13 баркод"
+
+#. module: product
+#: field:product.product,code:0
+#: field:product.product,default_code:0
+#: field:product.template,default_code:0
+msgid "Internal Reference"
+msgstr "Вътрешен референтен"
+
+#. module: product
+#: view:product.template:product.product_template_form_view
+msgid "Inventory"
+msgstr "инвентаризация"
+
+#. module: product
+#: view:product.template:product.product_template_form_view
+#: view:product.product:product.product_template_form_view
+msgid "Procurements"
+msgstr "придобиване"
+
+#. module: point_of_sale
+#: field:product.template,pos_categ_id:0
+#: field:product.product,pos_categ_id:0
+msgid "Point of Sale Category"
+msgstr "Точка на Продажба Категория"
+
+#. module: point_of_sale
+#: field:product.template,available_in_pos:0
+#: field:product.product,available_in_pos:0
+msgid "Available in the Point of Sale"
+msgstr "Предлага се в точката на продажба"
+
+#. module: point_of_sale
+#: field:product.template,to_weight:0
+#: field:product.product,to_weight:0
+msgid "To Weigh With Scale"
+msgstr "За да се претегля с мащаб"
+
+#. module: point_of_sale
+#: field:product.template,income_pdt:0
+#: field:product.product,income_pdt:0
+msgid "Point of Sale Cash In"
+msgstr "Точка на продажба пари в"
+
+#. module: point_of_sale
+#: field:product.template,expense_pdt:0
+#: field:product.product,expense_pdt:0
+msgid "Point of Sale Cash Out"
+msgstr "Точка на продажба пари в брой от"
+
+#. module: product
+#: field:product.template,warranty:0
+#: field:product.product,warranty:0
+msgid "Warranty"
+msgstr "гаранция"
+
+#. module: product
+#: field:product.template,loc_rack:0
+#: field:product.product,loc_rack:0
+msgid "Rack"
+msgstr "багажник"
+
+#. module: product
+#: field:product.template,loc_row:0
+#: field:product.product,loc_row:0
+msgid "Row "
+msgstr "редица"
+
+#. module: product
+#: field:product.template,loc_case:0
+#: field:product.product,loc_case:0
+msgid "Case"
+msgstr "състояние"
+
+#. module: account
+#: view:account.journal:account.view_account_journal_form
+msgid "Advanced Settings"
+msgstr "Разширени настройки"
+
+#. module: account
+#: field:account.journal,centralisation:0
+msgid "Centralized Counterpart"
+msgstr "Централизиран Каунтърпарт"
+
+#. module: account
+#: field:account.journal,entry_posted:0
+msgid "Autopost Created Moves"
+msgstr "Публикувате автоматично Created Moves"
+
+#. module: account
+#: field:account.journal,allow_date:0
+msgid "Check Date in Period"
+msgstr "Проверете срока на Период"
+
+#. module: account
+#: field:account.journal,profit_account_id:0
+msgid "Profit Account"
+msgstr "Печалба акаунт"
+
+#. module: account
+#: field:account.journal,loss_account_id:0
+msgid "Loss Account"
+msgstr "РАЗХОДИТЕ"
+
+#. module: account
+#: field:account.journal,internal_account_id:0
+msgid "Internal Transfers Account"
+msgstr "Вътрешните трансфери"
+
+#. module: account
+#: field:account.journal,with_last_closing_balance:0
+msgid "Opening With Last Closing Balance"
+msgstr "Откриване С Last Крайно салдо"
+
+#. module: point_of_sale
+#: field:account.journal,amount_authorized_diff:0
+msgid "Amount Authorized Difference"
+msgstr "Сумата, отпусната Разлика"
+
+#. module: point_of_sale
+#: field:account.journal,self_checkout_payment_method:0
+msgid "Self Checkout Payment Method"
+msgstr "Self Checkout Начин на плащане"
+
+#. module: point_of_sale
+#: view:pos.order:point_of_sale.view_pos_pos_form
+#: field:pos.order,statement_ids:0
+msgid "Payments"
+msgstr "Плащания"
+
+#. module: point_of_sale
+#: view:pos.order:point_of_sale.view_pos_order_filter
+#: selection:pos.order,state:0
+msgid "Posted"
+msgstr "публикувал"
+
+#. module: point_of_sale_table
+#: view:pos.session:point_of_sale.view_pos_session_form
+msgid "Continue Selling"
+msgstr "Продължи продажба"
+
+#. module: point_of_sale_table
+#: view:waiting.queue:point_of_sale_table.waiting_queue_form_view
+msgid "Allowed"
+msgstr "позволен"
+
+#. module: point_of_sale_table
+#: view:waiting.queue:point_of_sale_table.waiting_queue_form_view
+msgid "Left"
+msgstr "наляво"
+
+#. module: point_of_sale_table
+#: view:pos.session:point_of_sale.view_pos_session_form
+msgid "Validate Closing & Post Entries"
+msgstr "Валидиране на закриване и мнението влизания"
+
+#. module: point_of_sale_table
+#: view:pos.session:point_of_sale.view_pos_session_form
+msgid "Summary by Payment Methods"
+msgstr "Обобщение по Методи на плащане"
+
+#. module: point_of_sale
+#: model:ir.actions.act_window,name:point_of_sale.action_pos_box_in
+msgid "Put Money In"
+msgstr "Поставете пари в"
+
+#. module: point_of_sale
+#: model:ir.actions.act_window,name:point_of_sale.action_pos_box_out
+msgid "Take Money Out"
+msgstr "Изваждане на пари"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:addons/point_of_sale/static/src/xml/pos.xml:397
+#, python-format
+msgid "Paid:"
+msgstr "Платено:"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:addons/point_of_sale/static/src/xml/pos.xml:403
+#, python-format
+msgid "Remaining:"
+msgstr "Остават:"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:addons/point_of_sale/static/src/xml/pos.xml:584
+#: model:ir.actions.report.xml,name:point_of_sale.pos_invoice_report
+#: view:pos.order:point_of_sale.view_pos_pos_form
+#: field:pos.order,invoice_id:0
+#, python-format
+msgid "Invoice"
+msgstr "Фактура"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:1457
+#, python-format
+msgid "Order send to the kitchen successfully!"
+msgstr "Поръчка изпрати на кухнята успешно!"
+
+#. module: point_of_sale
+#: field:report.pos.order,nbr:0
+msgid "# of Lines"
+msgstr "# от редове"
+
+#. module: point_of_sale
+#: model:pos.category,name:point_of_sale.sparkling_water
+msgid "Sparkling Water"
+msgstr "Газирана вода"
+
+#. module: point_of_sale
+#: model:pos.category,name:point_of_sale.special_beers
+msgid "Special Beers"
+msgstr "Спциални бири"
+
+#. module: point_of_sale
+#: view:website:point_of_sale.report_detailsofsales
+msgid "Start Period"
+msgstr "Начало на период"
+
+#. module: point_of_sale
+#: field:pos.session,cash_register_balance_start:0
+#: view:website:point_of_sale.report_sessionsummary
+#: view:website:point_of_sale.report_statement
+msgid "Starting Balance"
+msgstr "Начално салдо"
+
+#. module: point_of_sale
+#: view:website:point_of_sale.report_usersproduct
+msgid "Starting Date"
+msgstr "Начална дата"
+
+#. module: point_of_sale
+#: model:ir.actions.report.xml,name:point_of_sale.action_report_account_statement
+#: view:website:point_of_sale.report_statement
+msgid "Statement"
+msgstr "Извлечение"
+
+#. module: point_of_sale
+#: view:pos.order:point_of_sale.view_pos_pos_form
+msgid "Statement lines"
+msgstr "Редове на отчет"
+
+#. module: point_of_sale
+#. openerp-web
+#: code:addons/point_of_sale/static/src/xml/pos.xml:587
+#: field:pos.order.line,price_subtotal_incl:0
+#, python-format
+msgid "Subtotal"
+msgstr "Междинна сума"
+
+#. module: point_of_sale
+#: field:pos.order.line,price_subtotal:0
+msgid "Subtotal w/o Tax"
+msgstr "Междинна сума без данък"
+
+#. module: point_of_sale
+#: view:pos.order.line:point_of_sale.view_pos_order_line
+msgid "Sum of subtotals"
+msgstr "Сбор междинни суми"
+
+#. module: point_of_sale
+#: view:website:point_of_sale.report_detailsofsales
+msgid "Summary"
+msgstr "Обобщена информация"
+
+#. module: point_of_sale
+#: selection:report.pos.order,state:0
+msgid "Synchronized"
+msgstr "Синхронизирано"
+
+#. module: point_of_sale
+#: model:ir.actions.act_window,name:point_of_sale.action_pos_box_out
+msgid "Take Money Out"
+msgstr "Изваждане на пари"
+
+#. module: point_of_sale
+#: code:addons/point_of_sale/point_of_sale.py:1162
+#: code:addons/point_of_sale/point_of_sale.py:1179
+#: view:website:point_of_sale.report_saleslines
+#, python-format
+msgid "Tax"
+msgstr "Данък"
+
+#. module: point_of_sale
+#: field:pos.order,amount_tax:0
+#: view:website:point_of_sale.report_detailsofsales
+#: view:website:point_of_sale.report_receipt
+#: view:website:point_of_sale.report_saleslines
+msgid "Taxes"
+msgstr "Данъци"
+
+#. module: point_of_sale
+#. openerp-web
+#: code:addons/point_of_sale/static/src/xml/pos.xml:813
+#, python-format
+msgid "Taxes:"
+msgstr "Данъци:"
+
+#. module: point_of_sale
+#: view:pos.session:point_of_sale.view_pos_session_search
+msgid "Today"
+msgstr "Днес"
+
+#. module: point_of_sale
+#: field:pos.order,amount_total:0
+#: view:pos.session:point_of_sale.view_pos_session_form
+#: field:report.sales.by.user.pos,amount:0
+#: field:report.sales.by.user.pos.month,amount:0
+#: view:website:point_of_sale.report_payment
+#: view:website:point_of_sale.report_receipt
+#: view:website:point_of_sale.report_saleslines
+#: view:website:point_of_sale.report_statement
+#: view:website:point_of_sale.report_usersproduct
+msgid "Total"
+msgstr "Общо"
+
+#. module: point_of_sale
+#: field:report.pos.order,total_discount:0
+msgid "Total Discount"
+msgstr "Отстъпка общо"
+
+#. module: point_of_sale
+#: field:report.pos.order,price_total:0
+msgid "Total Price"
+msgstr "Крайна цена"
+
+#. module: point_of_sale
+#: view:report.transaction.pos:point_of_sale.view_trans_pos_user_tree
+msgid "Total Transactions"
+msgstr "общо транзакции"
+
+#. module: point_of_sale
+#: view:website:point_of_sale.report_detailsofsales
+msgid "Total discount"
+msgstr "Общо отстъпка"
+
+#. module: point_of_sale
+#: view:website:point_of_sale.report_detailsofsales
+msgid "Total invoiced"
+msgstr "Общо фактурано"
+
+#. module: point_of_sale
+#: view:website:point_of_sale.report_detailsofsales
+msgid "Total of the day"
+msgstr "Общо за деня"
+
+#. module: point_of_sale
+#: view:website:point_of_sale.report_detailsofsales
+msgid "Total paid"
+msgstr "Пълно плащане"
+
+#. module: point_of_sale
+#: view:pos.order.line:point_of_sale.view_pos_order_line
+msgid "Total qty"
+msgstr "Общо кол."
+
+#. module: point_of_sale
+#. openerp-web
+#: code:addons/point_of_sale/static/src/xml/pos.xml:812
+#: code:addons/point_of_sale/static/src/xml/pos.xml:990
+#, python-format
+msgid "Total:"
+msgstr "Общо:"
+
+#. module: point_of_sale
+#: field:pos.order.line,price_unit:0
+#: view:website:point_of_sale.report_payment
+#: view:website:point_of_sale.report_saleslines
+msgid "Unit Price"
+msgstr "Единична цена"
+
+#. module: point_of_sale
+#: view:pos.session:point_of_sale.view_pos_session_search
+#: field:report.sales.by.user.pos,user_id:0
+#: field:report.sales.by.user.pos.month,user_id:0
+#: field:report.transaction.pos,user_id:0
+#: model:res.groups,name:point_of_sale.group_pos_user
+#: view:website:point_of_sale.report_statement
+#: view:website:point_of_sale.report_usersproduct
+msgid "User"
+msgstr "Потрибител"
+
+#. module: point_of_sale
+#: model:ir.model,name:point_of_sale.model_res_users
+#: view:website:point_of_sale.report_detailsofsales
+msgid "Users"
+msgstr "Потребители"
+
+#. module: point_of_sale
+#. openerp-web
+#: code:addons/point_of_sale/static/src/js/screens.js:1064
+#, python-format
+msgid "Validate"
+msgstr "Валидиране"
+
+#. module: point_of_sale
+#: view:pos.session:point_of_sale.view_pos_session_form
+msgid "Validate & Open Session"
+msgstr "Проверка & открито заседание"
+
+#. module: point_of_sale
+#: view:pos.session:point_of_sale.view_pos_session_form
+msgid "Validate Closing & Post Entries"
+msgstr "Валидиране Закриване и публикуване на записи"
+
+#. module: point_of_sale
+#: field:pos.config,iface_vkeyboard:0
+msgid "Virtual KeyBoard"
+msgstr "виртуална клавиатура"
+
+#. module: point_of_sale
+#: field:account.bank.statement,pos_session_id:0
+#: field:account.bank.statement.line,pos_statement_id:0
+#: field:pos.order,amount_return:0
+#: field:pos.session.opening,pos_session_name:0
+#: field:pos.session.opening,pos_session_username:0
+msgid "unknown"
+msgstr "неизвестен"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:423
+#, python-format
+msgid "Select Table"
+msgstr "Изберете Таблица"
+
+#. module: point_of_sale
+#: view:pos.session.opening:point_of_sale.pos_session_opening_form_view
+msgid "New Session"
+msgstr "нова сесия"
+
+#. module: point_of_sale
+#: field:pos.config,iface_big_scrollbars:0
+msgid "Large Scrollbars"
+msgstr "Големи плъзгачите"
+
+#. module: pos_restaurant
+#: view:pos.config:pos_restaurant.view_pos_config_form
+msgid "Bar & Restaurant"
+msgstr "бар & ресторант"
+
+#. module: point_of_sale
+#: field:pos.config,iface_cashdrawer:0
+msgid "Cashdrawer"
+msgstr ""
+
+#. module: point_of_sale
+#: view:pos.config:point_of_sale.view_pos_config_form
+#: field:pos.config,journal_ids:0
+#: field:pos.session,journal_ids:0
+msgid "Available Payment Methods"
+msgstr "Наличните методи на плащане"
+
+#. module: point_of_sale
+#: view:pos.config:point_of_sale.view_pos_config_form
+msgid "Button Configuration"
+msgstr "конфигуриране на бутон"
+
+#. module: point_of_sale_table
+#: view:product.template:point_of_sale.product.product_template_only_form_view
+msgid "Supply Chain Information"
+msgstr "веригата за доставки Информация"
+
+#. module: point_of_sale_table
+#: view:product.template:point_of_sale.product.product_template_only_form_view
+msgid "Description for Suppliers"
+msgstr "Описание на доставчици"
+
+#. module: point_of_sale_table
+#: view:product.template:point_of_sale.product.product_template_only_form_view
+msgid "Stock and Expected Variations"
+msgstr "Сток и Очаквани Вариации"
+
+#. module: point_of_sale_table
+#: view:product.template:point_of_sale.product.product_template_only_form_view
+msgid "Storage Location"
+msgstr "Място на съхранение"
+
+#. module: point_of_sale_table
+#: view:product.template:point_of_sale.product.product_template_only_form_view
+msgid "Description for Quotations"
+msgstr "Описание за Котировките"
+
+#. module: point_of_sale_table
+#: view:table.master:point_of_sale_table.table_master_form_view
+msgid "Users"
+msgstr "Потребители"
+
+#. module: point_of_sale_table
+#: view:product.property:product_property.form_view_product_property
+msgid "Attribute Property"
+msgstr "Умение за имоти"
+
+#. module: point_of_sale_table
+#: view:product.property:product_property.form_view_product_property
+msgid "Product"
+msgstr "продукт"
+
+#. module: point_of_sale
+#: view:pos.session:point_of_sale.view_pos_session_form
+msgid "Put Money In"
+msgstr "Поставете пари в"
+
+#. module: point_of_sale_table
+#: model:pos.order.line.state,name:point_of_sale_table.state_in_queue
+msgid "In Queue"
+msgstr "В Queue"
+
+#. module: point_of_sale_table
+#: field:area.area,name:0
+#: field:pin.code,name:0
+#: field:pos.order.line.state,name:0
+#: field:product.description,name:0
+msgid "Name"
+msgstr "име"
+
+#. module: point_of_sale_table
+#: field:pos.order.line,sequence:0
+#: field:pos.order.line.state,sequence:0
+#: field:waiting.queue,sequence:0
+msgid "Sequence"
+msgstr "последователност"
+
+#. module: point_of_sale_table
+#: field:pos.config,allow_salesman:0
+msgid "Allow Salesman"
+msgstr "Позволете продавач"
+
+#. module: point_of_sale_table
+#: view:waiting.queue.allow.state:point_of_sale_table.waiting_queue_allow_state_wiz_view
+msgid "Allow"
+msgstr "Позволете"
+
+#. module: point_of_sale_table
+#: model:res.groups,name:point_of_sale_table.group_pos_cashier
+msgid "Cashier"
+msgstr "касиер"
+
+#. module: point_of_sale_table
+#: view:pos.order.line:point_of_sale_table.sale_order_line_search_view
+msgid "Category"
+msgstr "Category"
+
+#. module: point_of_sale_table
+#: field:pos.order.line,categ_id:0
+msgid "Category Name"
+msgstr "Категория Име"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/xml/pos.xml:300
+#, python-format
+msgid "Change:"
+msgstr "промяна:"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:1937
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:2368
+#: view:area.area:point_of_sale_table.area_area_form_view
+#: model:ir.actions.act_window,name:point_of_sale_table.product_description_action
+#: model:ir.ui.menu,name:point_of_sale_table.menu_product_description
+#: view:product.description:point_of_sale_table.product_description_form_view
+#: view:product.description:point_of_sale_table.product_description_tree_view
+#: view:table.master:point_of_sale_table.table_master_form_view
+#: field:table.master,name:0
+#, python-format
+msgid "Description"
+msgstr "описание"
+
+#. module: point_of_sale_table
+#: view:pos.order:point_of_sale_table.view_pos_order_filter
+msgid "Done"
+msgstr "Завършен"
+
+#. module: point_of_sale_table
+#: field:pos.order.line,wait_text:0
+msgid "Free text"
+msgstr "Свободен текст"
+
+#. module: point_of_sale_table
+#: view:pos.order.line:point_of_sale_table.view_pos_order_line_kanban
+msgid "Go-Back"
+msgstr "Go-Back"
+
+#. module: point_of_sale_table
+#: view:pos.order:point_of_sale_table.view_pos_order_filter
+msgid "Group By"
+msgstr "Група С"
+
+#. module: point_of_sale_table
+#: view:pos.order.line:point_of_sale_table.sale_order_line_search_view
+#: view:waiting.queue:point_of_sale_table.waiting_queue_filter
+msgid "Group By..."
+msgstr "Група С ..."
+
+#. module: point_of_sale_table
+#: help:pos.config,display_print_receipt:0
+msgid "If Display Print Receipt Button is true than pos shows a print receipt button."
+msgstr "Ако Display Print Получаване Button е вярно, отколкото поз показва бутон за получаване на печат."
+
+#. module: point_of_sale_table
+#: help:pos.config,display_send_to_kitchen:0
+msgid "If Display Send To kitchen Button is true than pos shows a send to kitchen button."
+msgstr "Ако Display Изпрати на кухня Button е вярно, отколкото поз показва изпрати на кухня бутон."
+
+#. module: point_of_sale_table
+#: help:pos.config,allow_salesman:0
+msgid "If button is true than salesman is allowed in pos."
+msgstr "Ако бутона е вярно, отколкото търговец е позволено в поз."
+
+#. module: point_of_sale_table
+#: help:product.template,is_product_description:0
+msgid "If free text is true than user can add information about product."
+msgstr "Ако свободен текст е вярно, отколкото потребител може да добавяте информация за продукта."
+
+#. module: point_of_sale_table
+#: help:product.template,is_product_wait:0
+msgid "If wait is true than product is placed in waiting state in kitchen receipt."
+msgstr "Ако засада е вярно, отколкото продукт се поставя в изчакване държавна кухня разписка."
+
+#. module: point_of_sale_table
+#: code:pos8/point_of_sale_table/point_of_sale_table.py:229
+#, python-format
+msgid "No Point Of Sale Found For User."
+msgstr "Никоя точка от Продажба намерени User."
+
+#. module: point_of_sale_table
+#: code:pos8/point_of_sale_table/point_of_sale_table.py:341
+#, python-format
+msgid "No cash statement found for this session. Unable to record returned cash."
+msgstr "Не отчет за паричните намери за тази сесия. Не може да записва върнати пари в брой."
+
+#. module: point_of_sale_table
+#: field:waiting.queue,no_of_person:0
+msgid "No. Of Person"
+msgstr "Брой лице"
+
+#. module: point_of_sale_table
+#: view:pos.order.line:point_of_sale_table.pos_order_line_form_view
+msgid "Notice"
+msgstr "известие"
+
+#. module: point_of_sale_table
+#: view:pin.code:point_of_sale_table.pin_code_search_view
+msgid "Pin Code Search"
+msgstr "ПИН код Търсене"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:743
+#, python-format
+msgid "Please enter phone number."
+msgstr "Моля, въведете телефонния номер."
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:737
+#, python-format
+msgid "Please select Person."
+msgstr "Моля изберете човек."
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:2519
+#, python-format
+msgid "Please select a client for this order. This can be done by clicking the order tab"
+msgstr "Моля изберете клиент за тази цел. Това може да стане, като кликнете върху раздела поръчка"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/xml/pos.xml:152
+#, python-format
+msgid "Salesman   :"
+msgstr "търговец:"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:621
+#, python-format
+msgid "Salesman are not same! So can not Merge table!"
+msgstr "търговец не са едно и също! Така че не може да обедините!"
+
+#. module: point_of_sale_table
+#: view:pos.order:point_of_sale_table.view_pos_order_filter
+msgid "Salesperson"
+msgstr "Търговец"
+
+#. module: point_of_sale_table
+#: view:pos.order.line:point_of_sale_table.sale_order_line_search_view
+msgid "Search POS Order Line"
+msgstr "Търсене POS Поръчка линия"
+
+#. module: point_of_sale_table
+#: view:pos.order:point_of_sale_table.view_pos_order_filter
+msgid "Search Sales Order"
+msgstr "Търсене Продажби Поръчка"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/xml/pos.xml:43
+#, python-format
+msgid "Select Booked Table"
+msgstr "Изберете Резервирано Таблица"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:337
+#, python-format
+msgid "Select Order Type"
+msgstr "Изберете Тип поръчка"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:1865
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:2291
+#, python-format
+msgid "Select Properties"
+msgstr "Изберете имоти"
+
+
+#. module: point_of_sale_table
+#: code:pos8/point_of_sale_table/point_of_sale_table.py:413
+#, python-format
+msgid "Table is not empty!"
+msgstr "Таблица, не е празна!"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:410
+#, python-format
+msgid "Table is not empty. Please wait!"
+msgstr "Таблица, не е празна. Моля изчакайте!"
+
+#. module: point_of_sale_table
+#: view:pos.order:point_of_sale_table.view_pos_pos_extended_form
+#: field:pos.order.line,table_ids:0
+#: field:pos.order.line,table_name:0
+msgid "Tables"
+msgstr "Маси"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:2523
+#, python-format
+msgid "The order could not be sent"
+msgstr "реда не може да бъде изпратен"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:1318
+#, python-format
+msgid "There is no Draft Order For user!"
+msgstr "Не е проект на акта за потребител!"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:414
+#, python-format
+msgid "There is no more table to merge!"
+msgstr "Няма по масата, за да се слеят!"
+
+#. module: point_of_sale_table
+#: selection:waiting.queue,state:0
+msgid "Waiting"
+msgstr "очакване"
+
+#. module: point_of_sale
+#. openerp-web
+#: code:addons/point_of_sale/static/src/xml/pos.xml:324
+#: field:res.partner,zip:0
+#: view:res.partner:point_of_sale.view_partner_property_form
+#, python-format
+msgid "Postcode"
+msgstr "Пощенски код"
+
+#. module: point_of_sale
+#. openerp-web
+#: code:addons/point_of_sale/static/src/xml/pos.xml:328
+#: field:res.country,country_id:0
+#: view:res.partner:point_of_sale.view_partner_property_form
+#, python-format
+msgid "Country"
+msgstr "страна"
+
+#. module: point_of_sale
+#. openerp-web
+#: code:addons/point_of_sale/static/src/xml/pos.xml:341
+#: code:addons/point_of_sale/static/src/xml/pos.xml:376
+#: field:res.partner,email:0
+#: view:res.partner:point_of_sale.view_partner_property_form
+#, python-format
+msgid "Email"
+msgstr "имейл"
+
+#. module: point_of_sale
+#. openerp-web
+#: code:addons/point_of_sale/static/src/xml/pos.xml:345
+#: code:addons/point_of_sale/static/src/xml/pos.xml:380
+#: code:addons/point_of_sale/static/src/xml/pos.xml:451
+#, python-format
+msgid "Phone"
+msgstr "телефон"
+
+
+#. module: point_of_sale
+#. openerp-web
+#: code:addons/point_of_sale/static/src/xml/pos.xml:933
+#, python-format
+msgid "Phone:"
+msgstr "телефон:"
+
+#. module: point_of_sale
+#: help:res.users,ean13:0
+msgid "BarCode"
+msgstr "баркод"
+
+#. module: point_of_sale
+#. openerp-web
+#: code:addons/point_of_sale/static/src/xml/pos.xml:349
+#: code:addons/point_of_sale/static/src/xml/pos.xml:391
+#: field:res.partner,ean13:0
+#: view:res.partner:point_of_sale.view_partner_property_form
+#, python-format
+msgid "Barcode"
+msgstr "баркод"
+
+#. module: point_of_sale
+#. openerp-web
+#: code:addons/point_of_sale/static/src/xml/pos.xml:353
+#: code:addons/point_of_sale/static/src/xml/pos.xml:400
+#: field:res.partner,vat:0
+#: view:res.partner:point_of_sale.view_partner_property_form
+#, python-format
+msgid "Tax ID"
+msgstr "Данъчен номер"
+
+#. module: point_of_sale
+#. openerp-web
+#: code:addons/point_of_sale/static/src/xml/pos.xml:316
+#: code:addons/point_of_sale/static/src/xml/pos.xml:317
+#: field:res.partner,street:0
+#: view:res.partner:point_of_sale.view_partner_property_form
+#, python-format
+msgid "Street"
+msgstr "улица"
+
+#. module: point_of_sale
+#. openerp-web
+#: code:addons/point_of_sale/static/src/xml/pos.xml:372
+#: code:addons/point_of_sale/static/src/xml/pos.xml:450
+#, python-format
+msgid "Address"
+msgstr "адрес"
+
+#. module: point_of_sale
+#. openerp-web
+#: code:addons/point_of_sale/static/src/xml/pos.xml:422
+#, python-format
+msgid "Search Customers"
+msgstr "Търсене на клиенти"
+
+#. module: point_of_sale
+#. openerp-web
+#: code:addons/point_of_sale/static/src/js/screens.js:681
+#, python-format
+msgid "Set Customer"
+msgstr "Определете клиент"
+
+#. module: point_of_sale
+#. openerp-web
+#: code:addons/point_of_sale/static/src/xml/pos.xml:832
+#, python-format
+msgid "Set Weight"
+msgstr "набор Тегло"
+
+#. module: point_of_sale
+#. openerp-web
+#: code:addons/point_of_sale/static/src/js/screens.js:683
+#, python-format
+msgid "Change Customer"
+msgstr "Промяна на клиенти"
+
+#. module: point_of_sale
+#: field:pos.config,iface_cashdrawer:0
+msgid "Cashdrawer"
+msgstr "Cashdrawer"
+
+#. module: point_of_sale
+#. openerp-web
+#: code:addons/point_of_sale/static/src/js/screens.js:686
+#, python-format
+msgid "Deselect Customer"
+msgstr "Отмяна на избора на клиентите"
+
+#. module: point_of_sale
+#: view:pos.session:point_of_sale.view_pos_session_form
+msgid "+ Transactions"
+msgstr "+ Сделки"
+
+#. module: point_of_sale
+#: field:pos.session,cash_journal_id:0
+msgid "Cash Journal"
+msgstr "парични вестник (тест)"
+
+#. module: point_of_sale
+#: view:pos.session.opening:point_of_sale.pos_session_opening_form_view
+msgid "Click to continue the session."
+msgstr "Кликнете, за да продължите сесията."
+
+#. module: point_of_sale
+#: view:pos.session.opening:point_of_sale.pos_session_opening_form_view
+msgid "Click to start a session."
+msgstr "Кликнете, за да започнете сесия."
+
+#. module: point_of_sale
+#. openerp-web
+#: code:addons/point_of_sale/static/src/js/widgets.js:1124
+#: code:addons/point_of_sale/static/src/js/widgets.js:1132
+#, python-format
+msgid "Close"
+msgstr "близо"
+
+#. module: point_of_sale
+#: code:addons/point_of_sale/point_of_sale.py:123
+#: selection:pos.session,state:0
+#: selection:pos.session.opening,pos_state:0
+#, python-format
+msgid "In Progress"
+msgstr "В процес на извършване"
+
+#. module: point_of_sale
+#. openerp-web
+#: code:addons/point_of_sale/static/src/js/models.js:120
+#: code:addons/point_of_sale/static/src/js/models.js:363
+#: code:addons/point_of_sale/static/src/xml/pos.xml:79
+#, python-format
+msgid "Loading"
+msgstr "товарене"
+
+#. module: point_of_sale
+#. openerp-web
+#: code:addons/point_of_sale/static/src/xml/pos.xml:661
+#: code:addons/point_of_sale/static/src/xml/pos.xml:675
+#: code:addons/point_of_sale/static/src/xml/pos.xml:695
+#: code:addons/point_of_sale/static/src/xml/pos.xml:735
+#, python-format
+msgid "Ok"
+msgstr "добре"
+
+#. module: point_of_sale
+#: view:product.template:point_of_sale.product_template_form_view
+#: view:res.partner:point_of_sale.view_partner_property_form
+#: view:res.users:point_of_sale.res_users_form_view
+msgid "Set a Custom EAN"
+msgstr "Зададете персонализиран EAN"
+
+#. module: point_of_sale
+#: view:pos.config:point_of_sale.view_pos_config_form
+msgid "Set to Active"
+msgstr "Задава се активно"
+
+#. module: point_of_sale
+#: view:pos.config:point_of_sale.view_pos_config_form
+msgid "Set to Deprecated"
+msgstr "Определете да Отхвърлена"
+
+#. module: point_of_sale
+#: view:pos.config:point_of_sale.view_pos_config_form
+msgid "Set to Inactive"
+msgstr "Определете до неактивни"
+
+#. module: point_of_sale
+#. openerp-web
+#: code:addons/point_of_sale/static/src/xml/pos.xml:325
+#: field:res.partner,zip:0
+#: view:res.partner:point_of_sale.view_partner_property_form
+#, python-format
+msgid "ZIP"
+msgstr "цип"
+
+#. module: point_of_sale
+#. openerp-web
+#: field:res.partner,country_id:0
+#: view:res.partner:point_of_sale.view_partner_property_form
+#, python-format
+msgid "None"
+msgstr "никой"
+
+#. module: point_of_sale
+#. openerp-web
+#: code:addons/point_of_sale/static/src/js/screens.js:738
+#, python-format
+msgid "A Customer Name Is Required"
+msgstr "Клиент Име е задължително"
+
+#. module: point_of_sale
+#. openerp-web
+#: code:addons/point_of_sale/static/src/xml/pos.xml:320
+#: code:addons/point_of_sale/static/src/xml/pos.xml:321
+#: field:res.partner,City:0
+#: view:res.partner:point_of_sale.view_partner_property_form
+#, python-format
+msgid "City"
+msgstr "град"
+
+#. module: point_of_sale
+#: code:addons/point_of_sale/point_of_sale.py:501
+#, python-format
+msgid "You cannot confirm all orders of this session, because they have not the "
+"'paid' status"
+msgstr "Вие не можете да потвърдите, всички поръчки на тази сесия, защото те не са с "
+"статус" платена ""
+
+#. module: point_of_sale
+#: constraint:pos.session:0
+msgid "You cannot create two active sessions related to the same point of sale!"
+msgstr "Вие не можете да създадете две активни сесии, свързани с една и съща точка на продажба!"
+
+#. module: point_of_sale
+#: constraint:pos.session:0
+msgid "You cannot create two active sessions with the same responsible!"
+msgstr "Вие не можете да създадете две активни сесии с един и същ отговорен!"
+
+#. module: point_of_sale
+#: code:addons/point_of_sale/point_of_sale.py:516
+#, python-format
+msgid "You cannot use the session of another users. This session is owned by %s. "
+"Please first close this one to use this point of sale."
+msgstr "Не можете да използвате сесията на още потребители. Тази сесия е собственост на% S. "
+"Моля, първо затворете този един да използвате тази точка на продажба."

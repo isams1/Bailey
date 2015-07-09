@@ -1,0 +1,2112 @@
+# Greek translation for openerp-web
+# Copyright (c) 2014 Rosetta Contributors and Canonical Ltd 2014
+# This file is distributed under the same license as the openerp-web package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2014.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: openerp-web\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2014-08-14 13:09+0000\n"
+"PO-Revision-Date: 2014-08-14 16:14+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Greek <el@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2014-08-15 08:24+0000\n"
+"X-Generator: Launchpad (build 17156)\n"
+
+#. module: point_of_sale_table
+#: model:ir.ui.menu,name:point_of_sale_table.menu_point_config_product
+msgid "Configuration"
+msgstr ""
+
+#. module: point_of_sale_table
+#: model:ir.ui.menu,name:point_of_sale_table.menu_point_root
+msgid "Point of Sale"
+msgstr "Точка на продажба"
+
+#. module: point_of_sale_table
+#: model:ir.ui.menu,name:point_of_sale_table.menu_point_of_sale_table_product
+msgid "Products"
+msgstr "Продукти"
+
+#. module: product_property
+#: model:ir.ui.menu,name:product_property.abc
+msgid "Products Property"
+msgstr "Προϊόντα Ακινήτου"
+
+#. module: point_of_sale_table
+#: model:ir.actions.act_window,name:point_of_sale_table.action_pos_order_line_view
+#: model:ir.ui.menu,name:point_of_sale_table.menu_point_of_sale_order_line
+msgid "Kitchen Screen"
+msgstr "Кухня екран"
+
+#. module: point_of_sale_table
+#: model:ir.actions.act_window,name:point_of_sale_table.table_master_action
+#: model:ir.ui.menu,name:point_of_sale_table.menu_table_master
+msgid "Table Master"
+msgstr "Таблица магистър"
+
+#. module: point_of_sale_table
+#: model:ir.actions.act_window,name:point_of_sale_table.product_description_action
+#: model:ir.ui.menu,name:point_of_sale_table.menu_product_description
+msgid "Description"
+msgstr "περιγραφή"
+
+#. module: point_of_sale_table
+#: model:ir.actions.act_window,name:point_of_sale_table.action_waiting_queue_view
+#: model:ir.ui.menu,name:point_of_sale_table.menu_point_of_sale_waiting_queue
+msgid "Waiting Queue"
+msgstr "Чакащи на опашката"
+
+#. module: point_of_sale_table
+#: model:ir.actions.act_window,name:point_of_sale_table.action_pin_code_view
+#: model:ir.ui.menu,name:point_of_sale_table.menu_pin_code
+msgid "Pin Code"
+msgstr "ПИН-кодове"
+
+#. module: point_of_sale_table
+#: model:ir.actions.act_window,name:point_of_sale_table.area_area_action
+#: model:ir.ui.menu,name:point_of_sale_table.menu_area_area
+msgid "Area"
+msgstr "област"
+
+#. module: point_of_sale
+#: model:ir.actions.act_window,name:point_of_sale.action_pos_config_pos
+#: model:ir.ui.menu,name:point_of_sale.menu_pos_config_pos
+msgid "Point of Sales"
+msgstr "Точка на продажбите"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/xml/pos.xml:9
+#: view:website:point_of_sale_table.index
+#, python-format
+msgid "Dine In"
+msgstr "Δειπνήστε στο"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/xml/pos.xml:11
+#: view:website:point_of_sale_table.index
+#, python-format
+msgid "Take Away"
+msgstr "αφαιρώ"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/xml/pos.xml:13
+#: view:website:point_of_sale_table.index
+#, python-format
+msgid "Delivery"
+msgstr "διανομή"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/xml/pos.xml:34
+#: view:website:point_of_sale_table.index
+#, python-format
+msgid "Parcel Order : "
+msgstr "парцел Поръчка :"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/xml/pos.xml:21
+#: view:website:point_of_sale_table.index
+#, python-format
+msgid "Area"
+msgstr "έκταση"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/xml/pos.xml:51
+#: view:website:point_of_sale_table.index
+#, python-format
+msgid "Select Waiter    "
+msgstr "Επιλέξτε Σερβιτόρος"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/xml/pos.xml:100
+#: view:website:point_of_sale_table.index
+#, python-format
+msgid "Customer :"
+msgstr "Πελάτης :"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/xml/pos.xml:110
+#: code:pos8/point_of_sale_table/static/src/xml/pos.xml:187
+#: view:website:point_of_sale_table.index
+#, python-format
+msgid "Phone :"
+msgstr "Τηλέφωνο :"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/xml/pos.xml:118
+#: view:website:point_of_sale_table.index
+#: field:pos.order,driver_name:0
+#, python-format
+msgid "Delivery Boy :"
+msgstr "Αγόρι παράδοσης :"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/xml/pos.xml:152
+#: view:website:point_of_sale_table.index
+#, python-format
+msgid "Salesman   :"
+msgstr "πωλητής :"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/xml/pos.xml:161
+#: view:website:point_of_sale_table.index
+#, python-format
+msgid "Pricelist   :"
+msgstr "Τιμοκατάλογος :"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/xml/pos.xml:170
+#: view:website:point_of_sale_table.index
+#, python-format
+msgid "Send To Kitchen"
+msgstr "Αποστολή προς Κουζίνα"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/xml/pos.xml:171
+#: view:website:point_of_sale_table.index
+#, python-format
+msgid "Print Receipt"
+msgstr "Τυπώστε Απόδειξη"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/xml/pos.xml:172
+#: view:website:point_of_sale_table.index
+#, python-format
+msgid "Order Confirm"
+msgstr "Επιβεβαίωση Παραγγελίας"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/xml/pos.xml:174
+#: view:website:point_of_sale_table.index
+#, python-format
+msgid "Customer Receipt"
+msgstr "Παραλαβή Πελατών"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/xml/pos.xml:174
+#: view:website:point_of_sale_table.index
+#, python-format
+msgid "Customer Receipt"
+msgstr "Παραλαβή Πελατών"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/xml/pos.xml:188
+#: view:website:point_of_sale_table.index
+#, python-format
+msgid "User:"
+msgstr "Χρήστης :"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/xml/pos.xml:189
+#: view:website:point_of_sale_table.index
+#, python-format
+msgid "Shop:"
+msgstr "Κατάστημα :"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/xml/pos.xml:192
+#: view:website:point_of_sale_table.index
+#, python-format
+msgid "Tablel"
+msgstr ""
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/xml/pos.xml:197
+#: view:website:point_of_sale_table.index
+#, python-format
+msgid "Customer"
+msgstr "πελάτης"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/xml/pos.xml:275
+#: view:website:point_of_sale_table.index
+#, python-format
+msgid "Discount"
+msgstr "έκπτωση"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/xml/pos.xml:246
+#: view:website:point_of_sale_table.index
+#, python-format
+msgid "% discount"
+msgstr "% έκπτωση"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/xml/pos.xml:261
+#: view:website:point_of_sale_table.index
+#, python-format
+msgid "Subtotal:"
+msgstr "Μερικό σύνολο :"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/xml/pos.xml:281
+#: view:website:point_of_sale_table.index
+#, python-format
+msgid "Total:"
+msgstr "Σύνολο :"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/xml/pos.xml:51
+#: view:website:point_of_sale_table.index
+#, python-format
+msgid "Select Waiter:"
+msgstr "Επιλέξτε Σερβιτόρος :"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/xml/pos.xml:322
+#: view:website:point_of_sale_table.index
+#, python-format
+msgid "Options"
+msgstr "Επιλογές"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/xml/pos.xml:324
+#: view:website:point_of_sale_table.index
+#, python-format
+msgid "Re-assign Order"
+msgstr "Επαναντιστοίχηση Παραγγελία"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/xml/pos.xml:325
+#: view:website:point_of_sale_table.index
+#, python-format
+msgid "Merge Order"
+msgstr "Συγχώνευση Παραγγελία"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/xml/pos.xml:41
+#: view:website:point_of_sale_table.index
+#, python-format
+msgid "Booked Table"
+msgstr "κράτηση Πίνακας"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/xml/pos.xml:326
+#: view:website:point_of_sale_table.index
+#, python-format
+msgid "Synchronize Order"
+msgstr "Συγχρονισμός Παραγγελία"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/xml/pos.xml:327
+#: view:website:point_of_sale_table.index
+#, python-format
+msgid "Re-assign Waiter"
+msgstr "Επαναντιστοίχηση Σερβιτόρος"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:1854
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:2285
+#, python-format
+msgid "Description"
+msgstr "περιγραφή"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/xml/pos.xml:350
+#: view:website:point_of_sale_table.index
+#, python-format
+msgid "Description   :"
+msgstr "Περιγραφή :"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/xml/pos.xml:470
+#: view:website:point_of_sale_table.index
+#, python-format
+msgid "Enter Pin Code"
+msgstr "Εισάγετε το PIN Κωδικός"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:2208
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:1782
+#, python-format
+msgid "Select Properties"
+msgstr "Επιλέξτε Ιδιότητες"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:870
+#, python-format
+msgid "Delivery Order"
+msgstr "Παραγγελία Παράδοση"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:859
+#, python-format
+msgid "Parcel Order"
+msgstr "Αγροτεμάχιο Παραγγελία"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:563
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:574
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:732
+#, python-format
+msgid "Please select table , without table user can not make order"
+msgstr "Παρακαλώ επιλέξτε τον πίνακα , χωρίς πίνακα των χρηστών δεν μπορεί να κάνει παραγγελία"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:737
+#, python-format
+msgid "Please select Person."
+msgstr "Παρακαλώ επιλέξτε Πρόσωπο ."
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:1851
+#, python-format
+msgid "<b>Wait For Kitchen</b>"
+msgstr "Περιμένετε για την κουζίνα"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:743
+#, python-format
+msgid "Please enter phone number"
+msgstr "Παρακαλώ εισάγετε τον αριθμό τηλεφώνου"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:747
+#, python-format
+msgid "Please select driver"
+msgstr "Παρακαλώ επιλέξτε το πρόγραμμα οδήγησης"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:762
+#, python-format
+msgid "Person name is Empty,Please Enter Person Name"
+msgstr "Πρόσωπο όνομα είναι άδειο , Παρακαλώ εισάγετε το όνομα Πρόσωπο"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:773
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:524
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:550
+#, python-format
+msgid "Sorry, we could not create a user session"
+msgstr "Δυστυχώς , δεν μπορέσαμε να δημιουργήσουμε μια συνεδρία χρήστη"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:775
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:526
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:552
+#, python-format
+msgid "Sorry, we could not find any PoS Configuration for this session"
+msgstr "Δυστυχώς , δεν μπορέσαμε να βρούμε οποιοδήποτε σημείο πώλησης Διαμόρφωση για αυτήν την περίοδο"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:815
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:443
+#, python-format
+msgid "There is no other order are available. So please create order!"
+msgstr "Δεν υπάρχει καμία άλλη σειρά είναι διαθέσιμη . Επομένως, σας παρακαλώ να δημιουργήσουν τάξη !"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:838
+#, python-format
+msgid "There is no table available for this Area"
+msgstr "Δεν υπάρχει διαθέσιμη για αυτήν την περιοχή του τραπεζιού"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:1174
+#, python-format
+msgid "Destroy Current Order ?"
+msgstr "Καταστρέψτε τρέχουσα σειρά;"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:1175
+#, python-format
+msgid "You will lose any data associated with the current order"
+msgstr "Θα χάσετε όλα τα δεδομένα που σχετίζονται με την τρέχουσα σειρά"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:1235
+#, python-format
+msgid "There is no Draft Order For user!"
+msgstr "Δεν υπάρχει σχεδίου διατάγματος για το χρήστη!"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:1341
+#, python-format
+msgid "Order synchronize Process has been Done!"
+msgstr "Παραγγελία Διαδικασία Συγχρονισμός έχει γίνει!"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:1465
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:720
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:1446
+#, python-format
+msgid "Can not create order which have no order line."
+msgstr "Δεν είναι δυνατή η δημιουργία τάξης που δεν έχουν καμία γραμμή παραγγελίας."
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:1587
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:1637
+#, python-format
+msgid "Can not Print order which have no order line"
+msgstr "Δεν είναι δυνατή η εκτύπωση τάξης που δεν έχουν καμία γραμμή παραγγελίας"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:1621
+#, python-format
+msgid "Can not confirm order which have no order line"
+msgstr "Δεν είναι δυνατή η επιβεβαίωση της παραγγελίας, που δεν έχουν καμία γραμμή παραγγελίας"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:2334
+#, python-format
+msgid "Print"
+msgstr "Εκτύπωση"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:2341
+#, python-format
+msgid "Next Order"
+msgstr "Επόμενο Παραγγελία"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:2353
+#, python-format
+msgid "Back"
+msgstr "πίσω"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:2435
+#, python-format
+msgid "An anonymous order cannot be invoiced"
+msgstr "Ένας ανώνυμος ώστε να μην μπορεί να τιμολογηθεί"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:2436
+#, python-format
+msgid "Please select a client for this order. This can be done by clicking the order tab"
+msgstr "Επιλέξτε έναν πελάτη για αυτή τη σειρά. Αυτό μπορεί να γίνει κάνοντας κλικ στην καρτέλα Για"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:2440
+#, python-format
+msgid "The order could not be sent"
+msgstr "Η σειρά δεν θα μπορούσε να σταλεί"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:2441
+#, python-format
+msgid "Check your internet connection and try again."
+msgstr "Ελέγξτε τη σύνδεσή σας στο διαδίκτυο και δοκιμάστε ξανά."
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:2489
+#, python-format
+msgid "Can not Open dialog which have no order line."
+msgstr "Δεν είναι δυνατό το άνοιγμα διαλόγου που δεν έχουν καμία γραμμή παραγγελίας."
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:2499
+#, python-format
+msgid "Pin Code"
+msgstr "Pin Κωδικός"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:2507
+#, python-format
+msgid "Please Enter Correct Pin code"
+msgstr "Παρακαλώ εισάγετε το σωστό κωδικό PIN"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:2514
+#, python-format
+msgid "Please Enter Pin code"
+msgstr "Παρακαλώ εισάγετε τον κωδικό PIN"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:266
+#, python-format
+msgid "Can not remove order"
+msgstr "Δεν είναι δυνατή η κατάργηση παραγγελία"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:337
+#, python-format
+msgid "Select Order Type"
+msgstr "Επιλέξτε Παραγγελία Τύπος"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:355
+#, python-format
+msgid "There is no other order are available. So please select create order!"
+msgstr "Δεν υπάρχει καμία άλλη σειρά είναι διαθέσιμη. Επομένως, σας παρακαλώ επιλέξτε δημιουργήσουν τάξη!"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:414
+#, python-format
+msgid "There is no more table to merge!"
+msgstr "Δεν υπάρχει πιο τραπέζι για συγχώνευση!"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:488
+#, python-format
+msgid "You must be add some person in this table"
+msgstr "Πρέπει να είστε προσθέσετε κάποιο πρόσωπο σε αυτόν τον πίνακα"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:492
+#, python-format
+msgid "Table capacity is"
+msgstr "Ικανότητας Πίνακας είναι"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:492
+#, python-format
+msgid "person you cannot enter more then"
+msgstr "πρόσωπο δεν μπορείτε να εισάγετε περισσότερα από"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:492
+#, python-format
+msgid "or less than 1"
+msgstr "ή λιγότερο από 1"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:514
+#, python-format
+msgid "Parcel Order is Empty,Please Enter Parcel Order Name"
+msgstr "Αγροτεμάχιο Τάξης είναι άδειο, Παρακαλώ εισάγετε το όνομα Αγροτεμάχιο Παραγγελία"
+
+#. module: point_of_sale
+#. openerp-web
+#: code:addons/point_of_sale/static/src/xml/pos.xml:775
+#, python-format
+msgid "Your shopping cart is empty"
+msgstr "Το καλάθι αγορών σας είναι άδειο"
+
+#. module: point_of_sale
+#: model:ir.actions.act_window,name:point_of_sale.action_pos_session_opening
+#: model:ir.ui.menu,name:point_of_sale.menu_pos_session_opening
+msgid "Your Session"
+msgstr "Συνεδρία σας"
+
+#. module: point_of_sale
+#: view:pos.session.opening:point_of_sale.pos_session_opening_form_view
+msgid "Resume Session"
+msgstr "Συνέχιση συνεδρίας"
+
+#. module: point_of_sale
+#: field:pos.session,cash_register_difference:0
+#: view:website:point_of_sale.report_sessionsummary
+msgid "Difference"
+msgstr "διαφορά"
+
+#. module: point_of_sale
+#: model:ir.actions.act_window,name:point_of_sale.act_pos_session_orders
+#: model:ir.actions.act_window,name:point_of_sale.action_pos_pos_form
+#: model:ir.ui.menu,name:point_of_sale.menu_point_ofsale
+#: field:pos.session,order_ids:0
+msgid "Orders"
+msgstr "Παραγγελίες"
+
+#. module: point_of_sale
+#: model:ir.actions.act_window,name:point_of_sale.action_pos_session
+#: model:ir.ui.menu,name:point_of_sale.menu_pos_session_all
+msgid "All Sessions"
+msgstr "Όλες οι συνεδρίες"
+
+#. module: point_of_sale
+#: view:pos.session.opening:point_of_sale.pos_session_opening_form_view
+msgid "Close Session"
+msgstr "Κλείσιμο συνεδρίας"
+
+#. module: point_of_sale
+#: model:ir.actions.act_window,name:point_of_sale.product_pos_category_action
+#: model:ir.ui.menu,name:point_of_sale.menu_product_pos_category
+msgid "Pos Product Categories"
+msgstr "Pos Κατηγορίες Προϊόντων"
+
+#. module: point_of_sale
+#. openerp-web
+#: code:addons/point_of_sale/static/src/xml/pos.xml:215
+#, python-format
+msgid "Search Products"
+msgstr "Αναζήτηση Προϊόντων"
+
+#. module: point_of_sale
+#: field:pos.session,cash_journal_id:0
+msgid "Cash Journal"
+msgstr "μετρητά Εφημερίδα"
+
+#. module: point_of_sale
+#. openerp-web
+#: code:addons/point_of_sale/static/src/xml/pos.xml:162
+#, python-format
+msgid "Disc"
+msgstr "δίσκος"
+
+#. module: point_of_sale
+#. openerp-web
+#: code:addons/point_of_sale/static/src/js/screens.js:910
+#, python-format
+msgid "Validate"
+msgstr "Επικύρωση"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:addons/point_of_sale/static/src/xml/pos.xml:584
+#: field:pos.order,invoice_id:0
+#, python-format
+msgid "Invoice"
+msgstr "τιμολόγιο"
+
+#. module: point_of_sale
+#: code:addons/point_of_sale/point_of_sale.py:108
+#: selection:pos.session,state:0
+#: selection:pos.session.opening,pos_state:0
+#, python-format
+msgid "Opening Control"
+msgstr "άνοιγμα Ελέγχου"
+
+#. module: point_of_sale
+#: code:addons/point_of_sale/point_of_sale.py:109
+#: selection:pos.session,state:0
+#: selection:pos.session.opening,pos_state:0
+#, python-format
+msgid "In Progress"
+msgstr "Σε εξέλιξη"
+
+#. module: point_of_sale
+#: code:addons/point_of_sale/point_of_sale.py:110
+#: selection:pos.session,state:0
+#: selection:pos.session.opening,pos_state:0
+#, python-format
+msgid "Closing Control"
+msgstr "Έλεγχος Κλείσιμο"
+
+#. module: point_of_sale
+#: code:addons/point_of_sale/point_of_sale.py:111
+#: selection:pos.session,state:0
+#: selection:pos.session.opening,pos_state:0
+#, python-format
+msgid "Closed & Posted"
+msgstr "Έκλεισε & Δημοσιεύτηκε"
+
+#. module: point_of_sale
+#: view:account.bank.statement:point_of_sale.view_cash_statement_pos_tree
+#: field:pos.session,user_id:0
+#: view:website:point_of_sale.report_sessionsummary
+msgid "Responsible"
+msgstr "отговорен"
+
+#. module: point_of_sale
+#: field:pos.session,name:0
+msgid "Session ID"
+msgstr "сесиен идентификатор"
+
+#. module: point_of_sale
+#: code:addons/point_of_sale/wizard/pos_session_opening.py:64
+#: view:pos.order:point_of_sale.view_pos_order_filter
+#: field:pos.order,session_id:0
+#, python-format
+msgid "Session"
+msgstr "сесия"
+
+#. module: point_of_sale_table
+#: code:pos8/point_of_sale_table/point_of_sale_table.py:384
+#: selection:table.master,state:0
+#, python-format
+msgid "Reserved"
+msgstr "Резервирано"
+
+#. module: point_of_sale_table
+#: code:pos8/point_of_sale_table/point_of_sale_table.py:384
+#: selection:table.master,state:0
+#, python-format
+msgid "Available"
+msgstr "διαθέσιμος"
+
+#. module: point_of_sale
+#: field:pos.category,sequence:0
+msgid "Sequence"
+msgstr "ακολουθία"
+
+#. module: point_of_sale_table
+#: view:pos.order:point_of_sale_table.area_area_tree_view
+#: field:area.area,area_id:0
+#: field:table.master,area_id:0
+msgid "Area"
+msgstr "έκταση"
+
+#. module: point_of_sale_table
+#: field:area.area,name:0
+#: field:table.master,name:0
+#: field:product.description,name:0
+msgid "Description"
+msgstr "περιγραφή"
+
+#. module: point_of_sale
+#: field:pos.config,name:0
+msgid "Point of Sale Name"
+msgstr "σημείο πώλησης Όνομα"
+
+#. module: point_of_sale_table
+#: field:area.area,code:0
+#: field:pin.code,code:0
+#: field:table.master,code:0
+msgid "Code"
+msgstr "κωδικός"
+
+#. module: point_of_sale_table
+#: field:waiting.queue,sequence:0
+msgid "Sequence"
+msgstr "ακολουθία"
+
+#. module: point_of_sale_table
+#: field:waiting.queue,partner_id:0
+msgid "Partner"
+msgstr "εταίρος"
+
+#. module: point_of_sale_table
+#: field:waiting.queue,no_of_person:0
+msgid "No. Of Person"
+msgstr "Αριθμός Πρόσωπο"
+
+#. module: point_of_sale_table
+#: field:waiting.queue,Resrvation_date:0
+msgid "Reservation Date "
+msgstr "Ημερομηνία Κράτηση"
+
+#. module: point_of_sale_table
+#: field:waiting.queue,state:0
+#: field:table.master,state:0
+msgid "State"
+msgstr "κατάσταση"
+
+#. module: product_property
+#: field:product.property,name:0
+msgid "Product Property"
+msgstr "Ακίνητα Προϊόν"
+
+#. module: product_property
+#: field:product.property,single_choice:0
+msgid "Single Choice"
+msgstr "μόνο επιλογή"
+
+#. module: product_property
+#: field:product.property,product_attribute_ids:0
+msgid "Attribute"
+msgstr "Χαρακτηριστικό"
+
+#. module: product_property
+#: field:product.property,product_ids:0
+#: field:pos.order.line,product_ids:0
+msgid "Product"
+msgstr "προϊόν"
+
+#. module: point_of_sale_table
+#: field:pos.config,display_print_receipt:0
+msgid "Display Send To Kitchen Button"
+msgstr "Οθόνη κουμπί Αποστολή για να Κουζίνα"
+
+#. module: point_of_sale_table
+#: field:pos.config,display_send_to_kitchen:0
+msgid "Display Print Receipt Button"
+msgstr "Οθόνη Εκτύπωση Παραλαβή Button"
+
+#. module: point_of_sale_table
+#: field:pos.config,customer_receipt:0
+msgid "Print Customer Receipt"
+msgstr "Εκτύπωση απόδειξη για τον πελάτη"
+
+#. module: point_of_sale_table
+#: field:pos.config,manage_delivery:0
+msgid "Manage Delivery"
+msgstr "Διαχειριστείτε Παράδοση"
+
+#. module: point_of_sale_table
+#: field:pos.config,pincode:0
+msgid "Pin Code"
+msgstr "Pin Κωδικός"
+
+#. module: point_of_sale_table
+#: field:table.reserverd,table_id:0
+msgid "Table"
+msgstr "τραπέζι"
+
+#. module: point_of_sale_table
+#: field:table.reserverd,table_id:0
+msgid "Tables"
+msgstr "πίνακες"
+
+#. module: point_of_sale_table
+#: field:table.reserverd,reserver_seat:0
+#: field:table.master,available_capacities:0
+msgid "Reserved Seat"
+msgstr "Επιφύλαξη κάθισμα"
+
+#. module: point_of_sale_table
+#: field:table.reserverd,order_id:0
+msgid "POS Order"
+msgstr "POS Παραγγελία"
+
+#. module: point_of_sale_table
+#: field:pin.code,name:0
+msgid "Name"
+msgstr "όνομα"
+
+#. module: point_of_sale_table
+#: field:pin.code,date_from:0
+msgid "Date From"
+msgstr "ημερομηνία Από"
+
+#. module: point_of_sale_table
+#: field:pin.code,date_to:0
+msgid "Date To"
+msgstr "ημερομηνία εώς"
+
+#. module: point_of_sale
+#: view:pos.config:point_of_sale.view_pos_config_form
+msgid "Set to Active"
+msgstr "Ρύθμιση για Ενεργό"
+
+#. module: point_of_sale
+#: view:pos.config:point_of_sale.view_pos_config_form
+msgid "Set to Inactive"
+msgstr "Ρύθμιση για την Ανενεργό"
+
+#. module: point_of_sale
+#: view:pos.config:point_of_sale.view_pos_config_form
+msgid "Set to Deprecated"
+msgstr "Ρύθμιση για Αποδοκιμαστεί"
+
+#. module: point_of_sale
+#: view:pos.config:point_of_sale.view_pos_config_search
+#: selection:pos.config,state:0
+msgid "Active"
+msgstr "ενεργός"
+
+#. module: point_of_sale
+#: view:pos.config:point_of_sale.view_pos_config_search
+#: selection:pos.config,state:0
+msgid "Inactive"
+msgstr "αδρανής"
+
+#. module: point_of_sale
+#: selection:pos.config,state:0
+msgid "Deprecated"
+msgstr "Αποδοκιμασμένα"
+
+#. module: point_of_sale
+#: view:pos.config:point_of_sale.view_pos_config_form
+msgid "Features"
+msgstr "Χαρακτηριστικά"
+
+#. module: point_of_sale
+#: field:pos.config,iface_vkeyboard:0
+msgid "Virtual KeyBoard "
+msgstr "Εικονικό πληκτρολόγιο"
+
+#. module: point_of_sale
+#: field:pos.config,iface_invoicing:0
+msgid "Invoicing"
+msgstr "Τιμολόγηση"
+
+#. module: point_of_sale
+#: field:pos.config,iface_big_scrollbars:0
+msgid "Large Scrollbars "
+msgstr "Μεγάλες Γραμμές κύλισης"
+
+#. module: point_of_sale
+#: view:pos.config:point_of_sale.view_pos_config_form
+msgid "Hardware Proxy"
+msgstr "μεσολάβησης υλικού"
+
+#. module: point_of_sale
+#: field:pos.config,proxy_ip:0
+msgid "IP Address"
+msgstr "Διεύθυνση IP"
+
+#. module: point_of_sale
+#: field:pos.config,iface_print_via_proxy:0
+msgid "Print via Proxy"
+msgstr "Εκτύπωση μέσω μεσολάβησης"
+
+#. module: point_of_sale
+#: field:pos.config,iface_scan_via_proxy:0
+msgid "Scan via Proxy"
+msgstr "Σάρωση μέσω μεσολάβησης"
+
+#. module: point_of_sale
+#. openerp-web
+#: code:addons/point_of_sale/static/src/xml/pos.xml:800
+#: field:pos.config,iface_electronic_scale:0
+#, python-format
+msgid "Electronic Scale"
+msgstr "Ηλεκτρονική Κλίμακα"
+
+#. module: point_of_sale
+#: field:pos.config,iface_cashdrawer:0
+msgid "Cashdrawer"
+msgstr ""
+
+#. module: point_of_sale
+#: field:pos.config,receipt_header:0
+msgid "Receipt Header"
+msgstr "παραλαβή Header"
+
+#. module: point_of_sale
+#: field:pos.config,receipt_footer:0
+msgid "Receipt Footer"
+msgstr "παραλαβή Υποσέλιδο"
+
+#. module: point_of_sale
+#: help:pos.config,iface_cashdrawer:0
+msgid "Automatically open the cashdrawer"
+msgstr "Αυτόματα ανοίγει το cashdrawer"
+
+#. module: point_of_sale
+#: view:pos.config:point_of_sale.view_pos_config_form
+msgid "Barcode Types"
+msgstr "Τύποι barcode"
+
+#. module: point_of_sale
+#: field:pos.config,barcode_product:0
+msgid "Product Barcodes"
+msgstr "Barcodes Προϊόν"
+
+#. module: point_of_sale
+#: field:pos.config,barcode_customer:0
+msgid "Customer Barcodes"
+msgstr "Πελάτης Barcodes"
+
+#. module: point_of_sale
+#: field:pos.config,barcode_discount:0
+msgid "Discount Barcodes"
+msgstr "Έκπτωση Barcodes"
+
+#. module: point_of_sale
+#: field:pos.config,barcode_cashier:0
+msgid "Cashier Barcodes"
+msgstr "ταμίας Barcodes"
+
+#. module: point_of_sale
+#: field:pos.config,barcode_weight:0
+msgid "Weight Barcodes"
+msgstr "βάρος Barcodes"
+
+#. module: point_of_sale
+#: field:pos.config,barcode_price:0
+msgid "Price Barcodes"
+msgstr "Τιμή Barcodes"
+
+#. module: point_of_sale
+#: field:pos.config,journal_id:0
+#: field:pos.order,sale_journal:0
+msgid "Sale Journal"
+msgstr "Πώληση Εφημερίδα"
+
+#. module: pos_restaurant
+#: view:pos.config:pos_restaurant.view_pos_config_form
+msgid "Bar & Restaurant"
+msgstr "μπαρ & εστιατόριο"
+
+#. module: pos_restaurant
+#. openerp-web
+#: code:addons/pos_restaurant/static/src/xml/splitbill.xml:64
+#: field:pos.config,iface_splitbill:0
+#, python-format
+msgid "Bill Splitting"
+msgstr "νομοσχέδιο Διάσπαση"
+
+#. module: pos_restaurant
+#: field:pos.config,iface_printbill:0
+msgid "Bill Printing"
+msgstr "νομοσχέδιο Εκτύπωση"
+
+#. module: point_of_sale
+#: field:pos.config,picking_type_id:0
+#: field:pos.order,picking_type_id:0
+msgid "Picking Type"
+msgstr "Η επιλογή Τύπος"
+
+#. module: point_of_sale
+#: field:pos.config,stock_location_id:0
+#: view:report.pos.order:point_of_sale.view_report_pos_order_search
+msgid "Stock Location"
+msgstr "Περιοχή αποθέματος"
+
+#. module: point_of_sale
+#: field:pos.config,sequence_id:0
+msgid "Order IDs Sequence"
+msgstr "Παραγγελία αναγνωριστικά Ακολουθία"
+
+#. module: point_of_sale
+#: field:pos.config,state:0
+#: field:pos.session,state:0
+#: field:pos.order,state:0
+msgid "Status"
+msgstr "κατάσταση"
+
+#. module: point_of_sale_table
+#: field:table.master,capacities:0
+msgid "Capacities"
+msgstr "Ικανότητες"
+
+#. module: point_of_sale_table
+#: field:product.template,is_pizza:0
+#: field:product.product,is_pizza:0
+msgid "Is Pizza"
+msgstr "είναι Πίτσα"
+
+#. module: point_of_sale_table
+#: field:product.template,large_pizza_price:0
+#: field:product.product,large_pizza_price:0
+msgid "Large Pizza Price"
+msgstr "Μεγάλες Πίτσα Τιμή"
+
+#. module: point_of_sale_table
+#: field:product.template,is_product_wait:0
+#: field:product.product,is_product_wait:0
+msgid "Display Wait Button"
+msgstr "Εμφάνιση κουμπί Περιμένετε"
+
+
+#. module: point_of_sale_table
+#: field:product.template,is_product_description:0
+#: field:product.product,is_product_description:0
+msgid "Display Description"
+msgstr "Ένδειξη Περιγραφή"
+
+#. module: point_of_sale_table
+#: field:table.master,users_ids:0
+msgid "User"
+msgstr "Χρήστης"
+
+#. module: pos_restaurant
+#: model:ir.actions.act_window,name:pos_restaurant.action_restaurant_printer_form
+#: model:ir.ui.menu,name:pos_restaurant.menu_restaurant_printer_all
+#: field:pos.config,printer_ids:0
+msgid "Order Printers"
+msgstr "Εκτυπωτές Παραγγελία"
+
+#. module: pos_restaurant
+#: field:restaurant.printer,name:0
+msgid "Printer Name"
+msgstr "Όνομα εκτυπωτή"
+
+#. module: pos_restaurant
+#: field:restaurant.printer,proxy_ip:0
+msgid "Proxy IP Address"
+msgstr "Μεσολάβησης Διεύθυνση IP"
+
+#. module: pos_restaurant
+#: field:restaurant.printer,product_categories_ids:0
+msgid "Printed Product Categories"
+msgstr "Έντυπη Κατηγορίες Προϊόντων"
+
+#. module: point_of_sale_table
+#: field:pos.order,table_name:0
+msgid "Table Name"
+msgstr "Όνομα πίνακα"
+
+#. module: point_of_sale_table
+#: field:pos.order,reserved_table_ids:0
+msgid "Reserved Table"
+msgstr "Προορίζεται Πίνακας"
+
+#. module: point_of_sale_table
+#: field:pos.order,pflag:0
+msgid "Flag"
+msgstr "σημαία"
+
+#. module: point_of_sale_table
+#: field:pos.order,parcel:0
+msgid "Parcel Order"
+msgstr "Αγροτεμάχιο Παραγγελία"
+
+#. module: point_of_sale_table
+#: field:pos.order,phone:0
+msgid "Customer Phone Number"
+msgstr "Τηλέφωνο Πελατών"
+
+#. module: point_of_sale_table
+#: field:pos.order,color:0
+#: field:pos.order.line,color:0
+msgid "Color Index"
+msgstr "Χρώμα Δείκτης"
+
+#. module: point_of_sale_table
+#: field:pos.order,split_order:0
+msgid "split"
+msgstr "διαίρεση"
+
+#. module: point_of_sale_table
+#: field:pos.order.line,property_description:0
+msgid "Property Description"
+msgstr "Περιγραφή ακινήτου"
+
+#. module: point_of_sale
+#: field:pos.order,location_id:0
+#: field:report.pos.order,location_id:0
+msgid "Location"
+msgstr "τοποθεσία"
+
+#. module: point_of_sale
+#: field:pos.order,picking_id:0
+msgid "Picking"
+msgstr "συλλογή"
+
+#. module: point_of_sale
+#: field:pos.order,pos_reference:0
+msgid "Receipt Ref"
+msgstr "παραλαβή διαιτητής"
+
+#. module: point_of_sale
+#: field:pos.category,split:0
+msgid "Print Separate Receipt"
+msgstr "Εκτυπώστε Ξεχωριστή Παραλαβή"
+
+#. module: product
+#: field:product.product,qty_available:0
+#: field:product.template,qty_available:0
+msgid "Quantity On Hand"
+msgstr "Ποσότητα Στο Χέρι"
+
+#. module: product
+#: field:product.template,virtual_available:0
+#: field:product.product,virtual_available:0
+#: field:stock.move,availability:0
+msgid "Quantity Available"
+msgstr "ποσότητα Διαθέσιμο"
+
+#. module: product
+#: field:product.template,sale_delay:0
+#: field:product.product,sale_delay:0
+msgid "Customer Lead Time"
+msgstr "Μόλυβδος φορά πελάτης"
+
+#. module: product
+#: field:product.template,standard_price:0
+#: field:product.product,standard_price:0
+msgid "Cost Price"
+msgstr "Κόστος Τιμή"
+
+#. module: product
+#: field:product.template,categ_id:0
+#: field:product.product,categ_id:0
+msgid "Internal Category"
+msgstr "εσωτερική Κατηγορία"
+
+#. module: product
+#: model:ir.actions.act_window,name:stock.action_routes_form
+#: model:ir.ui.menu,name:stock.menu_stock_routes
+#: field:product.category,route_ids:0
+#: view:product.product:stock.product_form_view_procurement_button
+#: view:product.template:stock.product_template_form_view_procurement_button
+#: field:product.template,route_ids:0
+#: view:stock.location.route:stock.stock_location_route_tree
+#: view:stock.warehouse:stock.view_warehouse
+#: field:stock.warehouse,route_ids:0
+msgid "Routes"
+msgstr "Διαδρομές"
+
+#. module: stock
+#: model:ir.actions.act_window,name:stock.act_stock_warehouse_2_stock_warehouse_orderpoint
+#: model:ir.actions.act_window,name:stock.action_orderpoint_form
+#: model:ir.actions.act_window,name:stock.product_open_orderpoint
+#: model:ir.ui.menu,name:stock.menu_stock_order_points
+#: view:product.product:stock.product_form_view_procurement_button
+#: view:product.template:stock.product_template_form_view_procurement_button
+#: view:stock.warehouse.orderpoint:stock.view_warehouse_orderpoint_form
+#: view:stock.warehouse.orderpoint:stock.view_warehouse_orderpoint_tree
+#: view:stock.warehouse.orderpoint:stock.warehouse_orderpoint_search
+msgid "Reordering Rules"
+msgstr "Αναδιάταξη Κανόνες"
+
+#. module: product
+#: field:product.product,ean13:0
+#: field:product.template,ean13:0
+msgid "EAN13 Barcode"
+msgstr "EAN13 Barcode"
+
+#. module: product
+#: field:product.product,code:0
+#: field:product.product,default_code:0
+#: field:product.template,default_code:0
+msgid "Internal Reference"
+msgstr "εσωτερική αναφορά"
+
+#. module: product
+#: view:product.template:product.product_template_form_view
+msgid "Inventory"
+msgstr "Απογραφή"
+
+#. module: product
+#: view:product.template:product.product_template_form_view
+#: view:product.product:product.product_template_form_view
+msgid "Procurements"
+msgstr "Προμήθειες"
+
+#. module: point_of_sale
+#: field:product.template,pos_categ_id:0
+#: field:product.product,pos_categ_id:0
+msgid "Point of Sale Category"
+msgstr "ooint Πώλησης Κατηγορία"
+
+#. module: point_of_sale
+#: field:product.template,available_in_pos:0
+#: field:product.product,available_in_pos:0
+msgid "Available in the Point of Sale"
+msgstr "Διαθέσιμο στο σημείο πώλησης"
+
+#. module: point_of_sale
+#: field:product.template,to_weight:0
+#: field:product.product,to_weight:0
+msgid "To Weigh With Scale"
+msgstr "Για να ζυγίζεται με την κλίμακα"
+
+#. module: point_of_sale
+#: field:product.template,income_pdt:0
+#: field:product.product,income_pdt:0
+msgid "Point of Sale Cash In"
+msgstr "Σημείο πώλησης Cash Σε"
+
+#. module: point_of_sale
+#: field:product.template,expense_pdt:0
+#: field:product.product,expense_pdt:0
+msgid "Point of Sale Cash Out"
+msgstr "Σημείο πώλησης Cash Out"
+
+#. module: product
+#: field:product.template,warranty:0
+#: field:product.product,warranty:0
+msgid "Warranty"
+msgstr "εγγύηση"
+
+#. module: product
+#: field:product.template,loc_rack:0
+#: field:product.product,loc_rack:0
+msgid "Rack"
+msgstr "ράφι"
+
+#. module: product
+#: field:product.template,loc_row:0
+#: field:product.product,loc_row:0
+msgid "Row "
+msgstr "σειρά"
+
+#. module: product
+#: field:product.template,loc_case:0
+#: field:product.product,loc_case:0
+msgid "Case"
+msgstr "περίπτωση"
+
+#. module: account
+#: view:account.journal:account.view_account_journal_form
+msgid "Advanced Settings"
+msgstr "Ρυθμίσεις για προχωρημένους"
+
+#. module: account
+#: field:account.journal,centralisation:0
+msgid "Centralized Counterpart"
+msgstr "Κεντρική Λογαριασμός"
+
+#. module: account
+#: field:account.journal,entry_posted:0
+msgid "Autopost Created Moves"
+msgstr "Autopost Δημιουργήθηκε Κινήσεις"
+
+#. module: account
+#: field:account.journal,allow_date:0
+msgid "Check Date in Period"
+msgstr "Ημερομηνία check in Περίοδος"
+
+#. module: account
+#: field:account.journal,profit_account_id:0
+msgid "Profit Account"
+msgstr "λογαριασμού αποτελεσμάτων"
+
+#. module: account
+#: field:account.journal,loss_account_id:0
+msgid "Loss Account"
+msgstr "Λογαριασμός Αποτελεσμάτων"
+
+#. module: account
+#: field:account.journal,internal_account_id:0
+msgid "Internal Transfers Account"
+msgstr "Ο λογαριασμός εσωτερικές μεταφορές"
+
+#. module: account
+#: field:account.journal,with_last_closing_balance:0
+msgid "Opening With Last Closing Balance"
+msgstr "Άνοιγμα Mε Τελευταία Υπόλοιπο λήξης"
+
+#. module: point_of_sale
+#: field:account.journal,amount_authorized_diff:0
+msgid "Amount Authorized Difference"
+msgstr "Εγκεκριμένο ποσό Διαφορά"
+
+#. module: point_of_sale
+#: field:account.journal,self_checkout_payment_method:0
+msgid "Self Checkout Payment Method"
+msgstr "Αυτο μέθοδο πληρωμής Πληρωμής"
+
+#. module: point_of_sale
+#: view:pos.order:point_of_sale.view_pos_pos_form
+#: field:pos.order,statement_ids:0
+msgid "Payments"
+msgstr "Πληρωμές"
+
+#. module: point_of_sale
+#: view:pos.order:point_of_sale.view_pos_order_filter
+#: selection:pos.order,state:0
+msgid "Posted"
+msgstr "Καταχωρήθηκε"
+
+#. module: point_of_sale_table
+#: view:pos.session:point_of_sale.view_pos_session_form
+msgid "Continue Selling"
+msgstr "συνεχίσουν να πωλούν"
+
+#. module: point_of_sale_table
+#: view:waiting.queue:point_of_sale_table.waiting_queue_form_view
+msgid "Allowed"
+msgstr "επιτρέπονται τα κατοικίδια"
+
+#. module: point_of_sale_table
+#: view:waiting.queue:point_of_sale_table.waiting_queue_form_view
+msgid "Left"
+msgstr "αριστερά"
+
+#. module: point_of_sale_table
+#: view:pos.session:point_of_sale.view_pos_session_form
+msgid "Validate Closing & Post Entries"
+msgstr "Επικύρωση Κλεισίματος & Ταχυδρομείων Καταχωρήσεις"
+
+#. module: point_of_sale_table
+#: view:pos.session:point_of_sale.view_pos_session_form
+msgid "Summary by Payment Methods"
+msgstr "Περίληψη από Τρόποι Πληρωμής"
+
+#. module: point_of_sale
+#: model:ir.actions.act_window,name:point_of_sale.action_pos_box_in
+msgid "Put Money In"
+msgstr "Βάλτε χρήματα στην"
+
+#. module: point_of_sale
+#: model:ir.actions.act_window,name:point_of_sale.action_pos_box_out
+msgid "Take Money Out"
+msgstr "Πάρτε τα χρήματα από το"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:addons/point_of_sale/static/src/xml/pos.xml:397
+#, python-format
+msgid "Paid:"
+msgstr "Καταβάλλεται:"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:addons/point_of_sale/static/src/xml/pos.xml:403
+#, python-format
+msgid "Remaining:"
+msgstr "Παραμένοντας:"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:addons/point_of_sale/static/src/xml/pos.xml:584
+#: model:ir.actions.report.xml,name:point_of_sale.pos_invoice_report
+#: view:pos.order:point_of_sale.view_pos_pos_form
+#: field:pos.order,invoice_id:0
+#, python-format
+msgid "Invoice"
+msgstr "τιμολόγιο"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:1457
+#, python-format
+msgid "Order send to the kitchen successfully!"
+msgstr "Παραγγελία αποστέλλουν στην κουζίνα με επιτυχία!"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:423
+#, python-format
+msgid "Select Table"
+msgstr "Επιλέξτε Πίνακας"
+
+#. module: point_of_sale
+#: view:pos.session.opening:point_of_sale.pos_session_opening_form_view
+msgid "New Session"
+msgstr "Νέα συνεδρίας"
+
+#. module: point_of_sale
+#: field:pos.config,iface_big_scrollbars:0
+msgid "Large Scrollbars"
+msgstr "Μεγάλες Γραμμές κύλισης"
+
+#. module: pos_restaurant
+#: view:pos.config:pos_restaurant.view_pos_config_form
+msgid "Bar & Restaurant"
+msgstr ""
+
+#. module: point_of_sale
+#: field:pos.config,iface_cashdrawer:0
+msgid "Cashdrawer"
+msgstr ""
+
+#. module: point_of_sale
+#: view:pos.config:point_of_sale.view_pos_config_form
+#: field:pos.config,journal_ids:0
+#: field:pos.session,journal_ids:0
+msgid "Available Payment Methods"
+msgstr "Διαθέσιμες μεθόδους πληρωμής"
+
+#. module: point_of_sale
+#: view:pos.config:point_of_sale.view_pos_config_form
+msgid "Button Configuration"
+msgstr "Κουμπί ρύθμισης παραμέτρων"
+
+#. module: point_of_sale
+#: view:pos.session:point_of_sale.view_pos_session_form
+msgid "Validate & Open Session"
+msgstr "Επικύρωση & ανοιχτή συνεδρίαση"
+
+#. module: point_of_sale
+#: view:pos.session:point_of_sale.view_pos_session_form
+msgid "Validate Closing & Post Entries"
+msgstr "ВΕπικύρωση Κλεισίματος & Ταχυδρομείων Καταχωρήσεις"
+
+#. module: point_of_sale
+#: view:report.transaction.pos:point_of_sale.view_trans_pos_user_tree
+msgid "Total Transactions"
+msgstr "Σύνολο συναλλαγών"
+
+#. module: point_of_sale_table
+#: view:product.template:point_of_sale.product.product_template_only_form_view
+msgid "Supply Chain Information"
+msgstr "Εφοδιαστικής Αλυσίδας Πληροφορίες"
+
+#. module: point_of_sale_table
+#: view:product.template:point_of_sale.product.product_template_only_form_view
+msgid "Description for Suppliers"
+msgstr "Περιγραφή για Προμηθευτές"
+
+#. module: point_of_sale_table
+#: view:product.template:point_of_sale.product.product_template_only_form_view
+msgid "Stock and Expected Variations"
+msgstr "Τις διακυμάνσεις των αποθεμάτων και Αναμενόμενα"
+
+#. module: point_of_sale_table
+#: view:product.template:point_of_sale.product.product_template_only_form_view
+msgid "Storage Location"
+msgstr "Τοποθεσία αποθήκευσης"
+
+#. module: point_of_sale_table
+#: view:product.template:point_of_sale.product.product_template_only_form_view
+msgid "Description for Quotations"
+msgstr "Περιγραφή για προσφορά"
+
+#. module: point_of_sale_table
+#: view:table.master:point_of_sale_table.table_master_form_view
+msgid "Users"
+msgstr "χρήστες"
+
+#. module: point_of_sale_table
+#: view:product.property:product_property.form_view_product_property
+msgid "Attribute Property"
+msgstr "Χαρακτηριστικό Ακίνητα"
+
+#. module: point_of_sale_table
+#: view:product.property:product_property.form_view_product_property
+msgid "Product"
+msgstr "προϊόν"
+
+#. module: point_of_sale_table
+#: field:area.area,name:0
+#: field:pin.code,name:0
+#: field:pos.order.line.state,name:0
+#: field:product.description,name:0
+msgid "Name"
+msgstr "όνομα"
+
+#. module: point_of_sale_table
+#: field:pos.order.line,sequence:0
+#: field:pos.order.line.state,sequence:0
+#: field:waiting.queue,sequence:0
+msgid "Sequence"
+msgstr "ακολουθία"
+
+#. module: point_of_sale_table
+#: field:pos.config,allow_salesman:0
+msgid "Allow Salesman"
+msgstr "Επιτρέψτε Πωλητής"
+
+#. module: point_of_sale_table
+#: view:waiting.queue.allow.state:point_of_sale_table.waiting_queue_allow_state_wiz_view
+msgid "Allow"
+msgstr "Επιτρέψτε"
+
+#. module: point_of_sale_table
+#: model:res.groups,name:point_of_sale_table.group_pos_cashier
+msgid "Cashier"
+msgstr "ταμίας"
+
+#. module: point_of_sale_table
+#: view:pos.order.line:point_of_sale_table.sale_order_line_search_view
+msgid "Category"
+msgstr "κατηγορία"
+
+#. module: point_of_sale_table
+#: field:pos.order.line,categ_id:0
+msgid "Category Name"
+msgstr "Όνομα κατηγορίας"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/xml/pos.xml:300
+#, python-format
+msgid "Change:"
+msgstr "αλλαγή:"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:1937
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:2368
+#: view:area.area:point_of_sale_table.area_area_form_view
+#: model:ir.actions.act_window,name:point_of_sale_table.product_description_action
+#: model:ir.ui.menu,name:point_of_sale_table.menu_product_description
+#: view:product.description:point_of_sale_table.product_description_form_view
+#: view:product.description:point_of_sale_table.product_description_tree_view
+#: view:table.master:point_of_sale_table.table_master_form_view
+#: field:table.master,name:0
+#, python-format
+msgid "Description"
+msgstr "περιγραφή"
+
+#. module: point_of_sale_table
+#: view:pos.order:point_of_sale_table.view_pos_order_filter
+msgid "Done"
+msgstr "Ολοκληρώθηκε"
+
+#. module: point_of_sale_table
+#: field:pos.order.line,wait_text:0
+msgid "Free text"
+msgstr "ελεύθερο κείμενο"
+
+#. module: point_of_sale_table
+#: view:pos.order.line:point_of_sale_table.view_pos_order_line_kanban
+msgid "Go-Back"
+msgstr "Go-Back"
+
+#. module: point_of_sale_table
+#: view:pos.order:point_of_sale_table.view_pos_order_filter
+msgid "Group By"
+msgstr "Ομάδα Με"
+
+#. module: point_of_sale_table
+#: view:pos.order.line:point_of_sale_table.sale_order_line_search_view
+#: view:waiting.queue:point_of_sale_table.waiting_queue_filter
+msgid "Group By..."
+msgstr "Ομάδα Με ..."
+
+#. module: point_of_sale_table
+#: help:pos.config,display_print_receipt:0
+msgid "If Display Print Receipt Button is true than pos shows a print receipt button."
+msgstr "Αν η οθόνη Εκτύπωση Παραλαβή Button είναι αλήθεια από ό, τι POS δείχνει ένα κουμπί Εκτύπωση απόδειξης."
+
+#. module: point_of_sale_table
+#: help:pos.config,display_send_to_kitchen:0
+msgid "If Display Send To kitchen Button is true than pos shows a send to kitchen button."
+msgstr "Αν η οθόνη κουμπί Αποστολή για να κουζίνας είναι ό, τι ισχύει POS δείχνει ένα κουμπί Αποστολή σε κουζίνα."
+
+#. module: point_of_sale_table
+#: help:pos.config,allow_salesman:0
+msgid "If button is true than salesman is allowed in pos."
+msgstr "Εάν το κουμπί είναι αλήθεια από ό, τι πωλητής επιτρέπεται σε pos."
+
+#. module: point_of_sale_table
+#: help:product.template,is_product_description:0
+msgid "If free text is true than user can add information about product."
+msgstr "Αν ελεύθερο κείμενο είναι αλήθεια από ό, τι ο χρήστης μπορεί να προσθέσει πληροφορίες σχετικά με το προϊόν."
+
+#. module: point_of_sale_table
+#: help:product.template,is_product_wait:0
+msgid "If wait is true than product is placed in waiting state in kitchen receipt."
+msgstr "Αν αναμονή είναι αλήθεια από το προϊόν τοποθετείται σε κατάσταση αναμονής παραλαβή κουζίνα."
+
+#. module: point_of_sale_table
+#: code:pos8/point_of_sale_table/point_of_sale_table.py:229
+#, python-format
+msgid "No Point Of Sale Found For User."
+msgstr "Δεν Point Of Sale Βρέθηκε για το χρήστη."
+
+#. module: point_of_sale_table
+#: code:pos8/point_of_sale_table/point_of_sale_table.py:341
+#, python-format
+msgid "No cash statement found for this session. Unable to record returned cash."
+msgstr "Καμία δήλωση ρευστών διαθεσίμων που ανακαλύφθηκαν για αυτήν την περίοδο. Δεν είναι δυνατή η εγγραφή επέστρεψε μετρητά."
+
+#. module: point_of_sale_table
+#: field:waiting.queue,no_of_person:0
+msgid "No. Of Person"
+msgstr "Αριθμός Πρόσωπο"
+
+#. module: point_of_sale_table
+#: view:pos.order.line:point_of_sale_table.pos_order_line_form_view
+msgid "Notice"
+msgstr "ειδοποίηση"
+
+#. module: point_of_sale_table
+#: view:pin.code:point_of_sale_table.pin_code_search_view
+msgid "Pin Code Search"
+msgstr "Pin Κωδικός Αναζήτηση"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:743
+#, python-format
+msgid "Please enter phone number."
+msgstr "Παρακαλώ εισάγετε τον αριθμό τηλεφώνου."
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:737
+#, python-format
+msgid "Please select Person."
+msgstr "Παρακαλώ επιλέξτε Πρόσωπο."
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:2519
+#, python-format
+msgid "Please select a client for this order. This can be done by clicking the order tab"
+msgstr "Επιλέξτε έναν πελάτη για αυτή τη σειρά. Αυτό μπορεί να γίνει κάνοντας κλικ στην καρτέλα Για"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/xml/pos.xml:152
+#, python-format
+msgid "Salesman   :"
+msgstr "πωλητής:"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:621
+#, python-format
+msgid "Salesman are not same! So can not Merge table!"
+msgstr "Πωλητής δεν είναι ίδιο! Έτσι, δεν μπορούν να συγχωνευθούν τραπέζι!"
+
+#. module: point_of_sale_table
+#: view:pos.order:point_of_sale_table.view_pos_order_filter
+msgid "Salesperson"
+msgstr "Πωλητής"
+
+#. module: point_of_sale_table
+#: view:pos.order.line:point_of_sale_table.sale_order_line_search_view
+msgid "Search POS Order Line"
+msgstr "Αναζήτηση POS Γραμμή Παραγγελίας"
+
+#. module: point_of_sale_table
+#: view:pos.order:point_of_sale_table.view_pos_order_filter
+msgid "Search Sales Order"
+msgstr "Αναζήτηση Πωλήσεις Τάξης"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/xml/pos.xml:43
+#, python-format
+msgid "Select Booked Table"
+msgstr "Επιλέξτε κράτηση Πίνακας"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:337
+#, python-format
+msgid "Select Order Type"
+msgstr "Επιλέξτε Παραγγελία Τύπος"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:1865
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:2291
+#, python-format
+msgid "Select Properties"
+msgstr "Επιλέξτε Ιδιότητες"
+
+#. module: point_of_sale_table
+#: code:pos8/point_of_sale_table/point_of_sale_table.py:413
+#, python-format
+msgid "Table is not empty!"
+msgstr "Ο πίνακας δεν είναι άδειο!"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:410
+#, python-format
+msgid "Table is not empty. Please wait!"
+msgstr "Ο πίνακας δεν είναι άδειο. Παρακαλώ περιμένετε!"
+
+#. module: point_of_sale_table
+#: view:pos.order:point_of_sale_table.view_pos_pos_extended_form
+#: field:pos.order.line,table_ids:0
+#: field:pos.order.line,table_name:0
+msgid "Tables"
+msgstr "πίνακες"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:2523
+#, python-format
+msgid "The order could not be sent"
+msgstr "Η σειρά δεν θα μπορούσε να σταλεί"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:1318
+#, python-format
+msgid "There is no Draft Order For user!"
+msgstr "Δεν υπάρχει σχεδίου διατάγματος για το χρήστη!"
+
+#. module: point_of_sale_table
+#. openerp-web
+#: code:pos8/point_of_sale_table/static/src/js/pos_table.js:414
+#, python-format
+msgid "There is no more table to merge!"
+msgstr "Δεν υπάρχει πιο τραπέζι για συγχώνευση!"
+
+#. module: point_of_sale_table
+#: selection:waiting.queue,state:0
+msgid "Waiting"
+msgstr "αναμονή"
+
+#. module: point_of_sale
+#. openerp-web
+#: code:addons/point_of_sale/static/src/xml/pos.xml:324
+#: field:res.partner,zip:0
+#: view:res.partner:point_of_sale.view_partner_property_form
+#, python-format
+msgid "Postcode"
+msgstr "ταχυδρομικός τομέας"
+
+#. module: point_of_sale
+#. openerp-web
+#: code:addons/point_of_sale/static/src/xml/pos.xml:328
+#: field:res.country,country_id:0
+#: view:res.partner:point_of_sale.view_partner_property_form
+#, python-format
+msgid "Country"
+msgstr "χώρα"
+
+#. module: point_of_sale
+#. openerp-web
+#: code:addons/point_of_sale/static/src/xml/pos.xml:341
+#: code:addons/point_of_sale/static/src/xml/pos.xml:376
+#: field:res.partner,email:0
+#: view:res.partner:point_of_sale.view_partner_property_form
+#, python-format
+msgid "Email"
+msgstr "e-mail"
+
+#. module: point_of_sale
+#. openerp-web
+#: code:addons/point_of_sale/static/src/xml/pos.xml:345
+#: code:addons/point_of_sale/static/src/xml/pos.xml:380
+#: code:addons/point_of_sale/static/src/xml/pos.xml:451
+#, python-format
+msgid "Phone"
+msgstr "τηλέφωνο"
+
+#. module: point_of_sale
+#. openerp-web
+#: code:addons/point_of_sale/static/src/xml/pos.xml:933
+#, python-format
+msgid "Phone:"
+msgstr "τηλέφωνο:"
+
+#. module: point_of_sale
+#: help:res.users,ean13:0
+msgid "BarCode"
+msgstr "BarCode"
+
+#. module: point_of_sale
+#. openerp-web
+#: code:addons/point_of_sale/static/src/xml/pos.xml:349
+#: code:addons/point_of_sale/static/src/xml/pos.xml:391
+#, python-format
+msgid "Barcode"
+msgstr "Barcode"
+
+#. module: point_of_sale
+#. openerp-web
+#: code:addons/point_of_sale/static/src/xml/pos.xml:353
+#: code:addons/point_of_sale/static/src/xml/pos.xml:400
+#: field:res.partner,vat:0
+#: view:res.partner:point_of_sale.view_partner_property_form
+#, python-format
+msgid "Tax ID"
+msgstr "ΑΦΜ"
+
+#. module: point_of_sale
+#. openerp-web
+#: code:addons/point_of_sale/static/src/xml/pos.xml:316
+#: code:addons/point_of_sale/static/src/xml/pos.xml:317
+#: field:res.partner,street:0
+#: view:res.partner:point_of_sale.view_partner_property_form
+#, python-format
+msgid "Street"
+msgstr "δρόμος"
+
+#. module: point_of_sale
+#. openerp-web
+#: code:addons/point_of_sale/static/src/xml/pos.xml:372
+#: code:addons/point_of_sale/static/src/xml/pos.xml:450
+#, python-format
+msgid "Address"
+msgstr "διεύθυνση"
+
+#. module: point_of_sale
+#. openerp-web
+#: code:addons/point_of_sale/static/src/xml/pos.xml:422
+#, python-format
+msgid "Search Customers"
+msgstr "Αναζήτηση Πελάτες"
+
+#. module: point_of_sale
+#. openerp-web
+#: code:addons/point_of_sale/static/src/js/screens.js:681
+#, python-format
+msgid "Set Customer"
+msgstr "Ορισμός Πελατών"
+
+#. module: point_of_sale
+#. openerp-web
+#: code:addons/point_of_sale/static/src/xml/pos.xml:832
+#, python-format
+msgid "Set Weight"
+msgstr "Βάρος"
+
+#. module: point_of_sale
+#. openerp-web
+#: code:addons/point_of_sale/static/src/js/screens.js:683
+#, python-format
+msgid "Change Customer"
+msgstr "Αλλαγή Πελατών"
+
+#. module: point_of_sale
+#: field:pos.config,iface_cashdrawer:0
+msgid "Cashdrawer"
+msgstr "Cashdrawer"
+
+#. module: point_of_sale
+#. openerp-web
+#: code:addons/point_of_sale/static/src/js/screens.js:686
+#, python-format
+msgid "Deselect Customer"
+msgstr "Σβήστε Πελατών"
+
+#. module: point_of_sale
+#: view:pos.session:point_of_sale.view_pos_session_form
+msgid "+ Transactions"
+msgstr "+ Συναλλαγές"
+
+#. module: point_of_sale
+#: field:pos.session,cash_journal_id:0
+msgid "Cash Journal"
+msgstr "μετρητά Εφημερίδα"
+
+#. module: point_of_sale
+#: view:pos.session.opening:point_of_sale.pos_session_opening_form_view
+msgid "Click to continue the session."
+msgstr "Κάντε κλικ για να συνεχίσει τη συνεδρία."
+
+#. module: point_of_sale
+#: view:pos.session.opening:point_of_sale.pos_session_opening_form_view
+msgid "Click to start a session."
+msgstr "Κάντε κλικ για να ξεκινήσετε μια περίοδο λειτουργίας."
+
+#. module: point_of_sale
+#. openerp-web
+#: code:addons/point_of_sale/static/src/js/widgets.js:1124
+#: code:addons/point_of_sale/static/src/js/widgets.js:1132
+#, python-format
+msgid "Close"
+msgstr "κοντά"
+
+#. module: point_of_sale
+#: code:addons/point_of_sale/point_of_sale.py:123
+#: selection:pos.session,state:0
+#: selection:pos.session.opening,pos_state:0
+#, python-format
+msgid "In Progress"
+msgstr "Σε εξέλιξη"
+
+#. module: point_of_sale
+#. openerp-web
+#: code:addons/point_of_sale/static/src/js/models.js:120
+#: code:addons/point_of_sale/static/src/js/models.js:363
+#: code:addons/point_of_sale/static/src/xml/pos.xml:79
+#, python-format
+msgid "Loading"
+msgstr "φόρτωση"
+
+#. module: point_of_sale
+#. openerp-web
+#: code:addons/point_of_sale/static/src/xml/pos.xml:661
+#: code:addons/point_of_sale/static/src/xml/pos.xml:675
+#: code:addons/point_of_sale/static/src/xml/pos.xml:695
+#: code:addons/point_of_sale/static/src/xml/pos.xml:735
+#, python-format
+msgid "Ok"
+msgstr "εντάξει"
+
+#. module: point_of_sale
+#: view:product.template:point_of_sale.product_template_form_view
+#: view:res.partner:point_of_sale.view_partner_property_form
+#: view:res.users:point_of_sale.res_users_form_view
+msgid "Set a Custom EAN"
+msgstr "Ορίσετε μια προσαρμοσμένη EAN"
+
+#. module: point_of_sale
+#: view:pos.config:point_of_sale.view_pos_config_form
+msgid "Set to Active"
+msgstr "Ρύθμιση για Ενεργό"
+
+#. module: point_of_sale
+#: view:pos.config:point_of_sale.view_pos_config_form
+msgid "Set to Deprecated"
+msgstr "Ρύθμιση για Αποδοκιμαστεί"
+
+#. module: point_of_sale
+#: view:pos.config:point_of_sale.view_pos_config_form
+msgid "Set to Inactive"
+msgstr "Ρύθμιση για την Ανενεργό"
+
+#. module: point_of_sale
+#. openerp-web
+#: code:addons/point_of_sale/static/src/xml/pos.xml:325
+#: field:res.partner,zip:0
+#: view:res.partner:point_of_sale.view_partner_property_form
+#, python-format
+msgid "ZIP"
+msgstr "ταχυδρομικός"
+
+#. module: point_of_sale
+#. openerp-web
+#: field:res.partner,country_id:0
+#: view:res.partner:point_of_sale.view_partner_property_form
+#, python-format
+msgid "None"
+msgstr "κανένας"
+
+#. module: point_of_sale
+#. openerp-web
+#: code:addons/point_of_sale/static/src/js/screens.js:738
+#, python-format
+msgid "A Customer Name Is Required"
+msgstr "Μια Όνομα Πελάτη απαιτείται"
+
+#. module: point_of_sale
+#. openerp-web
+#: code:addons/point_of_sale/static/src/xml/pos.xml:320
+#: code:addons/point_of_sale/static/src/xml/pos.xml:321
+#: field:res.partner,City:0
+#: view:res.partner:point_of_sale.view_partner_property_form
+#, python-format
+msgid "City"
+msgstr "πόλη"
+
+#. module: point_of_sale
+#: code:addons/point_of_sale/point_of_sale.py:501
+#, python-format
+msgid "You cannot confirm all orders of this session, because they have not the "
+"'paid' status"
+msgstr "Μπορείτε δεν μπορεί να επιβεβαιώσει όλες τις παραγγελίες αυτής της συνόδου, επειδή δεν το έχουν "
+"πληρώνονται" κατάσταση ""
+
+#. module: point_of_sale
+#: constraint:pos.session:0
+msgid "You cannot create two active sessions related to the same point of sale!"
+msgstr "Δεν μπορείτε να δημιουργήσετε δύο ενεργές συνεδρίες που σχετίζονται με το ίδιο σημείο πώλησης!"
+
+#. module: point_of_sale
+#: constraint:pos.session:0
+msgid "You cannot create two active sessions with the same responsible!"
+msgstr "Δεν μπορείτε να δημιουργήσετε δύο ενεργές συνεδρίες με τον ίδιο υπεύθυνο!"
+
+#. module: point_of_sale
+#: code:addons/point_of_sale/point_of_sale.py:516
+#, python-format
+msgid "You cannot use the session of another users. This session is owned by %s. "
+"Please first close this one to use this point of sale."
+msgstr "Δεν μπορείτε να χρησιμοποιήσετε τη σύνοδο των άλλων χρηστών. Η συνεδρία αυτή ανήκει% s. "
+"Παρακαλώ κλείστε πρώτα αυτό το ένα για να χρησιμοποιήσετε αυτό το σημείο πώλησης."

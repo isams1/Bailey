@@ -1,0 +1,10 @@
+===============================================================================
+ Version Change Log (sale_enttec)
+===============================================================================
+  1.1 --> 15 May 2015 : Jagdish Panchal
+        * Change button string Transfer to Receive in Picking Form.
+        
+  1.0 --> 12 May 2015 : Jagdish Panchal
+		* Added new module Warehouse extended
+
+		
