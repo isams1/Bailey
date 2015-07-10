@@ -12,7 +12,10 @@
     'data' : [
         'reports/account/wizard/invoice_summary_view.xml',
         'reports/account/views/report_invoice_summary.xml',
+        'products/data/product_sequence.xml',
+        'products/views/product_view.xml',
     ],
+    'pre_init_hook': 'update_null_and_slash_codes',
     'demo' : [],
     'installable': True,
     'auto_install': False
