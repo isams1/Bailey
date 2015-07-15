@@ -106,6 +106,23 @@ class stock_picking(osv.osv):
 #        self.pool.get('stock.move').write(cr, uid, move_ids, {'state': 'transit'})
         self.write(cr, uid, ids, {'state':'transit'}, context)
         return True
+    
+    def action_done(self, cr, uid, ids, context=None):
+        """Changes picking state to done by processing the Stock Moves of the Picking
+
+        Normally that happens when the button "Done" is pressed on a Picking view.
+        @return: True
+        """
+        for pick in self.browse(cr, uid, ids, context=context):
+            todo = []
+            for move in pick.move_lines:
+                if move.state == 'draft':
+                    todo.extend(self.pool.get('stock.move').action_confirm(cr, uid, [move.id], context=context))
+                elif move.state in ('assigned', 'confirmed', 'transit'):
+                    todo.append(move.id)
+            if len(todo):
+                self.pool.get('stock.move').action_done(cr, uid, todo, context=context)
+        return True
 
     @api.cr_uid_ids_context
     def do_transfer(self, cr, uid, picking_ids, context=None):
@@ -161,7 +178,7 @@ class stock_picking(osv.osv):
     @api.cr_uid_ids_context
     def do_enter_transfer_details(self, cr, uid, picking, context=None):
         if not context:
-         context = {}
+            context = {}
         context.update({
                 'active_model': self._name,
                 'active_ids': picking,

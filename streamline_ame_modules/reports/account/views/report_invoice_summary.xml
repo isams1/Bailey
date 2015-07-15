@@ -14,58 +14,76 @@
 	                    </div>
 	                    <div class="col-xs-3">
 	                        <strong>Print Date</strong>:<br/>
-	                        <span t-esc="formatLang(time.strftime('%Y-%m-%d'),date=True)"/>
+	                        <span t-esc="time.strftime('%d-%m-%Y', time.gmtime())"/>
 	                    </div>
 	                </div>
 	                <div class="row mb32">
 	                    <div class="col-xs-3">
 	                        <strong>Start Period</strong>:<br/>
-	                        <span t-esc="formatLang(data['form']['date_start'],date=True)"/> 
+	                        <span t-esc="time.strftime('%d-%m-%Y', time.strptime(data['form']['date_start'], '%Y-%m-%d'))"/> 
 	                    </div>
 	                    <div class="col-xs-3">
 	                        <strong>End Period</strong>:<br/>
-	                        <span t-esc="formatLang(data['form']['date_end'],date=True)"/> 
+	                        <span t-esc="time.strftime('%d-%m-%Y', time.strptime(data['form']['date_end'], '%Y-%m-%d'))"/> 
 	                    </div>
 	                </div>
 	
 	                <table class="table table-condensed">
 	                    <thead>
-	                        <th><strong>Date</strong></th>
-	                        <th><strong>Order</strong></th>
-	                        <th><strong>Product</strong></th>
-	                        <th class="text-right"><strong>Price</strong></th>
-	                        <th class="text-center"><strong>Qty</strong></th>
-	                        <th class="text-center"><strong>Disc(%)</strong></th>
-	                        <th class="text-center"><strong>Invoiced</strong></th>
+	                        <th><strong>Inv Date</strong></th>
+	                        <th><strong>Inv No</strong></th>
+	                        <th><strong>Stock Code</strong></th>
+	                        <th><strong>Item Description</strong></th>
+	                        <th><strong>Location</strong></th>
+	                        <th><strong>CO Name</strong></th>
+	                        <th><strong>DO Name</strong></th>
+	                        <th><strong>PO No</strong></th>
+	                        <th><strong>Unit price</strong></th>
+	                        <th><strong>Qty</strong></th>
+	                        <th><strong>Amount</strong></th>
+	                        <th><strong>GST</strong></th>
+	                        <th><strong>Total Amount</strong></th>
 	                    </thead>
 	                    <tbody>
-	                        <tr t-foreach="pos_sales_details(data['form'])" t-as="line_ids">
+	                        <tr t-foreach="get_invoice_summary(data['form'])" t-as="line_ids">
 	                            <td>
-	                                <span t-esc="formatLang(line_ids['date_order'], date_time=True)"/>
+	                                <span t-esc="line_ids['inv_date']"/>
 	                            </td>
 	                            <td>
-	                                <span t-esc="line_ids['pos_name']"/>
+	                                <span t-esc="line_ids['inv_no']"/>
 	                            </td>
 	                            <td>
-	                                [<t t-if="line_ids['code']">
-	                                    <span t-esc="line_ids['code']"/>
-	                                </t>]
-	                                <span t-esc="line_ids['name']"/>
+	                                <span t-esc="line_ids['stock_code']"/>
+	                            </td>
+	                            <td>
+	                                <span t-esc="line_ids['item_decs']"/>
+	                            </td>
+	                            <td>
+	                                <span t-esc="line_ids['location_stock']"/>
+	                            </td>
+	                            <td>
+	                                <span t-esc="line_ids['co_name']"/>
+	                            </td>
+	                            <td>
+	                                <span t-esc="line_ids['do_name']"/>
+	                            </td>
+	                            <td>
+	                                <span t-esc="line_ids['po_name']"/>
 	                            </td>
 	                            <td class="text-right">
-	                                <span t-esc="formatLang(line_ids['price_unit'], dp='Sale Price', currency_obj=res_company.currency_id)"/>
+	                                <span t-esc="line_ids['unit_price']"/>
 	                            </td>
 	                            <td class="text-center">
-	                                <span t-esc="formatLang(line_ids['qty'])"/>
-	                                <span t-esc="line_ids['uom']"/>
+	                                <span t-esc="line_ids['qty']"/>
 	                            </td>
 	                            <td class="text-center">
-	                                <span t-esc="formatLang(line_ids['discount'], dp='Sale Price')"/>
+	                                <span t-esc="line_ids['amount']"/>
 	                            </td>
-	                            <td class="text-center">
-	                                <t t-if="line_ids['invoice_id']">
-	                                    <span t-esc="getinvoice(line_ids['invoice_id'])"/>
-	                                </t>
+	                            <td class="text-right">
+	                                <span t-esc="line_ids['gst']"/>
+	                            </td>
+	                            <td class="text-right">
+	                                <span t-esc="line_ids['total']"/>
 	                            </td>
 	                        </tr>
 	                    </tbody>

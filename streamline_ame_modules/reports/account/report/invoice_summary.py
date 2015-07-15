@@ -5,160 +5,97 @@ from openerp.osv import osv
 from openerp.report import report_sxw
 
 class wrapped_streamline_ame_report_invoice_summary(report_sxw.rml_parse):
-
-    def _get_invoice(self, inv_id):
-        res={}
-        if inv_id:
-            self.cr.execute("select number from account_invoice as ac where id = %s", (inv_id,))
-            res = self.cr.fetchone()
-            return res[0] or 'Draft'
-        else:
-            return  ''
-
-    def _get_all_users(self):
-        user_obj = self.pool.get('res.users')
-        return user_obj.search(self.cr, self.uid, [])
-
-    def _pos_sales_details(self, form):
-        pos_obj = self.pool.get('pos.order')
-        user_obj = self.pool.get('res.users')
-        data = []
-        result = {}
-        user_ids = form['user_ids'] or self._get_all_users()
-        company_id = user_obj.browse(self.cr, self.uid, self.uid).company_id.id
-        pos_ids = pos_obj.search(self.cr, self.uid, [('date_order','>=',form['date_start'] + ' 00:00:00'),('date_order','<=',form['date_end'] + ' 23:59:59'),('user_id','in',user_ids),('state','in',['done','paid','invoiced']),('company_id','=',company_id)])
-        for pos in pos_obj.browse(self.cr, self.uid, pos_ids):
-            for pol in pos.lines:
-                result = {
-                    'code': pol.product_id.default_code,
-                    'name': pol.product_id.name,
-                    'invoice_id': pos.invoice_id.id, 
-                    'price_unit': pol.price_unit, 
-                    'qty': pol.qty, 
-                    'discount': pol.discount, 
-                    'total': (pol.price_unit * pol.qty * (1 - (pol.discount) / 100.0)), 
-                    'date_order': pos.date_order, 
-                    'pos_name': pos.name, 
-                    'uom': pol.product_id.uom_id.name
-                }
-                data.append(result)
-                self.total += result['total']
-                self.qty += result['qty']
-                self.discount += result['discount']
-        if data:
-            return data
-        else:
-            return {}
-
-    def _get_qty_total_2(self):
-        return self.qty
-
-    def _get_sales_total_2(self):
-        return self.total
-
-    def _get_sum_invoice_2(self, form):
-        pos_obj = self.pool.get('pos.order')
-        user_obj = self.pool.get('res.users')
-        user_ids = form['user_ids'] or self._get_all_users()
-        company_id = user_obj.browse(self.cr, self.uid, self.uid).company_id.id
-        pos_ids = pos_obj.search(self.cr, self.uid, [('date_order','>=',form['date_start'] + ' 00:00:00'),('date_order','<=',form['date_end'] + ' 23:59:59'),('user_id','in',user_ids),('company_id','=',company_id),('invoice_id','<>',False)])
-        for pos in pos_obj.browse(self.cr, self.uid, pos_ids):
-            for pol in pos.lines:
-                self.total_invoiced += (pol.price_unit * pol.qty * (1 - (pol.discount) / 100.0))
-        return self.total_invoiced or False
-
-    def _paid_total_2(self):
-        return self.total or 0.0
-
-    def _get_sum_dis_2(self):
-        return self.discount or 0.0
-
-    def _get_sum_discount(self, form):
-        #code for the sum of discount value
-        pos_obj = self.pool.get('pos.order')
-        user_obj = self.pool.get('res.users')
-        user_ids = form['user_ids'] or self._get_all_users()
-        company_id = user_obj.browse(self.cr, self.uid, self.uid).company_id.id
-        pos_ids = pos_obj.search(self.cr, self.uid, [('date_order','>=',form['date_start'] + ' 00:00:00'),('date_order','<=',form['date_end'] + ' 23:59:59'),('user_id','in',user_ids),('company_id','=',company_id)])
-        for pos in pos_obj.browse(self.cr, self.uid, pos_ids):
-            for pol in pos.lines:
-                self.total_discount += ((pol.price_unit * pol.qty) * (pol.discount / 100))
-        return self.total_discount or False
-
-    def _get_payments(self, form):
-        statement_line_obj = self.pool.get("account.bank.statement.line")
-        pos_order_obj = self.pool.get("pos.order")
-        user_ids = form['user_ids'] or self._get_all_users()
-        company_id = self.pool['res.users'].browse(self.cr, self.uid, self.uid).company_id.id
-        pos_ids = pos_order_obj.search(self.cr, self.uid, [('date_order','>=',form['date_start'] + ' 00:00:00'),('date_order','<=',form['date_end'] + ' 23:59:59'),('state','in',['paid','invoiced','done']),('user_id','in',user_ids), ('company_id', '=', company_id)])
-        data={}
-        if pos_ids:
-            st_line_ids = statement_line_obj.search(self.cr, self.uid, [('pos_statement_id', 'in', pos_ids)])
-            if st_line_ids:
-                st_id = statement_line_obj.browse(self.cr, self.uid, st_line_ids)
-                a_l=[]
-                for r in st_id:
-                    a_l.append(r['id'])
-                self.cr.execute("select aj.name,sum(amount) from account_bank_statement_line as absl,account_bank_statement as abs,account_journal as aj " \
-                                "where absl.statement_id = abs.id and abs.journal_id = aj.id  and absl.id IN %s " \
-                                "group by aj.name ",(tuple(a_l),))
-
-                data = self.cr.dictfetchall()
-                return data
-        else:
-            return {}
-
-    def _total_of_the_day(self, objects):
-        return self.total or 0.00
-
-    def _sum_invoice(self, objects):
-        return reduce(lambda acc, obj:
-                        acc + obj.invoice_id.amount_total,
-                        [o for o in objects if o.invoice_id and o.invoice_id.number],
-                        0.0)
-
-    def _ellipsis(self, orig_str, maxlen=100, ellipsis='...'):
-        maxlen = maxlen - len(ellipsis)
-        if maxlen <= 0:
-            maxlen = 1
-        new_str = orig_str[:maxlen]
-        return new_str
-
-    def _strip_name(self, name, maxlen=50):
-        return self._ellipsis(name, maxlen, ' ...')
-
-    def _get_tax_amount(self, form):
-        taxes = {}
-        account_tax_obj = self.pool.get('account.tax')
-        user_ids = form['user_ids'] or self._get_all_users()
-        pos_order_obj = self.pool.get('pos.order')
-        company_id = self.pool['res.users'].browse(self.cr, self.uid, self.uid).company_id.id
-        pos_ids = pos_order_obj.search(self.cr, self.uid, [('date_order','>=',form['date_start'] + ' 00:00:00'),('date_order','<=',form['date_end'] + ' 23:59:59'),('state','in',['paid','invoiced','done']),('user_id','in',user_ids), ('company_id', '=', company_id)])
-        for order in pos_order_obj.browse(self.cr, self.uid, pos_ids):
-            for line in order.lines:
-                line_taxes = account_tax_obj.compute_all(self.cr, self.uid, line.product_id.taxes_id, line.price_unit * (1-(line.discount or 0.0)/100.0), line.qty, product=line.product_id, partner=line.order_id.partner_id or False)
-                for tax in line_taxes['taxes']:
-                    taxes.setdefault(tax['id'], {'name': tax['name'], 'amount':0.0})
-                    taxes[tax['id']]['amount'] += tax['amount']
-        return taxes.values()
-
-    def _get_user_names(self, user_ids):
-        user_obj = self.pool.get('res.users')
-        return ', '.join(map(lambda x: x.name, user_obj.browse(self.cr, self.uid, user_ids)))
-
+    
     def __init__(self, cr, uid, name, context):
         super(wrapped_streamline_ame_report_invoice_summary, self).__init__(cr, uid, name, context=context)
         self.localcontext.update({
             'time': time,
-            'strip_name': self._strip_name,
-            'pos_sales_details':self._pos_sales_details,
-            'getqtytotal2': self._get_qty_total_2,
-            'getsalestotal2': self._get_sales_total_2,
-            'getsuminvoice2':self._get_sum_invoice_2,
-            'getpaidtotal2': self._paid_total_2,
-            'get_user_names': self._get_user_names,
+            'get_invoice_summary':self._get_invoice_summary,
         })
 
+    def _get_invoice_summary(self, form):
+        a = form['date_start']
+        b = form['date_end']
+        
+        self.cr.execute('''
+            select to_char(ai.date_invoice, 'dd/MM/yyyy') inv_date, ai."number" inv_no, pp.default_code stock_code, pt.description item_decs, substring(sl.complete_name from (length('Physical Locations / ') + strpos(sl.complete_name, 'Physical Locations / '))) location_stock,
+            rp.name co_name, sp.name do_name, po.name po_name, pol.price_unit unit_price,
+            (select ((select sum(product_qty) 
+                from stock_move 
+                where product_id = sm.product_id and state in ('done') and location_dest_id = sm.location_id and product_qty is not null group by product_id) - 
+            (select sum(product_qty) 
+                from stock_move 
+                where product_id = sm.product_id and state in ('done') and location_id = sm.location_id and product_qty is not null group by product_id)) as qty),
+            pol.price_unit * (select ((select sum(product_qty) 
+                from stock_move 
+                where product_id = sm.product_id and state in ('done') and location_dest_id = sm.location_id and product_qty is not null group by product_id) - 
+            (select sum(product_qty) 
+                from stock_move 
+                where product_id = sm.product_id and state in ('done') and location_id = sm.location_id and product_qty is not null group by product_id)) as qty) as amount,
+            0.07 * pol.price_unit * (select ((select sum(product_qty) 
+                from stock_move 
+                where product_id = sm.product_id and state in ('done') and location_dest_id = sm.location_id and product_qty is not null group by product_id) - 
+            (select sum(product_qty) 
+                from stock_move 
+                where product_id = sm.product_id and state in ('done') and location_id = sm.location_id and product_qty is not null group by product_id)) as qty) as gst,
+           (
+                    pol.price_unit * (select ((select sum(product_qty) 
+                from stock_move 
+                where product_id = sm.product_id and state in ('done') and location_dest_id = sm.location_id and product_qty is not null group by product_id) - 
+            (select sum(product_qty) 
+                from stock_move 
+                where product_id = sm.product_id and state in ('done') and location_id = sm.location_id and product_qty is not null group by product_id)) as qty)
+                ) - 
+            (
+                    0.07 * pol.price_unit * (select ((select sum(product_qty) 
+                from stock_move 
+                where product_id = sm.product_id and state in ('done') and location_dest_id = sm.location_id and product_qty is not null group by product_id) - 
+            (select sum(product_qty) 
+                from stock_move 
+                where product_id = sm.product_id and state in ('done') and location_id = sm.location_id and product_qty is not null group by product_id)) as qty)
+                ) as total
+        from account_invoice ai
+        inner join sale_order_invoice_rel soir on ai.id = soir.invoice_id
+        inner join sale_order so on soir.order_id = so.id
+        inner join account_invoice_line ail on ai.id = ail.invoice_id
+        inner join sale_order_line sol on so.id = sol.order_id and sol.product_id = ail.product_id
+        inner join procurement_group pg on so.procurement_group_id = pg.id
+        inner join stock_picking sp on pg.id = sp.group_id
+        inner join stock_move sm on sm.picking_id = sp.id and ail.product_id = sm.product_id
+        inner join stock_location sl on sl.id = sm.location_id
+        inner join res_partner rp on so.partner_id = rp.id
+        INNER JOIN product_product pp on ail.product_id = pp.id
+        INNER JOIN product_template pt on pp.product_tmpl_id = pt.id
+        left JOIN
+        (
+            select move_id, max(quant_id) quant_id
+          from stock_quant_move_rel  
+          group by move_id
+        ) tmp_sqmr on sm.id = tmp_sqmr.move_id
+        left JOIN stock_quant sq on tmp_sqmr.quant_id = sq.id
+        left join 
+        (
+            select spo.picking_id, spo.lot_id
+            from stock_pack_operation spo
+            inner join stock_picking sp1 on spo.picking_id = sp1.id
+            inner join stock_picking_type spt on sp1.picking_type_id = spt.id and spt.code = 'incoming'
+            where spo.lot_id is not null
+        ) tmp_pack_op on tmp_pack_op.lot_id = sq.lot_id
+        left join (
+            SELECT picking_id, po.id
+          FROM stock_picking p, stock_move m, purchase_order_line pol, purchase_order po
+          WHERE po.id = pol.order_id and pol.id = m.purchase_line_id and m.picking_id = p.id
+          GROUP BY picking_id, po.id
+        ) tmp_picking_po on tmp_picking_po.picking_id = tmp_pack_op.picking_id
+        left join purchase_order po on tmp_picking_po.id = po.id
+        left join purchase_order_line pol on po.id = pol.order_id and ail.product_id = pol.product_id
+        where ai.type='out_invoice'
+        and ai.state='paid'
+        and ai.date_invoice::DATE BETWEEN %s::DATE and %s::DATE
+        order by inv_no
+        ''',(a, b))
+        res = self.cr.dictfetchall()
+        return res
 
 class report_streamline_ame_invoice_summary(osv.AbstractModel):
     _name = 'report.streamline_ame_modules.report_streamline_ame_invoice_summary'
