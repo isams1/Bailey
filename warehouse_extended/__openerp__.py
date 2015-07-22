@@ -28,6 +28,8 @@
         'description': """ This module add new state 'transit' In Stock Picking """,
         'depends' : ['stock'],
         'data' : [
+                  'security/warehouse_extended_security.xml',
+                  'security/ir.model.access.csv',
                   'stock_view.xml',
                   ],
         'application': True,

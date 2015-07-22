@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data noupdate="0">
+
+    <record id="group_ame_user" model="res.groups">
+        <field name="name">User</field>
+    </record>
+    
+    <record id="group_ame_purchaser" model="res.groups">
+        <field name="name">Purchaser</field>
+    </record>
+    
+</data>
+
+</openerp>

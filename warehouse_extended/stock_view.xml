@@ -7,15 +7,25 @@
             <field name="name">stock.picking.internal.line.form.inherit</field>
             <field name="model">stock.picking</field>
             <field name="inherit_id" ref="stock.view_picking_form"/>
-            <field name="arch" type="xml">
+            <field name="arch" type="xml">            	
+                <xpath expr="//button[@name='action_assign']" position="replace">
+                    <button name="action_assign" states="confirmed" string="Check Availability" type="object" class="oe_highlight" groups="warehouse_extended.group_ame_purchaser"/>
+                </xpath>
+                <xpath expr="//button[@name='rereserve_pick']" position="replace">
+                    <button name="rereserve_pick" states="partially_available" string="Recheck Availability" type="object" class="oe_highlight" groups="warehouse_extended.group_ame_purchaser"/>
+                </xpath>
+                <xpath expr="//button[@name='force_assign']" position="replace">
+                    <button name="force_assign" states="confirmed,waiting,partially_available" string="Force Availability" type="object" groups="warehouse_extended.group_ame_purchaser"/>
+                </xpath>
+                
                 <xpath expr="//button[@name='action_cancel']" position="replace">
-                    <button name="action_cancel" states="assigned,confirmed,partially_available,transit,draft,waiting" string="Cancel Transfer" groups="base.group_user" type="object"/>
+                    <button name="action_cancel" states="assigned,confirmed,partially_available,transit,draft,waiting" string="Cancel Transfer" groups="warehouse_extended.group_ame_purchaser" type="object"/>
                 </xpath>                        
                 <xpath expr="//button[@name='action_cancel']" position="before">
-                    <button name="action_transit" states="confirmed,assigned" string="Transit" class="oe_highlight" type="object"/>
+                    <button name="action_transit" states="confirmed,assigned" string="Transit" class="oe_highlight" type="object" groups="warehouse_extended.group_ame_purchaser"/>
                 </xpath>  
                 <xpath expr="//button[@name='do_enter_transfer_details']" position="replace">
-					<button name="do_enter_transfer_details" states="partially_available,transit" string="Receive" groups="stock.group_stock_user" type="object" class="oe_highlight"/>                      
+					<button name="do_enter_transfer_details" states="partially_available,transit" string="Receive" groups="stock.group_stock_user,warehouse_extended.group_ame_user" type="object" class="oe_highlight"/>                      
                 </xpath>
                 <xpath expr="//button[@name='do_print_picking']" position="replace">
                 	<button name="do_print_picking" string="Print Picking List"  type="object" attrs="{'invisible': ['|',('picking_type_code', '=', 'outgoing'), ('state', '!=', 'assigned')]}"/>
@@ -37,6 +47,10 @@
             </field>
         </record>
                 
+        <menuitem name="Warehouse"
+            id="stock.menu_stock_root"
+            groups="stock.group_stock_manager,stock.group_stock_user,warehouse_extended.group_ame_purchaser,group_ame_user"
+            sequence="70"/>
 
     </data>
 </openerp>
