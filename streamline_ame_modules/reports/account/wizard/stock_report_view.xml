@@ -3,14 +3,14 @@
     <data>
         <!--   pos.details -->
 
-        <record id="view_streamline_ame_wizard_report_invoice_summary" model="ir.ui.view">
-            <field name="name">Invoices Summary</field>
-            <field name="model">streamline.ame.report.wizard.invoice.summary</field>
+        <record id="view_streamline_ame_report_wizard_stock_report" model="ir.ui.view">
+            <field name="name">Stock</field>
+            <field name="model">streamline.ame.report.wizard.stock.report</field>
             <field name="arch" type="xml">
-                <form string="Invoices Summary">
-                    <group col="4" string="Dates">
-                        <field name="date_start"/>
-                        <field name="date_end"/>
+                <form string="Stock Report">
+                    <group col="4" string="Monthly">
+                        <field name="report_month"/>
+                        <field name="report_year"/>
                     </group>
                     <footer>
                         <button name="print_report" type="object" string="Print Report" class="oe_highlight"/>
@@ -21,10 +21,10 @@
             </field>
         </record>
         
-        <record id="action_streamline_ame_wizard_report_invoice_summary" model="ir.actions.act_window">
-            <field name="name">Invoices Summary</field>
+        <record id="action_streamline_ame_report_wizard_stock_report" model="ir.actions.act_window">
+            <field name="name">Stock Report</field>
             <field name="type">ir.actions.act_window</field>
-            <field name="res_model">streamline.ame.report.wizard.invoice.summary</field>
+            <field name="res_model">streamline.ame.report.wizard.stock.report</field>
             <field name="view_type">form</field>
             <field name="view_mode">form</field>
             <field name="target">new</field>
