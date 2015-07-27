@@ -19,7 +19,7 @@ class wrapped_streamline_ame_report_stock_report(report_sxw.rml_parse):
         c = a + '-' + b
         
         self.cr.execute('''
-        select case when T.date_invoice is null then null else T.product_name end product_name, T.date_invoice, T.project_no, T.units, T.stock_in, T.stock_out, T.balance, T.unit_price_per_pc, T.amount
+        select case when T.date_invoice is null then null else T.product_name end product_name, case when T.date_invoice is null then 'Subtotal' else T.date_invoice end date_invoice, T.project_no, T.units, T.stock_in, T.stock_out, T.balance, T.unit_price_per_pc, T.amount
         from
         (
         select X.product_name, to_char(X.date_invoice, 'DD-MM-YYYY') date_invoice, X.location_name project_no, X.units,

@@ -28,7 +28,7 @@
 	                    </div>
 	                </div>
 	
-	                <table class="table table-condensed">
+	                <table class="table table-condensed" style="font-size:12px;">
 	                    <thead>
 	                        <th><strong>Inv Date</strong></th>
 	                        <th><strong>Inv No</strong></th>
