@@ -50,7 +50,7 @@ class streamline_ame_report_wizard_stock_report(models.TransientModel):
         datas['form'] = res
         if res.get('id',False):
             datas['ids']=[res['id']]
-        return self.pool['report'].get_action(cr, uid, [], 'streamline_ame_modules.report_streamline_ame_invoice_summary', data=datas, context=context)
+        return self.pool['report'].get_action(cr, uid, [], 'streamline_ame_modules.report_streamline_ame_stock_report', data=datas, context=context)
 
     
     

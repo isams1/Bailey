@@ -1,3 +1,6 @@
+select case when T.date_invoice is null then null else T.product_name end product_name, T.date_invoice, T.project_no, T.units, T.stock_in, T.stock_out, T.balance, T.unit_price_per_pc, T.amount
+from
+(
 select X.product_name, to_char(X.date_invoice, 'DD-MM-YYYY') date_invoice, X.location_name project_no, X.units,
 (select (COALESCE((select sum(COALESCE(product_qty,0)) 
 		from stock_move 
@@ -218,3 +221,4 @@ order by 1,2
 ) Z
 GROUP BY product_name
 order by 1,2
+) T

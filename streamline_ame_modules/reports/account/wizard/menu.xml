@@ -26,7 +26,7 @@
             model="account.invoice"
             report_type="qweb-pdf"
             name="streamline_ame_modules.report_streamline_ame_stock_report"
-            file="Stock Report"
+            file="Stock_Report"
             menu="False"
          />
         

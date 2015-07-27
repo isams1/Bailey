@@ -4,7 +4,7 @@
         <!--   pos.details -->
 
         <record id="view_streamline_ame_report_wizard_stock_report" model="ir.ui.view">
-            <field name="name">Stock</field>
+            <field name="name">Stock Report</field>
             <field name="model">streamline.ame.report.wizard.stock.report</field>
             <field name="arch" type="xml">
                 <form string="Stock Report">

@@ -13,6 +13,7 @@
         'reports/account/wizard/invoice_summary_view.xml',
         'reports/account/wizard/stock_report_view.xml',
         'reports/account/views/report_invoice_summary.xml',
+        'reports/account/views/report_stock_report.xml',
         'reports/account/wizard/menu.xml',
         'products/data/product_sequence.xml',
         'products/views/product_view.xml',
