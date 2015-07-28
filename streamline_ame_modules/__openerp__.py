@@ -7,8 +7,9 @@
         All modules of AME client need to put in here.
     ''',
     'category' : "Streamline Pte Ltd - AME",
-    'depends' : ['report','account', 'product', 'warehouse_extended'],
+    'depends' : ['web','report','account', 'product', 'warehouse_extended'],
     'website': 'http://streamline.sg/',
+    'js': ['static/src/js/datetimepicker.js'],
     'data' : [
         'reports/account/wizard/invoice_summary_view.xml',
         'reports/account/wizard/stock_report_view.xml',
@@ -17,6 +18,7 @@
         'reports/account/wizard/menu.xml',
         'products/data/product_sequence.xml',
         'products/views/product_view.xml',
+        'view/templates.xml',
     ],
     'pre_init_hook': 'update_null_and_slash_codes',
     'demo' : [],
