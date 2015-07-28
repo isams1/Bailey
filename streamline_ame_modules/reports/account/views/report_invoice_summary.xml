@@ -6,6 +6,10 @@
 	        <t t-call="report.internal_layout">
 	            <div class="page">
 	                <h2>Invoice Summary</h2>
+	                <h5>Report description</h5>
+	                <h5>Shows summary of paid supplier invoices</h5>
+	                <h5>Date selection uses supplier invoice date</h5>
+	                <h5>Unit price comes from purchase order data</h5>
 	
 	                <div class="row mt32">
 	                    <div class="col-xs-3">
@@ -39,7 +43,7 @@
 	                        <th><strong>DO Name</strong></th>
 	                        <th><strong>PO No</strong></th>
 	                        <th><strong>Unit price</strong></th>
-	                        <th><strong>Qty</strong></th>
+	                        <th><strong>Balance qty</strong></th>
 	                        <th><strong>Amount</strong></th>
 	                        <th><strong>GST</strong></th>
 	                        <th><strong>Total Amount</strong></th>
