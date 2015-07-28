@@ -70,7 +70,7 @@
 	                            <td>
 	                                <span t-esc="line_ids['po_name']"/>
 	                            </td>
-	                            <td class="text-right">
+	                            <td class="text-center">
 	                                <span t-esc="line_ids['unit_price']"/>
 	                            </td>
 	                            <td class="text-center">
@@ -79,10 +79,10 @@
 	                            <td class="text-center">
 	                                <span t-esc="line_ids['amount']"/>
 	                            </td>
-	                            <td class="text-right">
+	                            <td class="text-center">
 	                                <span t-esc="line_ids['gst']"/>
 	                            </td>
-	                            <td class="text-right">
+	                            <td class="text-center">
 	                                <span t-esc="line_ids['total']"/>
 	                            </td>
 	                        </tr>

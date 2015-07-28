@@ -72,7 +72,7 @@ class wrapped_streamline_ame_report_invoice_summary(report_sxw.rml_parse):
         INNER JOIN product_template pt on pp.product_tmpl_id = pt.id
         inner join purchase_invoice_rel pir on pir.invoice_id = ai.id
         inner join purchase_order po on pir.purchase_id = po.id
-        inner join purchase_order_line pol on po.id = pol.order_id
+        inner join purchase_order_line pol on po.id = pol.order_id and pol.product_id = ail.product_id
         left join (
             SELECT max(picking_id) picking_id, po.id po_id
           FROM stock_picking p, stock_move m, purchase_order_line pol, purchase_order po
