@@ -18,6 +18,7 @@
         'reports/account/wizard/menu.xml',
         'products/data/product_sequence.xml',
         'products/views/product_view.xml',
+        'sales/views/sale_order.xml',
         'view/templates.xml',
     ],
     'pre_init_hook': 'update_null_and_slash_codes',

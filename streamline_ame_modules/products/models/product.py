@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from openerp import models, fields, api
 from openerp import SUPERUSER_ID
+import openerp.addons.decimal_precision as dp
 
 def update_null_and_slash_codes(cr):
     """
@@ -82,3 +83,16 @@ class product_product(models.Model):
         return super(product_product, self).copy(default)
         
 product_product()
+
+class product_template(models.Model):
+    _inherit = "product.template"
+    
+    living_material_price = fields.Float('Living-Material', digits_compute=dp.get_precision('Product Price'))
+    living_labour_price = fields.Float('Living-Labour', digits_compute=dp.get_precision('Product Price'))
+    machinery_material_price = fields.Float('Machinery-Material', digits_compute=dp.get_precision('Product Price'))
+    machinery_labour_price = fields.Float('Machinery-Labour', digits_compute=dp.get_precision('Product Price'))
+    living_material_by_ame = fields.Boolean('By AME')
+    living_labour_by_ame = fields.Boolean('By AME')
+    machinery_material_by_ame = fields.Boolean('By AME')
+    machinery_labour_by_ame = fields.Boolean('By AME')
+product_template()    

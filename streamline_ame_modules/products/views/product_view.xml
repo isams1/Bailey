@@ -11,7 +11,28 @@
                 	<attribute name="string">Product code</attribute>
                 	<!-- <attribute name="required">1</attribute>  -->
                 </field>
+                <xpath expr="//field[@name='description']" position="before">
+                	<group>
+                		<group>
+                			<field name="living_material_price" />
+							<field name="living_labour_price" />                					
+                		</group>
+                		<group>
+                			<field name="living_material_by_ame" />
+                			<field name="living_labour_by_ame" />
+                		</group>
+                		<group>
+                			<field name="machinery_material_price" />
+                			<field name="machinery_labour_price" />
+                		</group>
+                		<group>
+                			<field name="machinery_material_by_ame" />
+                			<field name="machinery_labour_by_ame" />
+                		</group>
+                	</group>
+                </xpath>
             </field>
         </record>
+       
     </data>
 </openerp>
