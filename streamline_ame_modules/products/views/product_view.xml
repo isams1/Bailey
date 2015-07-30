@@ -12,24 +12,48 @@
                 	<!-- <attribute name="required">1</attribute>  -->
                 </field>
                 <xpath expr="//field[@name='description']" position="before">
-                	<group>
-                		<group>
-                			<field name="living_material_price" />
-							<field name="living_labour_price" />                					
-                		</group>
-                		<group>
-                			<field name="living_material_by_ame" />
-                			<field name="living_labour_by_ame" />
-                		</group>
-                		<group>
-                			<field name="machinery_material_price" />
-                			<field name="machinery_labour_price" />
-                		</group>
-                		<group>
-                			<field name="machinery_material_by_ame" />
-                			<field name="machinery_labour_by_ame" />
-                		</group>
-                	</group>
+                	<div style="width: 100%; float: left; display: block">
+                		<div style="width: 100%; float: left; padding-bottom: 2%; display: block">
+                			<div style="margin-left: 28%; float: left; width: 10%; font-weight: bold; display: block"><span>By AME</span></div>
+                			<div style="width: 10%; float: left; margin-left: 47%; font-weight: bold; display: block"><span>By AME</span></div>
+                			<div style="float: left; display: block; border-right: 1px solid rgb(221, 221, 221); margin-right: 2%; clear: both; font-weight: bold; min-width: 16%">
+	                			<span>Living-Material</span>
+	                		</div>
+	                		<div style="width: 12%; float: left; display: block; border-right: 1px solid rgb(221, 221, 221); margin-right: 1%;">
+                				<field name="living_material_price" style="padding: 0px"/>
+                			</div>
+                			<div style="float: left; width: 2%;">
+                				<field name="living_material_by_ame" nolabel="1" style="padding: 0px"/>
+                			</div>
+							<div style="float: left; display: block; border-right: 1px solid rgb(221, 221, 221); margin-right: 2%; margin-left: 20%; width: 20%; font-weight: bold;">
+								<span>Machinery-Material</span>
+							</div>
+							<div style="float: left; display: block; width: 12%; border-right: 1px solid rgb(221, 221, 221); margin-right: 1%;">
+								<field name="machinery_material_price" style="padding: 0px"/>
+							</div>
+							<div style="float: left; width: 2%;">
+               					<field name="machinery_material_by_ame" nolabel="1" style="padding: 0px"/>
+              				</div>
+               				<div style="float: left; display: block; border-right: 1px solid rgb(221, 221, 221); margin-right: 2%; font-weight: bold; clear: both; width: 16%">
+               					<span style="margin-right: 56px">Living-Labour</span>
+               				</div>
+               				<div style="width: 12%; float: left; display: block; border-right: 1px solid rgb(221, 221, 221); margin-right: 1%;">
+              					<field name="living_labour_price" style="width: 25%; margin-right: 12%; padding: 0px"/>
+               				</div>
+							<div style="float: left; width: 2%;">               				              					
+	                			<field name="living_labour_by_ame" nolabel="1" style="padding: 0px"/>
+	                		</div>
+	                		<div style="float: left; display: block; border-right: 1px solid rgb(221, 221, 221); margin-right: 2%; margin-left: 20%; width: 20%; font-weight: bold;">
+                				<span>Machinery-Labour</span>
+                			</div>
+                			<div style="float: left; display: block; width: 12%; border-right: 1px solid rgb(221, 221, 221); margin-right: 1%;">
+                				<field name="machinery_labour_price" style="width: 25%; margin-right: 12%;"/>
+                			</div>
+                			<div style="float: left; width: 2%;">
+                				<field name="machinery_labour_by_ame" nolabel="1" style="padding: 0px"/>
+                			</div>
+                		</div>
+                	</div>
                 </xpath>
             </field>
         </record>
