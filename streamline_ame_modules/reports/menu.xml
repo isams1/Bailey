@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        
+        <menuitem id="menu_streamline_ame_reporting_custom" name="Custom Reports" parent="base.menu_reporting" sequence="0"/>
+        
+        <menuitem icon="STOCK_PRINT" action="action_streamline_ame_wizard_report_invoice_summary"
+                id="menu_action_streamline_ame_wizard_report_invoice_summary" parent="menu_streamline_ame_reporting_custom" sequence="1" />
+                
+        <menuitem icon="STOCK_PRINT" action="action_streamline_ame_report_wizard_stock_report"
+                id="menu_action_streamline_ame_report_wizard_stock_report" parent="menu_streamline_ame_reporting_custom" sequence="2" />
+                
+       <menuitem icon="STOCK_PRINT" action="action_streamline_ame_report_wizard_product_aging"
+                id="menu_action_streamline_ame_report_wizard_product_aging" parent="menu_streamline_ame_reporting_custom" sequence="2" />
+        
+        <report
+            id="streamline_ame_report_invoice_summary_id"
+            string="Invoices Summary"
+            model="account.invoice"
+            report_type="qweb-pdf"
+            name="streamline_ame_modules.report_streamline_ame_invoice_summary"
+            file="Invoice_Summary"
+            menu="False"
+         />
+         
+         <report
+            id="streamline_ame_report_stock_report_id"
+            string="Stock Report"
+            model="account.invoice"
+            report_type="qweb-pdf"
+            name="streamline_ame_modules.report_streamline_ame_stock_report"
+            file="Stock_Report"
+            menu="False"
+         />
+         
+         <report
+            id="streamline_ame_report_product_aging_id"
+            string="Product Aging"
+            model="stock.picking"
+            report_type="qweb-pdf"
+            name="streamline_ame_modules.report_streamline_ame_product_aging"
+            file="Product_Aging"
+            menu="False"
+         />
+        
+    </data>
+</openerp>

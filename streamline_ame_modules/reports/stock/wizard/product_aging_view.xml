@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!--   pos.details -->
+
+        <record id="view_streamline_ame_report_wizard_product_aging" model="ir.ui.view">
+            <field name="name">Product Aging</field>
+            <field name="model">streamline.ame.report.wizard.product.aging</field>
+            <field name="arch" type="xml">
+                <form string="Product Aging">
+                    <footer>
+                        <button name="print_report" type="object" string="Print Report" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        
+        <record id="action_streamline_ame_report_wizard_product_aging" model="ir.actions.act_window">
+            <field name="name">Product Aging</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">streamline.ame.report.wizard.product.aging</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+        
+    </data>
+</openerp>
