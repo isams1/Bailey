@@ -10,240 +10,55 @@ class wrapped_streamline_ame_report_product_aging(report_sxw.rml_parse):
         super(wrapped_streamline_ame_report_product_aging, self).__init__(cr, uid, name, context=context)
         self.localcontext.update({
             'time': time,
-            'get_stock_report':self._get_stock_report,
+            'get_product_aging':self._get_product_aging,
         })
 
-    def _get_stock_report(self, form):
-        a = form['report_month']
-        b = form['report_year']
-        c = a + '-' + b
-        
+    def _get_product_aging(self):
         self.cr.execute('''
-        select case when T.date_invoice is null then null else T.product_name end product_name, case when T.date_invoice is null then 'Subtotal' else T.date_invoice end date_invoice, T.project_no, T.units, T.stock_in, T.stock_out, T.balance, T.unit_price_per_pc, T.amount
+        select substring(X.complete_name from (length('Physical Locations / ') + strpos(X.complete_name, 'Physical Locations / '))) complete_name, 
+            X.product_name, X.product_id, X.co_name, 
+            sum(case when X.remain_date <= 30 then X.stock else 0 end) "1-30",
+            sum(case when X.remain_date BETWEEN 30 and 60 then X.stock else 0 end) "31-60",
+            sum(case when X.remain_date BETWEEN 61 and 90 then X.stock else 0 end) "61-90",
+            sum(case when X.remain_date > 90 then X.stock else 0 end) ">90",
+            sum(X.stock) total
         from
-        (
-        select X.product_name, to_char(X.date_invoice, 'DD-MM-YYYY') date_invoice, X.location_name project_no, X.units,
-        (select (COALESCE((select sum(COALESCE(product_qty,0)) 
-                from stock_move 
-                where product_id = X.product_id and state in ('done', 'transit') and location_dest_id = X.location_id 
-                and product_qty is not null and to_char(date_expected, 'MM-YYYY') = %s) , 0))) stock_in,
-        (select (COALESCE((select sum(COALESCE(product_qty,0)) 
-                from stock_move 
-                where product_id = X.product_id and state in ('done', 'transit') and location_id = X.location_id 
-            and product_qty is not null and to_char(date_expected, 'MM-YYYY') = %s), 0))) stock_out,
-        (select (COALESCE((select sum(COALESCE(product_qty,0)) 
-                from stock_move 
-                where product_id = X.product_id and state in ('done', 'transit') and location_dest_id = X.location_id 
-            and product_qty is not null
-            and to_char(date_expected, 'MM-YYYY') = %s group by product_id), 0) - 
-            COALESCE((select sum(COALESCE(product_qty,0)) 
-                from stock_move 
-                where product_id = X.product_id and state in ('done', 'transit') and location_id = X.location_id 
-            and product_qty is not null and to_char(date_expected, 'MM-YYYY') = %s group by product_id), 0)) as balance),
-        COALESCE((select max(value_float)
-        from ir_property
-        where name = 'standard_price'
-        and res_id = 'product.template,' || X.product_template_id), 0) unit_price_per_pc,
-        (select (COALESCE((select sum(COALESCE(product_qty,0)) 
-                from stock_move 
-                where product_id = X.product_id and state in ('done', 'transit') and location_dest_id = X.location_id 
-                and product_qty is not null and to_char(date_expected, 'MM-YYYY') = %s group by product_id), 0) - 
-            COALESCE((select sum(COALESCE(product_qty,0)) 
-                from stock_move 
-                where product_id = X.product_id and state in ('done', 'transit') and location_id = X.location_id 
-            and product_qty is not null and to_char(date_expected, 'MM-YYYY') = %s group by product_id), 0)) as balance) *
-        COALESCE((select max(value_float)
-        from ir_property
-        where name = 'standard_price'
-        and res_id = 'product.template,' || X.product_template_id), 0) amount
-        from
-        (
-        select pu.name units, pt.id product_template_id, pp.id as product_id, pp.name_template as product_name, sl.id as location_id, substring(sl.complete_name from (length('Physical Locations / ') + strpos(sl.complete_name, 'Physical Locations / '))) location_name, max(ai.date_invoice) date_invoice
-        from account_invoice ai
-        inner join account_invoice_line ail on ai.id = ail.invoice_id
-        INNER JOIN product_product pp on ail.product_id = pp.id
-        INNER JOIN product_template pt on pp.product_tmpl_id = pt.id
-        inner join product_uom pu on pt.uom_id = pu.id
-        inner join stock_move sm on ail.product_id = sm.product_id
-        inner join stock_location sl on sl.id = sm.location_id
-        where ai.type='in_invoice'
-        and ai.state='paid'
-        and sl."name" = 'Stock'
-        and sm."state" in ('transit', 'done')
-        and to_char(ai.date_invoice, 'MM-YYYY') = %s
-        and to_char(sm.date_expected, 'MM-YYYY') = %s
-        group by 1,2,3,4,5,6
-        ) X
-        UNION ALL
-        select Y.product_name, Y.date_invoice, Y.partner_name, Y.units, Y.stock_in, Y.stock_out, Y.stock_in as balance, Y.unit_price_per_pc, Y.stock_in * Y.unit_price_per_pc amount  
-        FROM
-        (
-        select rp.name partner_name, pu.name units, pt.id product_template_id, pp.id product_id, pp.name_template product_name, to_char(max(ai.date_invoice), 'DD-MM-YYYY') as date_invoice, 
-            COALESCE(sum(sm.product_qty), 0) stock_in, 0 stock_out, 
-            COALESCE((select max(value_float)
-            from ir_property
-            where name = 'standard_price'
-            and res_id = 'product.template,' || pt.id), 0) unit_price_per_pc
-        from account_invoice ai
-        inner join account_invoice_line ail on ai.id = ail.invoice_id
-        INNER JOIN product_product pp on ail.product_id = pp.id
-        INNER JOIN product_template pt on pp.product_tmpl_id = pt.id
-        inner join product_uom pu on pt.uom_id = pu.id
-        inner join stock_move sm on ail.product_id = sm.product_id
-        inner join purchase_order_line pol on sm.purchase_line_id = pol.id
-        inner join purchase_order po on pol.order_id = po.id
-        inner join res_partner rp on po.partner_id = rp.id
-        where ai.type='in_invoice'
-        and ai.state='paid'
-        and sm."state" in ('transit', 'done')
-        and to_char(ai.date_invoice, 'MM-YYYY') = %s
-        and to_char(sm.date_expected, 'MM-YYYY') = %s
-        and sm.purchase_line_id is not null
+        ((select sq.location_id,sl.complete_name, pp.name_template product_name, sq.product_id, sp.date_done::DATE, sum(sq.qty) stock, now()::DATE - sp.date_done::DATE as remain_date,
+            (select sw.name
+            from stock_picking_type spt
+            inner join stock_warehouse sw on spt.warehouse_id = sw.id
+            where spt.default_location_dest_id = sq.location_id
+            and spt.code = 'incoming') co_name
+        from stock_quant sq
+        inner join product_product pp on sq.product_id = pp.id
+        inner join stock_location sl on sq.location_id = sl.id
+        inner join stock_pack_operation spo on sq.lot_id = spo.lot_id and sq.location_id = spo.location_dest_id
+        inner join stock_picking sp on spo.picking_id = sp.id
+        where sl.usage in ('internal')
+        and (sl.complete_name like '%Physical%Stock%'
+        or sl.complete_name like '%Partner%')
         group by 1,2,3,4,5
-        ) Y
-        union ALL
-        select X.product_name, X.date_invoice, X.partner_name, X.units, X.stock_in, X.stock_out, (X.stock_in - X.stock_out) as balance, X.unit_price_per_pc, (X.stock_in - X.stock_out) * X.unit_price_per_pc amount  
-        FROM
-        (
-        select rp.name partner_name, pu.name units, pt.id product_template_id, pp.id product_id, pp.name_template product_name, to_char(max(ai.date_invoice), 'DD-MM-YYYY') as date_invoice, 
-            0 stock_in, COALESCE(sum(sm.product_qty), 0) stock_out, 
-            COALESCE((select max(value_float)
-            from ir_property
-            where name = 'standard_price'
-            and res_id = 'product.template,' || pt.id), 0) unit_price_per_pc
-        from account_invoice ai
-        inner join account_invoice_line ail on ai.id = ail.invoice_id
-        INNER JOIN product_product pp on ail.product_id = pp.id
-        INNER JOIN product_template pt on pp.product_tmpl_id = pt.id
-        inner join product_uom pu on pt.uom_id = pu.id
-        inner join stock_move sm on ail.product_id = sm.product_id
-        inner join stock_picking sp on sm.picking_id = sp.id
-        inner join stock_picking_type spt on spt.id = sp.picking_type_id
-        inner join res_partner rp on sp.partner_id = rp.id
-        where ai.type='in_invoice'
-        and ai.state='paid'
-        and sm."state" in ('transit', 'done')
-        and to_char(ai.date_invoice, 'MM-YYYY') = %s
-        and to_char(sm.date_expected, 'MM-YYYY') = %s
-        and spt.code = 'outgoing'
+        order by 1,3)
+        union
+        (select sq.location_id,sl.complete_name, pp.name_template product_name, sq.product_id, '2015-01-01'::DATE date_done, sum(sq.qty) stock, 99 as remain_date,
+            (select sw.name
+            from stock_picking_type spt
+            inner join stock_warehouse sw on spt.warehouse_id = sw.id
+            where spt.default_location_dest_id = sq.location_id
+            and spt.code = 'incoming') co_name
+        from stock_quant sq
+        inner join product_product pp on sq.product_id = pp.id
+        inner join stock_location sl on sq.location_id = sl.id
+        where sl.usage in ('internal')
+        and (sl.complete_name like '%Physical%Stock%'
+        or sl.complete_name like '%Partner%')
+        and sq.lot_id is null
         group by 1,2,3,4,5
-        ) X
-        UNION ALL
-        select Z.product_name, null, null, null, sum(Z.stock_in), sum(Z.stock_out), sum(Z.stock_in) - sum(Z.stock_out), max(Z.unit_price_per_pc), (sum(Z.stock_in) - sum(Z.stock_out)) * max(Z.unit_price_per_pc)
-        from
-        (
-        select X.product_name, to_char(X.date_invoice, 'DD-MM-YYYY') date_invoice, X.location_name project_no, X.units,
-        (select (COALESCE((select sum(COALESCE(product_qty,0)) 
-                from stock_move 
-                where product_id = X.product_id and state in ('done', 'transit') and location_dest_id = X.location_id 
-                and product_qty is not null and to_char(date_expected, 'MM-YYYY') = %s) , 0))) stock_in,
-        (select (COALESCE((select sum(COALESCE(product_qty,0)) 
-                from stock_move 
-                where product_id = X.product_id and state in ('done', 'transit') and location_id = X.location_id 
-            and product_qty is not null and to_char(date_expected, 'MM-YYYY') = %s), 0))) stock_out,
-        (select (COALESCE((select sum(COALESCE(product_qty,0)) 
-                from stock_move 
-                where product_id = X.product_id and state in ('done', 'transit') and location_dest_id = X.location_id 
-            and product_qty is not null
-            and to_char(date_expected, 'MM-YYYY') = %s group by product_id), 0) - 
-            COALESCE((select sum(COALESCE(product_qty,0)) 
-                from stock_move 
-                where product_id = X.product_id and state in ('done', 'transit') and location_id = X.location_id 
-            and product_qty is not null and to_char(date_expected, 'MM-YYYY') = %s group by product_id), 0)) as balance),
-        COALESCE((select max(value_float)
-        from ir_property
-        where name = 'standard_price'
-        and res_id = 'product.template,' || X.product_template_id), 0) unit_price_per_pc,
-        (select (COALESCE((select sum(COALESCE(product_qty,0)) 
-                from stock_move 
-                where product_id = X.product_id and state in ('done', 'transit') and location_dest_id = X.location_id 
-                and product_qty is not null and to_char(date_expected, 'MM-YYYY') = %s group by product_id), 0) - 
-            COALESCE((select sum(COALESCE(product_qty,0)) 
-                from stock_move 
-                where product_id = X.product_id and state in ('done', 'transit') and location_id = X.location_id 
-            and product_qty is not null and to_char(date_expected, 'MM-YYYY') = %s group by product_id), 0)) as balance) *
-        COALESCE((select max(value_float)
-        from ir_property
-        where name = 'standard_price'
-        and res_id = 'product.template,' || X.product_template_id), 0) amount
-        from
-        (
-        select pu.name units, pt.id product_template_id, pp.id as product_id, pp.name_template as product_name, sl.id as location_id, substring(sl.complete_name from (length('Physical Locations / ') + strpos(sl.complete_name, 'Physical Locations / '))) location_name, max(ai.date_invoice) date_invoice
-        from account_invoice ai
-        inner join account_invoice_line ail on ai.id = ail.invoice_id
-        INNER JOIN product_product pp on ail.product_id = pp.id
-        INNER JOIN product_template pt on pp.product_tmpl_id = pt.id
-        inner join product_uom pu on pt.uom_id = pu.id
-        inner join stock_move sm on ail.product_id = sm.product_id
-        inner join stock_location sl on sl.id = sm.location_id
-        where ai.type='in_invoice'
-        and ai.state='paid'
-        and sl."name" = 'Stock'
-        and sm."state" in ('transit', 'done')
-        and to_char(ai.date_invoice, 'MM-YYYY') = %s
-        and to_char(sm.date_expected, 'MM-YYYY') = %s
-        group by 1,2,3,4,5,6
-        ) X
-        UNION ALL
-        select Y.product_name, Y.date_invoice, Y.partner_name, Y.units, Y.stock_in, Y.stock_out, Y.stock_in as balance, Y.unit_price_per_pc, Y.stock_in * Y.unit_price_per_pc amount  
-        FROM
-        (
-        select rp.name partner_name, pu.name units, pt.id product_template_id, pp.id product_id, pp.name_template product_name, to_char(max(ai.date_invoice), 'DD-MM-YYYY') as date_invoice, 
-            COALESCE(sum(sm.product_qty), 0) stock_in, 0 stock_out, 
-            COALESCE((select max(value_float)
-            from ir_property
-            where name = 'standard_price'
-            and res_id = 'product.template,' || pt.id), 0) unit_price_per_pc
-        from account_invoice ai
-        inner join account_invoice_line ail on ai.id = ail.invoice_id
-        INNER JOIN product_product pp on ail.product_id = pp.id
-        INNER JOIN product_template pt on pp.product_tmpl_id = pt.id
-        inner join product_uom pu on pt.uom_id = pu.id
-        inner join stock_move sm on ail.product_id = sm.product_id
-        inner join purchase_order_line pol on sm.purchase_line_id = pol.id
-        inner join purchase_order po on pol.order_id = po.id
-        inner join res_partner rp on po.partner_id = rp.id
-        where ai.type='in_invoice'
-        and ai.state='paid'
-        and sm."state" in ('transit', 'done')
-        and to_char(ai.date_invoice, 'MM-YYYY') = %s
-        and to_char(sm.date_expected, 'MM-YYYY') = %s
-        and sm.purchase_line_id is not null
-        group by 1,2,3,4,5
-        ) Y
-        union ALL
-        select X.product_name, X.date_invoice, X.partner_name, X.units, X.stock_in, X.stock_out, (X.stock_in - X.stock_out) as balance, X.unit_price_per_pc, (X.stock_in - X.stock_out) * X.unit_price_per_pc amount  
-        FROM
-        (
-        select rp.name partner_name, pu.name units, pt.id product_template_id, pp.id product_id, pp.name_template product_name, to_char(max(ai.date_invoice), 'DD-MM-YYYY') as date_invoice, 
-            0 stock_in, COALESCE(sum(sm.product_qty), 0) stock_out, 
-            COALESCE((select max(value_float)
-            from ir_property
-            where name = 'standard_price'
-            and res_id = 'product.template,' || pt.id), 0) unit_price_per_pc
-        from account_invoice ai
-        inner join account_invoice_line ail on ai.id = ail.invoice_id
-        INNER JOIN product_product pp on ail.product_id = pp.id
-        INNER JOIN product_template pt on pp.product_tmpl_id = pt.id
-        inner join product_uom pu on pt.uom_id = pu.id
-        inner join stock_move sm on ail.product_id = sm.product_id
-        inner join stock_picking sp on sm.picking_id = sp.id
-        inner join stock_picking_type spt on spt.id = sp.picking_type_id
-        inner join res_partner rp on sp.partner_id = rp.id
-        where ai.type='in_invoice'
-        and ai.state='paid'
-        and sm."state" in ('transit', 'done')
-        and to_char(ai.date_invoice, 'MM-YYYY') = %s
-        and to_char(sm.date_expected, 'MM-YYYY') = %s
-        and spt.code = 'outgoing'
-        group by 1,2,3,4,5
-        ) X
-        order by 1,2
-        ) Z
-        GROUP BY product_name
-        order by 1,2
-        ) T
-        ''',(c,c,c,c,c,c,c,c,c,c,c,c,c,c,c,c,c,c,c,c,c,c,c,c))
+        order by 1,3)
+        )X
+        group by 1,2,3,4
+        order by 1,3
+        ''')
         res = self.cr.dictfetchall()
         return res
 

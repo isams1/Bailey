@@ -23,7 +23,6 @@
 	                        <th><strong>Stock Code</strong></th>
 	                        <th><strong>Location</strong></th>
 	                        <th><strong>CO Name</strong></th>
-	                        <th><strong>Current</strong></th>
 	                        <th><strong>1-30</strong></th>
 	                        <th><strong>31-60</strong></th>
 	                        <th><strong>61-90</strong></th>
@@ -31,24 +30,30 @@
 	                        <th><strong>Total</strong></th>
 	                    </thead>
 	                    <tbody>
-	                        <tr>
+	                        <tr t-foreach="get_product_aging()" t-as="line_ids">
 	                            <td>
-	                            </td>
-	                            <td>
-	                            </td>
-	                            <td class="text-center">
-	                            </td>
-	                            <td class="text-center">
+	                                <span t-esc="line_ids['product_name']"/>
 	                            </td>
 	                            <td>
+	                                <span t-esc="line_ids['complete_name']"/>
+	                            </td>
+	                            <td>
+	                                <span t-esc="line_ids['co_name']"/>
 	                            </td>
 	                            <td class="text-center">
+	                                <span t-esc="line_ids['1-30']"/>
 	                            </td>
 	                            <td class="text-center">
+	                                <span t-esc="line_ids['31-60']"/>
 	                            </td>
 	                            <td class="text-center">
+	                                <span t-esc="line_ids['61-90']"/>
 	                            </td>
 	                            <td class="text-center">
+	                                <span t-esc="line_ids['>90']"/>
+	                            </td>
+	                            <td class="text-center">
+	                                <span t-esc="line_ids['total']"/>
 	                            </td>
 	                        </tr>
 	                    </tbody>
