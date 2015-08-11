@@ -6,6 +6,7 @@
 	        <t t-call="report.internal_layout">
 	            <div class="page">
 	                <h2>Product Aging</h2>
+	                <h5>Description: shows all items by receiving date where qty > 0</h5>
 	
 	                <div class="row mt32">
 	                    <div class="col-xs-3">
@@ -17,17 +18,56 @@
 	                        <span t-esc="time.strftime('%d-%m-%Y', time.gmtime())"/>
 	                    </div>
 	                </div>
+	                
+	                <div class="row mt32">
+	                    <div class="col-xs-3">
+	                        <strong>Company</strong>:<br/>
+	                        <span t-esc="res_company.name"/>
+	                    </div>
+	                    <div class="col-xs-3">
+	                        <strong>Print Date</strong>:<br/>
+	                        <span t-esc="time.strftime('%d-%m-%Y', time.gmtime())"/>
+	                    </div>
+	                </div>
+	                <div class="row mt32">
+	                    <div class="col-xs-3">
+	                        <strong>Company</strong>:<br/>
+	                        <span t-esc="res_company.name"/>
+	                    </div>
+	                    <div class="col-xs-3">
+	                        <strong>Print Date</strong>:<br/>
+	                        <span t-esc="time.strftime('%d-%m-%Y', time.gmtime())"/>
+	                    </div>
+	                </div>
+	                <div class="row mt32">
+	                    <div class="col-xs-3">
+	                        <strong>Company</strong>:<br/>
+	                        <span t-esc="res_company.name"/>
+	                    </div>
+	                    <div class="col-xs-3">
+	                        <strong>Print Date</strong>:<br/>
+	                        <span t-esc="time.strftime('%d-%m-%Y', time.gmtime())"/>
+	                    </div>
+	                </div>
+	                
 	
 	                <table class="table table-condensed" style="font-size:12px;">
 	                    <thead>
-	                        <th><strong>Stock Code</strong></th>
-	                        <th><strong>Location</strong></th>
-	                        <th><strong>CO Name</strong></th>
-	                        <th><strong>1-30</strong></th>
-	                        <th><strong>31-60</strong></th>
-	                        <th><strong>61-90</strong></th>
-	                        <th><strong>>90</strong></th>
-	                        <th><strong>Total</strong></th>
+	                    	<tr>
+		                        <th colspan="3"></th>		                        
+		                        <th colspan="2" style="font-size:16; text-align: center"><strong>Days</strong></th>		                        
+		                        <th colspan="3"></th>
+	                        </tr>
+	                    	<tr>
+		                        <th><strong>Stock Code</strong></th>
+		                        <th><strong>Location</strong></th>
+		                        <th><strong>CO Name</strong></th>
+		                        <th><strong>1-30</strong></th>
+		                        <th><strong>31-60</strong></th>
+		                        <th><strong>61-90</strong></th>
+		                        <th><strong>>90</strong></th>
+		                        <th><strong>Total</strong></th>
+	                        </tr>
 	                    </thead>
 	                    <tbody>
 	                        <tr t-foreach="get_product_aging()" t-as="line_ids">
