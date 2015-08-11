@@ -19,38 +19,6 @@
 	                    </div>
 	                </div>
 	                
-	                <div class="row mt32">
-	                    <div class="col-xs-3">
-	                        <strong>Company</strong>:<br/>
-	                        <span t-esc="res_company.name"/>
-	                    </div>
-	                    <div class="col-xs-3">
-	                        <strong>Print Date</strong>:<br/>
-	                        <span t-esc="time.strftime('%d-%m-%Y', time.gmtime())"/>
-	                    </div>
-	                </div>
-	                <div class="row mt32">
-	                    <div class="col-xs-3">
-	                        <strong>Company</strong>:<br/>
-	                        <span t-esc="res_company.name"/>
-	                    </div>
-	                    <div class="col-xs-3">
-	                        <strong>Print Date</strong>:<br/>
-	                        <span t-esc="time.strftime('%d-%m-%Y', time.gmtime())"/>
-	                    </div>
-	                </div>
-	                <div class="row mt32">
-	                    <div class="col-xs-3">
-	                        <strong>Company</strong>:<br/>
-	                        <span t-esc="res_company.name"/>
-	                    </div>
-	                    <div class="col-xs-3">
-	                        <strong>Print Date</strong>:<br/>
-	                        <span t-esc="time.strftime('%d-%m-%Y', time.gmtime())"/>
-	                    </div>
-	                </div>
-	                
-	
 	                <table class="table table-condensed" style="font-size:12px;">
 	                    <thead>
 	                    	<tr>
