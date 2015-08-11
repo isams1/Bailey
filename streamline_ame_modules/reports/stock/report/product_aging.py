@@ -57,7 +57,7 @@ class wrapped_streamline_ame_report_product_aging(report_sxw.rml_parse):
         order by 1,3)
         )X
         group by 1,2,3,4
-        order by 1,3
+        order by 3,1
         ''')
         res = self.cr.dictfetchall()
         return res
