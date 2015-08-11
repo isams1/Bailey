@@ -19,7 +19,7 @@
 	                    </div>
 	                </div>
 	                
-	                <table class="table table-condensed" style="font-size:12px;">
+	                <table class="table table-condensed" style="font-size:12px; page-break-inside:auto;">
 	                    <thead>
 	                    	<tr>
 		                        <th colspan="3" style="border-bottom: medium none ! important;"></th>		                        
@@ -38,7 +38,7 @@
 	                        </tr>
 	                    </thead>
 	                    <tbody>
-	                        <tr t-foreach="get_product_aging()" t-as="line_ids">
+	                        <tr t-foreach="get_product_aging()" t-as="line_ids" style="page-break-inside:avoid; page-break-after:auto;">
 	                            <td>
 	                                <span t-esc="line_ids['product_name']"/>
 	                            </td>
