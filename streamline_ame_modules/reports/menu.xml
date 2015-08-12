@@ -11,7 +11,10 @@
                 id="menu_action_streamline_ame_report_wizard_stock_report" parent="menu_streamline_ame_reporting_custom" sequence="2" />
                 
        <menuitem icon="STOCK_PRINT" action="action_streamline_ame_report_wizard_product_aging"
-                id="menu_action_streamline_ame_report_wizard_product_aging" parent="menu_streamline_ame_reporting_custom" sequence="2" />
+                id="menu_action_streamline_ame_report_wizard_product_aging" parent="menu_streamline_ame_reporting_custom" sequence="3" />
+       
+       <menuitem icon="STOCK_PRINT" action="action_streamline_ame_report_wizard_item_consumption_by_site"
+                id="menu_action_streamline_ame_report_wizard_item_consumption_by_site" parent="menu_streamline_ame_reporting_custom" sequence="4" />
         
         <report
             id="streamline_ame_report_invoice_summary_id"
@@ -40,6 +43,16 @@
             report_type="qweb-pdf"
             name="streamline_ame_modules.report_streamline_ame_product_aging"
             file="Product_Aging"
+            menu="False"
+         />
+         
+         <report
+            id="streamline_ame_report_item_consumption_by_site"
+            string="Item Consumption by Site"
+            model="stock.picking"
+            report_type="qweb-pdf"
+            name="streamline_ame_modules.report_streamline_ame_item_consumption_by_site"
+            file="Item_Consumption_by_Site"
             menu="False"
          />
         

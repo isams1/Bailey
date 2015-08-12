@@ -18,6 +18,8 @@
         'reports/sale/views/report_saleorder.xml',
         'reports/stock/wizard/product_aging_view.xml',
         'reports/stock/views/report_product_aging.xml',
+        'reports/stock/wizard/item_consumption_by_site_view.xml',
+        'reports/stock/views/report_item_consumption_by_site.xml',
         'reports/menu.xml',
         'products/data/product_sequence.xml',
         'products/views/product_view.xml',
