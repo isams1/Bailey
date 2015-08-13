@@ -1,19 +1,4 @@
-import time
-from openerp.osv import osv
-from openerp.report import report_sxw
-
-class wrapped_streamline_ame_report_item_consumption_by_site(report_sxw.rml_parse):
-    
-    def __init__(self, cr, uid, name, context):
-        super(wrapped_streamline_ame_report_item_consumption_by_site, self).__init__(cr, uid, name, context=context)
-        self.localcontext.update({
-            'time': time,
-            'get_item_consumption_by_site':self._get_item_consumption_by_site,
-        })
-
-    def _get_item_consumption_by_site(self):
-        self.cr.execute('''
-        select Y.default_code, Y.description, 
+select Y.default_code, Y.description, 
             substring(Y.delivered_from from (length('Physical Locations / ') + strpos(Y.delivered_from, 'Physical Locations / '))) delivered_from, 
             substring(Y.delivered_to from (length('Physical Locations / ') + strpos(Y.delivered_to, 'Physical Locations / '))) delivered_to, 
             Y.delivered_date, COALESCE(Y.delivered_qty_to_site, 0) delivered_qty_to_site, Y.returned_date, COALESCE(Y.returned_qty_to_HQ, 0) returned_qty_to_hq
@@ -111,14 +96,3 @@ class wrapped_streamline_ame_report_item_consumption_by_site(report_sxw.rml_pars
         ))X)Y
         where Y.delivered_qty_to_site is not null
         order by 1
-        ''')
-        res = self.cr.dictfetchall()
-        return res
-
-class report_streamline_ame_item_consumption_by_site(osv.AbstractModel):
-    _name = 'report.streamline_ame_modules.report_streamline_ame_item_consumption_by_site'
-    _inherit = 'report.abstract_report'
-    _template = 'streamline_ame_modules.report_streamline_ame_item_consumption_by_site'
-    _wrapped_report_class = wrapped_streamline_ame_report_item_consumption_by_site
-
-# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

@@ -27,35 +27,35 @@
 		                        <th style="border-top: none !important"><strong>Delivered To</strong></th>
 		                        <th style="border-top: none !important"><strong>Delivered Date</strong></th>
 		                        <th style="border-top: none !important"><strong>Delivered Qty to Site</strong></th>
-		                        <th style="border-top: none !important"><strong>>Returned Date</strong></th>
+		                        <th style="border-top: none !important"><strong>Returned Date</strong></th>
 		                        <th style="border-top: none !important"><strong>Returned Qty to HQ</strong></th>
 	                        </tr>
 	                    </thead>
 	                    <tbody>
 	                        <tr t-foreach="get_item_consumption_by_site()" t-as="line_ids" style="page-break-inside:avoid; page-break-after:auto;">
 	                            <td>
-	                                <span t-esc="line_ids['product_name']"/>
+	                                <span t-esc="line_ids['default_code']"/>
 	                            </td>
 	                            <td>
-	                                <span t-esc="line_ids['complete_name']"/>
+	                                <span t-esc="line_ids['description']"/>
 	                            </td>
 	                            <td>
-	                                <span t-esc="line_ids['co_name']"/>
+	                                <span t-esc="line_ids['delivered_from']"/>
+	                            </td>
+	                            <td>
+	                                <span t-esc="line_ids['delivered_to']"/>
+	                            </td>
+	                            <td>
+	                                <span t-esc="line_ids['delivered_date']"/>
 	                            </td>
 	                            <td class="text-center">
-	                                <span t-esc="line_ids['1-30']"/>
+	                                <span t-esc="line_ids['delivered_qty_to_site']"/>
+	                            </td>
+	                            <td>
+	                                <span t-esc="line_ids['returned_date']"/>
 	                            </td>
 	                            <td class="text-center">
-	                                <span t-esc="line_ids['31-60']"/>
-	                            </td>
-	                            <td class="text-center">
-	                                <span t-esc="line_ids['61-90']"/>
-	                            </td>
-	                            <td class="text-center">
-	                                <span t-esc="line_ids['>90']"/>
-	                            </td>
-	                            <td class="text-center">
-	                                <span t-esc="line_ids['total']"/>
+	                                <span t-esc="line_ids['returned_qty_to_hq']"/>
 	                            </td>
 	                        </tr>
 	                    </tbody>
