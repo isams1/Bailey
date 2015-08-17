@@ -15,6 +15,9 @@
        
        <menuitem icon="STOCK_PRINT" action="action_streamline_ame_report_wizard_item_consumption_by_site"
                 id="menu_action_streamline_ame_report_wizard_item_consumption_by_site" parent="menu_streamline_ame_reporting_custom" sequence="4" />
+                
+       <menuitem icon="STOCK_PRINT" action="action_streamline_ame_report_wizard_ordered_vs_delivery_qty"
+                id="menu_action_streamline_ame_report_wizard_ordered_vs_delivery_qty" parent="menu_streamline_ame_reporting_custom" sequence="5" />         
         
         <report
             id="streamline_ame_report_invoice_summary_id"
@@ -53,6 +56,16 @@
             report_type="qweb-pdf"
             name="streamline_ame_modules.report_streamline_ame_item_consumption_by_site"
             file="Item_Consumption_by_Site"
+            menu="False"
+         />
+         
+         <report
+            id="streamline_ame_report_ordered_vs_delivery_qty"
+            string="Ordered Qty vs Delivery Qty"
+            model="stock.picking"
+            report_type="qweb-pdf"
+            name="streamline_ame_modules.report_streamline_ame_ordered_vs_delivery_qty"
+            file="Ordered_Qty_vs_Delivery_Qty"
             menu="False"
          />
         
