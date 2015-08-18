@@ -5,11 +5,7 @@
 	    <t t-call="report.html_container">
 	        <t t-call="report.internal_layout">
 	            <div class="page">
-	                <h2>Invoice Summary</h2>
-	                <h5>Report description</h5>
-	                <h5>Shows summary of paid supplier invoices</h5>
-	                <h5>Date selection uses supplier invoice date</h5>
-	                <h5>Unit price comes from purchase order data</h5>
+	                <h2>Ordered Qty vs Delivery Qty</h2>
 	
 	                <div class="row mt32">
 	                    <div class="col-xs-3">
@@ -34,60 +30,32 @@
 	
 	                <table class="table table-condensed" style="font-size:10px;">
 	                    <thead>
-	                        <th><strong>Inv Date</strong></th>
-	                        <th><strong>Inv No</strong></th>
-	                        <th><strong>Stock Code</strong></th>
-	                        <th><strong>Item Description</strong></th>
-	                        <th><strong>Location</strong></th>
-	                        <th><strong>CO Name</strong></th>
-	                        <th><strong>DO Name</strong></th>
-	                        <th><strong>PO No</strong></th>
-	                        <th><strong>Unit price</strong></th>
-	                        <th><strong>Balance qty</strong></th>
-	                        <th><strong>Amount</strong></th>
-	                        <th><strong>GST</strong></th>
-	                        <th><strong>Total Amount</strong></th>
+	                        <th><strong>Product Code</strong></th>
+	                        <th><strong>Product Description</strong></th>
+	                        <th><strong>Warehouse Location</strong></th>
+	                        <th><strong>PO#</strong></th>
+	                        <th><strong>PO Qty</strong></th>
+	                        <th><strong>Received Qty</strong></th>
 	                    </thead>
 	                    <tbody>
-	                        <tr t-foreach="get_invoice_summary(data['form'])" t-as="line_ids">
+	                        <tr t-foreach="get_data_summary(data['form'])" t-as="line_ids">
 	                            <td>
-	                                <span t-esc="line_ids['inv_date']"/>
+	                                <span t-esc="line_ids['prod_code']"/>
 	                            </td>
 	                            <td>
-	                                <span t-esc="line_ids['inv_no']"/>
+	                                <span t-esc="line_ids['prod_description']"/>
 	                            </td>
 	                            <td>
-	                                <span t-esc="line_ids['stock_code']"/>
-	                            </td>
-	                            <td>
-	                                <span t-esc="line_ids['item_decs']"/>
-	                            </td>
-	                            <td>
-	                                <span t-esc="line_ids['location_stock']"/>
-	                            </td>
-	                            <td>
-	                                <span t-esc="line_ids['co_name']"/>
-	                            </td>
-	                            <td>
-	                                <span t-esc="line_ids['do_name']"/>
+	                                <span t-esc="line_ids['location_name']"/>
 	                            </td>
 	                            <td>
 	                                <span t-esc="line_ids['po_name']"/>
 	                            </td>
 	                            <td class="text-center">
-	                                <span t-esc="line_ids['unit_price']"/>
+	                                <span t-esc="line_ids['po_qty']"/>
 	                            </td>
 	                            <td class="text-center">
-	                                <span t-esc="line_ids['qty']"/>
-	                            </td>
-	                            <td class="text-center">
-	                                <span t-esc="line_ids['amount']"/>
-	                            </td>
-	                            <td class="text-center">
-	                                <span t-esc="line_ids['gst']"/>
-	                            </td>
-	                            <td class="text-center">
-	                                <span t-esc="line_ids['total']"/>
+	                                <span t-esc="line_ids['received_qty']"/>
 	                            </td>
 	                        </tr>
 	                    </tbody>
