@@ -22,6 +22,8 @@
         'reports/stock/views/report_item_consumption_by_site.xml',
         'reports/stock/wizard/ordered_vs_delivery_qty_view.xml',
         'reports/stock/views/report_ordered_vs_delivery_qty.xml',
+        'reports/stock/wizard/inventory_listing_view.xml',
+        'reports/stock/views/report_inventory_listing.xml',
         'reports/menu.xml',
         'products/data/product_sequence.xml',
         'products/views/product_view.xml',

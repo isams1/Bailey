@@ -18,6 +18,9 @@
                 
        <menuitem icon="STOCK_PRINT" action="action_streamline_ame_report_wizard_ordered_vs_delivery_qty"
                 id="menu_action_streamline_ame_report_wizard_ordered_vs_delivery_qty" parent="menu_streamline_ame_reporting_custom" sequence="5" />         
+                
+       <menuitem icon="STOCK_PRINT" action="action_streamline_ame_report_wizard_inventory_listing"
+                id="menu_action_streamline_ame_report_wizard_inventory_listing" parent="menu_streamline_ame_reporting_custom" sequence="6" />         
         
         <report
             id="streamline_ame_report_invoice_summary_id"
@@ -66,6 +69,16 @@
             report_type="qweb-pdf"
             name="streamline_ame_modules.report_streamline_ame_ordered_vs_delivery_qty"
             file="Ordered_Qty_vs_Delivery_Qty"
+            menu="False"
+         />
+         
+         <report
+            id="streamline_ame_report_inventory_listing"
+            string="Inventory Listings"
+            model="stock.picking"
+            report_type="qweb-pdf"
+            name="streamline_ame_modules.report_streamline_ame_inventory_listing"
+            file="Inventory_Listings"
             menu="False"
          />
         

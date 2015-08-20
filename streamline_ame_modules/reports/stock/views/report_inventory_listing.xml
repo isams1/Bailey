@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+	<template id="report_streamline_ame_inventory_listing">
+	    <t t-call="report.html_container">
+	        <t t-call="report.internal_layout">
+	            <div class="page">
+	                <h2>Inventory Listings</h2>
+	
+	                <div class="row mt32">
+	                    <div class="col-xs-3">
+	                        <strong>Company</strong>:<br/>
+	                        <span t-esc="res_company.name"/>
+	                    </div>
+	                    <div class="col-xs-3">
+	                        <strong>Print Date</strong>:<br/>
+	                        <span t-esc="time.strftime('%d-%m-%Y', time.gmtime())"/>
+	                    </div>
+	                </div>
+	                
+	                <table class="table table-condensed" style="font-size:12px; page-break-inside:auto;">
+	                    <thead>
+	                    	<tr>
+		                        <th colspan="3" style="border-bottom: medium none ! important;"></th>		                        
+		                        <th colspan="2" style="font-size:16; text-align: center; border-bottom: medium none ! important;"><strong>Days</strong></th>		                        
+		                        <th colspan="3" style="border-bottom: medium none ! important;"></th>
+	                        </tr>
+	                    	<tr>
+		                        <th style="border-top: none !important"><strong>Stock Code</strong></th>
+		                        <th style="border-top: none !important"><strong>Location</strong></th>
+		                        <th style="border-top: none !important"><strong>CO Name</strong></th>
+		                        <th style="border-top: none !important"><strong>1-30</strong></th>
+		                        <th style="border-top: none !important"><strong>31-60</strong></th>
+		                        <th style="border-top: none !important"><strong>61-90</strong></th>
+		                        <th style="border-top: none !important"><strong>>90</strong></th>
+		                        <th style="border-top: none !important"><strong>Total</strong></th>
+	                        </tr>
+	                    </thead>
+	                    <tbody>
+	                        <tr t-foreach="get_product_aging()" t-as="line_ids" style="page-break-inside:avoid; page-break-after:auto;">
+	                            <td>
+	                                <span t-esc="line_ids['product_name']"/>
+	                            </td>
+	                            <td>
+	                                <span t-esc="line_ids['complete_name']"/>
+	                            </td>
+	                            <td>
+	                                <span t-esc="line_ids['co_name']"/>
+	                            </td>
+	                            <td class="text-center">
+	                                <span t-esc="line_ids['1-30']"/>
+	                            </td>
+	                            <td class="text-center">
+	                                <span t-esc="line_ids['31-60']"/>
+	                            </td>
+	                            <td class="text-center">
+	                                <span t-esc="line_ids['61-90']"/>
+	                            </td>
+	                            <td class="text-center">
+	                                <span t-esc="line_ids['>90']"/>
+	                            </td>
+	                            <td class="text-center">
+	                                <span t-esc="line_ids['total']"/>
+	                            </td>
+	                        </tr>
+	                    </tbody>
+	                </table>
+	            </div>
+	        </t>
+	    </t>
+	</template>
+
+</data>
+</openerp>
