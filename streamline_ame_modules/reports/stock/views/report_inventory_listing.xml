@@ -26,41 +26,29 @@
 		                        <th colspan="3" style="border-bottom: medium none ! important;"></th>
 	                        </tr>
 	                    	<tr>
-		                        <th style="border-top: none !important"><strong>Stock Code</strong></th>
-		                        <th style="border-top: none !important"><strong>Location</strong></th>
-		                        <th style="border-top: none !important"><strong>CO Name</strong></th>
-		                        <th style="border-top: none !important"><strong>1-30</strong></th>
-		                        <th style="border-top: none !important"><strong>31-60</strong></th>
-		                        <th style="border-top: none !important"><strong>61-90</strong></th>
-		                        <th style="border-top: none !important"><strong>>90</strong></th>
-		                        <th style="border-top: none !important"><strong>Total</strong></th>
+		                        <th style="border-top: none !important"><strong>Code No.</strong></th>
+		                        <th style="border-top: none !important"><strong>Items Description</strong></th>
+		                        <th style="border-top: none !important"><strong>Units</strong></th>
+		                        <th style="border-top: none !important"><strong>Vendor</strong></th>
+		                        <th style="border-top: none !important"><strong>Date</strong></th>		                        
 	                        </tr>
 	                    </thead>
 	                    <tbody>
-	                        <tr t-foreach="get_product_aging()" t-as="line_ids" style="page-break-inside:avoid; page-break-after:auto;">
+	                        <tr t-foreach="get_data_report()" t-as="line_ids" style="page-break-inside:avoid; page-break-after:auto;">
 	                            <td>
-	                                <span t-esc="line_ids['product_name']"/>
-	                            </td>
-	                            <td>
-	                                <span t-esc="line_ids['complete_name']"/>
+	                                <span t-esc="line_ids['default_code']"/>
 	                            </td>
 	                            <td>
-	                                <span t-esc="line_ids['co_name']"/>
+	                                <span t-esc="line_ids['description']"/>
 	                            </td>
 	                            <td class="text-center">
-	                                <span t-esc="line_ids['1-30']"/>
+	                                <span t-esc="line_ids['uom']"/>
 	                            </td>
-	                            <td class="text-center">
-	                                <span t-esc="line_ids['31-60']"/>
+	                            <td>
+	                                <span t-esc="line_ids['vendor']"/>
 	                            </td>
-	                            <td class="text-center">
-	                                <span t-esc="line_ids['61-90']"/>
-	                            </td>
-	                            <td class="text-center">
-	                                <span t-esc="line_ids['>90']"/>
-	                            </td>
-	                            <td class="text-center">
-	                                <span t-esc="line_ids['total']"/>
+	                            <td>
+	                                <span t-esc="line_ids['date_order']"/>
 	                            </td>
 	                        </tr>
 	                    </tbody>
