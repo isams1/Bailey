@@ -6,6 +6,9 @@
 	        <t t-call="report.internal_layout">
 	            <div class="page">
 	                <h2>Ordered Qty vs Delivery Qty</h2>
+	                <h5>Report description: to measure supplier performance</h5>
+	                <h5>Selection criteria: PO date</h5>
+	                <h5>Input: PO start date, PO end date</h5>
 	
 	                <div class="row mt32">
 	                    <div class="col-xs-3">
