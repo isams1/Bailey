@@ -21,11 +21,6 @@
 	                <table class="table table-condensed" style="font-size:12px; page-break-inside:auto;">
 	                    <thead>
 	                    	<tr>
-		                        <th colspan="3" style="border-bottom: medium none ! important;"></th>		                        
-		                        <th colspan="2" style="font-size:16; text-align: center; border-bottom: medium none ! important;"><strong>Days</strong></th>		                        
-		                        <th colspan="3" style="border-bottom: medium none ! important;"></th>
-	                        </tr>
-	                    	<tr>
 		                        <th style="border-top: none !important"><strong>Code No.</strong></th>
 		                        <th style="border-top: none !important"><strong>Items Description</strong></th>
 		                        <th style="border-top: none !important"><strong>Units</strong></th>
