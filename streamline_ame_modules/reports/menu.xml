@@ -81,6 +81,15 @@
             file="Inventory_Listings"
             menu="False"
          />
+         
+         <report 
+            string="Purchase Order" 
+            id="purchase.action_report_purchase_order" 
+            model="purchase.order" 
+            report_type="qweb-pdf"
+            name="streamline_ame_modules.report_purchase_order" 
+            file="Purchase_Order" 
+        />
         
     </data>
 </openerp>
