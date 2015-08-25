@@ -7,24 +7,21 @@
             <t t-call="report.external_layout">
                 <div class="page">
                     <div class="oe_structure"/>
-	                    <div class="row">
-	                        <div class="col-xs-6">
+                    <div class="row">
+                        <div class="col-xs-6">
 							<div class="row">
 								<div class="col-xs-10">
-									<strong>VENDOR: </strong><span t-if="o.partner_id.name" t-field="o.partner_id.name"/>
+									<strong>To: </strong><span t-if="o.partner_id.name" t-field="o.partner_id.name"/>
+									<br></br>
 									<p t-if="o.partner_id.street" style="height:8px;" ><span style="color:white;">. . . . . . . . .</span><span t-field="o.partner_id.street"/></p>
 									<p t-if="o.partner_id.street2" style="height:8px;" ><span style="color:white;">. . . . . . . . .</span><span  t-field="o.partner_id.street2"/></p>
 									<p t-if="o.partner_id.city" style="height:8px;" ><span style="color:white;">. . . . . . . . .</span><span t-field="o.partner_id.city"/></p>
-									<p t-if="o.partner_id.state_id" style="height:8px;" ><span style="color:white;">. . . . . . . . .</span><span t-field="o.partner_id.state_id.name"/>
-									 <span t-if="o.partner_id.zip">[</span>
-									 <span t-if="o.partner_id.zip" t-field="o.partner_id.zip"/>
-									 <span t-if="o.partner_id.zip">]</span>
-									</p>
-									<p t-if="o.partner_id.phone" style="height:8px;" ><span style="color:white;">. . . . . . . . .</span><span  t-field="o.partner_id.phone"/></p>
-									<p t-if="o.partner_id.mobile" style="height:8px;" ><span style="color:white;">. . . . . . . . .</span><span t-field="o.partner_id.mobile"/></p>
-									<p t-if="o.partner_id.mobile" style="height:8px;" ><span style="color:white;">. . . . . . . . .</span><span t-field="o.partner_id.fax"/></p>
-									<p t-if="o.partner_id.email" style="height:8px;" ><span style="color:white;">. . . . . . . . .</span><span t-field="o.partner_id.email"/></p>
 									<p t-if="o.partner_id.country_id.name" style="height:8px;" ><span style="color:white;">. . . . . . . . .</span><span t-field="o.partner_id.country_id.name"/></p>
+									<p t-if="o.partner_id.state_id" style="height:8px;" ><span style="color:white;">. . . . . . . . .</span><span t-field="o.partner_id.state_id.name"/>
+									 	<span t-if="o.partner_id.zip">[</span>
+									 	<span t-if="o.partner_id.zip" t-field="o.partner_id.zip"/>
+									 	<span t-if="o.partner_id.zip">]</span>
+									</p>
 									<p t-if="o.partner_id.name" style="height:10px;"><strong>Attn: </strong> <span t-esc="get_contacts(o.partner_id)"/></p>
 								</div>
 							</div>

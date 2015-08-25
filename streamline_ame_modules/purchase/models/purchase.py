@@ -1,4 +1,4 @@
-from openerp import models, fields, api
+from openerp import models, fields
 
 class purchase_order(models.Model):
     _inherit = "purchase.order"

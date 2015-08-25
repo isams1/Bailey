@@ -30,6 +30,7 @@
         'products/views/product_view.xml',
         'sales/views/sale_order.xml',
         'purchase/views/purchase_view.xml',
+        'partner/views/partner_view.xml',
         'view/templates.xml',
     ],
     'pre_init_hook': 'update_null_and_slash_codes',

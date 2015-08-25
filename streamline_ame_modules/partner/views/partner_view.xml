@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+
+    <record id="streamline_ame_res_partner_form_inherit" model="ir.ui.view">
+      <field name="name">streamline.ame.res.partner.form.inherit</field>
+      <field name="model">res.partner</field>
+      <field name="inherit_id" ref="base.view_partner_form"/>
+      <field name="arch" type="xml">
+        <xpath expr="//div/div[1]" position="replace">
+        	<div class="oe_edit_only">
+                <label for="name"/>
+                <field name="is_company" on_change="onchange_type(is_company)" class="oe_inline" invisible="1"/>
+            </div>
+        </xpath>
+      </field>
+    </record>
+
+  </data>
+</openerp>
