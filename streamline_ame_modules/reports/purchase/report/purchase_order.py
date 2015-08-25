@@ -12,13 +12,21 @@ class wrapped_streamline_ame_purchase_order(report_sxw.rml_parse):
                 'get_contacts':self.get_contacts,
             })
 
-    def get_contacts(self,partner):
+    def get_contacts(self,partner, need_data):
         final = ""
         partner_obj = self.pool.get('res.partner')
         for partner_id in partner_obj.browse(self.cr, self.uid, [partner.id]):
             for line in partner_id.child_ids:
-                contact_name = partner_obj.browse(self.cr, self.uid, line.id).name
-                final = final + contact_name + ", "
+                if need_data == "phone":
+                    final = line.phone or partner_id.phone
+                elif need_data == "mobile":
+                    final = line.mobile or partner_id.mobile
+                elif need_data == "fax":
+                    final = line.fax or partner_id.fax
+                elif need_data == "email":
+                    final = line.email or partner_id.email
+                return final
+            
         return final
 
 class report_streamline_ame_purchase_order(osv.AbstractModel):
