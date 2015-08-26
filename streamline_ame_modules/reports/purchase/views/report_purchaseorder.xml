@@ -47,6 +47,8 @@
 				                		<span t-field="o.name"/>
 				                		<br />
 				                		<span t-field="o.date_order" t-field-options='{"format": "dd/MM/y"}'/>
+				                		<br />
+				                		<span t-field="o.partner_ref"/>
 				                    </div>
 				                </div>
 				            </div>		  
