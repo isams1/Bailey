@@ -91,5 +91,14 @@
             file="Purchase_Order" 
         />
         
+        <report 
+            id="report_sale_order_2"
+            string="Quotation to Customer 2 "
+            model="sale.order" 
+            report_type="qweb-pdf"
+            file="report_saleorder2" 
+            name="streamline_ame_modules.report_saleorder2" 
+        />
+        
     </data>
 </openerp>
