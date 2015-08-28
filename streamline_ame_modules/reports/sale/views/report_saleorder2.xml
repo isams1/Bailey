@@ -73,6 +73,16 @@
 			                        </td>
 			                    </tr>			               
 			                </tbody>
+			                <tfoot>
+			                	<tr style="height: 10px;"/>
+			                	<tr style="height: 10px;"/>
+			                	<tr>
+		                            <td colspan="5" style="border-top: none;"><strong>TOTAL AMOUNT:</strong></td>
+		                            <td class="text-center" style="border-bottom: double; border-top: thin solid;">
+			                        	<strong>$<span t-field="o.amount_untaxed"/></strong>
+		                            </td>
+		                        </tr>
+			                </tfoot>
 			            </table>
 			        </div>
 		        </div>
