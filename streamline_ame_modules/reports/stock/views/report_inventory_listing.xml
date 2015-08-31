@@ -1,57 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
-<data>
-	<template id="report_streamline_ame_inventory_listing">
-	    <t t-call="report.html_container">
-	        <t t-call="report.internal_layout">
-	            <div class="page">
-	                <h2>Inventory Listings</h2>
-	
-	                <div class="row mt32">
-	                    <div class="col-xs-3">
-	                        <strong>Company</strong>:<br/>
-	                        <span t-esc="res_company.name"/>
-	                    </div>
-	                    <div class="col-xs-3">
-	                        <strong>Print Date</strong>:<br/>
-	                        <span t-esc="time.strftime('%d-%m-%Y', time.gmtime())"/>
-	                    </div>
-	                </div>
-	                
-	                <table class="table table-condensed" style="font-size:12px; page-break-inside:auto;">
-	                    <thead>
-	                    	<tr>
-		                        <th style="border-top: none !important"><strong>Code No.</strong></th>
-		                        <th style="border-top: none !important"><strong>Items Description</strong></th>
-		                        <th style="border-top: none !important"><strong>Units</strong></th>
-		                        <th style="border-top: none !important"><strong>Vendor</strong></th>
-		                        <th style="border-top: none !important"><strong>Date</strong></th>		                        
-	                        </tr>
-	                    </thead>
-	                    <tbody>
-	                        <tr t-foreach="get_data_report()" t-as="line_ids" style="page-break-inside:avoid; page-break-after:auto;">
-	                            <td>
-	                                <span t-esc="line_ids['default_code']"/>
-	                            </td>
-	                            <td>
-	                                <span t-esc="line_ids['description']"/>
-	                            </td>
-	                            <td class="text-center">
-	                                <span t-esc="line_ids['uom']"/>
-	                            </td>
-	                            <td>
-	                                <span t-esc="line_ids['vendor']"/>
-	                            </td>
-	                            <td>
-	                                <span t-esc="line_ids['date_order']"/>
-	                            </td>
-	                        </tr>
-	                    </tbody>
-	                </table>
-	            </div>
-	        </t>
-	    </t>
-	</template>
+	<data>
+		<template id="report_streamline_ame_inventory_listing">
+			<t t-call="streamline_ame_modules.streamline_ame_custom_report_header" />
+			<div class="page">
+				<h2>Inventory Listings</h2>
 
-</data>
+				<div class="row mt32">
+					<div class="col-xs-3">
+						<strong>Company</strong>
+						:
+						<br />
+						<span t-esc="res_company.name" />
+					</div>
+					<div class="col-xs-3">
+						<strong>Print Date</strong>
+						:
+						<br />
+						<span t-esc="time.strftime('%d-%m-%Y', time.gmtime())" />
+					</div>
+				</div>
+
+				<table class="table table-condensed" style="font-size:12px; page-break-inside:auto;">
+					<thead>
+						<tr>
+							<th style="border-top: none !important">
+								<strong>Code No.</strong>
+							</th>
+							<th style="border-top: none !important">
+								<strong>Items Description</strong>
+							</th>
+							<th style="border-top: none !important">
+								<strong>Units</strong>
+							</th>
+							<th style="border-top: none !important">
+								<strong>Vendor</strong>
+							</th>
+							<th style="border-top: none !important">
+								<strong>Date</strong>
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr t-foreach="get_data_report()" t-as="line_ids"
+							style="page-break-inside:avoid; page-break-after:auto;">
+							<td>
+								<span t-esc="line_ids['default_code']" />
+							</td>
+							<td>
+								<span t-esc="line_ids['description']" />
+							</td>
+							<td class="text-center">
+								<span t-esc="line_ids['uom']" />
+							</td>
+							<td>
+								<span t-esc="line_ids['vendor']" />
+							</td>
+							<td>
+								<span t-esc="line_ids['date_order']" />
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</template>
+
+	</data>
 </openerp>

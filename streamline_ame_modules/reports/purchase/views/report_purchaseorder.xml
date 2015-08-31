@@ -2,209 +2,239 @@
 <openerp>
 	<data>
 		<template id="report_purchase_order">
-		    <t t-call="report.html_container">
-		        <t t-foreach="docs" t-as="o">
-		            <t t-call="report.external_layout">
-		                <div class="page" style="font-size: 12px">
-				            <div class="oe_structure"/>
-				            <div class="row">
-								<br />
-				            	<div class="col-xs-6">
-				                	<div class="col-xs-3">
-				                		<span>To:</span>
-				                	</div>
-				                	<div class="col-xs-6">
-					                    <strong><span t-field="o.partner_id.name"></span></strong>
-				                    </div>
-				                </div>
-				                <div class="col-xs-6">
-				                	<div class="col-xs-4">
-				                		<span>Project: </span>
-				                	</div>
-				                	<div class="col-xs-8">
-					                    <span t-field="o.project_no" />
-				                    </div>
-				                </div>
-					        </div>
-				            <div class="row">
-				            	<div class="col-xs-6">
-				                	<div class="col-xs-3">
-				                		<span>Add:</span>
-				                	</div>
-				                	<div class="col-xs-6">
-				                		<span t-field="o.partner_id.street"/> <span t-field="o.partner_id.street2"/> <span t-field="o.partner_id.city"/> <span t-field="o.partner_id.country_id.name"/> <span t-field="o.partner_id.zip"/>  
-				                    </div>
-				                </div>
-				                <div class="col-xs-6">
-				                	<div class="col-xs-4">
-				                		<span>P.O no:</span>
-				                		<br />
-				                		<span>Date:</span>
-				                		<br />
-				                		<span>Your Ref:</span>
-				                	</div>
-				                	<div class="col-xs-8">
-				                		<span t-field="o.name"/>
-				                		<br />
-				                		<span t-field="o.date_order" t-field-options='{"format": "dd/MM/y"}'/>
-				                		<br />
-				                		<span t-field="o.partner_ref"/>
-				                    </div>
-				                </div>
-				            </div>		  
-				            <br />
-				            <div class="row">
-				            	<div class="col-xs-6">
-				            		<div class="col-xs-3">
-				            			Attn:
-				                	</div>
-				                	<div class="col-xs-6">
-				                		<span t-field="o.partner_id.child_ids and o.partner_id.child_ids[0] or o.partner_id.name"/>
-				                    </div>
-				                </div>
-				                <div class="col-xs-6">
-				                	<div class="col-xs-4">
-				                		<span>Tel:</span>
-				                	</div>
-				                	<div class="col-xs-8">
-				                		<span t-esc="get_contacts(o.partner_id, 'phone')"/>
-				                    </div>
-				                </div>
-				            </div>
-				            <div class="row">
-				            	<div class="col-xs-6">
-				            		<div class="col-xs-3">
-				            			H/Phone:
-				                	</div>
-				                	<div class="col-xs-6">
-				                		<span t-esc="get_contacts(o.partner_id, 'mobile')"/>
-				                    </div>
-				                </div>
-				                <div class="col-xs-6">
-				                	<div class="col-xs-4">
-				                		<span>Fax:</span>
-				                	</div>
-				                	<div class="col-xs-8">
-				                		<span t-esc="get_contacts(o.partner_id, 'fax')"/>
-				                    </div>
-				                </div>
-				            </div>
-				            <div class="row">
-				            	<div class="col-xs-6">
-				            		<div class="col-xs-3">
-				            			Email:
-				                	</div>
-				                	<div class="col-xs-6">
-				                		<span t-esc="get_contacts(o.partner_id, 'email')"/>
-				                    </div>
-				                </div>
-				            </div>
-				            <table class="table table-condensed" style="margin-left: 15px;">
-				                <thead>
-				                    <tr>
-				                        <th><strong>S/no</strong></th>
-										<th class="text-center"><strong>Description</strong></th>
-				                        <th class="text-center"><strong>Qty</strong></th>
-				                        <th class="text-center"><strong>Unit</strong></th>
-				                        <th class="text-center"><strong>Rate</strong></th>
-				                        <th class="text-center"><strong>Amount</strong></th>
-				                    </tr>
-				                </thead>
-				                <tbody>
-				                    <tr t-foreach="o.order_line" t-as="order_line">
-				                        <td style="width: 10%">
-											<span t-esc="order_line_index + 1" />
-										</td>
-										<td style="width: 40%">
-											<span t-field="order_line.product_id.name"/>
-				                            <br />
-				                            <span t-field="order_line.product_id.product_tmpl_id.description"/>
-				                        </td>
-				                        <td class="text-right" style="width: 15%">
-				                        	<span t-esc="int(order_line.product_qty)"/>
-				                        </td>
-				                        <td class="text-center" style="width: 15%">
-				                            <span t-field="order_line.product_id.product_tmpl_id.uom_id.name"/>
-				                        </td>
-				                        <td class="text-right" style="width: 10%">
-				                        	<div style="float: left; width: 100%">
-				                        		<span style="float: left">$</span>
-				                        		<span style="float: right" t-field="order_line.product_id.product_tmpl_id.standard_price"/>
-				                        	</div>
-				                        </td>
-				                        <td class="text-right" style="width: 10%">
-				                        	<div style="float: left; width: 100%">
-				                        	  <span style="float: left">$</span>
-				                        	  <span style="float: right" t-field="order_line.price_subtotal"/>
-				                        	</div>
-				                        </td>
-				                    </tr>
-				                </tbody>
-				                <tfoot>
-				                	<tr>
-				                		<td colspan="4" style="border-top: none;" />
-			                            <td class="text-right"><strong>SUBTOTAL:</strong></td>
-			                            <td class="text-right">
-				                            <div style="float: left; width: 100%">
-				                            	<span style="float: left">$</span>
-				                                <span style="float: right" t-field="o.amount_untaxed"/>
-				                            </div>
-			                            </td>
-			                        </tr>
-			                        <tr>
-			                        <td colspan="4" style="border-top: none;" />
-			                            <td class="text-right"><strong>GST 7%:</strong></td>
-			                            <td class="text-right">
-			                            	<div style="float: left; width: 100%">
-				                            	<span style="float: left">$</span>
-				                                <span style="float: right" t-field="o.amount_tax"/>
-			                                </div>
-			                            </td>
-			                        </tr>
-			                        <tr>
-			                        	<td colspan="4" style="border-top: none;" />
-			                            <td class="text-right"><strong>TOTAL:</strong></td>
-			                            <td class="text-right">
-				                            <div style="float: left; width: 100%">
-				                            	<span style="float: left">$</span>
-				                                <span style="float: right" t-field="o.amount_total"/>
-				                            </div>
-			                            </td>
-			                        </tr>
-				                </tfoot>
-				            </table>
-							<div class="row">
-				            	<div class="col-xs-8">
-				                	<div class="col-xs-4">
-				                		<span>Deliver to:</span>
-				                		<br />
-				                		<span>Contact Person:</span>
-				                		<br />
-				                		<span>Mobile Nos:</span>
-				                		<br />
-				                		<span>Remarks:</span>
-				                		<br />
-				                		<br />
-				                		<span>Ordered By:</span>
-				                	</div>
-				                	<div class="col-xs-6">
-				                		<span t-field="o.location_id.location_id.name" /> / <span t-field="o.location_id.name" />
-				                		<br />
-					                    <span t-esc="o.validator.partner_id.name or o.create_uid.partner_id.name"></span>
-					                    <br />
-					                    <span t-esc="o.validator.partner_id.mobile or o.create_uid.partner_id.mobile"></span>
-					                    <br />
-					                    <span t-field="o.notes"></span>
-					                    <br />
-					                    <br />
-					                    <span t-field="o.partner_id.child_ids and o.partner_id.child_ids[0] or o.partner_id.name"/>
-				                    </div>
-				                </div>	                
-					        </div>
-				        </div>
-		            </t>
-		        </t>
-		    </t>
+			<t t-call="report.html_container">
+				<t t-foreach="docs" t-as="o">
+					<t t-call="streamline_ame_modules.streamline_ame_custom_report_header" />
+					<div class="page" style="font-size: 12px">
+						<div class="oe_structure" />
+						<div class="row">
+							<br />
+							<div class="col-xs-6">
+								<div class="col-xs-3">
+									<span>To:</span>
+								</div>
+								<div class="col-xs-6">
+									<strong>
+										<span t-field="o.partner_id.name"></span>
+									</strong>
+								</div>
+							</div>
+							<div class="col-xs-6">
+								<div class="col-xs-4">
+									<span>Project: </span>
+								</div>
+								<div class="col-xs-8">
+									<span t-field="o.project_no" />
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-6">
+								<div class="col-xs-3">
+									<span>Add:</span>
+								</div>
+								<div class="col-xs-6">
+									<span t-field="o.partner_id.street" />
+									<span t-field="o.partner_id.street2" />
+									<span t-field="o.partner_id.city" />
+									<span t-field="o.partner_id.country_id.name" />
+									<span t-field="o.partner_id.zip" />
+								</div>
+							</div>
+							<div class="col-xs-6">
+								<div class="col-xs-4">
+									<span>P.O no:</span>
+									<br />
+									<span>Date:</span>
+									<br />
+									<span>Your Ref:</span>
+								</div>
+								<div class="col-xs-8">
+									<span t-field="o.name" />
+									<br />
+									<span t-field="o.date_order" t-field-options='{"format": "dd/MM/y"}' />
+									<br />
+									<span t-field="o.partner_ref" />
+								</div>
+							</div>
+						</div>
+						<br />
+						<div class="row">
+							<div class="col-xs-6">
+								<div class="col-xs-3">
+									Attn:
+								</div>
+								<div class="col-xs-6">
+									<span
+										t-field="o.partner_id.child_ids and o.partner_id.child_ids[0] or o.partner_id.name" />
+								</div>
+							</div>
+							<div class="col-xs-6">
+								<div class="col-xs-4">
+									<span>Tel:</span>
+								</div>
+								<div class="col-xs-8">
+									<span t-esc="get_contacts(o.partner_id, 'phone')" />
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-6">
+								<div class="col-xs-3">
+									H/Phone:
+								</div>
+								<div class="col-xs-6">
+									<span t-esc="get_contacts(o.partner_id, 'mobile')" />
+								</div>
+							</div>
+							<div class="col-xs-6">
+								<div class="col-xs-4">
+									<span>Fax:</span>
+								</div>
+								<div class="col-xs-8">
+									<span t-esc="get_contacts(o.partner_id, 'fax')" />
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-6">
+								<div class="col-xs-3">
+									Email:
+								</div>
+								<div class="col-xs-6">
+									<span t-esc="get_contacts(o.partner_id, 'email')" />
+								</div>
+							</div>
+						</div>
+						<table class="table table-condensed" style="margin-left: 15px;">
+							<thead>
+								<tr>
+									<th>
+										<strong>S/no</strong>
+									</th>
+									<th class="text-center">
+										<strong>Description</strong>
+									</th>
+									<th class="text-center">
+										<strong>Qty</strong>
+									</th>
+									<th class="text-center">
+										<strong>Unit</strong>
+									</th>
+									<th class="text-center">
+										<strong>Rate</strong>
+									</th>
+									<th class="text-center">
+										<strong>Amount</strong>
+									</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr t-foreach="o.order_line" t-as="order_line">
+									<td style="width: 10%">
+										<span t-esc="order_line_index + 1" />
+									</td>
+									<td style="width: 40%">
+										<span t-field="order_line.product_id.name" />
+										<br />
+										<span t-field="order_line.product_id.product_tmpl_id.description" />
+									</td>
+									<td class="text-right" style="width: 15%">
+										<span t-esc="int(order_line.product_qty)" />
+									</td>
+									<td class="text-center" style="width: 15%">
+										<span t-field="order_line.product_id.product_tmpl_id.uom_id.name" />
+									</td>
+									<td class="text-right" style="width: 10%">
+										<div style="float: left; width: 100%">
+											<span style="float: left">$</span>
+											<span style="float: right"
+												t-field="order_line.product_id.product_tmpl_id.standard_price" />
+										</div>
+									</td>
+									<td class="text-right" style="width: 10%">
+										<div style="float: left; width: 100%">
+											<span style="float: left">$</span>
+											<span style="float: right" t-field="order_line.price_subtotal" />
+										</div>
+									</td>
+								</tr>
+							</tbody>
+							<tfoot>
+								<tr>
+									<td colspan="4" style="border-top: none;" />
+									<td class="text-right">
+										<strong>SUBTOTAL:</strong>
+									</td>
+									<td class="text-right">
+										<div style="float: left; width: 100%">
+											<span style="float: left">$</span>
+											<span style="float: right" t-field="o.amount_untaxed" />
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="4" style="border-top: none;" />
+									<td class="text-right">
+										<strong>GST 7%:</strong>
+									</td>
+									<td class="text-right">
+										<div style="float: left; width: 100%">
+											<span style="float: left">$</span>
+											<span style="float: right" t-field="o.amount_tax" />
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="4" style="border-top: none;" />
+									<td class="text-right">
+										<strong>TOTAL:</strong>
+									</td>
+									<td class="text-right">
+										<div style="float: left; width: 100%">
+											<span style="float: left">$</span>
+											<span style="float: right" t-field="o.amount_total" />
+										</div>
+									</td>
+								</tr>
+							</tfoot>
+						</table>
+						<div class="row">
+							<div class="col-xs-8">
+								<div class="col-xs-4">
+									<span>Deliver to:</span>
+									<br />
+									<span>Contact Person:</span>
+									<br />
+									<span>Mobile Nos:</span>
+									<br />
+									<span>Remarks:</span>
+									<br />
+									<br />
+									<span>Ordered By:</span>
+								</div>
+								<div class="col-xs-6">
+									<span t-field="o.location_id.location_id.name" />
+									/
+									<span t-field="o.location_id.name" />
+									<br />
+									<span
+										t-esc="o.validator.partner_id.name or o.create_uid.partner_id.name"></span>
+									<br />
+									<span
+										t-esc="o.validator.partner_id.mobile or o.create_uid.partner_id.mobile"></span>
+									<br />
+									<span t-field="o.notes"></span>
+									<br />
+									<br />
+									<span
+										t-field="o.partner_id.child_ids and o.partner_id.child_ids[0] or o.partner_id.name" />
+								</div>
+							</div>
+						</div>
+					</div>
+				</t>
+			</t>
 		</template>
 	</data>
 </openerp>

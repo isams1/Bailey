@@ -1,69 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
-<data>
-	<template id="report_streamline_ame_item_consumption_by_site">
-	    <t t-call="report.html_container">
-	        <t t-call="report.internal_layout">
-	            <div class="page">
-	                <h2>Item Consumption By Site</h2>
-	
-	                <div class="row mt32">
-	                    <div class="col-xs-3">
-	                        <strong>Company</strong>:<br/>
-	                        <span t-esc="res_company.name"/>
-	                    </div>
-	                    <div class="col-xs-3">
-	                        <strong>Print Date</strong>:<br/>
-	                        <span t-esc="time.strftime('%d-%m-%Y', time.gmtime())"/>
-	                    </div>
-	                </div>
-	                
-	                <table class="table table-condensed" style="page-break-inside:auto;">
-	                    <thead>
-	                    	<tr>
-		                        <th style="border-top: none !important"><strong>Product Code</strong></th>
-		                        <th style="border-top: none !important"><strong>Product Description</strong></th>
-		                        <th style="border-top: none !important"><strong>Delivered From</strong></th>
-		                        <th style="border-top: none !important"><strong>Delivered To</strong></th>
-		                        <th style="border-top: none !important"><strong>Delivered Date</strong></th>
-		                        <th style="border-top: none !important"><strong>Delivered Qty to Site</strong></th>
-		                        <th style="border-top: none !important"><strong>Returned Date</strong></th>
-		                        <th style="border-top: none !important"><strong>Returned Qty to HQ</strong></th>
-	                        </tr>
-	                    </thead>
-	                    <tbody>
-	                        <tr t-foreach="get_item_consumption_by_site()" t-as="line_ids" style="page-break-inside:avoid; page-break-after:auto;">
-	                            <td>
-	                                <span t-esc="line_ids['default_code']"/>
-	                            </td>
-	                            <td>
-	                                <span t-esc="line_ids['description']"/>
-	                            </td>
-	                            <td>
-	                                <span t-esc="line_ids['delivered_from']"/>
-	                            </td>
-	                            <td>
-	                                <span t-esc="line_ids['delivered_to']"/>
-	                            </td>
-	                            <td>
-	                                <span t-esc="line_ids['delivered_date']"/>
-	                            </td>
-	                            <td class="text-center">
-	                                <span t-esc="line_ids['delivered_qty_to_site']"/>
-	                            </td>
-	                            <td>
-	                                <span t-esc="line_ids['returned_date']"/>
-	                            </td>
-	                            <td class="text-center">
-	                                <span t-esc="line_ids['returned_qty_to_hq']"/>
-	                            </td>
-	                        </tr>
-	                    </tbody>
-	                </table>
-	            </div>
-	        </t>
-	    </t>
-	</template>
+	<data>
+		<template id="report_streamline_ame_item_consumption_by_site">
+			<t t-call="streamline_ame_modules.streamline_ame_custom_report_header" />
+			<div class="page">
+				<h2>Item Consumption By Site</h2>
 
-</data>
+				<div class="row mt32">
+					<div class="col-xs-3">
+						<strong>Company</strong>
+						:
+						<br />
+						<span t-esc="res_company.name" />
+					</div>
+					<div class="col-xs-3">
+						<strong>Print Date</strong>
+						:
+						<br />
+						<span t-esc="time.strftime('%d-%m-%Y', time.gmtime())" />
+					</div>
+				</div>
+
+				<table class="table table-condensed" style="page-break-inside:auto;">
+					<thead>
+						<tr>
+							<th style="border-top: none !important">
+								<strong>Product Code</strong>
+							</th>
+							<th style="border-top: none !important">
+								<strong>Product Description</strong>
+							</th>
+							<th style="border-top: none !important">
+								<strong>Delivered From</strong>
+							</th>
+							<th style="border-top: none !important">
+								<strong>Delivered To</strong>
+							</th>
+							<th style="border-top: none !important">
+								<strong>Delivered Date</strong>
+							</th>
+							<th style="border-top: none !important">
+								<strong>Delivered Qty to Site</strong>
+							</th>
+							<th style="border-top: none !important">
+								<strong>Returned Date</strong>
+							</th>
+							<th style="border-top: none !important">
+								<strong>Returned Qty to HQ</strong>
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr t-foreach="get_item_consumption_by_site()" t-as="line_ids"
+							style="page-break-inside:avoid; page-break-after:auto;">
+							<td>
+								<span t-esc="line_ids['default_code']" />
+							</td>
+							<td>
+								<span t-esc="line_ids['description']" />
+							</td>
+							<td>
+								<span t-esc="line_ids['delivered_from']" />
+							</td>
+							<td>
+								<span t-esc="line_ids['delivered_to']" />
+							</td>
+							<td>
+								<span t-esc="line_ids['delivered_date']" />
+							</td>
+							<td class="text-center">
+								<span t-esc="line_ids['delivered_qty_to_site']" />
+							</td>
+							<td>
+								<span t-esc="line_ids['returned_date']" />
+							</td>
+							<td class="text-center">
+								<span t-esc="line_ids['returned_qty_to_hq']" />
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</template>
+
+	</data>
 </openerp>

@@ -1,72 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
-<data>
-	<template id="report_streamline_ame_ordered_vs_delivery_qty">
-	    <t t-call="report.html_container">
-	        <t t-call="report.internal_layout">
-	            <div class="page">
-	                <h2>Ordered Qty vs Delivery Qty</h2>
-	                <h5>Report description: to measure supplier performance</h5>
-	                <h5>Selection criteria: PO date</h5>
-	                <h5>Input: PO start date, PO end date</h5>
-	
-	                <div class="row mt32">
-	                    <div class="col-xs-3">
-	                        <strong>Company</strong>:<br/>
-	                        <span t-esc="res_company.name"/>
-	                    </div>
-	                    <div class="col-xs-3">
-	                        <strong>Print Date</strong>:<br/>
-	                        <span t-esc="time.strftime('%d-%m-%Y', time.gmtime())"/>
-	                    </div>
-	                </div>
-	                <div class="row mb32">
-	                    <div class="col-xs-3">
-	                        <strong>Start Period</strong>:<br/>
-	                        <span t-esc="time.strftime('%d-%m-%Y', time.strptime(data['form']['date_start'], '%Y-%m-%d'))"/> 
-	                    </div>
-	                    <div class="col-xs-3">
-	                        <strong>End Period</strong>:<br/>
-	                        <span t-esc="time.strftime('%d-%m-%Y', time.strptime(data['form']['date_end'], '%Y-%m-%d'))"/> 
-	                    </div>
-	                </div>
-	
-	                <table class="table table-condensed" style="font-size:10px;">
-	                    <thead>
-	                        <th><strong>Product Code</strong></th>
-	                        <th><strong>Product Description</strong></th>
-	                        <th><strong>Warehouse Location</strong></th>
-	                        <th><strong>PO#</strong></th>
-	                        <th><strong>PO Qty</strong></th>
-	                        <th><strong>Received Qty</strong></th>
-	                    </thead>
-	                    <tbody>
-	                        <tr t-foreach="get_data_summary(data['form'])" t-as="line_ids">
-	                            <td>
-	                                <span t-esc="line_ids['prod_code']"/>
-	                            </td>
-	                            <td>
-	                                <span t-esc="line_ids['prod_description']"/>
-	                            </td>
-	                            <td>
-	                                <span t-esc="line_ids['location_name']"/>
-	                            </td>
-	                            <td>
-	                                <span t-esc="line_ids['po_name']"/>
-	                            </td>
-	                            <td class="text-center">
-	                                <span t-esc="line_ids['po_qty']"/>
-	                            </td>
-	                            <td class="text-center">
-	                                <span t-esc="line_ids['received_qty']"/>
-	                            </td>
-	                        </tr>
-	                    </tbody>
-	                </table>
-	            </div>
-	        </t>
-	    </t>
-	</template>
+	<data>
+		<template id="report_streamline_ame_ordered_vs_delivery_qty">
+			<t t-call="streamline_ame_modules.streamline_ame_custom_report_header" />
+			<div class="page">
+				<h2>Ordered Qty vs Delivery Qty</h2>
+				<h5>Report description: to measure supplier performance</h5>
+				<h5>Selection criteria: PO date</h5>
+				<h5>Input: PO start date, PO end date</h5>
 
-</data>
+				<div class="row mt32">
+					<div class="col-xs-3">
+						<strong>Company</strong>
+						:
+						<br />
+						<span t-esc="res_company.name" />
+					</div>
+					<div class="col-xs-3">
+						<strong>Print Date</strong>
+						:
+						<br />
+						<span t-esc="time.strftime('%d-%m-%Y', time.gmtime())" />
+					</div>
+				</div>
+				<div class="row mb32">
+					<div class="col-xs-3">
+						<strong>Start Period</strong>
+						:
+						<br />
+						<span
+							t-esc="time.strftime('%d-%m-%Y', time.strptime(data['form']['date_start'], '%Y-%m-%d'))" />
+					</div>
+					<div class="col-xs-3">
+						<strong>End Period</strong>
+						:
+						<br />
+						<span
+							t-esc="time.strftime('%d-%m-%Y', time.strptime(data['form']['date_end'], '%Y-%m-%d'))" />
+					</div>
+				</div>
+
+				<table class="table table-condensed" style="font-size:10px;">
+					<thead>
+						<th>
+							<strong>Product Code</strong>
+						</th>
+						<th>
+							<strong>Product Description</strong>
+						</th>
+						<th>
+							<strong>Warehouse Location</strong>
+						</th>
+						<th>
+							<strong>PO#</strong>
+						</th>
+						<th>
+							<strong>PO Qty</strong>
+						</th>
+						<th>
+							<strong>Received Qty</strong>
+						</th>
+					</thead>
+					<tbody>
+						<tr t-foreach="get_data_summary(data['form'])" t-as="line_ids">
+							<td>
+								<span t-esc="line_ids['prod_code']" />
+							</td>
+							<td>
+								<span t-esc="line_ids['prod_description']" />
+							</td>
+							<td>
+								<span t-esc="line_ids['location_name']" />
+							</td>
+							<td>
+								<span t-esc="line_ids['po_name']" />
+							</td>
+							<td class="text-center">
+								<span t-esc="line_ids['po_qty']" />
+							</td>
+							<td class="text-center">
+								<span t-esc="line_ids['received_qty']" />
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</template>
+
+	</data>
 </openerp>

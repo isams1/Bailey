@@ -2,99 +2,121 @@
 <openerp>
 	<data>
 		<template id="report_saleorder_document2">
-			<t t-call="report.external_layout" />
-		        <div class="page">
-		            <div class="oe_structure"/>
-		            <div class="row">
-                		<span>Our Ref: </span>
-	                    <span t-field="o.client_order_ref"></span>
-		                <br />
-		                <br />
-	                    <span t-field="o.create_date" t-field-options='{"format": "dd/MM/y"}'></span>
-		                <br />
-		                <br />
-	                    <span t-field="o.partner_invoice_id.name"></span>
-		            </div>
-		            <div class="row">
-                		<div t-field="o.partner_invoice_id" 
-	                        t-field-options='{"widget": "contact", "fields": ["address"], "no_marker": true}'/>
-	                    <div t-field="o.partner_invoice_id" 
-	                        t-field-options='{"widget": "contact", "fields": ["phone"], "no_marker": true}'/>
-		            </div>
-		            <br />
-		            <div class="row">
-		            	Attn: <span t-field="o.partner_id.child_ids and o.partner_id.child_ids[0] or o.partner_id.name"/>
-		            </div>
-		            <br />
-		            <div class="row">
-	                    <span>Dear Sir,</span>
-	                </div>
-	                <br />
-	                <div class="row">
-                		<span style="font-weight:bold; text-decoration: underline;">SUBJECT: </span><span t-field="o.origin" style="font-weight:bold; text-decoration: underline;"/>
-	                </div>
-		            <br />
-		            <div class="row">
-		            	<span>With reference to above captioned, We are pleased to append our quote as follows:</span>
-	                </div>
-		            <br />
-					<div class="row">
-						<span>To Supply only</span>
-			            <table style="width: 100%;">
-			                <thead>
-			                    <tr>
-			                    	<th></th>
-			                        <th class="text-center" style="font-weight:normal"><span style="text-decoration: underline;">Description</span></th>
-			                        <th class="text-center" style="font-weight:normal"><span style="text-decoration: underline;">Quantity</span></th>
-			                        <th class="text-center" style="font-weight:normal"><span style="text-decoration: underline;">Unit</span></th>
-			                        <th class="text-center" style="font-weight:normal"><span style="text-decoration: underline;">Unit rate</span></th>
-			                        <th class="text-center" style="font-weight:normal"><span style="text-decoration: underline;">Amount</span></th>
-			                    </tr>
-			               </thead>
-			               <tbody>
-			               		<tr t-foreach="o.order_line" t-as="l">
-			               			<td>
-										<span t-esc="l_index + 1" />
-									</td>
-			                        <td>
-			                           <span t-field="l.product_id.name_template"/>
-			                        </td>
-			                        <td class="text-center">
-			                        	<span t-esc="int(l.product_uom_qty)"/>
-			                        </td>
-			                        <td class="text-center">
-			                        	<span t-field="l.product_id.product_tmpl_id.uom_id.name"/>
-			                        </td>
-			                        <td class="text-center">
-			                            $<span t-field="l.price_unit"/>
-			                        </td>
-			                        <td class="text-center">
-			                        	$<span t-field="l.price_subtotal"/>
-			                        </td>
-			                    </tr>			               
-			                </tbody>
-			                <tfoot>
-			                	<tr style="height: 10px;"/>
-			                	<tr style="height: 10px;"/>
-			                	<tr>
-		                            <td colspan="5" style="border-top: none;"><strong>TOTAL AMOUNT:</strong></td>
-		                            <td class="text-center" style="border-bottom: double; border-top: thin solid;">
-			                        	<strong>$<span t-field="o.amount_untaxed"/></strong>
-		                            </td>
-		                        </tr>
-			                </tfoot>
-			            </table>
-			        </div>
-		        </div>
+			<t t-call="streamline_ame_modules.streamline_ame_custom_report_header" />
+			<div class="page">
+				<div class="oe_structure" />
+				<div class="row">
+					<span>Our Ref: </span>
+					<span t-field="o.client_order_ref"></span>
+					<br />
+					<br />
+					<span t-field="o.create_date" t-field-options='{"format": "dd/MM/y"}'></span>
+					<br />
+					<br />
+					<span t-field="o.partner_invoice_id.name"></span>
+				</div>
+				<div class="row">
+					<div t-field="o.partner_invoice_id"
+						t-field-options='{"widget": "contact", "fields": ["address"], "no_marker": true}' />
+					<div t-field="o.partner_invoice_id"
+						t-field-options='{"widget": "contact", "fields": ["phone"], "no_marker": true}' />
+				</div>
+				<br />
+				<div class="row">
+					Attn:
+					<span
+						t-field="o.partner_id.child_ids and o.partner_id.child_ids[0] or o.partner_id.name" />
+				</div>
+				<br />
+				<div class="row">
+					<span>Dear Sir,</span>
+				</div>
+				<br />
+				<div class="row">
+					<span style="font-weight:bold; text-decoration: underline;">SUBJECT: </span>
+					<span t-field="o.origin" style="font-weight:bold; text-decoration: underline;" />
+				</div>
+				<br />
+				<div class="row">
+					<span>With reference to above captioned, We are pleased to append
+						our quote as follows:</span>
+				</div>
+				<br />
+				<div class="row">
+					<span>To Supply only</span>
+					<table style="width: 100%;">
+						<thead>
+							<tr>
+								<th></th>
+								<th class="text-center" style="font-weight:normal">
+									<span style="text-decoration: underline;">Description</span>
+								</th>
+								<th class="text-center" style="font-weight:normal">
+									<span style="text-decoration: underline;">Quantity</span>
+								</th>
+								<th class="text-center" style="font-weight:normal">
+									<span style="text-decoration: underline;">Unit</span>
+								</th>
+								<th class="text-center" style="font-weight:normal">
+									<span style="text-decoration: underline;">Unit rate</span>
+								</th>
+								<th class="text-center" style="font-weight:normal">
+									<span style="text-decoration: underline;">Amount</span>
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr t-foreach="o.order_line" t-as="l">
+								<td>
+									<span t-esc="l_index + 1" />
+								</td>
+								<td>
+									<span t-field="l.product_id.name_template" />
+								</td>
+								<td class="text-center">
+									<span t-esc="int(l.product_uom_qty)" />
+								</td>
+								<td class="text-center">
+									<span t-field="l.product_id.product_tmpl_id.uom_id.name" />
+								</td>
+								<td class="text-center">
+									$
+									<span t-field="l.price_unit" />
+								</td>
+								<td class="text-center">
+									$
+									<span t-field="l.price_subtotal" />
+								</td>
+							</tr>
+						</tbody>
+						<tfoot>
+							<tr style="height: 10px;" />
+							<tr style="height: 10px;" />
+							<tr>
+								<td colspan="5" style="border-top: none;">
+									<strong>TOTAL AMOUNT:</strong>
+								</td>
+								<td class="text-center" style="border-bottom: double; border-top: thin solid;">
+									<strong>
+										$
+										<span t-field="o.amount_untaxed" />
+									</strong>
+								</td>
+							</tr>
+						</tfoot>
+					</table>
+				</div>
+			</div>
 		</template>
-		
+
 		<template id="report_saleorder2">
-		    <t t-call="report.html_container">
-		        <t t-foreach="doc_ids" t-as="doc_id">
-		            <t t-raw="translate_doc(doc_id, doc_model, 'partner_id.lang', 'streamline_ame_modules.report_saleorder_document2')"/>
-		        </t>
-		    </t>
+			<t t-call="report.html_container">
+				<t t-foreach="doc_ids" t-as="doc_id">
+					<t
+						t-raw="translate_doc(doc_id, doc_model, 'partner_id.lang', 'streamline_ame_modules.report_saleorder_document2')" />
+				</t>
+			</t>
 		</template>
-	
+
 	</data>
 </openerp>

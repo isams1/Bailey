@@ -11,3 +11,4 @@ import purchase
 import partner
 from partner import models
 from .partner.models.partner import update_res_partner_is_company
+import base
