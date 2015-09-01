@@ -7,9 +7,12 @@
             <field name="priority">30</field>
             <field name="inherit_id" ref="product.product_template_only_form_view" />
             <field name="arch" type="xml">
+            	<xpath expr="/form/sheet/notebook/page[@string='Accounting']/group[1]" position="replace" />
                 <field name="default_code" position="attributes">
                 	<attribute name="string">Product code</attribute>
-                	<!-- <attribute name="required">1</attribute>  -->
+                </field>
+                <field name="list_price" position="after">
+                	<field name="categ_id" string="Product Category" />
                 </field>
                 <xpath expr="//field[@name='description']" position="before">
                 	<div style="width: 100%; float: left; display: block">
