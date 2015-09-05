@@ -33,6 +33,16 @@
          />
          
          <report
+            id="streamline_ame_report_invoice_summary_xls_id"
+            string="Invoices Summary"
+            model="account.invoice"
+            report_type="xls"
+            name="report_streamline_ame_invoice_summary_xls"
+            file="Invoice_Summary"
+            menu="False"
+         />
+         
+         <report
             id="streamline_ame_report_stock_report_id"
             string="Stock Report"
             model="account.invoice"

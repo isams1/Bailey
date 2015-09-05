@@ -11,7 +11,7 @@
 			</t>
 
 			<div class="header">
-				<div class="row">
+				<div class="row" id="table_header">
 					<div class="col-xs-3" style=" width: 22%;" />
 					<div style="position: relative;min-height: 1px;padding-right: 15px;padding-left: 15px;float: left;">
 						<t t-if="company.letterhead == None">
