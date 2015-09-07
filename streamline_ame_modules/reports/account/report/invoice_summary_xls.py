@@ -10,7 +10,7 @@ from openerp.addons.report_xls.utils import rowcol_to_cell, _render
 from openerp.tools.translate import translate, _
 import logging
 from openerp.api import Environment
-from openerp.addons.streamline_ame_modules.reports.__init__ import streamline_xls_styles
+from openerp.addons.streamline_ame_modules.reports.streamline import streamline_xls_styles
 _logger = logging.getLogger(__name__)
 
 _ir_translation_name = 'report.streamline.ame.invoice.summary.xls'

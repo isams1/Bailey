@@ -83,6 +83,16 @@
          />
          
          <report
+            id="streamline_ame_report_ordered_vs_delivery_qty_xls"
+            string="Ordered Qty vs Delivery Qty"
+            model="stock.picking"
+            report_type="xls"
+            name="report_streamline_ame_ordered_vs_delivery_qty_xls"
+            file="Ordered_Qty_vs_Delivery_Qty"
+            menu="False"
+         />
+         
+         <report
             id="streamline_ame_report_inventory_listing"
             string="Inventory Listings"
             model="stock.picking"

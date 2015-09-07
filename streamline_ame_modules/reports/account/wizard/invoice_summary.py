@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from openerp import models, fields
-from openerp.addons.streamline_ame_modules.reports.__init__ import REPORT_FORMAT
+from openerp.addons.streamline_ame_modules.reports.streamline import REPORT_FORMAT
 
 
 class streamline_ame_report_wizard_invoice_summary(models.TransientModel):
