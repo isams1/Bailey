@@ -15,7 +15,7 @@ _logger = logging.getLogger(__name__)
 
 _ir_translation_name = 'report.streamline.ame.invoice.summary.xls'
 
-WANTED_LIST = []
+WANTED_LIST = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M']
 
 TEMPLATE_CHANGES = {}
 
@@ -33,6 +33,7 @@ class report_streamline_ame_invoice_summary_xls_parser(report_sxw.rml_parse):
             'template_changes': template_changes,
             '_': self._,
             'get_data_wizard': self.get_data_wizard,
+            'get_invoice_summary': self._get_invoice_summary
         })
 
     def _(self, src):
@@ -51,6 +52,84 @@ class report_streamline_ame_invoice_summary_xls_parser(report_sxw.rml_parse):
     def get_data_wizard(self):
         data = self.get_data()
         return data
+    
+    def _get_invoice_summary(self):
+        form = self.context['data']['form']
+        a = form['date_start']
+        b = form['date_end']
+        
+        self.cr.execute('''
+        select to_char(ai.date_invoice, 'dd/MM/yyyy') inv_date, ai."number" inv_no, pp.default_code stock_code, pt.description item_decs, tmp_picking_po.picking_id,
+            substring(sl.complete_name from (length('Physical Locations / ') + strpos(sl.complete_name, 'Physical Locations / '))) location_stock, rp.name co_name,
+          (
+                select max(sp.name)
+                from sale_order so
+                inner join sale_order_line sol on so.id = sol.order_id
+                inner join procurement_group pg on so.procurement_group_id = pg.id
+                inner join stock_picking sp on pg.id = sp.group_id
+            where sol.product_id = ail.product_id
+            ) do_name, 
+            po.name po_name,    pol.price_unit unit_price,
+          (select (COALESCE((select sum(COALESCE(product_qty,0)) 
+                from stock_move 
+                where product_id = sm.product_id and state in ('done', 'transit') and location_dest_id = sm.location_dest_id and product_qty is not null group by product_id), 0) - 
+            COALESCE((select sum(COALESCE(product_qty,0)) 
+                from stock_move 
+                where product_id = sm.product_id and state in ('done', 'transit') and location_id = sm.location_dest_id and product_qty is not null group by product_id), 0)) as qty),
+        
+            pol.price_unit * (select (COALESCE((select sum(COALESCE(product_qty,0)) 
+                from stock_move 
+                where product_id = sm.product_id and state in ('done', 'transit') and location_dest_id = sm.location_dest_id and product_qty is not null group by product_id), 0) - 
+            COALESCE((select sum(COALESCE(product_qty,0)) 
+                from stock_move 
+                where product_id = sm.product_id and state in ('done', 'transit') and location_id = sm.location_dest_id and product_qty is not null group by product_id), 0)) as qty) as amount,
+        
+            0.07 * pol.price_unit * (select (COALESCE((select sum(COALESCE(product_qty,0)) 
+                from stock_move 
+                where product_id = sm.product_id and state in ('done', 'transit') and location_dest_id = sm.location_dest_id and product_qty is not null group by product_id), 0) - 
+            COALESCE((select sum(COALESCE(product_qty,0)) 
+                from stock_move 
+                where product_id = sm.product_id and state in ('done', 'transit') and location_id = sm.location_dest_id and product_qty is not null group by product_id), 0)) as qty) as gst,
+        
+           (
+                    pol.price_unit * (select (COALESCE((select sum(COALESCE(product_qty,0)) 
+                from stock_move 
+                where product_id = sm.product_id and state in ('done', 'transit') and location_dest_id = sm.location_dest_id and product_qty is not null group by product_id), 0) - 
+            COALESCE((select sum(COALESCE(product_qty,0)) 
+                from stock_move 
+                where product_id = sm.product_id and state in ('done', 'transit') and location_id = sm.location_dest_id and product_qty is not null group by product_id), 0)) as qty)
+                ) - 
+            (
+                    0.07 * pol.price_unit * (select (COALESCE((select sum(COALESCE(product_qty,0)) 
+                from stock_move 
+                where product_id = sm.product_id and state in ('done', 'transit') and location_dest_id = sm.location_dest_id and product_qty is not null group by product_id), 0) - 
+            COALESCE((select sum(COALESCE(product_qty,0)) 
+                from stock_move 
+                where product_id = sm.product_id and state in ('done', 'transit') and location_id = sm.location_dest_id and product_qty is not null group by product_id), 0)) as qty)
+                ) as total
+        from account_invoice ai
+        inner join account_invoice_line ail on ai.id = ail.invoice_id
+        INNER JOIN product_product pp on ail.product_id = pp.id
+        INNER JOIN product_template pt on pp.product_tmpl_id = pt.id
+        inner join purchase_invoice_rel pir on pir.invoice_id = ai.id
+        inner join purchase_order po on pir.purchase_id = po.id
+        inner join purchase_order_line pol on po.id = pol.order_id and pol.product_id = ail.product_id
+        left join (
+            SELECT max(picking_id) picking_id, po.id po_id
+          FROM stock_picking p, stock_move m, purchase_order_line pol, purchase_order po
+          WHERE po.id = pol.order_id and pol.id = m.purchase_line_id and m.picking_id = p.id
+          GROUP BY po.id
+        ) tmp_picking_po on tmp_picking_po.po_id = po.id
+        inner join stock_move sm on sm.picking_id = tmp_picking_po.picking_id and ail.product_id = sm.product_id
+        inner join stock_location sl on sl.id = sm.location_dest_id
+        inner join res_partner rp on po.partner_id = rp.id
+        where ai.type='in_invoice'
+        and ai.state='paid'
+        and ai.date_invoice::DATE BETWEEN %s::DATE and %s::DATE
+        order by inv_no
+        ''',(a, b))
+        res = self.cr.dictfetchall()
+        return res
 
 
 class report_streamline_ame_invoice_summary_xls(report_xls):
@@ -88,200 +167,57 @@ class report_streamline_ame_invoice_summary_xls(report_xls):
 
         # XLS Template
         self.col_specs_template = {
-            'move': {
-                'header': [1, 20, 'text', _render("_('Entry')")],
-                'lines': [1, 0, 'text', _render("line.move_id.name or ''")],
+            'A': {
+                'header': [1, 20, 'text', _render("_('Inv Date')")],
+                'lines': [1, 0, 'text', _render("line.get('inv_date', '')")],
                 'totals': [1, 0, 'text', None]},
-            'name': {
-                'header': [1, 42, 'text', _render("_('Name')")],
-                'lines': [1, 0, 'text', _render("line.name or ''")],
+            'B': {
+                'header': [1, 42, 'text', _render("_('Inv No')")],
+                'lines': [1, 0, 'text', _render("line.get('inv_no', '')")],
                 'totals': [1, 0, 'text', None]},
-            'ref': {
-                'header': [1, 42, 'text', _render("_('Reference')")],
-                'lines': [1, 0, 'text', _render("line.ref or ''")],
+            'C': {
+                'header': [1, 42, 'text', _render("_('Stock Code')")],
+                'lines': [1, 0, 'text', _render("line.get('stock_code', '')")],
                 'totals': [1, 0, 'text', None]},
-            'date': {
-                'header': [1, 13, 'text', _render("_('Effective Date')")],
-                'lines': [1, 0, 'date',
-                          _render("datetime.strptime(line.date,'%Y-%m-%d')"),
-                          None, self.aml_cell_style_date],
+            'D': {
+                'header': [1, 13, 'text', _render("_('Item Description')")],
+                'lines': [1, 0, 'text', _render("line.get('item_decs', '')")],
                 'totals': [1, 0, 'text', None]},
-            'period': {
-                'header': [1, 12, 'text', _render("_('Period')")],
-                'lines':
-                [1, 0, 'text',
-                 _render("line.period_id.code or line.period_id.name")],
+            'E': {
+                'header': [1, 12, 'text', _render("_('Location')")],
+                'lines': [1, 0, 'text', _render("line.get('location_stock', '')")],
                 'totals': [1, 0, 'text', None]},
-            'partner': {
-                'header': [1, 36, 'text', _render("_('Partner')")],
-                'lines':
-                [1, 0, 'text',
-                 _render("line.partner_id and line.partner_id.name or ''")],
+            'F': {
+                'header': [1, 36, 'text', _render("_('CO Name')")],
+                'lines': [1, 0, 'text', _render("line.get('co_name', '')")],
                 'totals': [1, 0, 'text', None]},
-            'partner_ref': {
-                'header': [1, 36, 'text', _render("_('Partner Reference')")],
-                'lines':
-                [1, 0, 'text',
-                 _render("line.partner_id and line.partner_id.ref or ''")],
+            'G': {
+                'header': [1, 36, 'text', _render("_('DO Name')")],
+                'lines': [1, 0, 'text', _render("line.get('do_name', '')")],
                 'totals': [1, 0, 'text', None]},
-            'account': {
-                'header': [1, 12, 'text', _render("_('Account')")],
-                'lines': [1, 0, 'text', _render("line.account_id.code")],
+            'H': {
+                'header': [1, 12, 'text', _render("_('PO No')")],
+                'lines': [1, 0, 'text', _render("line.get('po_name', '')")],
                 'totals': [1, 0, 'text', None]},
-            'date_maturity': {
-                'header': [1, 13, 'text', _render("_('Maturity Date')")],
-                'lines':
-                [1, 0,
-                 _render("line.date_maturity and 'date' or 'text'"),
-                 _render(
-                     "line.date_maturity"
-                     " and datetime.strptime(line.date_maturity,'%Y-%m-%d')"
-                     " or None"),
-                    None, self.aml_cell_style_date],
+            'I': {
+                'header': [1, 13, 'text', _render("_('Unit Price')")],
+                'lines': [1, 0, 'number', _render("line.get('unit_price', None)"), None, self.aml_cell_style_decimal],
                 'totals': [1, 0, 'text', None]},
-            'debit': {
-                'header': [1, 18, 'text', _render("_('Debit')"), None,
-                           self.rh_cell_style_right],
-                'lines': [1, 0, 'number', _render("line.debit"), None,
-                          self.aml_cell_style_decimal],
-                'totals': [1, 0, 'number', None, _render("debit_formula"),
-                           self.rt_cell_style_decimal]},
-            'credit': {
-                'header': [1, 18, 'text', _render("_('Credit')"), None,
-                           self.rh_cell_style_right],
-                'lines': [1, 0, 'number', _render("line.credit"), None,
-                          self.aml_cell_style_decimal],
-                'totals': [1, 0, 'number', None, _render("credit_formula"),
-                           self.rt_cell_style_decimal]},
-            'balance': {
-                'header': [1, 18, 'text', _render("_('Balance')"), None,
-                           self.rh_cell_style_right],
-                'lines': [1, 0, 'number', None, _render("bal_formula"),
-                          self.aml_cell_style_decimal],
-                'totals': [1, 0, 'number', None, _render("bal_formula"),
-                           self.rt_cell_style_decimal]},
-            'reconcile': {
-                'header': [1, 12, 'text', _render("_('Rec.')"), None,
-                           self.rh_cell_style_center],
-                'lines': [1, 0, 'text',
-                          _render("line.reconcile_id.name or ''"), None,
-                          self.aml_cell_style_center],
+            'J': {
+                'header': [1, 18, 'text', _render("_('Balance qty')")],
+                 'lines': [1, 0, 'number', _render("line.get('qty', None)"), None, self.aml_cell_style_decimal],
                 'totals': [1, 0, 'text', None]},
-            'reconcile_partial': {
-                'header': [1, 12, 'text', _render("_('Part. Rec.')"), None,
-                           self.rh_cell_style_center],
-                'lines': [1, 0, 'text',
-                          _render("line.reconcile_partial_id.name or ''"),
-                          None, self.aml_cell_style_center],
+            'K': {
+                'header': [1, 18, 'text', _render("_('Amount')")],
+                 'lines': [1, 0, 'number', _render("line.get('amount', None)"), None, self.aml_cell_style_decimal],
                 'totals': [1, 0, 'text', None]},
-            'tax_code': {
-                'header': [1, 12, 'text', _render("_('Tax Code')"), None,
-                           self.rh_cell_style_center],
-                'lines': [1, 0, 'text', _render("line.tax_code_id.code or ''"),
-                          None, self.aml_cell_style_center],
+            'L': {
+                'header': [1, 18, 'text', _render("_('GST')")],
+                  'lines': [1, 0, 'number', _render("line.get('gst', None)"), None, self.aml_cell_style_decimal],
                 'totals': [1, 0, 'text', None]},
-            'tax_amount': {
-                'header': [1, 18, 'text', _render("_('Tax/Base Amount')"),
-                           None, self.rh_cell_style_right],
-                'lines': [1, 0, 'number', _render("line.tax_amount"), None,
-                          self.aml_cell_style_decimal],
-                'totals': [1, 0, 'text', None]},
-            'amount_currency': {
-                'header': [1, 18, 'text', _render("_('Am. Currency')"), None,
-                           self.rh_cell_style_right],
-                'lines':
-                [1, 0,
-                 _render("line.amount_currency and 'number' or 'text'"),
-                 _render("line.amount_currency or None"),
-                 None, self.aml_cell_style_decimal],
-                'totals': [1, 0, 'text', None]},
-            'currency_name': {
-                'header': [1, 6, 'text', _render("_('Curr.')"), None,
-                           self.rh_cell_style_center],
-                'lines':
-                [1, 0, 'text',
-                 _render("line.currency_id and line.currency_id.name or ''"),
-                 None, self.aml_cell_style_center],
-                'totals': [1, 0, 'text', None]},
-            'journal': {
-                'header': [1, 12, 'text', _render("_('Journal')")],
-                'lines': [1, 0, 'text', _render("line.journal_id.code or ''")],
-                'totals': [1, 0, 'text', None]},
-            'company_currency': {
-                'header': [1, 10, 'text', _render("_('Comp. Curr.')")],
-                'lines': [1, 0, 'text',
-                          _render("line.company_id.currency_id.name or ''"),
-                          None, self.aml_cell_style_center],
-                'totals': [1, 0, 'text', None]},
-            'analytic_account': {
-                'header': [1, 36, 'text', _render("_('Analytic Account')")],
-                'lines': [1, 0, 'text',
-                          _render("line.analytic_account_id.code or ''")],
-                'totals': [1, 0, 'text', None]},
-            'product': {
-                'header': [1, 36, 'text', _render("_('Product')")],
-                'lines': [1, 0, 'text', _render("line.product_id.name or ''")],
-                'totals': [1, 0, 'text', None]},
-            'product_ref': {
-                'header': [1, 36, 'text', _render("_('Product Reference')")],
-                'lines': [1, 0, 'text',
-                          _render("line.product_id.default_code or ''")],
-                'totals': [1, 0, 'text', None]},
-            'product_uom': {
-                'header': [1, 20, 'text', _render("_('Unit of Measure')")],
-                'lines': [1, 0, 'text',
-                          _render("line.product_uom_id.name or ''")],
-                'totals': [1, 0, 'text', None]},
-            'quantity': {
-                'header': [1, 8, 'text', _render("_('Qty')"), None,
-                           self.rh_cell_style_right],
-                'lines': [1, 0,
-                          _render("line.quantity and 'number' or 'text'"),
-                          _render("line.quantity or None"), None,
-                          self.aml_cell_style_decimal],
-                'totals': [1, 0, 'text', None]},
-            'statement': {
-                'header': [1, 20, 'text', _render("_('Statement')")],
-                'lines':
-                [1, 0, 'text',
-                 _render("line.statement_id and line.statement_id.name or ''")
-                 ],
-                'totals': [1, 0, 'text', None]},
-            'invoice': {
-                'header': [1, 20, 'text', _render("_('Invoice')")],
-                'lines':
-                [1, 0, 'text',
-                 _render("line.invoice and line.invoice.number or ''")],
-                'totals': [1, 0, 'text', None]},
-            'amount_residual': {
-                'header': [1, 18, 'text', _render("_('Residual Amount')"),
-                           None, self.rh_cell_style_right],
-                'lines':
-                [1, 0,
-                 _render("line.amount_residual and 'number' or 'text'"),
-                 _render("line.amount_residual or None"),
-                 None, self.aml_cell_style_decimal],
-                'totals': [1, 0, 'text', None]},
-            'amount_residual_currency': {
-                'header': [1, 18, 'text', _render("_('Res. Am. in Curr.')"),
-                           None, self.rh_cell_style_right],
-                'lines':
-                [1, 0,
-                 _render(
-                     "line.amount_residual_currency and 'number' or 'text'"),
-                 _render("line.amount_residual_currency or None"),
-                 None, self.aml_cell_style_decimal],
-                'totals': [1, 0, 'text', None]},
-            'narration': {
-                'header': [1, 42, 'text', _render("_('Notes')")],
-                'lines': [1, 0, 'text',
-                          _render("line.move_id.narration or ''")],
-                'totals': [1, 0, 'text', None]},
-            'blocked': {
-                'header': [1, 4, 'text', _('Lit.'),
-                           None, self.rh_cell_style_right],
-                'lines': [1, 0, 'text', _render("line.blocked and 'x' or ''"),
-                          None, self.aml_cell_style_center],
+            'M': {
+                'header': [1, 12, 'text', _render("_('Total Amount')")],
+                   'lines': [1, 0, 'number', _render("line.get('total', None)"), None, self.aml_cell_style_decimal],
                 'totals': [1, 0, 'text', None]},
         }
 
@@ -292,14 +228,6 @@ class report_streamline_ame_invoice_summary_xls(report_xls):
         _ = _p._
         
         r_data = _p.get_data_wizard()
-
-        debit_pos = 'debit' in wanted_list and wanted_list.index('debit')
-        credit_pos = 'credit' in wanted_list and wanted_list.index('credit')
-        if not (credit_pos and debit_pos) and 'balance' in wanted_list:
-            raise orm.except_orm(
-                _('Customisation Error!'),
-                _("The 'Balance' field is a calculated XLS field requiring \
-                the presence of the 'Debit' and 'Credit' fields !"))
 
         # report_name = objects[0]._description or objects[0]._name
         report_name = _("Invoice Summary")
@@ -384,40 +312,17 @@ class report_streamline_ame_invoice_summary_xls(report_xls):
             ws, row_pos, row_data, row_style=self.rh_cell_style,
             set_column_size=True)
         ws.set_horz_split_pos(row_pos)
-
-        # account move lines
+        
+        objects = _p.get_invoice_summary()
+        
+        # lines
         for line in objects:
-            debit_cell = rowcol_to_cell(row_pos, debit_pos)
-            credit_cell = rowcol_to_cell(row_pos, credit_pos)
-            bal_formula = debit_cell + '-' + credit_cell
-            _logger.debug('dummy call - %s', bal_formula)
             c_specs = map(
                 lambda x: self.render(x, self.col_specs_template, 'lines'),
                 wanted_list)
             row_data = self.xls_row_template(c_specs, [x[0] for x in c_specs])
             row_pos = self.xls_write_row(
                 ws, row_pos, row_data, row_style=self.aml_cell_style)
-
-        # Totals
-        aml_cnt = len(objects)
-        debit_start = rowcol_to_cell(row_pos - aml_cnt, debit_pos)
-        debit_stop = rowcol_to_cell(row_pos - 1, debit_pos)
-        debit_formula = 'SUM(%s:%s)' % (debit_start, debit_stop)
-        _logger.debug('dummy call - %s', debit_formula)
-        credit_start = rowcol_to_cell(row_pos - aml_cnt, credit_pos)
-        credit_stop = rowcol_to_cell(row_pos - 1, credit_pos)
-        credit_formula = 'SUM(%s:%s)' % (credit_start, credit_stop)
-        _logger.debug('dummy call - %s', credit_formula)
-        debit_cell = rowcol_to_cell(row_pos, debit_pos)
-        credit_cell = rowcol_to_cell(row_pos, credit_pos)
-        bal_formula = debit_cell + '-' + credit_cell
-        _logger.debug('dummy call - %s', bal_formula)
-        c_specs = map(
-            lambda x: self.render(x, self.col_specs_template, 'totals'),
-            wanted_list)
-        row_data = self.xls_row_template(c_specs, [x[0] for x in c_specs])
-        row_pos = self.xls_write_row(
-            ws, row_pos, row_data, row_style=self.rt_cell_style_right)
 
 report_streamline_ame_invoice_summary_xls('report.report_streamline_ame_invoice_summary_xls',
               'account.invoice',
