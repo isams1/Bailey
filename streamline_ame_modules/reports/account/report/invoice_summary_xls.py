@@ -264,7 +264,7 @@ class report_streamline_ame_invoice_summary_xls(report_xls):
         row_pos = self.xls_write_row(ws, row_pos, row_data, row_style=cell_style)
         
         cell_style = xlwt.easyxf()
-        c_specs = [('des4', 1, 0, 'text', 'Unit price comes from purchase order datan')]
+        c_specs = [('des4', 1, 0, 'text', 'Unit price comes from purchase order data')]
         row_data = self.xls_row_template(c_specs, ['des4'])
         row_pos = self.xls_write_row(ws, row_pos, row_data, row_style=cell_style)
         row_pos += 1

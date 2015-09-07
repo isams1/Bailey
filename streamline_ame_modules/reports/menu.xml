@@ -53,6 +53,16 @@
          />
          
          <report
+            id="streamline_ame_report_stock_report_xls_id"
+            string="Stock Report"
+            model="account.invoice"
+            report_type="xls"
+            name="report_streamline_ame_stock_report_xls"
+            file="Stock_Report"
+            menu="False"
+         />
+         
+         <report
             id="streamline_ame_report_product_aging_id"
             string="Product Aging"
             model="stock.picking"

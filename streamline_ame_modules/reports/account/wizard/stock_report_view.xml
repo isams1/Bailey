@@ -11,6 +11,7 @@
                     <group col="4" string="Monthly">
                         <field name="report_month"/>
                         <field name="report_year"/>
+                        <field name="report_format" widget="selection" required='1'/>
                     </group>
                     <footer>
                         <button name="print_report" type="object" string="Print Report" class="oe_highlight"/>
