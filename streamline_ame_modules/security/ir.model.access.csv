@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_project_project,streamline.ame.project.project,model_streamline_ame_project_project,purchase.group_purchase_user,1,1,1,0
+access_material_take_off,streamline.ame.material.take.off,model_streamline_ame_material_take_off,purchase.group_purchase_user,1,1,1,0
+access_material_take_off_line,streamline.ame.material.take.off.line,model_streamline_ame_material_take_off_line,purchase.group_purchase_user,1,1,1,1

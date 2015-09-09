@@ -37,6 +37,7 @@
         'partner/views/partner_view.xml',
         'base/views/company_view.xml',
         'view/templates.xml',
+        'security/ir.model.access.csv',
     ],
     'pre_init_hook': 'update_null_and_slash_codes',
     'demo' : [],

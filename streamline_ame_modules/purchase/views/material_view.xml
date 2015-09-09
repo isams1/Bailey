@@ -9,7 +9,7 @@
                 	<sheet>
 	                   <group>
 	                       <group>
-	                           <field name="name"/>
+	                           <field name="project_no"/>
 	                       </group>
 	                       <group>
 	                           <field name="start_date"/>
