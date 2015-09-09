@@ -32,6 +32,8 @@
         'products/views/product_view.xml',
         'sales/views/sale_order.xml',
         'purchase/views/purchase_view.xml',
+        'purchase/views/material_view.xml',
+        'purchase/views/menu.xml',
         'partner/views/partner_view.xml',
         'base/views/company_view.xml',
         'view/templates.xml',

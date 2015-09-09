@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<openerp>
+	<data>
+		<menuitem action="action_streamline_ame_material_take_off_list" id="menu_streamline_ame_material_take_off_list" 
+			parent="purchase.menu_procurement_management" sequence="1"/>
+	</data>
+</openerp>

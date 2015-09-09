@@ -1,0 +1,64 @@
+<?xml version="1.0" ?>
+<openerp>
+	<data>
+		<record id="view_streamline_ame_material_take_off_form" model="ir.ui.view">
+            <field name="name">streamline.ame.material.take.off.form</field>
+            <field name="model">streamline.ame.material.take.off</field>
+            <field name="arch" type="xml">
+                <form string="Material Take Off Screen">
+                	<sheet>
+	                   <group>
+	                       <group>
+	                           <field name="name"/>
+	                       </group>
+	                       <group>
+	                           <field name="start_date"/>
+	                           <field name="end_date"/>
+	                       </group>
+	                    </group>
+	                    <notebook>
+	                    	<page string="Details">
+	                    		<field name="line_ids">
+                                <tree editable="bottom" string="Items">
+                                    <field name="product_id"/>
+                                    <field name="required_qty"/>
+                                    <field name="purchased_qty" readonly="1"/>
+                                    <field name="received_qty" readonly="1"/>
+                                </tree>
+                            </field>
+	                    	</page>
+	                    </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record id="view_streamline_ame_material_take_off_tree" model="ir.ui.view">
+            <field name="name">streamline.ame.material.take.off.tree</field>
+            <field name="model">streamline.ame.material.take.off</field>
+            <field name="arch" type="xml">
+                <tree string="Material Take Off Screen">
+                    <field name="name"/>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="action_streamline_ame_material_take_off_list" model="ir.actions.act_window">
+            <field name="name">Material Take Off</field>
+            <field name="res_model">streamline.ame.material.take.off</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_streamline_ame_material_take_off_tree"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to define a material take off.
+              </p>
+              <p>
+                N/A
+              </p>
+            </field>
+        </record>
+	</data>
+</openerp>
