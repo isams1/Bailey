@@ -7,6 +7,7 @@ REPORT_FORMAT = [
 _pfc = '26'  # default pattern fore_color
 _bc = '22'   # borders color
 decimal_format = '#,##0.00'
+int_format = 'General'
 date_format = 'DD-MM-YYYY'
 streamline_xls_styles = {
     'xls_title': 'font: bold true, height 350;',

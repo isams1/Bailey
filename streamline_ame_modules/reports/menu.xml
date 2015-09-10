@@ -130,5 +130,15 @@
             name="streamline_ame_modules.report_saleorder2" 
         />
         
+        <report
+            id="streamline_ame_report_material_take_off_xls_id"
+            string="Material Take Off"
+            model="streamline.ame.material.take.off"
+            report_type="xls"
+            name="report_streamline_ame_material_take_off_xls"
+            file="Material_Take_Off"
+            menu="True"
+         />
+        
     </data>
 </openerp>
