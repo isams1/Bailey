@@ -47,20 +47,22 @@ class streamline_ame_material_take_off_line(models.Model):
         """
         po_model_list = self.env['purchase.order'].search([('project_no', '=', self[0].parent_id.project_no.id),'|',('state', '=', 'approved'), ('state', '=', 'done')])
         
-        self.env.cr.execute(query, (tuple([x.id for x in po_model_list]), ))
-        picks = self.env.cr.fetchall()
-        
-        a = ()
-        for pick in picks:
-            a += pick
-        
-        for pick_obj in self.env['stock.picking'].browse(a):
-            for move in pick_obj.move_lines:
-                if move.state == 'done':
-                    if str(move.product_id.id) in move_line_list:
-                        move_line_list[str(move.product_id.id)] += move.product_qty
-                    else:
-                        move_line_list[str(move.product_id.id)] = move.product_qty
+        a = tuple([x.id for x in po_model_list])
+        if len(a) > 0:
+            self.env.cr.execute(query, (a, ))
+            picks = self.env.cr.fetchall()
+            
+            a = ()
+            for pick in picks:
+                a += pick
+            
+            for pick_obj in self.env['stock.picking'].browse(a):
+                for move in pick_obj.move_lines:
+                    if move.state == 'done':
+                        if str(move.product_id.id) in move_line_list:
+                            move_line_list[str(move.product_id.id)] += move.product_qty
+                        else:
+                            move_line_list[str(move.product_id.id)] = move.product_qty
         
         for record in self:
             if str(record.product_id.id) in move_line_list:

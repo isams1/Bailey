@@ -38,7 +38,7 @@
             <field name="model">streamline.ame.material.take.off</field>
             <field name="arch" type="xml">
                 <tree string="Material Take Off Screen">
-                    <field name="name"/>
+                    <field name="project_no"/>
                     <field name="start_date"/>
                     <field name="end_date"/>
                 </tree>
