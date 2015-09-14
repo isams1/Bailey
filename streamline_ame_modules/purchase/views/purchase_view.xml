@@ -10,6 +10,19 @@
                 <field name="date_order" position="before">
                 	<field name="project_no" />
                 </field>
+                <xpath expr="//form/sheet/group[1]" position="after">
+                	<group>
+	                	<group>
+		                	<field name="receiver_id" />
+		                	<field name="receiver_hp" />
+		                	<field name="receiver_tel" />
+	                	</group>
+	                	<group>
+		                	<field name="receiver_fax" />
+		                	<field name="receiver_email" />
+	                	</group>
+                	</group>
+            	</xpath>
             </field>
         </record>
        

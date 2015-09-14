@@ -133,7 +133,7 @@ class report_streamline_ame_material_take_off_xls(report_xls):
     
             # report_name = objects[0]._description or objects[0]._name
             report_name = _("Material Take Off Report")
-            ws = wb.add_sheet(r_data['project_name'] or u"Not Available")
+            ws = wb.add_sheet(r_data['project_name'] or u"No Name")
             ws.panes_frozen = True
             ws.remove_splits = True
             ws.portrait = 0  # Landscape
