@@ -7,10 +7,11 @@
         All modules of AME client need to put in here.
     ''',
     'category' : "Streamline Pte Ltd - AME",
-    'depends' : ['base','web','report','account', 'product', 'purchase', 'warehouse_extended', 'report_xls'],
+    'depends' : ['base','web','report','account', 'product', 'purchase', 'warehouse_extended', 'report_xls','purchase_double_validation'],
     'website': 'http://streamline.sg/',
     'js': ['static/src/js/datetimepicker.js'],
     'data' : [
+        'security/res.groups.csv',
         'reports/header.xml',
         'reports/account/wizard/invoice_summary_view.xml',
         'reports/account/wizard/stock_report_view.xml',
@@ -29,6 +30,7 @@
         'reports/purchase/views/report_purchaseorder.xml',
         'reports/menu.xml',
         'products/data/product_sequence.xml',
+        'products/views/product_minimum_view.xml',
         'products/views/product_view.xml',
         'sales/views/sale_order.xml',
         'purchase/views/purchase_view.xml',

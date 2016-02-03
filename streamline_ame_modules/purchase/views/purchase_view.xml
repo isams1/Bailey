@@ -25,6 +25,29 @@
             	</xpath>
             </field>
         </record>
+
+        <record id="purchase_order_form" model="ir.ui.view">
+            <field name="name">purchase.order.form</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@id='draft_confirm']" position="attributes">
+                    <attribute name="groups">streamline_ame_modules.group_po_level_01</attribute>
+                </xpath>
+                <xpath expr="//button[@id='bid_confirm']" position="attributes">
+                    <attribute name="groups">streamline_ame_modules.group_po_level_01</attribute>
+                </xpath>
+                <xpath expr="//button[@name='purchase_approve']" position="attributes">
+                    <attribute name="groups">streamline_ame_modules.group_po_level_02</attribute>
+                </xpath>
+                <xpath expr="//field[@name='product_id']" position="attributes">
+                    <attribute name="on_change">onchange_product_id(parent.pricelist_id,product_id,0,False,parent.partner_id, parent.date_order,parent.fiscal_position,date_planned,False,False,parent.state,dict(context, location_id=parent.location_id))</attribute>
+                </xpath>
+                <xpath expr="//field[@name='product_qty']" position="attributes">
+                    <attribute name="on_change">onchange_product_id(parent.pricelist_id,product_id,product_qty,product_uom,parent.partner_id,parent.date_order,parent.fiscal_position,date_planned,name,False,parent.state,dict(context, location_id=parent.location_id))</attribute>
+                </xpath>
+            </field>
+        </record>
        
     </data>
 </openerp>

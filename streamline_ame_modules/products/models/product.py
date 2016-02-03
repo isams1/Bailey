@@ -43,7 +43,8 @@ def update_null_and_slash_codes(cr):
 
 class product_product(models.Model):
     _inherit = "product.product"
-    
+
+    templ_minimum_ids = fields.One2many('product.minimum', 'product_id', string='Minimum Qty')
     default_code = fields.Char(
         string='Reference',
         size=64,
@@ -81,12 +82,25 @@ class product_product(models.Model):
             })
 
         return super(product_product, self).copy(default)
+
+    def check_inventory(self, cr, uid, product_ids, location_id, context=None):
+        product_inventory = self._product_available(cr, uid,
+                product_ids,
+                context={'location': location_id})
+        warning = {}
+        for product in self.browse(cr, uid, product_ids, context):
+            for minimum in product.product_tmpl_id.templ_minimum_ids:
+                if minimum.location_id and minimum.location_id.id == location_id:
+                    if product_inventory[product.id]['qty_available'] > minimum.quantity:
+                        warning.update({product.id: minimum.quantity})
+        return warning
         
 product_product()
 
 class product_template(models.Model):
     _inherit = "product.template"
     
+    templ_minimum_ids = fields.One2many('product.minimum', 'product_tmp_id', string='Minimum Qty')
     living_material_price = fields.Float('Living-Material', digits_compute=dp.get_precision('Product Price'))
     living_labour_price = fields.Float('Living-Labour', digits_compute=dp.get_precision('Product Price'))
     machinery_material_price = fields.Float('Machinery-Material', digits_compute=dp.get_precision('Product Price'))
