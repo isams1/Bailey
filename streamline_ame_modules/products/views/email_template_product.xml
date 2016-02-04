@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data noupdate="1">
+
+        <!--Email template -->
+        <record id="email_template_create_product" model="email.template">
+            <field name="name">Product - Create Notify</field>
+            <field name="email_from">${(object.company_id.email or user.email)|safe}</field>
+            <field name="subject">Product Create</field>
+            <field name="email_to">lehoangan1988@gmail.com</field>
+            <field name="model_id" ref="product.model_product_product"/>
+            <field name="auto_delete" eval="True"/>
+            <field name="body_html"><![CDATA[
+<div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+
+    <p>Hello all,</p>
+
+    <p>Product: [%(default_code)s]%(name)s.</p>
+
+    <p> Thanks,</p>
+    </div>
+</div>
+            ]]></field>
+        </record>
+    </data>
+</openerp>

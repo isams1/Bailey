@@ -11,6 +11,9 @@
         <xpath expr="//field[@name='partner_id']" position="after">
           <field name="origin" string="Quotation Title"/>
         </xpath>
+        <xpath expr="//field[@name='note']" position="attributes">
+            <attribute name="placeholder">Add an internal note...</attribute>
+        </xpath>
       </field>
     </record>
 

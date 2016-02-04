@@ -106,6 +106,13 @@
 						</tfoot>
 					</table>
 				</div>
+				<div style="margin-left: 0px !important; width: 100%;">
+					<div style="width: 60%; margin-left: 0px !important; float: left;">
+						<span style="font-weight: bold;">Notes</span>
+						<br />
+						<span t-field="o.note" />
+					</div>
+				</div>
 			</div>
 		</template>
 
