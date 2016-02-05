@@ -35,7 +35,7 @@
 						</tr>
 						<tr>
 							<th style="border-top: none !important">
-								<strong>Stock Code</strong>
+								<strong>Product Description</strong>
 							</th>
 							<th style="border-top: none !important">
 								<strong>Location</strong>
@@ -64,7 +64,7 @@
 						<tr t-foreach="get_product_aging()" t-as="line_ids"
 							style="page-break-inside:avoid; page-break-after:auto;">
 							<td>
-								<span t-esc="line_ids['product_name']" />
+								<span t-esc="get_product_description(line_ids['product_id'])" />
 							</td>
 							<td>
 								<span t-esc="line_ids['complete_name']" />

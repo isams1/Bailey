@@ -10,7 +10,8 @@ class wrapped_streamline_ame_report_product_aging(report_sxw.rml_parse):
         super(wrapped_streamline_ame_report_product_aging, self).__init__(cr, uid, name, context=context)
         self.localcontext.update({
             'time': time,
-            'get_product_aging':self._get_product_aging,
+            'get_product_aging': self._get_product_aging,
+            'get_product_description': self._get_product_description,
         })
 
     def _get_product_aging(self):
@@ -61,6 +62,10 @@ class wrapped_streamline_ame_report_product_aging(report_sxw.rml_parse):
         ''')
         res = self.cr.dictfetchall()
         return res
+
+    def _get_product_description(self, product_id):
+        product = self.pool.get('product.product').browse(self.cr, self.uid, product_id)
+        return product.description and product.description or product.name
 
 class report_streamline_ame_product_aging(osv.AbstractModel):
     _name = 'report.streamline_ame_modules.report_streamline_ame_product_aging'
