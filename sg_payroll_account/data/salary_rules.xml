@@ -1,0 +1,70 @@
+<openerp>
+    <data>
+        <!-- <record id="hr_payroll.hr_rule_net" model="hr.salary.rule">
+            <field name="account_debit" ref="hr_salary_rule_category_7"/>
+        </record> -->
+
+        <!-- Extended of NET Salary Rules -->
+<!--         <record id="hr_payroll.hr_rule_net" model="hr.salary.rule"> -->
+<!--             <field name="code">NET</field> -->
+<!--             <field eval="500" name="sequence"/> -->
+<!--             <field name="name">Net3</field> -->
+<!--             <field name="account_debit" ref="l10n_sg.account_account_839" /> -->
+<!--             <field name="account_credit" ref="l10n_sg.account_account_760" /> -->
+<!--         </record> -->
+        
+<!--         <record id="hr_rule_net_test" model="hr.salary.rule"> -->
+<!--             <field name="name">Net test</field> -->
+<!--             <field name="sequence" eval="200"/> -->
+<!--             <field name="code">NET</field> -->
+<!--             <field name="category_id" ref="hr_payroll.NET"/> -->
+<!--             <field name="condition_select">none</field> -->
+<!--             <field name="amount_select">code</field> -->
+<!--             <field name="account_debit" ref="l10n_sg.account_account_839" /> -->
+<!--             <field name="account_credit" ref="l10n_sg.account_account_760" /> -->
+<!--             <field name="amount_python_compute">result = categories.BASIC + categories.ALW + categories.DED</field> -->
+<!--             <field name="register_id" ref="hr_payroll.contrib_register_employees"/> -->
+<!--         </record> -->
+        
+        <record id="l10n_sg_hr_payroll.hr_salary_rule_cpfemployeesprsingaporean0" model="hr.salary.rule">
+            <field name="account_debit" search="[('name', '=', 'CPF - Account')]" />
+            <field name="account_credit" search="[('name', '=', 'Payroll expenses')]" />
+        </record>
+
+        <record id="l10n_sg_hr_payroll.hr_salary_rule_cpftotalsprsingaporean0" model="hr.salary.rule">
+            <field name="account_debit" search="[('name', '=', 'CPF - Account')]" /> 
+            <field name="account_credit" search="[('name', '=', 'Payroll expenses')]" /> 
+        </record>
+
+        <record id="l10n_sg_hr_payroll.hr_salary_rule_cpfemployersprsingaporean0" model="hr.salary.rule">
+            <field name="account_debit" search="[('name', '=', 'CPF - Account')]" />
+            <field name="account_credit" search="[('name', '=', 'Payroll expenses')]" /> 
+        </record>
+        
+        <record id="l10n_sg_hr_payroll.hr_salary_rule_cpfmbmf0" model="hr.salary.rule">
+            <field name="account_debit" search="[('name', '=', 'CPF - Account')]" />
+            <field name="account_credit" search="[('name', '=', 'Payroll expenses')]" /> 
+        </record>
+        
+        <record id="l10n_sg_hr_payroll.hr_salary_rule_cpfsinda0" model="hr.salary.rule">
+            <field name="account_debit" search="[('name', '=', 'CPF - Account')]" />
+            <field name="account_credit" search="[('name', '=', 'Payroll expenses')]" /> 
+        </record>
+        
+        <record id="l10n_sg_hr_payroll.hr_salary_rule_cpfcdac0" model="hr.salary.rule">
+            <field name="account_debit" search="[('name', '=', 'CPF - Account')]" />
+            <field name="account_credit" search="[('name', '=', 'Payroll expenses')]" /> 
+        </record>
+        
+        <record id="l10n_sg_hr_payroll.hr_salary_rule_cpfecf0" model="hr.salary.rule">
+            <field name="account_debit" search="[('name', '=', 'CPF - Account')]" />
+            <field name="account_credit" search="[('name', '=', 'Payroll expenses')]" /> 
+        </record>
+
+        <record id="l10n_sg_hr_payroll.hr_salary_rule_cpfsdl0" model="hr.salary.rule">
+            <field name="account_debit" search="[('name', '=', 'CPF - Account')]" />
+            <field name="account_credit" search="[('name', '=', 'Payroll expenses')]" />
+        </record>
+
+    </data>
+</openerp>

@@ -1,0 +1,212 @@
+===============================================================================
+ Version Change Log (accommodation)
+===============================================================================
+1.60 --> 29 Oct 2015 : Pintu Makwana
+    * The module migrated v8 into odoo_v9.0 and Accommodation Type and Pub History of tree view of xml id 
+      changed in accommodation_view file because same xml_id in the both tree view.
+
+1.59 --> 13 Sep 2015 : Maulik Raval
+    * Change parent Menu For Employee Away History from Payroll to Configuration.
+
+1.58 --> 12 Sep 2015 :Nisha Gajjar.
+	*added warning if accommodation is not in open and renewed state
+		when created pub manually from configuration.
+	*made accommodation id field invisible form pub accommodation
+	 history tab in employee's from.
+
+1.57 --> 08 Sep 2015: Nisha Gajjar
+		*raise a warning when importing pub file in state
+		which are in draft and renewed
+
+1.56 --> 07 Sep 2015: Nisha Gajjar
+		* Improve code for import pub
+
+1.55 --> 07 Sep 2015: Maulik Raval
+        * Change Sequence of data file registration in openerp py file.
+
+1.54 --> 02 Sep 2015: Maulik Raval
+        * Added Menu and Action Wizard for Employee Away History.
+
+1.53 --> 02 Sep 2015: Nisha Gajjar
+		*Pub calculations are in multiple of 0.50
+		*pub calculations are imported only in open and renewed state
+		*add access rights for pub history and employee away history
+		*add notification wizard after successfully importing pub file
+
+1.52 --> 02 Sep 2015: Nisha Gajjar
+		*Pub calculations for employee accommodation wise
+		
+1.51 --> 01 Sep 2015: Nisha Gajjar
+		*Pub calculations for employee
+ 
+1.50 --> 31 Aug 2015: Maulik Raval
+        * Improved Employee away History functionality in accommodation.
+
+1.49 --> 31 Aug 2015: Maulik Raval
+        * Added Employee away History in accommodation form with wizard.
+
+1.48 --> 14 Aug 2015: Mayank Gosai
+        * Migrated locationwise and Nationalitywise report.
+
+1.47 --> 4 June 2015 : Maulik Raval
+        * Added Company wise filter to accommodation location view.
+
+1.46 --> 30 April 2015 : Kalpana Hemnani
+		* Added access rights for HR manager
+		
+1.45--->25 March 2015:Nisha Gajjar
+        *add_nationality.py:modified code of add_country_avail
+
+1.44 --> 24 March 2015 : Trivedi Maitree
+		* give access rights to accomodation.history
+		
+1.43 --> 24 March 2015 : Kalpana Hemnani
+		* Improvement in location and nationality report
+		
+1.42 --> 23 March 2015 : Kalpana Hemnani
+		* Renamed report names
+		
+1.41 --> 23 March 2015 : Kalpana Hemnani
+		* improvement in report
+		
+1.40 --> 23 March 2015 : Yogendrasinh Chavda.
+        * Added accommodation date wise report(Aeroo).
+        
+1.39 --> 21 March 2015 : Kalpana Hemnani
+		* Added accommodation room wise country wise employees occupied by company report(Aeroo)
+		
+1.38 --> 20 March 2015 : Mayank Gosai
+  * Improved code for aeroo report.
+
+1.37--->20 March 2015:Nisha Gajjar
+        * apply domain on start_date end date periods,improve code for field worker location,
+        and changed string of button Rooms/Units in accommodation
+        
+1.36 --> 20 March 2015 : Mayank Gosai
+* Created Aeroo report for new employee and resigned employee.
+
+1.35 --> 20 March 2015 : Kalpana Hemnani
+		* modification in visa quota constraint and visa allocation
+
+1.34 --> 19 March 2015 : Kalpana Hemnani
+		* Added nationality wise aeroo report
+		
+1.33 --> 18 March 2015 : Mayank Gosai
+* Improved code for tenenacy agreement report.
+
+1.32 --> 18 March 2015 : Anup Chavda
+	* Improved the wizard for allocation and vacancy in accommodation
+	* Added wizards to print reports for New Employees and Resigned Employees
+	
+1.31 --> 18 March 2015 : Mayank Gosai
+	* Improved code and added functionality for tenenacy report
+	* added fields in accommodation. 
+ 
+1.30 --> 17 March 2015 : Mayank Gosai
+	* Added tenancy agreement report.
+	* Improved view for accommodation.
+	* improved code for tenure.
+
+1.29 --> 17 March 2015 : Anup Chavda
+	* Added Vacant wizard for accommodation
+	* Added Accommodation History and generated it on vacancy and allocation
+	* Added flow in the accommodation
+	* Improved the view of accommodation
+	
+1.28 --> 11 March 2015 : Mayank Gosai
+  	* Improved view for nationality wise report
+
+1.27 --> 11 March 2015 : Mayank Gosai
+	* Improved view for location wise report 
+
+1.26 --> 22 March 2015 : Kalpana Hemnani
+	* Added Country wise accommodation details report and modification in location wise report
+		
+1.25 --> 10 March 2015 : Maulik Raval
+	* Add 1 column Landlord before COM,  In Location wise report
+		
+1.24 --> 09 March 2015 : Kalpana Hemnani
+	* fixed tenency report
+		
+1.23 --> 05 March 2015 : Kalpana Hemnani
+	* improvement in accommodation report
+	
+
+1.22 --> 3 Mar 2015 : Anup Chavda
+	* Updated Accommodation Fields and View.
+	* Added required fields in company(tenant) and partner(landlord,location)
+	* Created a wizard to print the Accommodation report by Location,Country
+1.21 --> 2 Mar 2015 : Mayank Gosai
+	* added constraint for date calculation of tenure.
+	* added test case file in Doc.
+
+1.20 --> 25 Feb 2015 :Nisha Gajjar
+	* added accommodation_type model 
+    * added m2o field of accommodation_type in accommodation
+    * added access rights for accommodation-type and also for
+        analysis report
+1.19 --> 24 Feb 2015 : Kalpana Hemnani
+	* Added constraint for maximum capacity in accommodation
+	* max cap must be greater or equal to Beds and Visa Quota
+		
+1.18----> 21 February 2015:Nisha Gajjar
+    * add group by in accommodation wise nationality wise and compny wise 
+
+1.17 ---> 21 Feb 2015 : Mayank Gosai
+    * improved code for landlord address in tenancy agreement report.
+
+1.16 ---> 21 Feb 2015 : Mayank Gosai
+    * Created tenancy agreement report.
+    * improved view for accommodation.
+    * added functionality for tenure.
+
+1.15---> 20 Feb 2015 :Nisha Gajjar
+    * location wise accommodation and nationality wise accommodation analysis report
+
+1.14 --> 19 Feb 2015 : Anup Chavda
+	* Added Name, Type and Landlord fields in Accommodation.
+	* Added Location for Accomodation.
+	* Rearranged the menu for Accomodation and also improved the view for accommodation.
+	* Added a domain on Location field to display only locations
+1.13 --> 11 Feb 2015 : Mayank Gosai
+	* Improved code for allocation of visa quota 
+
+1.12 --> 11 Feb 2015 : Kalpana Hemnani
+	* created wizard for creation/allocation of rooms and beds
+	* added constraint for beds(total number of beds must be less than maximum capacity of accommodation)
+		
+1.11 --> 11 Feb 2015 : Mayank Gosai
+    * created functionality to restrict user not to allocate visa quota more than maximum capacity. 
+
+1.10 --> 10 Feb 2015 : Nisha Gajjar
+    * add available_beds funcional field in  accommodation_agreement.py
+    * remove accommodation_id from view of room_ids
+    * add bed_ids field in view of room_ids
+
+1.9 --> 10 Feb 2015 : Mayank Gosai
+    * created functionality to restrict user to delete visa quota and delete cascade 
+
+1.8 --> 10 Feb 2015 : Nisha Gajjar
+    * Improve code in accommodation_agreement.py
+
+1.7 --> 10 Feb 2015 : Kalpana Hemnani
+	* Added security file in openerp.py
+		
+1.6 --> 10 Feb 2015 : Kalpana Hemnani
+	* updated constraints for No Visa Quota allocated, Visa Quota limit exceed and Visa Quota limit exceed
+	* fixed rename bed_id field
+		
+1.5 --> 09 Feb 2015 : Kalpana Hemnani
+	* made some fields required
+
+1.4 --> 9 Feb 2015 : Mayank Gosai
+    * Added constraint not to add employee whose country has not been granted for quota.
+    
+1.3 --> 09 Feb 2015 : Kalpana Hemnani
+	* Added constraint not to add beds with maximum capacity
+		
+1.2 --> 9 Feb 2015 : Mayank Gosai
+    * Created functionality : beds cannot be allocated to same employee to whom bed has been already allocated .
+
+1.1 --> 6 Feb 2015 : Mayank Gosai
+    * Improved view code for accommodation.

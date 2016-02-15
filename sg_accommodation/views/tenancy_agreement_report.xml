@@ -1,0 +1,794 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        
+		
+		<template id="tenancy_agreement_report">
+				<t >
+					<t t-foreach="docs" t-as="o">
+						<style type="text/css"> 
+					.rotate {
+				             filter:  progid:DXImageTransform.Microsoft.BasicImage(rotation=0.083);  /* IE6,IE7 */
+				         -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=0.083)"; /* IE8 */
+				     -moz-transform: rotate(-90.0deg);  /* FF3.5+ */
+				      -ms-transform: rotate(-90.0deg);  /* IE9+ */
+				       -o-transform: rotate(-90.0deg);  /* Opera 10.5 */
+				  -webkit-transform: rotate(-90.0deg);  /* Safari 3.1+, Chrome */
+				          transform: rotate(-90.0deg);  /* Standard */
+							}
+						
+						#content {   
+								  overflow:auto;
+								  width: 145%;
+								  height: 180%;
+								  border: 0px ; 
+								  background: white;
+								  margin: -10em ;
+								  margin-left: -490px;
+								}
+								
+								#left, #right {
+								  width: 30%; 
+								  text-align:justify;
+								  font: 36px;
+								  height: 100%; 
+								  padding: 1em;
+								  background: white;
+								}
+								
+								#left {   
+								  float:left; 
+								}
+								#right {   float:right; 
+								}
+						}
+						</style>
+						<div class="row">
+						<div class="col-md-12">
+							<div class="page">
+								<p>
+									<h4 align="right"><strong>REF.NO: <span t-field="o.reference_no"></span></strong></h4>
+									<h3 align="center"><u>TENANCY AGREEMENT</u></h3>
+								</p>
+								<table style="border:0px;margin-top:-50px;height:100%" font-family="Arial;" >
+										<col width="350"/>
+										<col width="450"/>
+										<tr style="border:0px;margin-bottom:50px;">
+											<td></td>
+											<td>
+												<h5><strong>&amp;nbsp;&amp;nbsp;&amp;nbsp;BETWEEN</strong></h5>
+											</td>
+										</tr>
+										<tr >
+											<td>
+												<strong>Landlord</strong>
+											</td>
+											<td>
+											<strong><span t-field="o.land_lord_id"></span></strong>
+											<br/>
+			                                <span t-field="o.land_lord_id.street"></span>,
+			                                <span t-field="o.land_lord_id.street2"></span>,
+			                                <span t-field="o.land_lord_id.city"></span>,
+			                                <span t-field="o.land_lord_id.state_id"></span>,
+			                                <span t-field="o.land_lord_id.zip"></span>,
+			                                <span t-field="o.land_lord_id.country_id"></span>
+			                                <br/>
+			                                </td>
+										</tr>
+										<tr>
+											<td></td>
+											<td>
+												<h5><strong>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;AND</strong></h5>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<strong>Tenant</strong>
+											</td>
+											<td>
+												<strong><span t-field="o.paying_comp_id">
+												</span></strong>
+											</td>
+			                             </tr>
+			                            <tr>
+			                                <td>
+			                                <strong>Tenant's Registered Address</strong>
+			                                </td>
+			                                <td font-family="Arial;">
+			                                <span t-field="o.paying_comp_id.street"></span>,
+			                                <span t-field="o.paying_comp_id.street2"></span>,
+			                                <span t-field="o.paying_comp_id.city"></span>,
+			                                <span t-field="o.paying_comp_id.state_id"></span>,
+			                                <span t-field="o.paying_comp_id.zip"></span>,
+			                                <span t-field="o.paying_comp_id.country_id"></span>
+			                                </td>
+			                             </tr>
+			                             <tr>
+			                             	<td>
+			                             		<strong>Tenant's Correspondence Address</strong>
+			                             	</td>
+			                             	<td font-family="Arial;">
+			                             		<t t-if="not o.corres_address"><span t-esc="get_corr_add(o.corress_address_id)"/></t>
+			                             		<t t-if="o.corres_address">
+			                             			<p>same as above</p></t>
+			                             	</td>
+			                             </tr >
+			                             <tr>
+			                             	<td>
+			                             		<strong>RCB No</strong>	
+			                             	</td>
+			                             	<td>
+			                             		<span t-field="o.rcb_no"></span>
+			                             		<br/><br/>
+			                             	</td>
+			                             </tr>
+			                             <tr>
+			                             	<td>
+			                             		<strong>Premises</strong>	
+			                             	</td>
+			                             	<td font-family="Arial;">
+			                             		Block: <u><span t-field="o.block_no"></span></u> Unit No.(s).:<span t-esc="get_rooms_ids(o.room_ids)"/>
+			                             		<br/>
+			                             		<span t-field="o.address_id.street"></span>,
+				                                <span t-field="o.address_id.street2"></span>,
+				                                <span t-field="o.address_id.city"></span>,
+				                                <span t-field="o.address_id.state_id"></span>,
+				                                <span t-field="o.address_id.zip"></span>,
+				                                <span t-field="o.address_id.country_id"></span>
+			                             	</td>
+			                             	<br/>
+			                             	<br/>
+			                             </tr>
+			                             <tr>
+			                                <td>
+			                                <strong>Term</strong>
+			                                </td>
+			                                <td>
+			                                <span t-field="o.tenure"></span> months effective from <u><span t-field="o.date_start"></span></u> to <u><span t-field="o.date_end"></span></u>
+			                                <br/><br/>
+											</td>
+			                             </tr>
+			                             <tr>
+			                             	<td>
+			                             		<strong>Use of Premises</strong>
+			                             	</td>
+			                             	<td>
+			                             		<span t-field="o.premises"></span>
+			                             	<br/><br/>
+			                             	</td>
+			                             </tr>
+										 <tr>
+			                                <td>
+			                                	<strong>Rent - per unit </strong>
+			                                </td>
+			                                <td>
+			                                	<div style="float:left;width:15%;"><span t-field="o.paying_comp_id.currency_id.symbol"></span> <span style="float:right;" t-field="o.rent"></span> </div> &amp;nbsp;payable monthly and in advance (GST exempted)
+			                                </td>
+			                             </tr>
+			                             <tr>
+			                                <td>
+			                                	<strong>Service &amp; Conservancy ('SC&amp;C') per unit </strong>
+			                                </td>
+			                                <td>
+			                                	<div style="float:left;width:15%;"><span t-field="o.paying_comp_id.currency_id.symbol"></span> <span style="float:right;" t-field="o.ser_and_cons"></span></div> &amp;nbsp;payable monthly and in advance (GST payable)
+			                                </td>
+			                             </tr>
+			                             <tr>
+			                                <td>
+			                                	<strong>Furniture &amp; Fittings ('F&amp;F') per unit </strong>
+			                                </td>
+			                                <td>
+			                                	<div style="float:left;width:15%;"><span t-field="o.paying_comp_id.currency_id.symbol"></span> <span style="float:right;" t-field="o.fur_and_fit"></span></div> &amp;nbsp;payable monthly and in advance (GST payable)
+			                                </td>
+			                             </tr>
+			                             <tr>
+			                                <td>
+			                                	<strong>Other charges per unit </strong>
+			                                </td>
+			                                <td width="30px">
+			                                	<div style="float:left;width:15%;"><span t-field="o.paying_comp_id.currency_id.symbol"></span> <span  style="float:right;" t-field="o.other_charges"></span></div>  &amp;nbsp;payable monthly and in advance (GST payable)
+			                                </td>
+			                             </tr>
+			                             <tr>
+			                                <td>
+			                                	<strong>Total amount per unit(s) </strong>
+			                                </td>
+			                                <td>
+			                                	<div style="float:left;width:15%;"><span t-field="o.paying_comp_id.currency_id.symbol"/> <span  style="float:right;border-top: 1px solid;border-bottom: 1px solid;" t-field="o.total_amount"/></div>
+			                                <br/><br/>
+											</td>
+			                             </tr>
+			                             <tr>
+			                                <td>
+			                                	<strong>Total amount for <u><span t-esc="len(o.room_ids)"></span></u> unit(s) </strong>
+			                                </td>
+			                                <td>
+			                                	<b><u><span t-field="o.paying_comp_id.currency_id.symbol"> </span> <span t-esc="get_total(o.occupied,o.total_amount, o.ser_and_cons,o.fur_and_fit,o.other_charges)"/></u></b>*('the Charges') payable monthly in advance <b>via GIRO</b>
+			                                <br/><br/>
+			                                	</td>
+			                             </tr>
+			                             <tr>
+			                                <td>
+			                                	<strong>Deposit</strong>
+			                                </td>
+			                                <td>
+			                                	<b><span t-field="o.paying_comp_id.currency_id.symbol"></span> <span t-esc="get_rate(o.occupied,o.total_amount)"/></b> (Equivalent to total month's Rent,SC&amp;C and F&amp;F and Other charges).
+			                                <br/><br/>
+			                                	</td>
+			                             </tr>
+			                              <tr>
+			                                <td>
+			                                	<strong>Basic items to be issued for unit(s)</strong>
+			                                </td>
+			                                <td>
+			                                	<t t-foreach="o.amenities_ids" t-as="line">
+						                         	<span t-field="line.name"></span>
+						                         </t>
+						                         <br/>
+						                         <br/>
+			                                </td>
+			                             </tr>
+			                             <tr>
+			                                <td>
+			                                	<strong>Terms &amp; Conditions</strong>
+			                                	<br/><br/>
+			                                </td>
+			                                <td>
+			                                	As per Schedule A attached..........
+			                                <br/>
+			                                <br/>
+			                                </td>
+			                             </tr>
+			                             <tr>
+			                                <td>
+			                                	<strong>Stamp Fees</strong>
+			                                </td>
+			                                <td>
+			                                	<span t-field="o.stamp_fees"></span>
+			                                <br/>
+			                                <br/>
+			                                </td>
+			                             </tr>
+			                             <tr>
+			                                <td>
+			                                	<strong>Administration Fee for Tenancy Agreement</strong>
+			                                	<br/>
+			                             <br/>
+			                                </td>
+			                                <td>
+			                                	<b><span t-field="o.paying_comp_id.currency_id.symbol"></span>  <span t-field="o.admin_fees"></span></b> *(GST payable)
+			                                </td>
+			                             </tr>
+			                             <tr>
+			                                <td>
+			                                	<strong>Date of Agreement</strong>
+			                                </td>
+			                                <td>
+			                                	.....................
+			                                </td>
+			                             </tr>
+			                      </table>
+								<br/>
+								<table>
+									<col width="300"/>
+		                            <col width="200"/>
+		                            <col width="300"/>
+								<tr>
+									<td>
+									<table >
+			                            <tr></tr>
+			                        </table>
+			                           <hr style=" margin-top:40px;color:#000000;border-style: solid"></hr>
+			                           <p>Name: <span t-field="o.ll_responsible"></span>	&amp;nbsp; &amp;nbsp;    &amp;nbsp; &amp;nbsp;	&amp;nbsp;&amp;nbsp;&amp;nbsp; &amp;nbsp;	&amp;nbsp;	&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;  Stamp
+			                           <br/>
+			                           Signed by <u><span t-field="o.designation"></span></u> of
+			                           <br/>
+			                           <t t-if="o.agent">
+			                           		<span t-field="o.agent_id"></span>	                           
+			                           </t>
+			                           <t t-if="not o.agent">
+			                           		<span t-field="o.land_lord_id"></span>	                           
+			                           </t>
+			                           <br/>
+			                           Managing Agent of the premises for and on behalf of the Landlord in the persence of:-
+			                           <br/>
+			                           <hr style=" margin-top:60px;color:#000000;border-style: solid"></hr>
+			                           <br/>
+			                           Witness Name: <span t-field="o.ll_witness"></span>
+			                           <br/>
+			                           NRIC No. :  <span t-field="o.witness_nric_no"></span>
+			                           </p>
+	                           		</td>
+							<td></td>
+							<td>
+									<table >
+			                            <tr></tr>
+			                        </table>
+			                           <hr style=" margin-top:40px;color:#000000;border-style: solid"></hr>
+			                           <br/>
+			                           <p>Name: <span t-field="o.ten_responsible"></span> &amp;nbsp; &amp;nbsp;	&amp;nbsp; &amp;nbsp;&amp;nbsp;	&amp;nbsp; &amp;nbsp;	&amp;nbsp; &amp;nbsp;	&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; Stamp
+			                           <br/>
+			                           NRIC: <span t-field="o.nric_no_ten"></span>
+			                           <br/>
+			                           Signed by: ...............
+			                           <br/>
+			                           for and behalf of <strong><span t-field="o.paying_comp_id"></span></strong> in the presence of:-
+			                           <hr style=" margin-top:60px;color:#000000;border-style: solid"></hr>
+			                           <br/>
+			                           Witness Name: <span t-field="o.ten_witness"></span>
+			                           <br/>
+			                           NRIC No. : <span t-field="o.witness_nric_no_ten"></span>
+			                           </p>
+	                           		</td>
+                           </tr>
+							</table>
+							<br/>
+							<p>* GST is payable on all monies payable to the Landlord except for Rent, Deposit and Stamp Fees.</p>
+							
+							</div>
+						</div>
+					</div>
+					<p style="page-break-after:always;"/>
+						<div class="page">
+							<br/><br/>
+							<table class="rotate" >
+							    <tr >
+							    	<td>
+										<div>  
+	  									<table id='content'>
+	  										  <tr>
+  										  	  	<td colspan="2" style="width:20%;" >
+												<p align="center"><strong><b><u>SCHEDULE A</u></b></strong></p>
+												<p align="center">(Terms and conditions  to  the Tenancy Agreement dated 03 September 2013)</p>
+												<p align="center">Between</p>
+												<p align="center"><strong><u>MINI ENVIRONMENT SERVICE PTE LTD</u></strong></p>
+												<p align="center">And</p>
+												<p align="center"><strong><u>CANDID MARINE ENGINEERING PTE. LTD.</u></strong></p>
+												</td>
+												<td  style="width:20%;" >
+													<div style="font-size:12px;padding: 15px 20px;padding-bottom: 0px;text-align:justify;font-family:sans-serif;">     
+													<p>
+														<ol start="11">
+														being repatriated because his employment is
+														terminated or his work pennit is cancelled.
+														<br/><br/>
+														<li>The Tenant shall give to the Landlord an
+														updated Occupants' List whenever there is a
+														change in the Occupants' List.</li>
+														<br/>
+														<li>The Occupants will have valid passports/or
+														travel or immigration documents and/or work
+														permits at all times when they are in the
+														Premises or the Common Property.</li>
+														</ol>
+													</p>
+												</div>
+												</td>
+												<td style="width:20%;" >
+													<div style="font-size:12px;padding: 15px 20px;padding-bottom: 0px;text-align:justify;font-family:sans-serif;">     
+													<p>
+														<ol start="18">
+														of 6 months then the Landlord shall be-
+														entitled to evict the Occupant from the
+														Premises. The Landlord's decision in this
+														regard shall be final and not be open to
+														question by the Tenant.
+														<br/>
+														<li>If 5 or more of the Occupants, at any time,
+														breach a major rule of the House Rules or
+														commit a criminal offence, the Landlord
+														shall be entitled to give to the Tenant a
+														written notice to immediately terminate this
+														Agreement. The Tenant shall then be liable to pay the Landlord compensation for the
+														loss of the Charges caused by the termination
+														and any losses including</li>
+														</ol>
+													</p>
+												</div>
+												</td>									  
+	  										  </tr>
+	  										<tr>
+											  	<td style="width:20%;" >
+											  <div style="font-size:12px;padding: 0px 20px;text-align:justify;font-family:sans-serif;" >
+													<p>The Tenant agrees: -
+															<br/>
+															<ol> 
+															<li>To comply with the instructions of Labourtel
+															Management Corporation Pte Ltd who
+															Managing Agent of the Landlord and the
+															Tenant's Handbook &amp; House Rules.
+															References to the Landlord herein include the
+															Managing Agent. References to the Tenant
+															include the Tenant's workers who will be
+															occupying the Premises ('Occupant(s)).
+															<br/>
+															</li>
+															<li> To pay the Charges promptly on their due dates via GIRO
+															and pay  GST on any sum payable to the Landlord that is subject to GST.
+															</li>
+															
+														<br/>
+															<li>To pay interest at the rate of 1% per month
+															for all outstanding amounts from their due
+															dates if payment is not made within 7 days of 
+															the date of the Landlord's invoice.</li>
+														<br/>
+															<li>The Deposit paid by the Tenant shall be a
+															security against any bleach hetein. It will be
+															repaid without interest at the end of the
+															Term, subject to deductions for damages and
+															expenses for any breach herein. It shall not
+															be used by the Tenant to set off any of the
+															Charges.</li>
+														<br/>
+															<li>If the Tenant bleaches a term herein and the
+															Landlord decide to terminate this Agreement,
+															then the Landlord will be entitled to forfeit
+															the Deposit as damages without prejudice to
+															claim fiirther losses and expenses from the
+															Tenant.</li>
+														<br/>
+														<li>To open, in the Tenant's name, utilities
+															account(s) 
+															(and any other services, to be
+															supplied to the Premises). The Tenant shall
+															house its employees in the Premises only</li>
+														</ol>
+														</p>
+														
+													</div>
+												</td>
+												<td style="width:20%;" >
+													<div style="font-size:12px;padding: 0px 20px;text-align:justify;font-family:sans-serif;">     
+													<p>	after providing to the 
+														Landlon:1 documentary
+														proof that the utilities 
+														account(s) has been
+														opened.
+													<br/>
+													<ol start="7">
+														<li>The Premism and the Basic 
+														Items are in good condition 
+														at the time of handing over.</li>
+													<br/>
+														<li>To give the Landloid a list 
+														of the Occupants(Occupants' Loll, 
+														photocopies of their valid work 
+														permits and passports together
+														with their orginal for verification 
+														purposes.The Occupants shall allow 
+														their hand vascular 
+														paterns tobe scanned and stored for
+														the purpose of preparing and issuing 
+														them witk proximity cards.
+														The proximity cards will enable the 
+														Occupants to enter common property of 
+														the Landlord (Common staff as
+														Property') and to enter the Premises. The 
+														Landlord reserves the right not to allow any 
+														Occupant into the Premises unless 
+														Occupant has a valid proximity card. The
+														proximity cards are the property of 
+														Landlord and must be returned to the 
+														Landlord when the Occupant(s ) are no longer 
+														staying in the Premises. The Tenant shall 
+														immediately inform the Landlord, in writing
+														if an Occupant's employment has expired, 
+														terminated or work permit cancelled.</li> 
+													<br/>
+														<li>That the Tenant or its Occupant(s ) shall pay
+														to the Landlord $20.00 for replacing a lost
+														proximity card and $10.00 for replacing a
+														damaged proximity card.</li>
+													<br/>
+														<li>If the Tenant wishes to replace an Occupant
+														named in the Occupants' List with another 
+														employee the Tenant shall pay to the 
+														Landlord an administrative fee of $50.00 for
+														each Occupant that is to be replaced.
+														Payment may be waived if the Occupant is</li> 
+													</ol>
+													</p>
+												</div>
+												</td>
+												
+												<td  style="width:20%;" >
+													<div style="font-size:12px;padding: 15px 20px; padding-top: 0px;text-align:justify;font-family:sans-serif;">     
+													<p>	<ol start="13">
+														<li>The Occupants will occupy a specific bed
+														space in the Premises and shall not exchange
+														bed spaces with other Occupants without the
+														consent of the Landlord. At any one time the
+														number of Occupants per unit of the 
+														Premises shall not exceed 18 persons.</li>
+														<br/>
+														<li>The Occupants shall not bring mow than 2
+														refrigerators and/or washing machines, both
+														of reasonable sizes, into the Premises. The
+														Occupants shall register the particulais of
+														these, and all other electrical appliances, and
+														the particulars of their owners with the
+														Landlord before they can be brought in to the
+														Premises.</li>
+														<br/>
+														<li>The Tenant shall appoint a member of its
+														staff as supervisor of the Occupants who
+														shall make regular checks on the Occupants
+														to ensure that they comply with the terms
+														herein.</li>
+														<br/>
+														<li>The Tenant shall appoint 1 of its Occupants
+														as a representative to receive and
+														fl communicate instructions from the Landlord.
+														The representative shall ensure that the
+														Occupants obey the Landlord's posted House
+														Rules for the conduct of all occupants of the
+														Landlord's other premises. The Landlord
+														reserves the right to vary, add or amend the
+														House Rules at any time so long as it is not
+														inconsistent with the terms herein.</li>
+														<br/>
+														<li>If an Occupant commits:
+														a) a minor bleach, under the House Rules,
+														then the Landlord shall serve a written
+														warning and may impose an administrative
+														charge up to $100.00 on the Occupant for
+														having to deal with the breach; or
+														b) a major bleach under the House Rules or
+														accumulates 3 warning letters within a period</li>
+														</ol>
+													</p>
+												</div>
+												</td>
+												<td style="width:20%;" >
+													<div style="font-size:12px;padding: 15px 20px; padding-top: 0px;text-align:justify;font-family:sans-serif;">     
+													<p>
+														<ol start="19">
+														the expenses
+														of securing another tenant to replace the
+														Tenant. This right is without prejudice to the
+														Landlord's rights for any other bleach
+														committed by the Tenant or its Occupants.
+														<br/>
+														<li>To ensure that the Themises are not used for
+														illegal or unmoral putpose (including
+														gambling, fighting and drinking liquor) and,
+														in particular, ensure that the Occupants do
+														not enter into premises reserved for persons
+														of the opposite sex or allow any person of the
+														opposite sex into the Premises under any
+														circumstances unless such person is
+														authorised by the Landlord.</li>
+														<br/>
+														<li>To ensure that the Occupants behave and live
+														in the Premises in a civil manner and not
+														create a nuisance to 4the occupants of the
+														other premises of the Landlord or to anyone
+														else.</li>
+														<br/>
+														<li>The Landlord shall not be responsible for any
+														loss, injury or damage to any person or
+														property (whether belonging to the Tenant or
+														others ) arising out of the Occupant(s)' use of
+														the Premises or the Common Preperty. The
+														Landlord shall further not be liable to the
+														Tenant for any loss or damage that the
+														Tenant may incur as a result of the Landlord
+														invoking clauses 17 and/or 18.</li>
+														<br/>
+														<li>The Occupant(s) shall not do anything in the
+														Premises or the Common Property whereby
+														any insurance policy may be rendered void or
+														voidable or cause an increase in premium.</li>
+														</ol>
+													</p>
+												</div>
+												</td>			
+												</tr>
+												<tr height="10px">
+												 	<td>
+												 		<p align="left">
+															 <h5 style="margin-left: 28px;"><strong>REF.NO: <span t-field="o.reference_no"></span></strong></h5>
+															 <br/><p align="right">1</p>
+														</p>										 	
+												 	</td>
+												 	<td></td>
+										 			<td>
+												 		<p align="left">
+															 <h5 style="margin-left: 28px;"><strong>REF.NO: <span t-field="o.reference_no"></span></strong></h5>
+															 <br/><p align="right">2</p>
+														</p>										 	
+												 	</td>	
+												 </tr>
+										</table>
+											  </div>     
+									</td>
+							    </tr>
+							    
+							</table>
+						</div>
+						
+						<p style="page-break-after:always;"/>
+						<div class="page">
+							<br/><br/>
+							<table class="rotate" cellpadding="10" cellspacing="10">
+							    <tr >
+							    	<td>
+										<div>  
+										
+	  									<table id='content' cellspacing="10"> 
+	  										  
+	  										<tr>
+											  	<td style="width:20%;" >
+											  <div style="font-size:12px;padding: 0px 20px;text-align:justify;font-family:sans-serif;">
+													<p><ol start="23">
+															<li>To keep the Premises neat and clean, maintain it in a good condition and preserve the cleanliness of the Common Property</li>
+															<br/>
+															<li>To ensure that the Ocuupant(s) not dump or bum any litter in the Premises or the Common Property and,  if done, shall at the expense of the Tenant,  make good and/or efficiently disspose of all litter to the satisfaction of the Landlord.</li>
+															<br/>
+															<li>To not erect or install any television antenna or any other fittings on the exterior of the Premises or the Common Property.</li>
+															<br/>
+															<li>To only use fuel permitted by the Landlord for cooking at the designated area in the Premises.</li>
+															<br/>
+															<li>To not allow the Occupants to keep any animal in the Premises.</li>
+															<br/>
+															<li>To not carry out, any alterations, additions or structural changes to the Premises or modify or inteface with any existing electrical design load, writing, apparatus, fixtures, or fitings or any existing fire alarm fixtures or fittings in or about the Premises without the written consent of the Landlord and the relevent authorities.</li>
+															<br/>
+															<li>To not display any sign, bill or advertisement at the Premises.</li>
+															<br/>
+															<li>To ensure that the Occupants not hang or place clothes, laundry or any other article indiscriminately but only  at designated places within the Premises.</li>
+															<br/>
+															<li>To not use, or store in the Premises any material or thing of an offensive, explosive, dangeous, corrosive, toxic or combustible nature.</li>
+															<br/>
+															<li>To not do anything that is a danger, nuisance or interference to any person.</li>
+															<br/>
+															<li>To not organize, conduct, hold or celebrate any social or religious activities in the Premises or within the Common Property.</li>
+														</ol>
+														</p>
+													</div>
+												</td>
+												<td style="width:20%;" >
+													<div style="font-size:12px;padding: 0px 20px;text-align:justify;font-family:sans-serif;">     
+													<p><ol start="34">
+														<li>The Tenant and Occupants shall co-operate and comply with all measures adopted by the Landlord to manage outbreaks of diseases such as SARS, bird flu etc.</li>
+														<br/>
+														<li>To observe and perform any law,direction,order,notice or requirement of any public or local authority.</li>
+														<br/>
+														<li>To not cause any obstruction to the Premises or the Common Property or to any fire-fighting installation and equipment.</li>
+														<br/>
+														<li>To observe all rules,regulations and notices issued by the Landlord regarding driving and parking of vehicles in the Common Property.</li>
+														<br/>
+														<li>Permit the Landlord's representative(s)(including independent contractors) to enter the Premises at all reasonable times to inspect the state of the Premises and carrying out works or repairs there to or to other portions of the Common Property not conveniently accesible otherwise than from/through the Premises.The Tenant's supervisor shall accompany the Landlord's representative(s) during these visit, if required by the Landlord.The Landlord may give the Tenant notice in writing specifying any work/repairs to be done which is the Tenant's responsibility.The Tenant shall execute the same within ten(10) days failing which the Landlord may enter the Premises and execute such work/repairs at the Tenant's expense.</li>
+														<br/>
+														<li>Prior to the determination of the Term,clean repair and restore the Premises to a tenantable state and condition, and if required by the Landlord, paint the interior with 2 coats of paint of the existing colour paint to the satisfaction of the Landlord.</li>
+														<br/>
+														<li>At the determination of the Term, to handover the Premises and all the Landlord's furniture, fixtures and things in good and substantial repair fair wear and tear excepted, and pay for any damage or repairs as per the Schedule of Rectification Costs in the Handbook.</li>
+													</ol>
+													</p>
+												</div>
+												</td>
+												
+												<td  style="width:20%;" >
+													<div style="font-size:12px;padding: 0px 20px;text-align:justify;font-family:sans-serif;">     
+													<p><ol start="41">
+														<li>For each day of delay in handing over the Premises, after the expiry of the Term, the Tenant shall pay to the Landlord, on a prorated basis, double the Charges payable as damages.</li>
+														<br/>
+														<li>It shall be lawful for the Landlord to re-enter the Premises and the tenancy hereby created shall absolutely determine id:-
+														<br/>
+														a)  the Charges or any other sum payable by the Tenant to the Landlord shall at any time remain unpaid for 14 days or if the Landlord is unsuccessful in making 3 GIRO deductions;
+														
+														b)  a term here in shall not be performed by the Tenant within 10 days of being served a written notice by the Landlord;
+														
+														c)  the Tenant shall make an assignment for the benefit of creditors or enter into an arrangement with creditors by composition or otherwise or suffer any distress or attachment or execution to be  levied against their goods;and
+														                  
+														                 d)the Tenant, being a company, shall enter into liquidation, whether compulsory or
+														                  voluntary, save for the purpose of reconstruction or amalgamation, or, being an
+														                  individual, shall commit an act of bankruptcy or have a bankruptcy order made against
+														                  the Tenant.</li>
+														<br/>
+														<li>All notices to be served by the Landlord, shall be in writing and deemed served if sent by ordinary post or by fax to the Tenant's address and fax number stated in this Agreement. Service of legal process by way of leaving at the Tenant's address, stated in this Agreement, shall be deemed to be proper services.</li>
+														<br/>
+														<li>The Tenant shall pay all costs, expences and fees incurred by the Landlord in enforcing the terms here in on a 'solicitor and client' basis.</li>
+														<br/>
+														<li>The Tenant shall indemnify the Landlord against all actions, claims, fines, losses, damages, penalties, cost and expenses as a result of the Tenant's or its Occupant(s)' failure to comply with any term here in including liability for injury, loss of life, damage, waste or loss caused directly or</li>
+													</ol>
+													</p>
+												</div>
+												</td>
+												<td style="width:20%;" >
+													<div style="font-size:12px;padding: 0px 20px;text-align:justify;font-family:sans-serif;">     
+													<p> <ol start="45">
+														indirectly by the Tenant or its Occupant(s) or the Tenant's visitors, invitees or agents etc.The Tenant shall further pay, reimburse or compensate the Landlord for doing anything stated here in which the Tenant's required to do but did not do regardless of whether the Landlord has given the Tenant notice in writing or not.
+														<br/>
+														<li>No waiver, express or implied, by the Landlord of a breach of a term by the Tenant, or acceptance of any payment due to the landlord, shall be constructed as a waiver of any other breach of any other term, unless it is stated in writing by the Landlord.</li>
+														<br/>
+														<li>The Landlord shall not be liable to compensate the Tenant for:-
+														<br/>
+														a)  any interruption in occupying the Premises because of repairs or maintenance of any installation,apparatus or infrastructure or damage ther to or because of mechanical or other defect or breakdown, including but not limited to breakdown in electricity, gas and watersupply;
+														
+														b) any act, omission, default, misconduct or negligence of an employee or agent of the Landlord in performing any duty relating to the premises or the Common Property;
+														
+														c)any damage, injury,death or loss caused by the Landlord's other tenants' occupants, or persons on the Premises or the Common Property, inflicted by an Occupant on himself whether knowingly or unknowingly; and
+														
+														d) an Act of God or force majeure, fire, riot, civil disturbance or if the Premises are compulsorily acquired, or redeveloped by the relevant authorities.</li>
+														<br/>
+														<li>If the Landlord carries out works to improve, extend, vary, alter, renovate the building of the Premises which may affact the Tenant's peaceful and quite enjoyment of the Premises, the landlord shall be entitled, at their sole discretion, to terminate this</li>
+														</ol>
+														</p>
+												</div>
+												</td>			
+												</tr>
+												<tr height="10px">
+												 	<td>
+												 		<p align="left">
+															 <h5 style="margin-left: 28px;"><strong>REF.NO: <span t-field="o.reference_no"></span></strong></h5>
+															 <br/><p align="right">3</p>
+														</p>										 	
+												 	</td>
+												 	<td></td>
+										 			<td>
+												 		<p align="left">
+															 <h5 style="margin-left: 28px;"><strong>REF.NO: <span t-field="o.reference_no"></span></strong></h5>
+															 <br/><p align="right">4</p>
+														</p>										 	
+												 	</td>	
+												 </tr>
+										</table>
+											  </div>     
+									</td>
+									
+							    </tr>
+							</table>
+						</div>
+
+						<p style="page-break-after:always;"/>
+						<div class="page">
+							<br/><br/>
+							<table class="rotate" cellpadding="10" cellspacing="10" >
+							    <tr >
+							    	<td>
+										<div>  
+	  									<table id='content' cellspacing="10">
+	  										<tr>
+											  	<td style="width:25%;" >
+											  <div style="font-size:12px;padding: 0px 20px;text-align:justify;font-family:sans-serif;">
+													<p><ol start="49">
+														tenancy by giving to the Tenant 2 months' prior written notice.
+														<br/>
+														<li>The Landlord may, before the expiration of the term, grant to the Tenant a tenancy of the Premises for a further period and on terms to be mutually agreed upon. In the event that that the Landlord agrees to do so, the decision to change or provide new Basic Items shall be the discretion of the Landlord.</li>
+														<br/>
+														<li>The Tenant shall not be  at liberty to assign this Agreement without the Landlord's written consent.</li>
+														<br/>
+														<li>This Agrement may be terminated by either party giving the other 2 clear month's notice in writing to end at the end of a month. This notice may however be given only after 3 months from the date of the commencement of this Agreements.</li>
+														<br/>
+														<li>If either party wishes to terminate this Agreement with respect to a partculer unit then the party seeking such partial termination shall give the other 2 clear months' notice in writing to end at the end of the month. This notice may however be given only after 3 months from the date of commencement of this Agreement. Clauses 39 and 40 and all other clauses regarding the Tenant's obligations to the Landlord shall apply in respect of the particuler unit for which the notice herein has been given. After the Tenant has fulfilled its obligations under this Agreement to the Landlord's satisfaction the Landlord shall pro rate and refund to the Tenant a portion of the Deposite to commensurate with the number of units still being rented by the Tenant.</li>
+														<br/>
+														<li>This Agreement shall be interpreted in accordance with the laws of Singapore and the Contracts (Right of Third Parties) Act shall not apply to this Agreement</li>
+														</ol>
+														</p>
+													</div>
+													
+												</td>
+												<td style="width:25%;" />
+												<td style="width:25%;" />
+												<td style="width:25%;" />
+												 </tr>
+												 <tr height="10px">
+												 	<td >
+												 		<p > 
+															 <h5 style="margin-left: 28px;"><strong>REF.NO: <span t-field="o.reference_no"></span></strong></h5>
+															 <br/><p align="right">5</p>
+														</p>										 	
+												 	</td>											 
+												 </tr>
+											</table>
+										</div>
+									</td>
+								 </tr>
+							</table>
+						</div>
+				</t>
+			</t>
+		</template>
+	</data>
+</openerp>

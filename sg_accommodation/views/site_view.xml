@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<openerp>
+    <data>
+
+        <!-- Search view of Site Master -->
+        <record model="ir.ui.view" id="view_site_master_search">
+            <field name="name">site.master.search</field>
+            <field name="model">site.master</field>
+            <field name="arch" type="xml">
+                <search string="Site Master">
+                    <field name="name"/>
+                </search>
+            </field>
+        </record>
+
+        <!--Tree view of Site Master  -->
+        <record model="ir.ui.view" id="view_site_master_tree">
+            <field name="name">site.master.tree</field>
+            <field name="model">site.master</field>
+            <field name="arch" type="xml">
+                <tree string="Site Master">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Form view of Site Master -->
+        <record model="ir.ui.view" id="view_site_master_form">
+            <field name="name">site.master.form</field>
+            <field name="model">site.master</field>
+            <field name="arch" type="xml">
+                <form string="Site Master">
+                    <sheet>
+                        <group>
+                            <field name="name" required="True"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Action of Site Master -->
+        <record id="action_site_master" model="ir.actions.act_window">
+            <field name="name">Site Master</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">site.master</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Search view of Site Location -->
+        <record model="ir.ui.view" id="view_site_location_search">
+            <field name="name">site.location.search</field>
+            <field name="model">site.location</field>
+            <field name="arch" type="xml">
+                <search string="Site Location">
+                    <field name="name"/>
+                    <field name="site_id"/>
+                </search>
+            </field>
+        </record>
+
+        <!-- Tree view of Site Location -->
+        <record model="ir.ui.view" id="view_site_location_tree">
+            <field name="name">site.location.tree</field>
+            <field name="model">site.location</field>
+            <field name="arch" type="xml">
+                <tree string="Site Location">
+                    <field name="name"/>
+                    <field name="site_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Form view of Site Location -->
+        <record model="ir.ui.view" id="view_site_location_form">
+            <field name="name">site.location.form</field>
+            <field name="model">site.location</field>
+            <field name="arch" type="xml">
+                <form string="Site Location">
+                    <sheet>
+                        <group>
+                            <field name="name" required="True"/>
+                            <field name="site_id"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Action of Site Location -->
+        <record id="action_site_location" model="ir.actions.act_window">
+            <field name="name">Site Location</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">site.location</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+    <!-- Menu of Site Location and Site Master-->
+    <menuitem id="menu_action_site_location" action="action_site_location" parent="Configuration1" />
+    <menuitem id="menu_action_site_master" action="action_site_master" parent="Configuration1" />
+
+    </data>
+</openerp>

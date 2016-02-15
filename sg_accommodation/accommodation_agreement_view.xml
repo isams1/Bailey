@@ -1,0 +1,668 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+
+		<!-- Inherited Form view of Employee to add Location -->
+		<record id="view_hr_employee_form_inherit_location" model="ir.ui.view">
+			<field name="name">view.hr.employee.form.inherit.location</field>
+			<field name="model">hr.employee</field>
+			<field name="inherit_id" ref="hr.view_employee_form"/>
+			<field name="arch" type="xml">
+				<xpath expr="/form/sheet/notebook/page[@string='Public Information']/group/group[@string='Contact Information']/field[@name='work_location']" position="replace">
+					<field name="worker_location_id"/>
+					<field name="accommodated" readonly="1"/>
+					<field name="away" readonly="1"/>
+				</xpath>
+				<xpath expr="/form/sheet/notebook/page[@string='HR Settings']" position="after">
+					<page string="Accommodation Pub History">
+						<field name="pub_accommodation_history_ids" readonly="1">
+							<tree editable="top">
+						         <field name="accommodation_id"/>
+						         <field name="rent"/>
+						         <field name="pub_amount_emp"/>
+						         <field name="date"/>
+						         <field name="month_emp"/>
+						         <field name="emp_id" invisible="True"/>
+						         <field name="year_emp"/>
+							</tree>
+						</field>	
+					</page>
+					<page string="Employee Away History">
+                       <field name="emp_away_history_ids" readonly="1">
+                           <tree editable="bottom">
+                               <field name="exp_date_from"/>
+                               <field name="exp_date_to"/>
+                               <field name="date_from"/>
+                               <field name="date_to"/>
+                               <field name="reason_id"/>
+                               <button name="set_date_from" type="object" string="Leave"/>
+                               <button name="set_date_to" type="object" string="Return"/>
+                           </tree>
+                       </field>
+                    </page>
+				</xpath>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="view_beds_beds_tree">
+            <field name="name">beds.beds.tree</field>
+            <field name="model">beds.beds</field>
+            <field name="arch" type="xml">
+                <tree editable="top" string="Beds" version="7.0">
+                    <field name="name"/>
+                    <field name="employee_id"/>
+                </tree>
+            </field>
+        </record>
+        
+		<record model="ir.ui.view" id="view_beds_beds_form">
+            <field name="name">beds.beds.form</field>
+            <field name="model">beds.beds</field>
+            <field name="arch" type="xml">
+                <form string="Beds" version="7.0">
+                  <sheet>
+                      <group>
+	                    <field name="name"/>
+	                    <field name="employee_id"/>
+	                   </group>
+                   </sheet>
+                </form>
+            </field>
+        </record>
+        
+		<record model="ir.actions.act_window" id="action_beds_beds">
+            <field name="name">Beds</field>
+            <field name="res_model">beds.beds</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" eval="view_beds_beds_tree"/>
+        </record>
+        
+        
+        <menuitem name="Accommodation" id="accomodation"/>
+        <menuitem id="menu_report_setting" name="Reports" parent="accomodation" sequence="19"/>
+		<menuitem name="Configuration" id="Configuration1" parent="accomodation" sequence="20"/>
+		<menuitem name="Beds" id="accomodation_beds" parent="Configuration1" action="action_beds_beds"/>
+		
+		<record model="ir.ui.view" id="view_room_room_tree">
+            <field name="name">room.room.tree</field>
+            <field name="model">room.room</field>
+            <field name="arch" type="xml">
+                <tree string="Rooms" version="7.0">
+                    <field name="name" string="Room/Unit"/>
+                    <field name="bed_ids"/>
+                    <field name="available_beds"/>
+                </tree>
+            </field>
+        </record>
+        
+		<record model="ir.ui.view" id="view_room_room_form">
+            <field name="name">room.room.form</field>
+            <field name="model">room.room</field>
+            <field name="arch" type="xml">
+                <form string="Rooms" version="7.0">
+                  <sheet>
+                     <group>
+                      <group>
+	                    <field name="name" string="Room/Unit"/>
+                         <field name="available_beds"/>
+	                  </group>
+	                    <separator string="Beds"  colspan="4" />
+	                    <field name="bed_ids" nolabel="1"/>
+	                  </group>
+                   </sheet>
+                </form>
+            </field>
+        </record>
+        
+		<record model="ir.actions.act_window" id="action_room_room">
+            <field name="name">Rooms</field>
+            <field name="res_model">room.room</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" eval="view_room_room_tree"/>
+        </record>
+        
+		<menuitem name="Rooms" id="accomodation_room" parent="Configuration1" action="action_room_room"/>
+		
+		<record model="ir.ui.view" id="view_visa_quota_tree">
+            <field name="name">visa.quota.tree</field>
+            <field name="model">visa.quota</field>
+            <field name="arch" type="xml">
+                <tree string="Visa Quota" version="7.0">
+					<field name="nationality_id"/>
+					<field name="room_id"/>
+                    <field name="number_of_quota"/>
+                    <field name="quota_available"/>
+                </tree>
+            </field>
+        </record>
+        
+		<record model="ir.ui.view" id="view_visa_quota_form">
+            <field name="name">visa.quota.form</field>
+            <field name="model">visa.quota</field>
+            <field name="arch" type="xml">
+                <form string="Visa Quota" version="7.0">
+                  <sheet>
+                      <group colspan="4" col="4">
+	                    <field name="number_of_quota" required="True"/>
+	                    <field name="quota_available"/>
+	                    <field name="nationality_id" required="True"/>
+						<field name="room_id"/>
+	                   </group>
+                   </sheet>
+                </form>
+            </field>
+        </record>
+        
+		<record model="ir.actions.act_window" id="action_visa_quota">
+            <field name="name">Visa Quota</field>
+            <field name="res_model">visa.quota</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" eval="view_visa_quota_tree"/>
+        </record>
+        
+		<menuitem name="Visa Quota" id="accomodation_visa_quota" parent="Configuration1" action="action_visa_quota"/>
+		
+		<!-- From view of Accommodation History -->
+		<record id="view_accommodation_history_form" model="accommodation.history">
+			<field name="name">view.accommodation.history.form</field>
+			<field name="model">accommodation.history</field>
+			<field name="arch" type="xml">
+				<form string="Accommodation History">
+					<sheet>
+						<group colspan="4">
+							<field name="bed_id"/>
+							<field name="room_id"/>
+							<field name="accommodation_id"/>
+							<field name="employee_id"/>
+							<field name="date"/>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+	
+		<!-- Tree view of Accommodation History -->
+		<record id="view_accommodation_history_tree" model="accommodation.history">
+			<field name="name">view.accommodation.history.tree</field>
+			<field name="model">accommodation.history</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="bed_id"/>
+					<field name="room_id"/>
+					<field name="accommodation_id"/>
+					<field name="employee_id"/>
+					<field name="date"/>
+				</tree>
+			</field>
+		</record>
+
+		<!-- Tree view of Accommodation -->
+		<record model="ir.ui.view" id="view_accommodation_accommodation_tree">
+            <field name="name">accommodation.accommodation.tree</field>
+            <field name="model">accommodation.accommodation</field>
+            <field name="arch" type="xml">
+                <tree string="Accommodation" version="7.0">
+                    <field name="address_id"/>
+                    <field name="rent"/>
+                    <field name="employee_deduction"/>
+                    <field name="company_deduction"/>
+                </tree>
+            </field>
+        </record>
+        
+		<record model="ir.ui.view" id="view_accommodation_accommodation_form">
+            <field name="name">accommodation.accommodation.form</field>
+            <field name="model">accommodation.accommodation</field>
+            <field name="arch" type="xml">
+                <form string="Accommodation" version="7.0">
+                <header>
+					<button name="confirm_accommodation" string="Confirm" type="object" states="draft"/>
+					<button name="expire_accommodation" string="Expire" type="object" states="open,renewed"/>
+					<button name="draft_accommodation" string="Draft" type="object" states="open"/>
+					<button name="request_renew_accommodation" string="Request Renewal" type="object" states="expired"/>
+					<button name="renew_accommodation" string="Renew" type="object" states="waiting"/> 
+                    <button name="%(action_wiz_create_room)d" string="Create Rooms/Units" type="action" class="oe_highlight" states="draft"/>
+                    <button name="%(action_wiz_allocate_emp)d" string="Allocate" type="action" class="oe_highlight" states="open"/>
+					<button name="%(action_wiz_vacant_bed)d" string="Vacant" type="action" class="oe_highlight" states="open"/>
+                    <button name="%(action_wiz_add_nationality)d" string="National Availability" type="action" states="draft,open,waiting,renewed"/>
+					<field name="state" widget="statusbar"/>
+                </header>
+                  <sheet>
+                        <group colspan="4" col="4">
+							<group colspan="2" col="2">
+								<field name="name" attrs="{'readonly':[('state','not in',('draft','waiting'))]}"/>
+		                    	<field name="address_id" context="{'show_address':True,'default_location':True, 'form_view_ref':'accommodation.view_res_partner_location_form', 'tree_view_ref':'accommodation.view_res_partner_location_tree'}" required="True" domain="[('location','=',True)]" attrs="{'readonly':[('state','not in',('draft','waiting'))]}"/>
+								<field name="type" attrs="{'readonly':[('state','not in',('draft','waiting'))]}"/>
+		                    	<field name="date_start" on_change="check_date_format(date_start,date_end)" attrs="{'readonly':[('state','not in',('draft','waiting'))]}"/>
+								<field name="date_end" on_change="check_date_format(date_start,date_end)" attrs="{'readonly':[('state','not in',('draft','waiting'))]}"/>
+								<field name="tenure" attrs="{'readonly':[('state','not in',('draft','waiting'))]}"/>
+								<field name="rcb_no" attrs="{'readonly':[('state','not in',('draft','waiting'))]}"/>
+							</group>
+		                    <group colspan="2" col="2">
+		                    	<field name="reference_no" attrs="{'readonly':[('state','not in',('draft','waiting'))]}"/>
+			                    
+								<field name="rental_pax" attrs="{'readonly':[('state','not in',('draft','waiting'))]}"/>
+			                    <field name="maximum_capacity" attrs="{'readonly':[('state','not in',('draft','waiting'))]}" required="True"/>
+								<field name="stay_capacity" attrs="{'readonly':[('state','not in',('draft','waiting'))]}"/>
+								<field name="occupied" attrs="{'readonly':[('state','not in',('draft','waiting'))]}"/>
+								<field name="id" string="Accommodation Id" readonly="1"/>
+							</group>
+						</group>
+						<notebook>
+							<page string="Landlord">
+								<group colspan="2" col="2">
+									<field name="land_lord_id" attrs="{'readonly':[('state','not in',('draft','waiting'))]}" context="{'default_landlord':True}" domain="[('landlord','=',True)]" required="1"/>
+									<field name="ll_responsible" attrs="{'readonly':[('state','not in',('draft','waiting'))]}"/>
+									<field name="designation" attrs="{'readonly':[('state','not in',('draft','waiting'))]}"/>
+									<field name="nric_no" attrs="{'readonly':[('state','not in',('draft','waiting'))]}"/>	
+									<group string="Correspondence Address" colspan="2" col="2">
+										<field name="agent" attrs="{'readonly':[('state','not in',('draft','waiting'))]}"/>
+					                    <field name="agent_id" attrs="{'invisible':[('agent','=',False)],'readonly':[('state','not in',('draft','waiting'))]}"/>
+									</group>
+									<group string="Landlord's Witness" colspan="4" col="4">
+										<field name="ll_witness" attrs="{'readonly':[('state','not in',('draft','waiting'))]}"/>
+										<field name="witness_nric_no" attrs="{'readonly':[('state','not in',('draft','waiting'))]}"/>
+									</group>
+								</group>
+							</page>
+							<page string="Tenant">
+								<group colspan="2" col="2">
+									<field name="paying_comp_id" attrs="{'readonly':[('state','not in',('draft','waiting'))]}" domain="[('tenant','=',True)]" context="{'default_tenant':True}" required="1"/>
+									<field name="ten_responsible" attrs="{'readonly':[('state','not in',('draft','waiting'))]}"/>
+									<field name="nric_no_ten" attrs="{'readonly':[('state','not in',('draft','waiting'))]}"/>	
+									<group string="Correspondence Address" colspan="2" col="2">
+										<field name="corres_address" attrs="{'readonly':[('state','not in',('draft','waiting'))]}"/>
+					                    <field name="corress_address_id" attrs="{'invisible':[('corres_address','=',True)],'readonly':[('state','not in',('draft','waiting'))]}"/>
+									</group>
+									<group string="Tenant's Witness" colspan="4" col="4">
+										<field name="ten_witness" attrs="{'readonly':[('state','not in',('draft','waiting'))]}"/>
+										<field name="witness_nric_no_ten" attrs="{'readonly':[('state','not in',('draft','waiting'))]}"/>
+									</group>
+								</group>
+							</page>
+							<page string="Rooms/Units">
+								<field name="block_no" attrs="{'readonly':[('state','not in',('draft','waiting'))]}" placeholder="Block No"></field>
+								<field name="room_ids" attrs="{'readonly':[('state','not in',('draft','waiting'))]}"></field>
+							</page>
+							<page string="National Availability">
+								<field name="visa_quota_ids" nolabel="1" attrs="{'readonly':[('state','not in',('draft','waiting'))]}"/>
+							</page>
+							<page string="Rent and Charges">
+								<group colspan="2" col="2">
+									<group string="Rent">
+										<field name="rent" attrs="{'readonly':[('state','not in',('draft','waiting'))]}"></field>
+										<field name="rent_per_pax"/>
+										<field name="deposit" attrs="{'readonly':[('state','not in',('draft','waiting'))]}"/>
+										<field name="payment_term_id" widget="selection" attrs="{'readonly':[('state','not in',('draft','waiting'))]}"/>
+				                    	<field name="total_amount" attrs="{'readonly':[('state','not in',('draft','waiting'))]}"></field>
+									</group>
+									<group string=" Other Charges">
+										<field name="ser_and_cons" attrs="{'readonly':[('state','not in',('draft','waiting'))]}"></field>
+										<field name="fur_and_fit" attrs="{'readonly':[('state','not in',('draft','waiting'))]}"></field>
+										<field name="other_charges" attrs="{'readonly':[('state','not in',('draft','waiting'))]}"></field>
+									</group>
+									<group string=" Deduction">
+										<field name="employee_deduction" attrs="{'readonly':[('state','not in',('draft','waiting'))]}"/>
+				                    	<field name="company_deduction" attrs="{'readonly':[('state','not in',('draft','waiting'))]}"/>
+									</group>
+									<group string="Fees">
+										<field name="admin_fees" attrs="{'readonly':[('state','not in',('draft','waiting'))]}"></field>
+									</group>
+								</group>
+							</page>
+							<page string="Amenities">
+								<separator string="Amenities"/>
+								<field name="amenities_ids" widget="many2many_tags" attrs="{'readonly':[('state','not in',('draft','waiting'))]}"></field>
+								<separator string="Exclusion"/>
+								<field name="exclusion_ids" widget="many2many_tags" attrs="{'readonly':[('state','not in',('draft','waiting'))]}"></field>
+							</page>
+							<page string="Security">
+								<group>
+									<field name="security_ids" widget="many2many_tags" attrs="{'readonly':[('state','not in',('draft','waiting'))]}"></field>
+									<field name="premises" attrs="{'readonly':[('state','not in',('draft','waiting'))]}"></field>
+									<field name="stamp_fees" attrs="{'readonly':[('state','not in',('draft','waiting'))]}"/>
+								</group>
+							</page>
+							<page string="History">
+								<field name="history_ids" readonly="1">
+									<tree editable="bottom">
+										<field name="bed_id"/>
+										<field name="room_id"/>
+										<field name="accommodation_id"/>
+										<field name="employee_id"/>
+										<field name="date"/>
+										<field name="type"/>
+									</tree>
+								</field>
+							</page>
+							<page string="Pub History">
+								<field name="pub_history_ids" readonly="1">
+									<tree editable="bottom">
+										<field name="month"/>
+										<field name="year"/>
+										<field name="accommodation_id" invisible="True"/>
+										<field name="date"/>
+										<field name="pub_amount"/>
+										<field name="pub_active" invisible="True"/>
+										<button name="divide_pub" type="object" string="Divide" attrs="{'invisible':[('pub_active','=',True)]}"/>
+									</tree>	
+								</field>
+							</page>
+						</notebook>
+                   </sheet>
+                </form>
+            </field>
+        </record>
+        
+		<record model="ir.actions.act_window" id="action_accommodation_accommodation">
+            <field name="name">Accommodation</field>
+            <field name="res_model">accommodation.accommodation</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" eval="view_accommodation_accommodation_tree"/>
+			<field name="context">{'show_address':True}</field>
+        </record>
+        
+		<menuitem name="Accommodation" id="accomodation1" parent="accomodation" sequence="15"/>
+		<menuitem name="Accommodation" id="accomodation_accommodation" parent="accomodation1" action="action_accommodation_accommodation"/>
+
+		<!-- Accommodation Location Form -->
+		<record id="view_res_partner_location_form" model="ir.ui.view">
+			<field name="name">view.res.partner.location.inherit.form</field>
+			<field name="model">res.partner</field>
+			<field name="arch" type="xml">
+				<form string="Location">
+					<sheet>
+						<h1>
+							<field name="name" colspan="4"/>
+						</h1>
+						<field name="street" placeholder="Street..."/>
+						<field name="street2" placeholder="LandMark..."/>
+						<field name="city" placeholder="City..."/>
+						<field name="state_id" placeholder="State..." on_change="onchange_state(state_id)"/>
+						<field name="country_id" placeholder="Country..."/>
+						<field name="zip" placeholder="Zip..."/>
+						<field name="phone" placeholder="Phone Number..."/>
+						<field name="email" placeholder="Email..."/>
+						<field name="location" invisible="1"/>
+						<field name="company_id"/>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<!-- Accommodation Location Tree -->
+		<record id="view_res_partner_location_tree" model="ir.ui.view">
+			<field name="name">view.res.partner.location.inherit.tree</field>
+			<field name="model">res.partner</field>
+			<field name="arch" type="xml">
+				<tree string="Location">
+					<field name="name"/>
+					<field name="street"/>
+					<field name="street2"/>
+					<field name="city"/>
+					<field name="state_id"/>
+					<field name="country_id"/>
+					<field name="zip"/>
+					<field name="phone"/>
+					<field name="email"/>
+				</tree>
+			</field>
+		</record>
+
+		<!-- Accommodation Location Search View -->
+		<record id="view_res_partner_location_search" model="ir.ui.view">
+			<field name="name">view.res.partner.location.inherit.search</field>
+			<field name="model">res.partner</field>
+			<field name="arch" type="xml">
+				<search string="Location">
+					<field name="location"/>
+					<field name="country_id"/>
+					<field name="state_id"/>
+					<field name="street"/>
+					<field name="company_id"/>
+					<group expand="0" string="Group By">
+						<filter name="grp_country" string="Country" domain="[]" context="{'group_by':'country_id'}"/>
+						<filter name="grp_state" string="State" domain="[]" context="{'group_by':'state_id'}"/>
+						<filter name="grp_company" string="Company" domain="[]" context="{'group_by':'company_id'}"/>
+					</group>
+				</search>
+			</field>
+		</record>
+
+		<!-- Accommodation Location Action -->
+		<record id="action_accomodation_location" model="ir.actions.act_window">
+			<field name="name">Location</field>
+			<field name="res_model">res.partner</field>
+			<field name="view_mode">tree,form</field>
+			<field name="search_view_id" ref="sg_accommodation.view_res_partner_location_search"/>
+			<field name="domain">[('location','=',True)]</field>
+			<field name="context">{'default_location':True,'default_customer':False,'default_supplier':False}</field>
+		</record>
+
+		<record id="action_location_form_view" model="ir.actions.act_window.view">
+            <field name="view_mode">form</field>
+			<field name="sequence">9</field>
+            <field name="view_id" ref="view_res_partner_location_form"/>
+            <field name="act_window_id" ref="action_accomodation_location"/>
+        </record>
+
+		<record id="action_location_tree_view" model="ir.actions.act_window.view">
+            <field name="view_mode">tree</field>
+			<field name="sequence">8</field>
+            <field name="view_id" ref="view_res_partner_location_tree"/>
+            <field name="act_window_id" ref="action_accomodation_location"/>
+        </record>
+
+		<!-- Menu for Accommodation Location -->
+		<menuitem id="menu_acc_location" action="action_accomodation_location" parent="Configuration1"/>
+
+		<!-- Amenities Tree View -->
+		<record model="ir.ui.view" id="amenities_tree_view">
+            <field name="name">amenities.amenities.tree</field>
+            <field name="model">amenities.amenities</field>
+            <field name="arch" type="xml">
+                <tree string="Amenities" version="7.0">
+                    <field name="name"/>
+                    <field name="code"/>
+                </tree>
+            </field>
+        </record>
+        
+		<!-- Amenities Form View -->
+		<record id = "amenities_form_view" model="ir.ui.view">
+			<field name="name">amenities.amenities.form</field>
+			<field name="model">amenities.amenities</field>
+			<field name="arch" type="xml">
+				<form string="Amenities" version="7.0">
+					<sheet>
+						<group colspan="2" col="2">
+							<field name="name" string="Name" required="True"></field>
+							<field name="code" string="Code"></field>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+		
+		<!-- Amenities Action view  -->
+		<record model="ir.actions.act_window" id="action_amenities">
+            <field name="name">Amenities</field>
+            <field name="res_model">amenities.amenities</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" eval="amenities_tree_view"/>
+        </record>
+
+	<!-- Menu for Accommodation Location -->
+		<menuitem id="menu_accommodation_amenities" action="action_amenities" parent="Configuration1"/>
+		
+
+	<!-- Security Tree view  -->
+	<record model="ir.ui.view" id="security_tree_view">
+            <field name="name">security.security.tree</field>
+            <field name="model">security.security</field>
+            <field name="arch" type="xml">
+                <tree string="Security" version="7.0">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="price"/>
+                </tree>
+            </field>
+    </record>	
+
+	<!-- Security Form View -->
+		<record id = "security_form_view" model="ir.ui.view">
+			<field name="name">security.security.form</field>
+			<field name="model">security.security</field>
+			<field name="arch" type="xml">
+				<form string="Security" version="7.0">
+					<sheet>
+						<group colspan="2" col="2">
+							<field name="name" string="Name" required="True"></field>
+							<field name="code" string="Code"></field>
+							<field name="price" string="Price"></field>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+		
+
+	<!-- Security Action view  -->
+		<record model="ir.actions.act_window" id="action_security">
+            <field name="name">Security</field>
+            <field name="res_model">security.security</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" eval="security_tree_view"/>
+        </record>
+
+	<!-- Menu for Accommodation Security -->
+		<menuitem id="menu_accommodation_security" action="action_security" parent="Configuration1"/>
+
+	<!-- Company Inherited to add Accommodation Fields -->
+	<record id="view_company_form_accommodation_inherit" model="ir.ui.view">
+		<field name="name">view.company.form.accommodation.inherit</field>
+		<field name="model">res.company</field>
+		<field name="inherit_id" ref="base.view_company_form"/>
+		<field name="arch" type="xml">
+			<xpath expr="//form/sheet/notebook/page[@string='Configuration']" position="inside">
+				<group colspan="2" col="2" string="Accommodation">
+					<field name="tenant"/>
+				</group>
+			</xpath>
+		</field>
+	</record>
+
+	<!-- Company Inherited to add Accommodation Fields -->
+	<record id="view_partner_form_accommodation_inherit" model="ir.ui.view">
+		<field name="name">view.partner.form.accommodation.inherit</field>
+		<field name="model">res.partner</field>
+		<field name="inherit_id" ref="base.view_partner_form"/>
+		<field name="arch" type="xml">
+			<xpath expr="//form/sheet/notebook/page[@string='Sales &amp; Purchases']" position="after">
+				<page string="Accommodation">
+					<group colspan="2" col="2">
+						<field name="landlord"/>
+						<field name="location"/>
+					</group>
+				</page>
+			</xpath>
+		</field>
+	</record>
+
+    <!-- Accommodation Type Tree view  -->
+    <record model="ir.ui.view" id="accommodation_type_tree_view">
+            <field name="name">accommodation.type.tree</field>
+            <field name="model">accommodation.type</field>
+            <field name="arch" type="xml">
+                <tree string="Accommodation Type">
+                    <field name="name"/>
+                    <field name="code"/>
+                </tree>
+            </field>
+    </record>   
+
+    <!-- Accommodation Type Form View -->
+        <record id = "accommodation_type_form_view" model="ir.ui.view">
+            <field name="name">accommodation.type.form</field>
+            <field name="model">accommodation.type</field>
+            <field name="arch" type="xml">
+                <form string="Security">
+                    <sheet>
+                        <group colspan="2" col="2">
+                            <field name="name" string="Name" required="True"></field>
+                            <field name="code"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+
+    <!-- Accommodation Type Action view  -->
+        <record model="ir.actions.act_window" id="action_accommodation_type">
+            <field name="name">Accommodation Type</field>
+            <field name="res_model">accommodation.type</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" eval="accommodation_type_tree_view"/>
+        </record>
+
+    <!-- Menu for Accommodation Type Security -->
+        <menuitem id="menu_accommodation_type" action="action_accommodation_type" parent="Configuration1"/>
+	 
+	<!-- Pub History Form View -->
+        <record id = "pub_type_form_view" model="ir.ui.view">
+            <field name="name">pub.form</field>
+            <field name="model">pub.history</field>
+            <field name="arch" type="xml">
+                <form string="PUB">
+                    <sheet>
+                        <group colspan="2" col="2">
+                            <field name="month" string="Month" required="True"></field>
+                            <field name="year" string="Year"/>
+                            <field name="pub_amount" string="PUB Amount"/>
+                            <field name="date" string="Date"/>
+                            <field name="accommodation_id"/>
+                            <field name="pub_active" invisible="True"/>
+                        </group>
+                      <footer>
+                          <button name="divide_pub" type="object" string="Divide" attrs="{'invisible':[('pub_active','=',True)]}"/>                  
+                      </footer>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+	<!-- Pub History Tree view  -->
+    <record model="ir.ui.view" id="accommodation_pub_history_tree_view">
+            <field name="name">pub.tree</field>
+            <field name="model">pub.history</field>
+            <field name="arch" type="xml">
+                <tree string="PUB">
+                    <field name="month" string="Month"></field>
+                    <field name="year" string="Year"/>
+                    <field name="pub_amount" string="PUB Amount"/>
+                    <field name="date" string="Date"/>
+                </tree>
+            </field>
+    </record>  
+	
+	<!-- Accommodation Type Action view  -->
+        <record model="ir.actions.act_window" id="action_pub_history1">
+            <field name="name">PUB</field>
+            <field name="res_model">pub.history</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" eval="accommodation_pub_history_tree_view"/>
+        </record>
+
+    <!-- Menu for Pub Type Security -->
+        <menuitem id="menu_pub" action="action_pub_history1" parent="Configuration1"/>
+	</data>
+</openerp>

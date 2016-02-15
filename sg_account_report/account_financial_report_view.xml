@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="account_financial_report_view" model="ir.ui.view">
+            <field name="name">Report Templates</field>
+            <field name="model">afr</field>
+            <field name="arch" type="xml">
+            <form string="Report Templates" version="7.0"> 
+            <sheet>
+                <group colspan="2">
+                    <field name="name" colspan="2"/>
+                </group>
+                <group colspan="4" col="4">
+                    <group colspan="2">
+                        <separator string="Company" colspan="2"/>
+                        <field name="company_id" on_change='onchange_company_id(company_id)' colspan="2"/>
+                        <field name="currency_id" domain="[('company_id','=',company_id)]" attrs="{'readonly':[('analytic_ledger','=',True)]}" colspan="2"/> 
+                    </group>
+                    <group colspan="2">
+                        <separator string="Report" colspan="2"/>
+                        <field name="inf_type" colspan="2" on_change='onchange_inf_type(inf_type)'/>
+                        <field name="columns" on_change='onchange_columns(columns,fiscalyear_id,period_ids)' colspan="2"/>
+                        <field name="analytic_ledger" invisible="1" colspan="2" attrs="{'readonly':['|',('columns','!=','four'),('inf_type','!=','BS')],}" on_change='onchange_analytic_ledger(company_id,analytic_ledger)' />
+                    </group>
+                </group>
+                <group colspan='4' col="4">
+                    <group colspan="2">
+                        <separator string="Account Parameters" colspan="2"/>
+                        <field name="display_account" required="True" colspan="2"/>
+                        <field name="display_account_level" required="True" invisible="1" colspan="2"/>
+                    </group>
+                    <group colspan="2">
+                        <separator string="Fiscal Year" colspan="4"/>
+                        <field name="fiscalyear_id" on_change='onchange_columns(columns,fiscalyear_id,period_ids)' domain="[('company_id','=',company_id)]"/>
+                        <newline/>
+                    </group>
+                </group>
+                <group colspan='4'>
+                    <group colspan="1">
+                        <separator string="Accounts to Include" colspan="4"/>
+                        <field name="account_ids" nolabel="1" colspan="4" domain="[('company_id','=',company_id)]">
+                            <tree>
+                                <field name='code'/>
+                                <field name='name'/>
+                                <field name='type'/>
+                                <field name='level'/>
+                            </tree>
+                        </field>
+                    </group>
+                    <group colspan="1">
+                        <separator string="Periods to Include" colspan="4"/>
+                        <field name="period_ids" colspan="4" nolabel="1" domain="[('fiscalyear_id','=',fiscalyear_id),('special','=',False),('company_id','=',company_id)]" attrs="{'readonly':[('columns','in',('qtr','thirteen'))]}" >
+                            <tree>
+                                <field name='code'/>
+                                <field name='name'/>
+                                <field name='state'/>
+                            </tree>
+                        </field>
+                    </group>
+                </group>
+                <group colspan='4' col='4'>
+                    <group colspan="2">
+                        <separator string=" Ending Total" colspan="4" invisible="1"/>
+                        <field name="tot_check" colspan="4" invisible="1"/>
+                        <field name="lab_str" colspan="4" invisible="1" attrs="{'required':[('tot_check','=',True)], 'readonly':[('tot_check','=',False)],}" />
+                    </group>
+                    <group colspan='4'>
+                        <separator string="Point to Remember..." colspan="4"/>
+                        <label string="By default, accounts with credit balances will get displayed with a minus (-) in front of them. Please go to the Account Signage tab, which is found within your company's profile (Settings > Companies > Companies) to manage the signage of these accounts."/>
+                    </group>
+                </group>
+            </sheet>
+            </form>
+            </field>
+        </record>
+
+        <record id="account_financial_report_tree" model="ir.ui.view">
+            <field name="name">Report Templates</field>
+            <field name="model">afr</field>
+            <field name="arch" type="xml">
+                <tree string="Report Templates">
+                    <field name="name"/>
+                    <field name="company_id"/>
+                    <field name="currency_id"/>
+                    <field name="inf_type"/>
+                    <field name="columns"/>
+                    <field name="display_account"/>
+                    <field name="user_id" />
+                    <field name="display_account_level" required="True" colspan="4"/>
+                    <field name="fiscalyear_id"/>
+                    <field name="tot_check" colspan="4"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="account_financial_report_action">
+            <field name="name">Report Templates</field>
+            <field name="res_model">afr</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help">You can create your own Financial Statements by creating templates for Balance Sheets and Income Statements, including Analytic Ledgers within this menu.</field>
+        </record>
+
+        <menuitem 
+            id="account_financial_report_menu" 
+            parent="account.final_accounting_reports"
+            sequence="101"
+            groups="sg_account_report.group_afreport"
+            action="account_financial_report_action"/>
+        
+    </data>
+</openerp>

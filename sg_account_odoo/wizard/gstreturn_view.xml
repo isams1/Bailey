@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!--Account Moves-->
+        <record id="gst_return_view" model="ir.ui.view">
+            <field name="name">GST Return</field>
+            <field name="model">account.gstreturn</field>
+            <field name="inherit_id" ref="account.account_common_report_view" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='chart_account_id']" position="replace">
+                    <field name="tax_chart_id"/>
+                </xpath>
+                <xpath expr="//field[@name='target_move']" position="after">
+                    <field name="box10" />
+                    <field name="box11" />
+                    <field name="box12" />
+                </xpath>
+                <field name="fiscalyear_id" position="attributes">
+                    <attribute name="required">1</attribute>
+                </field>
+            </field>
+        </record>
+
+        <record id="action_gst_return" model="ir.actions.act_window">
+            <field name="name">GST Return</field>
+            <field name="res_model">account.gstreturn</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="gst_return_view"/>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem
+            name="GST Form F5"
+            parent="account.final_accounting_reports"
+            action="action_gst_return"
+            id="menu_gst_return"
+           />
+
+        <!--Account Moves-->
+        <record id="gst_returnf7_view" model="ir.ui.view">
+            <field name="name">GST Return</field>
+            <field name="model">account.gstreturnf7</field>
+            <field name="inherit_id" ref="account.account_common_report_view" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='target_move']" position="after">
+                    <field name="box10" />
+                    <field name="box11" />
+                    <field name="box12" />
+                </xpath>
+                <field name="fiscalyear_id" position="attributes">
+                    <attribute name="required">1</attribute>
+                </field>
+            </field>
+        </record>
+
+        <record id="action_gst_returnf7" model="ir.actions.act_window">
+            <field name="name">GST Return</field>
+            <field name="res_model">account.gstreturnf7</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="gst_returnf7_view"/>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem
+            name="GST Form F7"
+            parent="account.final_accounting_reports"
+            action="action_gst_returnf7"
+            id="menu_gst_returnf7"
+           />
+
+<!--        <record id="account_aged_balance_view_inherited" model="ir.ui.view">-->
+<!--            <field name="name">Aged Partner Balance1</field>-->
+<!--            <field name="model">account.aged.trial.balance</field>-->
+<!--            <field name="inherit_id" ref="account.account_aged_balance_view" />-->
+<!--            <field name="arch" type="xml">-->
+<!--                   <field name="direction_selection" position="after">-->
+<!--                         <separator string="Customers" colspan="4"/>                         -->
+<!--                         <field name="partner_ids" colspan='4' nolabel="1" domain="['|',('customer','=',True),('supplier','=',True)]"/>             -->
+<!--                   </field>    -->
+<!--            </field>-->
+<!--        </record>-->
+
+    </data>
+</openerp>

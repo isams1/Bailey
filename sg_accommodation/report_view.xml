@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<openerp>
+    <data>
+        
+
+		 <record id="tenancy_agreement_paperformat" model="report.paperformat">
+            <field name="name">Tenancy Agreement</field>
+            <field name="default" eval="True" />
+            <field name="format">A4</field>
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">0</field>
+            <field name="margin_bottom">0</field>
+            <field name="margin_left">0</field>
+            <field name="margin_right">0</field>
+            <field name="header_line" eval="False" />
+            <field name="header_spacing">0</field>
+            <field name="dpi">90</field>
+        </record>
+
+		<report 
+            id="report_tenancy_agreement"
+            string="Tenancy Agreement"
+            model="accommodation.accommodation"
+            name="accommodation.tenancy_agreement_report"
+            report_type="qweb-pdf"
+            />
+
+          <report
+		        id = "report_nationality_accommodation"
+		        string = "Nationality wise Accommodation"
+		        model = "accommodation.accommodation"
+		        name = "accommodation.view_nationality_report"
+		        report_type = "qweb-pdf"
+		        menu = "False"
+	        />
+		<record id="report_tenancy_agreement" model="ir.actions.report.xml">
+            <field name="paperformat_id" ref="tenancy_agreement_paperformat"/>
+        </record>
+        
+         <report 
+            id="qweb_accommodation_report"
+            string="Location wise Accommodation"
+            model="accommodation.accommodation"
+            name="accommodation.view_location_report"
+            report_type="qweb-pdf"
+         	menu="False" 
+            />
+         
+		<!--Aeroo report for resigned employee  -->
+
+		<record id="resig_emp_report_aeroo" model="ir.actions.report.xml">
+            <field name="name">Resigned Emp Report Excel</field>
+            <field name="type">ir.actions.report.xml</field>
+            <field name="model">acc.report.resigned.emp</field>
+            <field name="report_name">acc.report.resigned.emp.doc</field>
+            <field name="report_type">aeroo</field>
+            <field name="in_format">oo-odt</field>
+            <field name="parser_loc">default</field>
+            <field name="report_rml">accommodation/report/resigned_emp.ods</field>
+            <field name="out_format" ref="report_aeroo.report_mimetypes_xls_odt"/>
+            <field name="content_fname">xls</field>
+            <field name="parser_state">loc</field>
+            <field name="tml_source">file</field>
+            <field name="auto" eval="True" />
+            <field name="multi" eval="False" />
+        </record>
+        <record id="resig_emp_report_aeroo_value" model="ir.values">
+            <field name="name">acc.report.resigned.emp.doc</field>
+            <field name="model">acc.report.resigned.emp</field>
+            <field eval="'client_print_multi'" name="key2"/>
+            <field eval="'ir.actions.report.xml,' +str(resig_emp_report_aeroo)" name="value_unpickle"/>
+        </record>
+        
+		<!--Aeroo report for new employee  -->
+
+		<record id="new_emp_report_aeroo" model="ir.actions.report.xml">
+            <field name="name">New Emp Report Excel</field>
+            <field name="type">ir.actions.report.xml</field>
+            <field name="model">acc.report.new.emp</field>
+            <field name="report_name">acc.report.new.emp.doc</field>
+            <field name="report_type">aeroo</field>
+            <field name="in_format">oo-odt</field>
+            <field name="parser_loc">default</field>
+            <field name="report_rml">accommodation/report/new_employee_aero.ods</field>
+            <field name="out_format" ref="report_aeroo.report_mimetypes_xls_odt"/>
+            <field name="content_fname">xls</field>
+            <field name="parser_state">loc</field>
+            <field name="tml_source">file</field>
+            <field name="auto" eval="True" />
+            <field name="multi" eval="False" />
+        </record>
+        <record id="new_emp_report_aeroo_value" model="ir.values">
+            <field name="name">acc.report.new.emp.doc</field>
+            <field name="model">acc.report.new.emp</field>
+            <field eval="'client_print_multi'" name="key2"/>
+            <field eval="'ir.actions.report.xml,' +str(new_emp_report_aeroo)" name="value_unpickle"/>
+        </record>
+
+
+        <!-- Nationality Aeroo report -->
+        <record id="accommodation_nationality_report" model="ir.actions.report.xml">
+            <field name="name">Accommodation Nationality</field>
+            <field name="type">ir.actions.report.xml</field>
+            <field name="model">wiz.accommodation.nationality.report</field>
+            <field name="report_name">accommodation_nationality</field>
+            <field name="report_type">aeroo</field>
+            <field name="in_format">oo-ods</field>
+<!--            <field name="parser_loc">accommodation/report/accommodation_nationality.py</field-->
+            <field name="report_rml">accommodation/report/accommodation_nationality.ods</field>
+<!--            <field name='out_format' eval="ref('report_aeroo.report_mimetypes_xls_odt')"/-->
+            <field name="out_format" ref="report_aeroo.report_mimetypes_xls_odt"/>
+            <field name="content_fname">xls</field>
+            <field name="parser_state">default</field>
+            <field name="tml_source">file</field>
+        </record>
+        
+        <record id="accommodation_nationality_aeroo_value" model="ir.values">
+            <field name="name">accommodation_nationality</field>
+            <field name="model">accommodation.accommodation</field>
+            <field eval="'client_print_multi'" name="key2"/>
+        </record>
+        
+
+        <!-- Accommodation Room Aeroo report -->
+        <record id="accommodation_employee_report" model="ir.actions.report.xml">
+            <field name="name">Accommodation Report</field>
+            <field name="type">ir.actions.report.xml</field>
+            <field name="model">wiz.accommodation.employee.report</field>
+            <field name="report_name">accommodation_report</field>
+            <field name="report_type">aeroo</field>
+            <field name="in_format">oo-ods</field>
+            <field name="report_rml">accommodation/report/accommodation_employee.ods</field>
+            <field name="out_format" ref="report_aeroo.report_mimetypes_xls_odt"/>
+            <field name="content_fname">xls</field>
+            <field name="parser_state">default</field>
+            <field name="tml_source">file</field>
+        </record>
+        
+        <record id="accommodation_employee_aeroo_value" model="ir.values">
+            <field name="name">accommodation_report</field>
+            <field name="model">accommodation.accommodation</field>
+            <field eval="'client_print_multi'" name="key2"/>
+        </record>
+        
+        
+        <!-- Aeroo report Accomodation date wise report -->
+        
+        <record id="accommodation_date_wise_report" model="ir.actions.report.xml">
+            <field name="name">Accommodation Date Wise</field>
+            <field name="type">ir.actions.report.xml</field>
+            <field name="model">acc.report.date</field>
+            <field name="report_name">accommodation_date_wise</field>
+            <field name="report_type">aeroo</field>
+            <field name="in_format">oo-ods</field>
+            <field name="parser_loc">accommodation/report/accomodation_date_wise_parse.py</field>
+            <field name="report_rml">accommodation/report/accommodation_date_wise.ods</field>
+            <field name="out_format" ref="report_aeroo.report_mimetypes_xls_odt"/>
+            <field name="content_fname">xls</field>
+            <field name="parser_state">loc</field>
+            <field name="tml_source">file</field>
+        </record>
+
+<!--
+        <record id="accommodation_date_wise_aeroo_value" model="ir.values">
+            <field name="name">accommodation_date_wise</field>
+            <field name="model">accommodation.accommodation</field>
+            <field eval="'client_print_multi'" name="key2"/>
+            <field eval="'ir.actions.report.xml,' +str(accommodation_date_wise_report)" name="value_unpickle"/>
+        </record>
+-->
+        
+    </data>
+</openerp>

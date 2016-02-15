@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+    <record id="view_pub_notification_wiz1" model="ir.ui.view">
+            <field name="name">wiz.pub.notification</field>
+            <field name="model">pub.import.notification</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Export File" version="8.0">
+                    <group col="4" colspan="4">
+                        <string><h3>PUB Successfully Uploaded </h3></string>
+                    </group>
+                    <footer>
+                        <button string="OK" class="oe_highlight" special="cancel"/>
+                    </footer>
+                </form>
+           </field>
+        </record>
+        
+	<record model="ir.ui.view" id="view_wiz_pub_view">
+	            <field name="name">add_pub</field>
+	            <field name="model">add.pub</field>
+	            <field name="arch" type="xml"> 
+					 <form string="Add PUB">
+	                    <group colspan="4" col="4">
+	                        <field name="date" required="True"></field>
+	                        <field name="pub_file" filename="datas_fname"></field>
+	                        <field name="datas_fname" invisible="True"/>
+	                    </group>
+	                    <footer>
+	                        <button special="cancel" string="Cancel" class="oe_link" />
+	                        or 
+	                        <button name="add_pub" type="object" string="Import" class="oe_highlight"/>
+	                    </footer>
+	                </form>
+	            </field>
+	        </record>
+	        
+	<record id="action_wiz_pub_new" model="ir.actions.act_window">
+            <field name="name">Public Utility Billing</field>
+            <field name="res_model">add.pub</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+        <menuitem id="menu_import_pub_new" name="Import PUB" parent="accomodation1" sequence="14" action="action_wiz_pub_new"/>
+	</data>
+</openerp>

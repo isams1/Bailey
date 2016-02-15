@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!-- IR8A Text File View -->
+       <record id="view_e_tax_wiz" model="ir.ui.view">
+            <field name="name">view.e.tax.wiz</field>
+            <field name="model">e.tax.wiz</field>
+            <field name="inherit_id" ref="account.account_common_report_view" />
+            <field name="arch" type="xml">
+                <data></data>
+            </field>
+        </record>
+        <record id="action_print_e_tax_txt_file" model="ir.actions.act_window">
+            <field name="name">E-Tax</field>
+            <field name="res_model">e.tax.wiz</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_e_tax_wiz"/>
+            <field name="target">new</field>
+       </record>
+
+       <record id="binary_ir8a_txt_wizard_file" model="ir.ui.view">
+            <field name="name">view.binary.e.tax.text.file.wizard</field>
+            <field name="model">binary.e.tax.text.file.wizard</field>
+            <field name="arch" type="xml">
+                <form string="E-Tax" version="7.0">
+                    <group>
+                        <field name="name" invisible="1" />
+                        <field name="etax_txt_file" filename="name"/>
+                    </group>
+                    <separator string="" colspan="4"/>
+                    <footer>
+                        <button special="cancel" string="Cancel" icon="gtk-cancel" colspan="2"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+       <menuitem name="E-TAX" action="action_print_e_tax_txt_file" id="menu_print_etax_txt_file" parent="account.final_accounting_reports" sequence="20"/>
+
+    </data>
+</openerp>

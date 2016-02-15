@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<record model="ir.ui.view" id="view_wiz_create_room_bed">
+            <field name="name">wiz_create_room_bed_form</field>
+            <field name="model">wiz.create.room.bed</field>
+            <field name="arch" type="xml">
+                <form string="Create Room/Unit">
+                    <sheet>
+                        <group colspan="4" col="4">
+		                    <field name="room" string="Room/Unit" required="1"/>
+		                    <field name="beds"/>
+	                    </group>
+                    </sheet>
+                    <footer>
+                        <button special="cancel" string="Cancel" class="oe_link" />
+                        or
+                        <button name="create_room" type="object" string="Create Room/Beds" class="oe_highlight"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        
+        <record id="action_wiz_create_room" model="ir.actions.act_window">
+            <field name="name">Create Room/Beds</field>
+            <field name="res_model">wiz.create.room.bed</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+        
+	</data>
+</openerp>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+         <report id="hrms_ir8s_form"
+                string="IR8S Form"
+                model="hr.payslip"
+                name="ppd_ir8s_form_report"
+                menu="False"
+                rml="addons/sg_income_tax_report/report/ir8s_form_report_tmpl.rml" auto="False" header="False" />
+
+         <report id="hrms_ir8a_form"
+                string="IR8A Form"
+                model="hr.payslip"
+                name="ppd_ir8a_form_report"
+                menu="False"
+                rml="addons/sg_income_tax_report/report/ir8a_form_report_tmpl.rml" auto="False" header="False" />
+    </data>
+</openerp>

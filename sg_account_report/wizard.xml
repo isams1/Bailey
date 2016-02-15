@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="wizard_report_view" model="ir.ui.view">
+            <field name="name">YTD Financial Reports</field>
+            <field name="model">wizard.report</field>
+            <field name="arch" type="xml">
+            <form string="YTD Financial Reports" version="7.0">
+                <group colspan="4" col="4">
+                    <group colspan="2">
+                         <separator string="Company" colspan="2"/>
+                        <field name="company_id" on_change='onchange_company_id(company_id)' colspan="2"/>
+                        <field name="currency_id" domain="[('company_id','=',company_id)]" attrs="{'readonly':[('analytic_ledger','=',True)]}" colspan="2"/>
+                    </group>
+                    <group colspan="2">
+                        <separator string="Report" colspan="2"/>
+                        <field name="afr_id"  on_change='onchange_afr_id(afr_id)'  colspan="2"/>
+                        <field name="inf_type" colspan="2" on_change='onchange_inf_type(inf_type)'/>
+                        <field name="columns" on_change='onchange_columns(columns,fiscalyear,periods)' colspan="2"/>
+                        <field name="analytic_ledger" string="General Ledger" invisible="1" colspan="2" on_change='onchange_analytic_ledger(company_id,analytic_ledger)' /> 
+                    </group>
+                </group>
+                <group colspan='4' col="4">
+                    <group colspan="2">
+                        <separator string="Account Parameters" colspan="2"/>
+                        <field name="display_account" required="True" colspan="2"/>
+                        <field name="display_account_level" required="True" invisible="1" colspan="2"/>
+                    </group>
+                    <group colspan="2">
+                        <separator string="Fiscal Year" colspan="4"/>
+                        <field name="fiscalyear" domain="[('company_id','=',company_id)]"/>
+                        <newline/>
+                    </group>
+                </group>
+                <group colspan='4'>
+                    <group colspan="1">
+                        <separator string="Accounts to Include" colspan="4"/>
+                        <field name="account_list" nolabel="1" colspan="4" domain="[('company_id','=',company_id)]">
+                            <tree>
+                                <field name='code'/>
+                                <field name='name'/>
+                                <field name='type'/>
+                                <field name='level'/>
+                            </tree>
+                        </field>
+                    </group>
+                    <group colspan="1">
+                        <separator string="Periods to Include" colspan="4"/>
+<!--                             <field name="period_id" attrs="{'required':[('inf_type','!=','BS')], 'invisible':[('inf_type','==','BS')]}" />  -->
+                        <field 
+                            name="periods" 
+                            colspan="4" 
+                            nolabel="1" 
+                            domain="[('fiscalyear_id','=',fiscalyear),('special','=',False),('company_id','=',company_id)]"
+                             attrs="{'readonly':[('columns','in',('qtr','thirteen'))],}" 
+                             >
+                            
+                            <tree>
+                                <field name='code'/>
+                                <field name='name'/>
+                                <field name='state'/>
+                            </tree>
+                       </field>
+                    </group>
+                </group>
+                <group colspan='4' col='4'>
+                    <group colspan="4">
+                        <separator string="Ending Total" colspan="4" invisible="1" />
+                        <field name="tot_check" colspan="4" invisible="1"/>
+                        <field name="lab_str" colspan="4" invisible="1" attrs="{'required':[('tot_check','=',True)], 'readonly':[('tot_check','=',False)],}" />
+                    </group>
+                </group>
+                <footer>
+                    <button type='special' special='cancel' string='_Cancel' icon='gtk-cancel'/>
+                    <button name="print_report" string="PDF" type="object" icon='gtk-print'/>
+                    <button name="print_report_xls" string="XLS" type="object" icon='gtk-print'/>
+                </footer>
+            </form>
+            </field>
+        </record>
+
+        <record id="action_wizard_report" model="ir.actions.act_window">
+            <field name="name">BL and PL Report</field>
+            <field name="res_model">wizard.report</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="wizard_report_view"/>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem id="sg_report_menu" name="SG Report" parent="account.final_accounting_reports" sequence="9"/>
+
+        <menuitem
+            id="menu_wizard_report"
+            name="BL and PL Report"
+            parent="sg_report_menu"
+            sequence="102"
+            action="action_wizard_report"/>
+
+        <record id="view_bs_pl_xls_report" model="ir.ui.view">
+            <field name="name">view.bs.pl.xls.report</field>
+            <field name="model">bs.pl.xls.report</field>
+            <field name="arch" type="xml">
+                <form string="Excel Export" version="7.0">
+                    <group>
+                        <field name="file" filename="name"/>
+                    </group>
+                    <footer>
+                        <button special="cancel" string="Cancel" icon="gtk-cancel" colspan="2"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <!-- Trial Balance Report -->
+        <record id="view_trial_report_wiz" model="ir.ui.view">
+            <field name="name">view.excel.export.trial.report.wiz</field>
+            <field name="model">excel.export.trial</field>
+            <field name="arch" type="xml">
+                <form string="Excel Trial" version="7.0">
+                    <group>
+                        <field name="file" filename="name"/>
+                    </group>
+                    <footer>
+                        <button special="cancel" string="Cancel" icon="gtk-cancel" colspan="2"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="account_trial_balance_view_inherited" model="ir.ui.view">
+            <field name="name">Trial Balance</field>
+            <field name="model">account.balance.report</field>
+            <field name="inherit_id" ref="account.account_common_report_view" />
+            <field name="arch" type="xml">
+              <data>
+              <xpath expr="//notebook/page[@string='Filters']" position="replace">
+              </xpath>
+              <xpath expr="//field[@name='fiscalyear_id']" position="after">
+                  <field name="period_id" required="1"/>
+                  <newline/>
+              </xpath>
+              <xpath expr="//form/footer/button[@name='check_report']" position="after">
+                    <button name="get_trial_data" type="object" string="Generate XLS File"/>
+              </xpath>
+              </data>
+            </field>
+        </record>
+
+        <menuitem
+            icon="STOCK_PRINT"
+            name="SG Trial Balance"
+            parent="sg_report_menu"
+            action="account.action_account_balance_menu"
+            id="menu_sg_trial_balance_report"
+           />
+
+    </data>
+</openerp>

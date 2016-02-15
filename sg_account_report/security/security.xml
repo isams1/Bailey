@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record model="res.groups" id="group_afreport">
+            <field name="name">Account Financial Report</field>
+        </record>
+<!--         <record model="ir.rule" id="afr_access_rule"> -->
+<!--             <field name="name">Report Template</field> -->
+<!--             <field model="ir.model" name="model_id" ref="model_afr"/> -->
+<!--             <field name="domain_force">[('user_id','=',user.id)]</field> -->
+<!--         </record> -->
+    </data>
+</openerp>

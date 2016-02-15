@@ -1,0 +1,134 @@
+<?xml version="1.0"?>
+<document filename="test.pdf">
+    <template pageSize="(21.59cm,27.94cm)" title="Test" author="Martin Simon" allowSplitting="20" showBoundary="0">
+        <pageTemplate id="first">
+            <frame id="first" x1="1cm" y1="1.0cm" width="19.0cm" height="23cm"/>
+            <pageGraphics>
+                <setFont name="Helvetica" size="9"/>
+                
+                <place x="-3.5cm" y="22.50cm" width="19cm"  height="5.0cm"> 
+                    <blockTable colWidths="9.6cm,9.4cm" style="TITLE">
+                        <tr>
+                            <td><para style="TOP_TITLE"></para></td>
+                            <td><para style="TITLE_CENTER_NAME">
+                                <font>[[ (company.name and company.name or 'The name of this company is not available!')]]</font>
+                            </para></td>
+                        </tr>
+                        <tr>
+                            <td><para style="TOP_TITLE"></para></td>
+                            <td><para style="TITLE_CENTER"></para></td>
+                        </tr>
+                        <tr>
+                            <td><para style="TOP_TITLE"></para></td>
+                            <td><para style="TITLE_CENTER">[[ get_informe_text(data['form']) ]]</para></td>
+                        </tr>
+                        <tr>
+                            <td><para style="TOP_TITLE"></para></td>
+                            <td><para style="TITLE_CENTER">[[data['form'] and get_month_periodic(data['form']) or '']]</para></td>
+                        </tr>
+                    </blockTable>
+                </place>
+                <drawRightString x="192mm" y="5mm">[[ Page: <pageNumber/>-<pageCount/> </drawRightString> 
+            </pageGraphics>
+
+        </pageTemplate>
+    </template>
+    <stylesheet>
+        <blockTableStyle id="Table10">
+          <blockAlignment value="LEFT"/>
+          <blockValign value="TOP"/>
+          <lineStyle kind="LINEABOVE" colorName="#cccccc" start="0,0" stop="0,-1"/>
+          <lineStyle kind="LINEBELOW" colorName="#cccccc" start="0,-1" stop="0,-1"/>
+          <lineStyle kind="LINEABOVE" colorName="#cccccc" start="1,0" stop="1,0"/>
+          <lineStyle kind="LINEBELOW" colorName="#cccccc" start="1,-1" stop="1,-1"/>
+        </blockTableStyle>
+        <blockTableStyle id="BODY">
+            <blockValign value="TOP"/>
+            <blockAlignment value="RIGHT"/>
+            <blockTopPadding length="1.0"/>
+            <blockBottomPadding length="1.0"/>
+            <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="0,1" stop="-1,-1" thickness='0.25'/>
+        </blockTableStyle>
+        <blockTableStyle id="TITLE">
+            <blockValign value="TOP"/>
+        </blockTableStyle>     
+        <blockTableStyle id="table1">
+            <blockValign value="TOP"/>
+            <blockAlignment value="RIGHT"/>
+            <blockTopPadding length="1.0"/>
+            <blockBottomPadding length="1.0"/>
+        </blockTableStyle>
+        <blockTableStyle id="BODY_STRIKE">
+            <blockValign value="TOP"/>
+            <blockAlignment value="RIGHT"/>
+            <blockTopPadding length="1.0"/>
+            <blockBottomPadding length="1.0"/>
+            <lineStyle kind="LINEBELOW" colorName="#FFFFFF" start="0,1" stop="-1,-1" thickness='0.5'/>
+        </blockTableStyle>
+        <blockTableStyle id="TOP_TABLE">
+            <blockAlignment value="LEFT"/>
+            <blockValign value="TOP"/>
+            <lineStyle kind="LINEBELOW" colorName="#FFFFFF" start="0,-1" stop="0,-1" thickness='0.25'/>
+        </blockTableStyle>
+
+        <initialize>
+            <paraStyle name="all" alignment="justify"/>
+        </initialize>
+        <paraStyle 
+            name="TITLE_LEFT_ALIGN" 
+            fontName="Helvetica-Bold" 
+            fontSize="8.0" 
+            leading="10" 
+            alignment="RIGHT" 
+            spaceBefore="0.0" 
+            spaceAfter="0.0"/>
+        <paraStyle 
+            name="TOP_TITLE" 
+            fontName="Helvetica-Bold" 
+            fontSize="9" 
+            leftIndent="0.0" 
+            alignment="LEFT"/>
+        <paraStyle name="TITLE_CENTER" fontName="Helvetica-Bold" fontSize="9" leading="10" leftIndent="0.0" alignment="CENTER"/>
+        <paraStyle name="TITLE_CENTER_NAME" fontName="Helvetica-Bold" fontSize="12" leading="13" leftIndent="0.0" alignment="CENTER"/>
+        <paraStyle name="TITLES" 
+            fontName="Helvetica" 
+            fontSize="8.0" 
+            leading="10" 
+            alignment="LEFT" 
+            spaceBefore="0.0" 
+            spaceAfter="0.0"/>
+        <paraStyle name="TITLE" alignment="CENTER" fontName="Helvetica" fontSize="18.0" leading="20" spaceBefore="-3.0" textColor="black"/>
+    </stylesheet>
+    <images/>
+    <story>
+        <para>[[setLang(user.context_lang)]]</para>
+        <blockTable colWidths="13.5cm,5.5cm" style="table1">
+            <tr>
+                <td>
+                    <para style="TITLES"></para>
+                </td>
+                <td>
+                    <para style="TITLE_LEFT_ALIGN"></para>
+                </td>
+            </tr>
+        </blockTable>
+        <blockTable colWidths="13.5cm,5.5cm" style="BODY">
+            <tr>
+                <td>
+                    <para style="TITLE_LEFT_ALIGN">[[ repeatIn(lines(data['form']), 'a') ]]</para>
+                    <para style="TITLES">
+                        <font>[[ ((a['total'] and not a['label']) and setTag('tr','tr',{'style':"Table10"}) or (a['type']&lt;&gt;'view' and setTag('para','para',{'fontName':"Helvetica"}))) or removeParentNode('font') ]]</font>
+                        <font>[[ ((a['total'] and not a['label']) and setTag('para','para',{'fontName':"Helvetica-Bold"}) or (a['type']&lt;&gt;'view' and setTag('para','para',{'fontName':"Helvetica"}))) or removeParentNode('font') ]]</font>
+                        <font color="white">[[ '....'*(a['level']-1) ]]</font><font>[[ (a['type']=='view' and a['name'] or a['name'].title()) ]]</font>
+                    </para>
+                </td>
+                <td>
+                    <para style="TITLE_LEFT_ALIGN">
+                        <font>[[ a['type']&lt;&gt;'view' and setTag('para','para',{'fontName':"Helvetica"}) or removeParentNode('font') ]]</font>
+                        <font>[[ (a['total']==True) and formatLang(a['balance'] and a['balance'] * a.get('change_sign') or 0.0, digits=2, grouping=True) or '']]</font>
+                    </para>
+                </td>
+            </tr>
+        </blockTable>
+    </story>
+</document>

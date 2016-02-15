@@ -1,0 +1,40 @@
+<openerp>
+    <data>
+<!--         <record id="a_salary_expense" model="account.account"> -->
+<!--             <field name="code">200016</field> -->
+<!--             <field name="name">CPF-Liabilities</field> -->
+<!--             <field ref="account.ovr" name="parent_id"/> -->
+<!--             <field name="type">other</field> -->
+<!--             <field name="user_type" ref="account.data_account_type_expense"/> -->
+<!--         </record> -->
+
+        <!-- Parent Account of CPF -->
+        <record model="account.account.template" id="account_account_tmp_205">
+            <field name="name">CPF</field>
+            <field name="code">205</field>
+            <field name="type">view</field>
+            <field name="user_type" ref="account.data_account_type_liability" />
+            <field name="reconcile" eval="False" />
+            <field name="parent_id" ref="l10n_sg.account_account_750" />
+        </record>
+
+        <record model="account.account.template" id="account_account_205002">
+            <field name="name">Salary carrier</field>
+            <field name="code">205001</field>
+            <field name="type">other</field>
+            <field name="user_type" ref="account.data_account_type_liability" />
+            <field name="reconcile" eval="False" />
+            <field name="parent_id" ref="account_account_tmp_205" />
+        </record>
+
+        <record model="account.account.template" id="account_account_temp_205001">
+            <field name="name">CPF - Account</field>
+            <field name="code">205002</field>
+            <field name="type">other</field>
+            <field name="user_type" ref="account.data_account_type_liability" />
+            <field name="reconcile" eval="False" />
+            <field name="parent_id" ref="account_account_tmp_205" />
+        </record>
+
+    </data>
+</openerp>

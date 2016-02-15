@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<record model="ir.ui.view" id="view_wiz_allocate_emp">
+            <field name="name">wiz_allocate_emp_form</field>
+            <field name="model">wiz.allocate.emp</field>
+            <field name="arch" type="xml">
+                <form string="Allocate Employee">
+                    <group colspan="4" col="4">
+	                    <field name="employee_id" domain="[('accommodated','=',False)]" required="1"/>
+	                    <field name="room_id" required="1" widget="selection" domain="[('accommodation_id', '=', context.get('accommodation_id'))]" attrs="{'invisible':[('employee_id','=',False)]}"/>
+	                    <field name="bed_id" required="1" widget="selection" domain="[('room_id', '=', room_id), ('employee_id', '=', False)]" attrs="{'invisible':[('room_id','=',False),('employee_id','=',False)]}"/>
+                    </group>
+                    <footer>
+                        <button special="cancel" string="Cancel" class="oe_link"/>
+                        or
+                        <button name="allocate_emp" type="object" string="Allocate" class="oe_highlight"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        
+        <record id="action_wiz_allocate_emp" model="ir.actions.act_window">
+            <field name="name">Allocate Employee</field>
+            <field name="res_model">wiz.allocate.emp</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="context">{'accommodation_id' : context.get('active_id')}</field>
+        </record>
+        
+	</data>
+</openerp>

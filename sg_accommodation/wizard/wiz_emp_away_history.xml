@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="view_wiz_emp_away_history">
+            <field name="name">wiz_emp_away_history_form</field>
+            <field name="model">wiz.emp.away.history</field>
+            <field name="arch" type="xml">
+                <form string="Away Employee">
+                    <group colspan="4" col="4">
+                        <field name="employee_id" attrs="{'invisible':[('all_employee','=',True)],'required':[('all_employee','=',False)]}"/>
+                        <field name="reason_id"/>
+                        <field name="exp_date_from"/>
+                        <field name="exp_date_to"/>
+                        <field name="all_employee" invisible="True"/>
+                    </group>
+                    <button type="object" name="generate_history" string="Generate History" class="oe_highlight"/>
+                </form>
+            </field>
+        </record>
+        <record id="action_wiz_emp_away_history_menu" model="ir.actions.act_window">
+            <field name="name">Employee Away History</field>
+            <field name="res_model">wiz.emp.away.history</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+        
+        <record id="action_wiz_emp_away_history_more" model="ir.actions.act_window">
+            <field name="name">Employee Away History</field>
+            <field name="res_model">wiz.emp.away.history</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_wiz_emp_away_history"/>
+            <field name="context">{'default_all_employee':True}</field>
+            <field name="target">new</field>
+        </record>
+        <record model="ir.values" id="action_wiz_emp_away_history_more_values">
+            <field name="model_id" ref="model_hr_employee" />
+            <field name="object" eval="1" />
+            <field name="name">Employee Away History Value</field>
+            <field name="key2">client_action_multi</field>
+            <field name="value" eval="'ir.actions.act_window,' + str(ref('action_wiz_emp_away_history_more'))" />
+            <field name="key">action</field>
+            <field name="model">hr.employee</field>
+        </record>
+        <menuitem id="menu_emp_away_history" action="action_wiz_emp_away_history_menu" parent="hr_payroll.menu_hr_root_payroll"/>
+	</data>
+</openerp>

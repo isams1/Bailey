@@ -1,0 +1,29 @@
+<openerp>
+	<data>
+
+		<!-- Accommodation Report Wizard -->
+		<record id="view_acc_report_form" model="ir.ui.view">
+			<field name="name">view.acc.report.form</field>
+			<field name="model">acc.report</field>
+			<field name="arch" type="xml">
+				<form string="Accommodation Report">
+						<field name="group_type" />
+						<button name="print_report" string="Print" type="object" />
+				</form>
+			</field>
+		</record>
+
+		<!-- Action for the wizard -->
+		<record id="action_acc_report" model="ir.actions.act_window">
+			<field name="name">Accommodation PDF Report</field>
+			<field name="res_model">acc.report</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">form</field>
+			<field name="view_id" ref="view_acc_report_form" />
+			<field name="target">new</field>
+		</record>
+
+		<!-- Menu fo the Accommodation Location/Country/Company wise report 
+		<menuitem id="menu_wiz_acc_report" action="action_acc_report" parent="menu_report_setting"/>-->		
+	</data>
+</openerp>

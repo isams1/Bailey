@@ -1,0 +1,30 @@
+<openerp>
+	<data>
+		<record id="view_add_nat_wiz" model="ir.ui.view">
+			<field name="name">view.add.nat.wiz</field>
+			<field name="model">add.nationality</field>
+			<field name="arch" type="xml">
+				<form string="Add National Availability">
+					<group>
+						<field name="room_id" options="{'no_create':True}" domain="[('accommodation_id','=',context.get('accommodation_id',False))]"/>
+						<field name="country_id"/>
+						<field name="availability"/>
+					</group>
+					<footer>
+						<button special="cancel" string="Cancel" class="oe_link" />
+                        or
+                        <button name="add_country_avail" type="object" string="Add/Update" class="oe_highlight"/>
+					</footer>
+				</form>
+			</field>
+		</record>
+
+		<record id="action_wiz_add_nationality" model="ir.actions.act_window">
+			<field name="name">ADD/Update Availaibility</field>
+			<field name="res_model">add.nationality</field>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+			<field name="context">{'accommodation_id' : context.get('active_id')}</field>
+		</record>
+	</data>
+</openerp>

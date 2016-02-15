@@ -1,0 +1,506 @@
+<?xml version="1.0"?>
+<document filename="Taxes.pdf">
+   <template title="Taxes" author="OpenERP S.A.(sales@openerp.com)" allowSplitting="20">
+    <pageTemplate id="first">
+      <frame id="first" x1="42.0" y1="62.0" width="511" height="728"/>
+    </pageTemplate>
+  </template>
+    <stylesheet>
+    <blockTableStyle id="Standard_Outline">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+    </blockTableStyle>
+    <blockTableStyle id="Table1">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+      <blockBackground colorName="#e6e6e6" start="0,0" stop="0,0"/>
+      <blockBackground colorName="#e6e6e6" start="1,0" stop="1,0"/>
+      <blockBackground colorName="#e6e6e6" start="2,0" stop="2,0"/>
+      <blockBackground colorName="#e6e6e6" start="0,1" stop="0,1"/>
+      <blockBackground colorName="#e6e6e6" start="1,1" stop="1,1"/>
+      <blockBackground colorName="#e6e6e6" start="2,1" stop="2,1"/>
+    </blockTableStyle>
+
+    <blockTableStyle id="Table2">
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="0,0" stop="0,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="1,0" stop="1,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="2,0" stop="2,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="3,0" stop="3,0"/>
+
+      <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="0,1" stop="0,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="1,1" stop="1,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="2,1" stop="2,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="3,1" stop="3,-1"/>
+      <blockValign value="TOP"/>
+    </blockTableStyle>
+    <blockTableStyle id="Table4">
+      <blockAlignment value="LEFT"/>
+      <lineStyle kind="LINEBEFORE" colorName="#cccccc" start="1,0" stop="1,-1"/>
+    </blockTableStyle>
+    <blockTableStyle id="Table3">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+    <lineStyle kind="LINEBELOW" colorName="#cccccc" start="0,0" stop="-1,0"/>
+      <lineStyle kind="LINEBEFORE" colorName="#cccccc" start="0,0" stop="0,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#cccccc" start="0,0" stop="0,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#cccccc" start="0,-1" stop="0,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#cccccc" start="1,0" stop="1,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#cccccc" start="1,0" stop="1,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#cccccc" start="1,-1" stop="1,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#cccccc" start="2,0" stop="2,-1"/>
+      <lineStyle kind="LINEAFTER" colorName="#cccccc" start="2,0" stop="2,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#cccccc" start="2,0" stop="2,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#cccccc" start="2,-1" stop="2,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#cccccc" start="3,0" stop="3,-1"/>
+      <lineStyle kind="LINEAFTER" colorName="#cccccc" start="3,0" stop="3,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#cccccc" start="3,0" stop="3,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#cccccc" start="3,-1" stop="3,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#cccccc" start="4,0" stop="4,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#cccccc" start="4,0" stop="4,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#cccccc" start="4,-1" stop="4,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#cccccc" start="5,0" stop="5,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#cccccc" start="5,0" stop="5,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#cccccc" start="5,-1" stop="5,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#cccccc" start="6,0" stop="6,-1"/>
+      <lineStyle kind="LINEAFTER" colorName="#cccccc" start="6,0" stop="6,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#cccccc" start="6,0" stop="6,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#cccccc" start="6,-1" stop="6,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#cccccc" start="7,0" stop="7,-1"/>
+      <lineStyle kind="LINEAFTER" colorName="#cccccc" start="7,0" stop="7,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#cccccc" start="7,0" stop="7,0"/>
+    </blockTableStyle>
+    <blockTableStyle id="Table11">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+    </blockTableStyle>
+    <blockTableStyle id="Table12">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+      <blockBackground colorName="#9699F2" start="0,0" stop="-1,-1"/>
+    </blockTableStyle>
+    <initialize>
+      <paraStyle name="all" alignment="justify"/>
+    </initialize>
+     <paraStyle name="P1" fontName="Helvetica-Bold" alignment="CENTER" fontSize="14.5" leftIndent="-5.0"/>
+    <paraStyle name="P2" fontName="Helvetica-bold" fontSize="15.0" leading="10" alignment="CENTER" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="P3" fontName="Helvetica-Bold" fontSize="8.0" leading="6" alignment="CENTER" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="P4" fontName="Helvetica" fontSize="8.0" leading="6" alignment="LEFT" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="P5" fontName="Helvetica" fontSize="8.0" leading="10" alignment="LEFT" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="P6" fontName="Helvetica" fontSize="8.0" alignment="RIGHT" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="P7" fontName="Helvetica" fontSize="8.0" leading="14" alignment="RIGHT" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="P8" fontName="Helvetica-Bold" fontSize="8.0" leading="10" alignment="RIGHT" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="P9" fontName="Helvetica" fontSize="8.0" leading="10" alignment="RIGHT" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="P9a" fontName="Helvetica-Bold" fontSize="8.0" leading="10" alignment="LEFT" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="P9c" fontName="Helvetica" fontSize="8.0" leading="10" alignment="LEFT" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="P9b" fontName="Helvetica-Bold" fontSize="8.0" leading="10" alignment="RIGHT" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="P10" fontName="Helvetica" alignment="CENTER"/>
+    <paraStyle name="P11" fontName="Helvetica" fontSize="8.0" leading="14"/>
+    <paraStyle name="P12" fontName="Helvetica-bold" fontSize="9.0" leading="10" alignment="LEFT" spaceBefore="0.6" spaceAfter="6.0"/>
+    <paraStyle name="P12a" fontName="Helvetica-bold" fontSize="9.0" leading="10" alignment="RIGHT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="P13" fontName="Helvetica" fontSize="8.0" leading="10" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="P14" fontName="Helvetica-Bold" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="P15" rightIndent="17.0" leftIndent="-0.0" fontName="Helvetica" fontSize="8.0" leading="10" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="P16" fontName="Helvetica-Bold" fontSize="8.0" leading="14" alignment="RIGHT" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="Standard" fontName="Helvetica"/>
+    <paraStyle name="Text body" fontName="Helvetica" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="List" fontName="Helvetica" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="Table Contents" fontName="Helvetica" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="Table Heading" fontName="Helvetica" alignment="CENTER" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="Caption" fontName="Helvetica" fontSize="1.0" leading="1" spaceBefore="0" spaceAfter="0"/>
+    <paraStyle name="Index" fontName="Helvetica"/>
+    <paraStyle name="terp_tblheader_General_Centre" fontName="Helvetica-Bold" fontSize="8.0" leading="10" alignment="CENTER" spaceBefore="6.0" spaceAfter="6.0"/>
+    <paraStyle name="terp_default_Centre_8" fontName="Helvetica" fontSize="8.0" leading="10" alignment="CENTER" spaceBefore="0.0" spaceAfter="0.0"/>
+
+  </stylesheet>
+  <story>
+    <para style="P3">GST F7</para>
+    <para style="P3">GOOD AND SERVICES TAX RETURN</para>
+    <para style="P3">Goods and Services Tax Act(Cap 117A)</para>
+    <para style="P2"><font color="white"> </font></para>
+    <section>
+    <para style="P2">[[repeatIn(get_info(data), 'obj')]]</para>
+    <blockTable colWidths="200.0,10.0,330.0" style="Table11">
+        <tr>
+            <td><para style="P4" alignment="LEFT">Name</para></td>
+            <td><para style="P4" alignment="CENTER">:</para></td>
+            <td><para style="P4" alignment="LEFT">[[ obj['name'] or ' ' ]]</para></td>
+        </tr>
+        <tr>
+            <td><para style="P4" alignment="LEFT">Tax Reference No.</para></td>
+            <td><para style="P4" alignment="CENTER">:</para></td>
+            <td><para style="P4" alignment="LEFT">[[ obj['tax_no'] or ' ' ]]</para></td>
+        </tr>
+        <tr>
+            <td><para style="P4" alignment="LEFT">GST Registration No.</para></td>
+            <td><para style="P4" alignment="CENTER">:</para></td>
+            <td><para style="P4" alignment="LEFT">[[ obj['gst_no'] or ' ' ]]</para></td>
+        </tr>
+        <tr>
+            <td><para style="P4" alignment="LEFT">Due Date</para></td>
+            <td><para style="P4" alignment="CENTER">:</para></td>
+            <td><para style="P4" alignment="LEFT"></para></td>
+        </tr>
+        <tr>
+            <td><para style="P4" alignment="LEFT">Period covered by this return</para></td>
+            <td><para style="P4" alignment="CENTER">:</para></td>
+            <td><para style="P4" alignment="LEFT">[[ obj['period'] or ' ' ]]</para></td>
+        </tr>
+    </blockTable>
+    <para style="P2"><font color="white"> </font></para>
+    <blockTable colWidths="540.0" style="Table12" rowHeights="15">
+        <tr>
+            <td>
+                <para style="P4" alignment="LEFT">Supplies</para>
+            </td>
+        </tr>
+    </blockTable>
+    <blockTable colWidths="80.0,280.0,100.0,80.0" style="Table11" rowHeights="18">
+        <tr>
+            <td></td>
+            <td>
+                <para style="P4" alignment="LEFT">Total value of standard-rated supplies</para>
+            </td>
+            <td>
+                <para style="P4" alignment="RIGHT">[[ obj['box1'] or '0.00' ]]</para>
+            </td>
+            <td>
+                <illustration>
+                    <circle x="1.50cm" y="-0.25cm" radius="0.17 cm" stroke="yes"/>
+                </illustration>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <para style="P4" alignment="LEFT">Total value of zero -rated supplies</para>
+            </td>
+            <td>
+                <para style="P4" alignment="RIGHT">[[ obj['box2'] or '0.00' ]]</para>
+            </td>
+            <td>
+                <illustration>
+                    <circle x="1.50cm" y="-0.20cm" radius="0.17 cm" stroke="yes"/>
+                </illustration>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <para style="P4" alignment="LEFT">Total value of extempt supplies</para>
+            </td>
+            <td>
+                <para style="P4" alignment="RIGHT">[[ obj['box3'] or '0.00' ]]</para>
+            </td>
+            <td>
+                <illustration>
+                    <circle x="1.50cm" y="-0.15cm" radius="0.17 cm" stroke="yes"/>
+                </illustration>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <para style="P4" alignment="LEFT">Total value of (1)+(2)+(3)</para>
+            </td>
+            <td>
+                <para style="P4" alignment="RIGHT">[[ obj['box4'] or '0.00' ]]</para>
+            </td>
+            <td>
+                <illustration>
+                    <circle x="1.50cm" y="-0.1cm" radius="0.17 cm" stroke="yes"/>
+                </illustration>
+            </td>
+        </tr>
+    </blockTable>
+    
+    <blockTable colWidths="540.0" style="Table12" rowHeights="15">
+        <tr>
+            <td>
+                <para style="P4" alignment="LEFT">Purchases</para>
+            </td>
+        </tr>
+    </blockTable>
+    <blockTable colWidths="80.0,280.0,100.0,80.0" style="Table11" rowHeights="15">
+        <tr>
+            <td></td>
+            <td>
+                <para style="P4" alignment="LEFT">Total value of taxable purchase (exclude expenses where input tax is disallowed)</para>
+            </td>
+            <td>
+                 <para style="P4" alignment="RIGHT">[[ obj['box5'] or '0.00' ]]</para>
+            </td>
+            <td>
+                <illustration>
+                    <circle x="1.50cm" y="-0.25cm" radius="0.17 cm" stroke="yes"/>
+                </illustration>
+            </td>
+        </tr>
+    </blockTable>
+    
+    <para style="P2"><font color="white"> </font></para>
+    <blockTable colWidths="540.0" style="Table12" rowHeights="15">
+        <tr>
+            <td>
+                <para style="P4" alignment="LEFT">Taxes</para>
+            </td>
+        </tr>
+    </blockTable>
+    <blockTable colWidths="80.0,280.0,100.0,80.0" style="Table11" rowHeights="18">
+        <tr>
+            <td></td>
+            <td>
+                <para style="P4" alignment="LEFT">Total value of standard-rated supplies</para>
+            </td>
+            <td>
+                <para style="P4" alignment="RIGHT">[[ obj['box6'] or '0.00' ]]</para>
+            </td>
+            <td>
+                <illustration>
+                    <circle x="1.50cm" y="-0.25cm" radius="0.17 cm" stroke="yes"/>
+                </illustration>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <para style="P4" alignment="LEFT">Total value of zero -rated supplies</para>
+            </td>
+            <td>
+                <para style="P4" alignment="RIGHT">[[ obj['box7'] or '0.00' ]]</para>
+            </td>
+            <td>
+                <illustration>
+                    <circle x="1.50cm" y="-0.20cm" radius="0.17 cm" stroke="yes"/>
+                </illustration>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <para style="P4" alignment="LEFT">Total value of extempt supplies</para>
+            </td>
+            <td>
+                <para style="P4" alignment="RIGHT">[[ obj['box8'] or '0.00' ]]</para>
+            </td>
+            <td>
+                <illustration>
+                    <circle x="1.50cm" y="-0.15cm" radius="0.17 cm" stroke="yes"/>
+                </illustration>
+            </td>
+        </tr>
+    </blockTable>
+    
+    <blockTable colWidths="540.0" style="Table12" rowHeights="15">
+        <tr>
+            <td>
+                <para style="P4" alignment="LEFT">Application to Taxable Persons under Major Schemes / Approved 3rd Party Logistics Company / Other Approved Schemes Only</para>
+            </td>
+        </tr>
+    </blockTable>
+    <blockTable colWidths="80.0,280.0,100.0,80.0" style="Table11" rowHeights="15">
+        <tr>
+            <td></td>
+            <td>
+                <para style="P4" alignment="LEFT">Total value of goods imported under this scheme</para>
+            </td>
+            <td>
+                <para style="P4" alignment="RIGHT">[[ obj['box9'] or '0.00' ]]</para>
+            </td>
+            <td>
+                <illustration>
+                    <circle x="1.50cm" y="-0.25cm" radius="0.17 cm" stroke="yes"/>
+                </illustration>
+            </td>
+        </tr>
+    </blockTable>
+    
+    <blockTable colWidths="540.0" style="Table12" rowHeights="15">
+        <tr>
+            <td>
+                <para style="P4" alignment="LEFT">Did you make the following claims in Box ??</para>
+            </td>
+        </tr>
+    </blockTable>
+    <blockTable colWidths="360.0,100.0,80.0" style="Table11" rowHeights="15">
+        <tr>
+            <td>
+                <para style="P4" alignment="LEFT">Did you claim for GST you had refunded to tourists?</para>
+            </td>
+            <td>
+                <para style="P4" alignment="RIGHT">[[ obj['box10'] or '0.00' ]]</para>
+            </td>
+            <td>
+                <illustration>
+                    <circle x="1.50cm" y="-0.25cm" radius="0.17 cm" stroke="yes"/>
+                </illustration>
+            </td>
+        </tr>
+    </blockTable>
+    <blockTable colWidths="20.0,20.0,20.0,20.0,460.0" style="Table11" rowHeights="15">
+        <tr>
+            <td>
+                <illustration>
+                    <circle x="0.1cm" y="-0.20cm" radius="0.14 cm" stroke="yes"/>
+                </illustration>
+            </td>Self-reviewd of eligibility to Pre-Registration Input Tax Claims 
+            <td>
+                <para style="P4" alignment="LEFT">Yes</para>
+            </td>
+            <td>
+                <illustration>
+                    <circle x="0.40cm" y="-0.20cm" radius="0.14 cm" stroke="yes"/>
+                </illustration>
+            </td>
+            <td>
+                <para style="P4" alignment="LEFT">No</para>
+            </td>
+            <td></td>
+        </tr>
+    </blockTable>
+    
+    <blockTable colWidths="360.0,100.0,80.0" style="Table11" rowHeights="15">
+        <tr>
+            <td>
+                <para style="P4" alignment="LEFT">Did you make any bed debt relief claims?</para>
+            </td>
+            <td>
+                <para style="P4" alignment="RIGHT">[[ obj['box11'] or '0.00' ]]</para>
+            </td>
+            <td>
+                <illustration>
+                    <circle x="1.50cm" y="-0.25cm" radius="0.17 cm" stroke="yes"/>
+                </illustration>
+            </td>
+        </tr>
+    </blockTable>
+    <blockTable colWidths="20.0,20.0,20.0,20.0,460.0" style="Table11" rowHeights="15">
+        <tr>
+            <td>
+                <illustration>
+                    <circle x="0.1cm" y="-0.20cm" radius="0.14 cm" stroke="yes"/>
+                </illustration>
+            </td>
+            <td>
+                <para style="P4" alignment="LEFT">Yes</para>
+            </td>
+            <td>
+                <illustration>
+                    <circle x="0.40cm" y="-0.20cm" radius="0.14 cm" stroke="yes"/>
+                </illustration>
+            </td>Self-reviewd of eligibility to Pre-Registration Input Tax Claims 
+            <td>
+                <para style="P4" alignment="LEFT">No</para>
+            </td>
+            <td></td>
+        </tr>
+    </blockTable>
+    
+    <blockTable colWidths="360.0,100.0,80.0" style="Table11" rowHeights="15">
+        <tr>
+            <td>
+                <para style="P4" alignment="LEFT">Did you make any pre-registration claims?</para>
+            </td>
+            <td>
+                <para style="P4" alignment="RIGHT">[[ obj['box12'] or '0.00' ]]</para>
+            </td>
+            <td>
+                <illustration>
+                    <circle x="1.50cm" y="-0.25cm" radius="0.17 cm" stroke="yes"/>
+                </illustration>
+            </td>
+        </tr>
+    </blockTable>
+    <blockTable colWidths="20.0,20.0,20.0,20.0,460.0" style="Table11" rowHeights="15">
+        <tr>
+            <td>
+                <illustration>
+                    <circle x="0.1cm" y="-0.20cm" radius="0.14 cm" stroke="yes"/>
+                </illustration>
+            </td>
+            <td>
+                <para style="P4" alignment="LEFT">Yes</para>
+            </td>
+            <td>
+                <illustration>
+                    <circle x="0.40cm" y="-0.20cm" radius="0.14 cm" stroke="yes"/>
+                </illustration>
+            </td>
+            <td>
+                <para style="P4" alignment="LEFT">No</para>
+            </td>
+            <td></td>
+        </tr>
+    </blockTable>
+    <para style="P4" alignment="LEFT">Self-reviewd of eligibility to Pre-Registration Input Tax Claims</para>
+    
+    <blockTable colWidths="540.0" style="Table12" rowHeights="15">
+        <tr>
+            <td>
+                <para style="P4" alignment="LEFT">Revenue</para>
+            </td>
+        </tr>
+    </blockTable>
+    <blockTable colWidths="80.0,280.0,100.0,80.0" style="Table11" rowHeights="15">
+        <tr>
+            <td></td>
+            <td>
+                <para style="P4" alignment="LEFT">Revenue for the accounting period</para>
+            </td>
+            <td>
+                <para style="P4" alignment="RIGHT">[[ obj['box13'] or '0.00' ]]</para>
+            </td>
+            <td>
+                <illustration>
+                    <circle x="1.50cm" y="-0.25cm" radius="0.17 cm" stroke="yes"/>
+                </illustration>
+            </td>
+        </tr>
+    </blockTable>
+    
+    <blockTable colWidths="540.0" style="Table12" rowHeights="15">
+        <tr>
+            <td>
+                <para style="P4" alignment="LEFT">Declaration of Errors </para>
+            </td>
+        </tr>
+    </blockTable>
+    <para style="P5" alignment="LEFT">If you are consolidating the errors for more than one accounting period (up till one year), Please state so in this box, For example : "The error declared aboved is for the period 01/01/2007 to 31/12/2007</para>
+    
+    <blockTable colWidths="540.0" style="Table12" rowHeights="15">
+        <tr>
+            <td>
+                <para style="P4" alignment="LEFT">Declaration</para>
+            </td>
+        </tr>
+    </blockTable>
+    
+    <blockTable colWidths="150.0,10.0,380.0" style="Table11">
+        <tr>
+            <td><para style="P4" alignment="LEFT">Name Of Department</para></td>
+            <td><para style="P4" alignment="CENTER">:</para></td>
+            <td><para style="P4" alignment="LEFT"></para></td>
+        </tr>
+        <tr>
+            <td><para style="P4" alignment="LEFT">Department ID</para></td>
+            <td><para style="P4" alignment="CENTER">:</para></td>
+            <td><para style="P4" alignment="LEFT"></para></td>
+        </tr>
+        <tr>
+            <td><para style="P4" alignment="LEFT">Designation</para></td>
+            <td><para style="P4" alignment="CENTER">:</para></td>
+            <td><para style="P4" alignment="LEFT"></para></td>
+        </tr>
+        <tr>
+            <td><para style="P4" alignment="LEFT">Contact Person</para></td>
+            <td><para style="P4" alignment="CENTER">:</para></td>
+            <td><para style="P4" alignment="LEFT"></para></td>
+        </tr>
+        <tr>
+            <td><para style="P4" alignment="LEFT">Contact Tel No.</para></td>
+            <td><para style="P4" alignment="CENTER">:</para></td>
+            <td><para style="P4" alignment="LEFT"></para></td>
+        </tr>
+    </blockTable>
+    </section>
+  </story>
+</document>

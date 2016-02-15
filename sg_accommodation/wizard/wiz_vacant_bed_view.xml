@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="view_wiz_vacant_bed">
+            <field name="name">wiz_vacant_bed_form</field>
+            <field name="model">wiz.vacant.bed</field>
+            <field name="arch" type="xml">
+                <form string="Vacant Bed">
+                    <group colspan="4" col="4">
+                        <field name="employee_id" required="1" domain="[('accommodated','=',True)]"/>
+                        <field name="room_id" required="1" widget="selection" domain="[('accommodation_id', '=', context.get('accommodation_id'))]"/>
+                        <field name="bed_id" required="1" widget="selection" domain="[('room_id', '=', room_id)]" attrs="{'invisible':[('room_id','=',False),('employee_id','=',False)]}"/>
+                    </group>
+                    <footer>
+                        <button special="cancel" string="Cancel" class="oe_link" />
+                        or
+                        <button name="vacant_bed" type="object" string="Vacant" class="oe_highlight"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        
+        <record id="action_wiz_vacant_bed" model="ir.actions.act_window">
+            <field name="name">Vacant Bed</field>
+            <field name="res_model">wiz.vacant.bed</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="context">{'accommodation_id' : context.get('active_id')}</field>
+        </record>
+        
+	</data>
+</openerp>

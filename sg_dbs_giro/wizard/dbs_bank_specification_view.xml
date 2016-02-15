@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="dbs_bank_specification_form" model="ir.ui.view">
+            <field name="name">dbs.bank.specification.form</field>
+            <field name="model">dbs.bank.specification</field>
+            <field name="arch" type="xml">
+                <form string="DBS Bank Specification" version="7.0">
+                    <sheet>
+	                   <group col="4" clospan="4">
+		                        <field name="value_date"/>
+		                        <field name="bank_number"/>
+		                        <field name="branch_number" required="1"/>
+		                        <field name="account_number"/>
+		                        <field name="originator_name"></field>
+		                        <field name="msg_seq_no" placeholder="for ex: 00001 to 99999"/>
+		                        <field name="company_name"/>
+		                        <field name="month"/>
+		                        <field name="batch_number"/>
+	                       <!--  <field name="transaction_code"/> -->
+	                    </group>
+	                    <separator string="" colspan="4"/>
+	                    <footer>
+	                        <button name="get_text_file" string="Save" type="object" icon="gtk-ok" class="oe_highlight"/>
+	                        or
+	                        <button special="cancel" string="Cancel" class="oe_link"/>
+	                    </footer>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+       <record id="action_dbs_bank_specification_wizard" model="ir.actions.act_window">
+            <field name="name">DBS txt file</field>
+            <field name="res_model">dbs.bank.specification</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+       </record>
+
+       <menuitem action="action_dbs_bank_specification_wizard" id="menu_dbs_bank_specification_wizard" parent="sg_hr_report.menu_report_payroll1_misc" sequence="3"/>
+
+        <record id="dbs_bank_specification_binary_wizard_form" model="ir.ui.view">
+            <field name="name">binary.dbs.bank.file.wizard.file</field>
+            <field name="model">binary.dbs.bank.file.wizard</field>
+            <field name="arch" type="xml">
+                <form string="View CPF txt File" version="7.0">
+                    <group>
+                        <field name="name" invisible="1"/>
+                        <field name="cpf_txt_file" filename="name"/>
+                    </group>
+                    <separator string="" colspan="4"/>
+                    <footer>
+                        <button special="cancel" string="Close" icon="gtk-cancel" colspan="2"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</openerp>

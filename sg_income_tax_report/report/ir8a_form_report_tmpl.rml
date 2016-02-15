@@ -1,0 +1,693 @@
+<?xml version="1.0"?>
+<document filename="test.pdf">
+  <template pageSize="(8.27in, 12.00in)" title="Test" author="Martin Simon" allowSplitting="0">
+    <pageTemplate id="first">
+      <frame id="first" x1="18.0" y1="0.0" width="560" height="860"/>
+    </pageTemplate>
+  </template>
+  <stylesheet>
+  <blockTableStyle id="border">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+      <lineStyle kind="LINEBEFORE" colorName="#1a3344" start="0,0" stop="0,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="0,0" stop="0,-1"/>
+      <lineStyle kind="LINEAFTER" colorName="#000000" start="0,0" stop="0,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="0,-1" stop="0,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="15,0" stop="15,-1"/>
+      <lineStyle kind="LINEAFTER" colorName="#000000" start="15,0" stop="15,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="15,0" stop="15,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="15,-1" stop="15,-1"/>
+    </blockTableStyle>
+    <blockTableStyle id="Standard_Outline">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+      
+    </blockTableStyle>
+    <blockTableStyle id="Table1">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+    </blockTableStyle>
+    <blockTableStyle id="Table1_1">
+      <blockAlignment value="CENTER"/>
+      <blockValign value="TOP"/>
+      <blockBackground colorName="#000000" start="0,0" stop="-1,-1"/>
+    </blockTableStyle>
+    <blockTableStyle id="Table2">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="0,0" stop="0,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="0,0" stop="0,-1"/>
+      <lineStyle kind="LINEAFTER" colorName="#000000" start="0,0" stop="0,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="0,-1" stop="0,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="1,0" stop="1,-1"/>
+      <lineStyle kind="LINEAFTER" colorName="#000000" start="1,0" stop="1,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="1,0" stop="1,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="1,-1" stop="1,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="2,0" stop="2,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="2,0" stop="2,-1"/>
+      <lineStyle kind="LINEAFTER" colorName="#000000" start="2,0" stop="2,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="2,-1" stop="2,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="3,0" stop="3,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="3,0" stop="3,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="3,-1" stop="3,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="4,0" stop="4,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="4,0" stop="4,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="4,-1" stop="4,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="5,0" stop="5,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="5,0" stop="5,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="5,-1" stop="5,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="6,0" stop="6,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="6,0" stop="6,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="6,-1" stop="6,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="7,0" stop="7,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="7,0" stop="7,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="7,-1" stop="7,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="8,0" stop="8,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="8,0" stop="8,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="8,-1" stop="8,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="9,0" stop="9,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="9,0" stop="9,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="9,-1" stop="9,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="10,0" stop="10,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="10,0" stop="10,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="10,-1" stop="10,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="11,0" stop="11,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="11,0" stop="11,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="11,-1" stop="11,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="12,0" stop="12,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="12,0" stop="12,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="12,-1" stop="12,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="13,0" stop="13,-1"/>
+      <lineStyle kind="LINEAFTER" colorName="#000000" start="13,0" stop="13,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="13,0" stop="13,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="13,-1" stop="13,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="14,0" stop="14,-1"/>
+      <lineStyle kind="LINEAFTER" colorName="#000000" start="14,0" stop="14,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="14,0" stop="14,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="14,-1" stop="14,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="15,0" stop="15,-1"/>
+      <lineStyle kind="LINEAFTER" colorName="#000000" start="15,0" stop="15,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="15,0" stop="15,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="15,-1" stop="15,-1"/>
+    </blockTableStyle>
+    <blockTableStyle id="Table5">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="0,0" stop="0,-1"/>
+      <lineStyle kind="LINEAFTER" colorName="#000000" start="2,0" stop="2,-1"/>
+    </blockTableStyle>
+    
+    
+    
+    <blockTableStyle id="Table6">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="0,0" stop="0,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="0,-1" stop="0,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="1,-1" stop="1,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="2,-1" stop="2,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="3,-1" stop="3,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="4,-1" stop="4,-1"/>
+    </blockTableStyle>
+    <blockTableStyle id="Table8">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="0,-1" stop="0,-1"/>
+    </blockTableStyle>
+    <blockTableStyle id="Table10">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="0,0" stop="0,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="0,-1" stop="0,-1"/>
+    </blockTableStyle>
+    <blockTableStyle id="Table9">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="0,0" stop="0,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="0,-1" stop="0,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="1,0" stop="1,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="1,-1" stop="1,-1"/>
+    </blockTableStyle>
+    <blockTableStyle id="Table7">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+    </blockTableStyle>
+    <blockTableStyle id="Table4">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+    </blockTableStyle>
+    <blockTableStyle id="Table11">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="0,-1" stop="0,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="1,-1" stop="1,-1"/>
+    </blockTableStyle>
+    <blockTableStyle id="Table12">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+    </blockTableStyle>
+    <initialize>
+      <paraStyle name="all" alignment="justify"/>
+    </initialize>
+    <paraStyle name="P1_bold" fontName="Helvetica-Bold" fontSize="8.0" leading="6"/>
+    <paraStyle name="P1" fontName="Helvetica" fontSize="6" textColor="white" leading="4"/>
+    <paraStyle name="P2" fontName="Helvetica" fontSize="6" leading="9" alignment="LEFT" />
+    <paraStyle name="P3" fontName="Helvetica" fontSize="6" leading="9" alignment="LEFT" />
+    <paraStyle name="P4" fontName="Helvetica" fontSize="6" textColor="gray" leading="7" alignment="LEFT" />
+    
+    <images/>
+  </stylesheet>
+  <story>
+                [[ repeatIn(get_data(data['form']), 'rec') ]]
+                <blockTable colWidths="200,340" style="Table1">
+                      <tr>
+                        <td>
+                            <para style="P1_bold" alignment="LEFT"><b>[[ data['form'].get('year_id') and data['form'].get('year_id')[1] or ''  ]]</b></para>
+                        </td>
+                         <td>
+                            <para style="P1_bold" alignment="LEFT"><b>FORM IR8A</b></para>
+                        </td>
+                      </tr>
+                </blockTable>
+                
+                 <blockTable colWidths="540" style="Table1_1">
+                      <tr>
+                        <td>
+                            <para style="P1" alignment="LEFT">Return of Employee’s Remuneration for the year ended 31 Dec [[ rec['previous_year'] ]].</para>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                            <para style="P1" alignment="LEFT">Fill in this form and give it to your employee by 1 Mar [[ data['form'].get('year_id') and data['form'].get('year_id')[1] or ''  ]] for his submission together with his Income Tax Return.</para>
+                        </td>
+                      </tr>
+                </blockTable>
+                
+                <blockTable colWidths="540" style="Table1">
+                      <tr>
+                        <td>
+                            <para style="P2" alignment="LEFT">This Form will take about 10 minutes to complete. Please get ready the employee’s personal particulars and details of his/her employment income. Please read the explanatory notes when completing this form.</para>
+                        </td>
+                      </tr>
+                </blockTable>
+                
+                <blockTable colWidths="270,270" style="Table2">
+                    <tr>
+                        <td>
+                              <para style="P3" alignment="LEFT">Employer’s Tax Ref. No. / UEN</para>
+                              <para style="P3" alignment="LEFT">[[ rec.get('employeer_tax') ]]</para>
+                        </td>
+                        <td>
+                              <para style="P3" alignment="LEFT">Employee’s Tax Ref. No.  :  *NRIC / FIN (Foreign Identification No.)</para>
+                              <para style="P3" alignment="LEFT">[[ rec.get('identification_id') ]] </para>
+                        </td>
+                    </tr>
+                </blockTable>
+                <blockTable colWidths="270,90,90,90" style="Table2">
+                    <tr>
+                        <td>
+                            <para style="P3" alignment="LEFT">Full Name of Employee as per NRIC / FIN</para>
+                            <para style="P3" alignment="LEFT">[[ rec['employee'] ]]</para>
+                        </td>
+                        <td>
+                            <para style="P3" alignment="LEFT">Date of Birth</para>
+                            <para style="P3" alignment="LEFT">[[ formatLang(rec['birthday'], date=True) ]]</para>
+                        </td>
+                        <td>
+                            <para style="P3" alignment="LEFT">Sex</para>
+                            <para style="P3" alignment="LEFT">[[ rec['sex'] ]]</para>
+                        </td>
+                        <td>
+                            <para style="P3" alignment="LEFT">Nationality</para>
+                            <para style="P3" alignment="LEFT">[[ rec['nationality'] ]]</para>
+                        </td>
+                    </tr>
+                </blockTable>
+                <blockTable colWidths="270,270" style="Table2">
+                    <tr>
+                        <td>
+                            <para style="P3" alignment="LEFT">Residential Address</para>
+                            <para style="P3" alignment="LEFT">[[ rec['address_home'] ]]</para>
+                        </td>
+                        <td>
+                            <para style="P3" alignment="LEFT">Designation</para>
+                            <para style="P3" alignment="LEFT"> [[ rec['job_name'] ]]</para>
+                        </td>
+                    </tr>
+                </blockTable>
+                <blockTable colWidths="270,135,135" style="Table2">
+                    <tr>
+                        <td>
+                            <para style="P3" alignment="LEFT">If employment commenced and/or ceased during the year, state:(See paragraph 7 of the Explanatory Notes)</para>
+                        </td>
+                        <td>
+                            <para style="P3" alignment="LEFT">Date of Commencement </para>
+                            <para style="P3" alignment="LEFT">[[ formatLang(rec['join_date'], date=True) ]]</para>
+                        </td>
+                        <td>
+                            <para style="P3" alignment="LEFT">Date of *Cessation/Overseas Posting</para>
+                            <para style="P3" alignment="LEFT">[[ formatLang(rec['cessation_date'], date=True) ]]</para>
+                        </td>
+                    </tr>
+                </blockTable>
+                <blockTable colWidths="460,80" style="Table1_1">
+                      <tr>
+                        <td>
+                            <para style="P1" alignment="LEFT"><b>INCOME</b> (Enter “NA” for items that are not applicable)</para>
+                        </td>
+                        <td>
+                            <para style="P1" alignment="LEFT">$</para>
+                        </td>
+                      </tr>
+                </blockTable>
+                   
+                <blockTable colWidths="20,440,80" style="Table1">
+                    <tr>
+                        <td>
+                            <para style="P3" alignment="CENTER">a)</para>
+                        </td>
+                        <td>
+                            <para style="P3" alignment="LEFT">Gross Salary, Fees, Leave Pay, Wages and Overtime Pay:</para>
+                        </td>
+                        <td>
+                             <blockTable colWidths="70" style="border">
+                                <tr>
+                                    <td>
+                                        <para style="P3" alignment="CENTER">[[ rec['gross_amt'] and formatLang(rec['gross_amt']) or 'NA']]</para>
+                                    </td>
+                                </tr>
+                            </blockTable>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <para style="P3" alignment="CENTER">b)</para>
+                        </td>
+                        <td>
+                            <para style="P3" alignment="LEFT"><b>Bonus</b> (non-contractual bonus paid in [[ rec['previous_year'] ]] and / or contractual bonus) <b>(See paragraph 12b of the Explanatory Notes)</b> </para>
+                        </td>
+                        <td>
+                             <blockTable colWidths="70" style="border">
+                                <tr>
+                                    <td>
+                                        <para style="P3" alignment="CENTER">[[ rec['bonus_amt'] and formatLang(rec['bonus_amt']) or 'NA' ]]</para>
+                                    </td>
+                                </tr>
+                            </blockTable>   
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <para style="P3" alignment="CENTER">c)</para>
+                        </td>
+                        <td>
+                            <para style="P3" alignment="LEFT"><b>Director’s fees</b> (approved at the company’s AGM/EGM on    /   / [[ rec['previous_year'] ]]) <b>(See paragraph 12c of the Explanatory Notes)</b></para>
+                        </td>
+                        <td>
+                             <blockTable colWidths="70" style="border">
+                                <tr>
+                                    <td>
+                                        <para style="P3" alignment="CENTER">[[ rec['director_fee'] and formatLang(rec['director_fee']) or 'NA']]</para>
+                                    </td>
+                                </tr>
+                            </blockTable>   
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <para style="P3" alignment="CENTER">d)</para>
+                        </td>
+                        <td>
+                            <para style="P3" alignment="LEFT"><b>Others: </b></para>
+                        </td>
+                        <td>
+                             <blockTable colWidths="70" style="border">
+                                <tr>
+                                    <td>
+                                        <para style="P3" alignment="CENTER">[[ rec['other_data'] and formatLang(rec['other_data']) or 'NA']]</para>
+                                    </td>
+                                </tr>
+                            </blockTable>   
+                        </td>
+                    </tr>
+                </blockTable>     
+                <blockTable colWidths="20,130,120,190,80" style="Table1">
+                    <tr>
+                        <td>
+                            <para style="P3" alignment="CENTER"></para>
+                        </td>
+                        <td>
+                            <para style="P3" alignment="LEFT">1. Allowances: (i) Transport  $ [[ rec['transport_allowance'] and formatLang(rec['transport_allowance']) or 'NA' ]]   </para>
+                            <para style="P3" alignment="LEFT">2. Gross Commission for the period</para>
+                        </td>
+                        <td>
+                            <para style="P3" alignment="LEFT">(ii) Entertainment $ [[ rec['entertainment_allowance'] and formatLang(rec['entertainment_allowance']) or 'NA' ]]</para>
+                            <para style="P3" alignment="LEFT">[[ rec['fromdate'] ]]  to [[ rec['todate'] ]]</para>
+                        </td>
+                        <td>
+                            <para style="P3" alignment="LEFT">(iii) Others   $ [[ rec['other_allowance'] and formatLang(rec['other_allowance']) or 'NA' ]]   </para>                   
+                            <para style="P3" alignment="LEFT">(See <b>paragraph 12d (I) of the Explanatory Notes</b>)</para>
+                            <para style="P3" alignment="LEFT">* Monthly</para>
+                        </td>
+                        <td>
+                            <para style="P3" alignment="LEFT">.</para>
+                            <para style="P3" alignment="CENTER">[[ rec['gross_commission'] and formatLang(rec['gross_commission']) or 'NA']]</para>
+                            <para style="P3" alignment="CENTER"></para>
+                        </td>
+                    </tr>
+                </blockTable> 
+                <blockTable colWidths="20,440,80" style="Table1">
+                    <tr>
+                        <td>
+                            <para style="P3" alignment="CENTER"></para>
+                        </td>
+                        <td>
+                            <para style="P3" alignment="LEFT">3. Pension $ [[ rec['pension'] and formatLang(rec['pension']) or 'NA']]  </para>
+                        </td>
+                        <td>
+                            <para style="P3" alignment="LEFT"></para>
+                        </td>
+                    </tr>
+                </blockTable> 
+                <blockTable colWidths="20,520" style="Table1">
+                    <tr>
+                        <td>
+                            <para style="P3" alignment="CENTER"></para>
+                        </td>
+                        <td>
+                            <para style="P3" alignment="LEFT">4. Lump sum payment <b>(See paragraph 12d (II) of the Explanatory Notes)</b>   [[ rec.get('exempt_remission') and formatLang(rec.get('exempt_remission')) or 'NA' ]]  </para>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <para style="P3" alignment="CENTER"></para>
+                        </td>
+                        <td>
+                            <blockTable colWidths="163,160,187" style="Table2">
+                                <tr>
+                                    <td>
+                                        <para style="P3" alignment="LEFT">Gratuity: [[ rec['gratu'] ]]  </para>
+                                    </td>
+                                    <td>
+                                        <para style="P3" alignment="LEFT">Notice Pay: [[ rec['n_pay'] ]]</para>
+                                    </td>
+                                    <td>
+                                        <para style="P3" alignment="LEFT">Ex-gratia payment: [[ rec['gratia'] ]]</para>
+                                    </td>
+                                </tr>
+                            </blockTable> 
+                            <blockTable colWidths="510" style="Table2">
+                                <tr>
+                                    <td>
+                                        <para style="P3" alignment="LEFT">Others (please state nature) $ [[ rec['other'] ]]    </para>
+                                    </td>
+                                </tr>
+                            </blockTable> 
+                            <blockTable colWidths="163,160,187" style="Table5">
+                                <tr>
+                                    <td>
+                                        <para style="P3" alignment="LEFT">Compensation for loss of office $ [[ rec['compensation_loss_office'] and formatLang(rec['compensation_loss_office']) or 'NA' ]]    </para>
+                                    </td>
+                                        <td>
+                                        <para style="P3" alignment="LEFT">Approval obtained from IRAS: [[ rec['approve_obtain_iras'] ]]   </para>
+                                    </td>
+                                        <td>
+                                        <para style="P3" alignment="LEFT"> Date of approval: [[ formatLang(rec['approval_date'], date=True) ]] </para>
+                                    </td>
+                                    
+                                </tr>
+                            </blockTable>
+                             <blockTable colWidths="340,170" style="Table2">
+                                <tr>
+                                    <td>
+                                        <para style="P3" alignment="LEFT">Reason for payment:      </para>
+                                    </td>
+                                        <td>
+                                        <para style="P3" alignment="LEFT">Length of service: </para>
+                                    </td>
+                                </tr>
+                            </blockTable>
+                            <blockTable colWidths="510" style="Table2">
+                                <tr>
+                                    <td>
+                                        <para style="P3" alignment="LEFT">Basis of arriving at the payment:      </para>
+                                    </td>
+                                </tr>
+                            </blockTable>
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <para style="P3" alignment="LEFT"></para>
+                        </td>
+                        <td>
+                                <para style="P3" alignment="LEFT">5. Retirement benefits including gratuities/pension/commutation of pension/lump sum payments, etc from 
+                                Pension/Provident Fund:  Name of Fund [[ rec['fund_name'] ]]</para>
+                        </td>
+                    </tr>
+                </blockTable>
+                
+                <blockTable colWidths="20,320,120,80" style="Table1">
+                    <tr>
+                        <td>
+                            <para style="P3" alignment="LEFT"></para>
+                        </td>
+                        <td>
+                            <para style="P3" alignment="LEFT"> (Amount accrued up to 31 Dec 1992  $ [[ rec['retirement_benifit_up'] and formatLang(rec['retirement_benifit_up']) or 'NA' ]]  )</para>
+                        </td>
+                        <td>
+                            <para style="P3" alignment="LEFT"> Amount accrued from 1993: </para>
+                        </td>
+                        <td>
+                            <para style="P3" alignment="CENTER">[[ rec['retirement_benifit_from'] and formatLang(rec['retirement_benifit_from']) or 'NA']] </para>
+                        </td>
+                    </tr>
+                </blockTable>
+                <blockTable colWidths="20,440,80" style="Table1">
+                    <tr>
+                        <td>
+                            <para style="P3" alignment="LEFT"></para>
+                        </td>
+                        <td>
+                            <para style="P3" alignment="LEFT">6. Contributions made by employer to any Pension/Provident Fund constituted outside Singapore:
+                             (See <b>paragraph 12d (III) of the Explanatory Notes.  Give details separately if tax concession is applicable.</b>) </para>
+                        </td>
+                        <td>
+                            <para style="P3" alignment="CENTER">[[ rec['contribution_employer'] and formatLang(rec['contribution_employer']) or 'NA']]</para>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <para style="P3" alignment="LEFT"></para>
+                        </td>
+                        <td>
+                            <para style="P3" alignment="LEFT">7. Excess/Voluntary contribution to CPF by employer (less amount refunded/to be refunded):      
+                                (See <b>paragraph 12d (IV) of the Explanatory Notes and complete the Form IR8S</b>) 
+                             </para>
+                        </td>
+                        <td>
+                            <para style="P3" alignment="CENTER">[[ rec['excess_voluntary_contribution_cpf_employer'] and formatLang(rec['excess_voluntary_contribution_cpf_employer']) or 'NA' ]]</para>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <para style="P3" alignment="LEFT"></para>
+                        </td>
+                        <td>
+                            <para style="P3" alignment="LEFT">8. Gains or profits from Employee Stock Option (ESOP) / other forms of Employee Share Ownership (ESOW) Plans:
+                            (See <b>paragraph 12d (V) of the Explanatory Notes and complete the Appendix 8B </b>)
+                             </para>
+                        </td>
+                        <td>
+                            <para style="P3" alignment="CENTER"> [[ rec['gains_profit_share_option'] and formatLang(rec['gains_profit_share_option'])  or 'NA']] </para>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <para style="P3" alignment="LEFT"></para>
+                        </td>
+                        <td>
+                            <para style="P3" alignment="LEFT">9.  Value of Benefits-in-kind 
+   (See <b>paragraphs 13 to 17 of the Explanatory Notes and complete the Appendix 8A </b>): 
+                            
+                             </para>
+                        </td>
+                        <td>
+                            <para style="P3" alignment="CENTER"> [[ rec['benifits_in_kinds'] and formatLang(rec['benifits_in_kinds']) or 'NA' ]]  </para>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                        </td>
+                        <td><para style="P3" alignment="RIGHT">TOTAL (items d1 to d9)</para>
+                        </td>
+                        <td>
+                            <para style="P3" alignment="CENTER">[[ rec['other_data'] and formatLang(rec['other_data']) or 'NA']]</para>
+                        </td>
+                    </tr>
+                </blockTable>
+                <blockTable colWidths="20,520" style="Table1">
+                    <tr>
+                        <td>
+                            <para style="P3" alignment="LEFT">e)</para>
+                        </td>
+                        <td>
+                            <blockTable colWidths="70,450" style="Table2">
+                                <tr>
+                                    <td>
+                                        <para style="P3" alignment="LEFT">Employee’s income tax borne by employer?</para>
+                                        <para style="P3" alignment="LEFT">[[ rec['is_income'] ]]</para>
+                                    </td>
+                                    <td>
+                                        <blockTable colWidths="380,20" style="Table12">
+                                            <tr>
+                                                <td>
+                                                    <para style="P3" alignment="LEFT">If yes and fully borne by employer, DO NOT enter any amount in (i) and (ii)</para>
+                                                </td>
+                                                <td>
+                                                    <para style="P3" alignment="LEFT"></para>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <para style="P3" alignment="LEFT">(i) [[ rec['employee_income_tax'] ]]</para>
+                                                </td>
+                                                <td>
+                                                    <para style="P3" alignment="LEFT"></para>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <para style="P3" alignment="LEFT">(ii) Amount of employment income for which tax is borne by employer $ [[ rec['employment_income'] ]]</para>
+                                                </td>
+                                                <td>
+                                                    <para style="P3" alignment="LEFT"></para>
+                                                </td>
+                                            </tr>
+                                        </blockTable>
+                                    </td>
+                                </tr>
+                            </blockTable>
+                        </td>
+                    </tr>
+                </blockTable>
+                <blockTable colWidths="20,520" style="Table1_1">
+                      <tr>
+                        <td>
+                            <para style="P1" alignment="LEFT"></para>
+                        </td>
+                        <td>
+                            <para style="P1" alignment="LEFT">DEDUCTIONS (Enter “NA” for items that are not applicable)</para>
+                        </td>
+                      </tr>
+                </blockTable>
+                <blockTable colWidths="20,440,80" style="Table2">
+                    <tr>
+                        <td>
+                            <para style="P3" alignment="LEFT"></para>
+                        </td>
+                        <td>
+                            <para style="P3" alignment="LEFT">EMPLOYEE’S COMPULSORY contribution to * CPF / Designated Pension or Provident Fund <b>(less amount refunded/to be refunded)</b>  Name of Fund : </para>
+                            <para style="P3" alignment="LEFT">(Please adopt the appropriate CPF rates published by CPF Board on its website ‘www.cpf.gov.sg’.  Do not include excess/voluntary contributions to CPF, voluntary contributions to Medisave Account, voluntary contributions to CPF Minimum Sum Topping-up Scheme and SRS contributions in this item) </para>
+                        </td>
+                        <td>
+                            <para style="P3" alignment="CENTER"> [[ rec['CPF_designated_pension_provident_fund'] and formatLang(rec['CPF_designated_pension_provident_fund']) or 'NA']] </para>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <para style="P3" alignment="LEFT"></para>
+                        </td>
+                        <td>
+                            <para style="P3" alignment="LEFT"><b>Donations</b> deducted from salaries for:</para>
+                            <para style="P3" alignment="LEFT">Yayasan Mendaki Fund/Community Chest of Singapore/SINDA/CDAC/ECF/Other tax exempt donations</para>
+                            <para style="P3" alignment="LEFT">Yayasan Mendaki Fund : [[ rec['ybf_amt'] and formatLang(rec['ybf_amt']) or 'NA']]</para>
+                            <para style="P3" alignment="LEFT">Mosque Building Fund : [[ rec['mbf_amt'] and formatLang(rec['ybf_amt']) or 'NA']]</para>
+                        </td>
+                        <td>
+                            <para style="P3" alignment="CENTER"> [[ rec['donation_amt'] and formatLang(rec['donation_amt']) or 'NA']] </para>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <para style="P3" alignment="LEFT"></para>
+                        </td>
+                        <td>
+                            <para style="P3" alignment="LEFT"><b>Life Insurance premiums deducted from salaries:</b></para>
+                        </td>
+                        <td>
+                            <para style="P3" alignment="CENTER"> [[ rec['insurance'] and formatLang(rec['insurance']) or 'NA']] </para>
+                        </td>
+                    </tr>
+                </blockTable>
+                
+                <blockTable colWidths="20,520" style="Table1_1">
+                      <tr>
+                        <td>
+                            <para style="P1" alignment="LEFT"></para>
+                        </td>
+                        <td>
+                            <para style="P1" alignment="LEFT"> DECLARATION (See paragraph 4 of the Explanatory Notes)</para>
+                        </td>
+                      </tr>
+                </blockTable>
+                
+                <blockTable colWidths="540" style="Table2">
+                      <tr>
+                        <td>
+                            <para style="P2" alignment="LEFT">Name of Employer  : [[ company.name ]]</para>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                            <para style="P2" alignment="LEFT">Address of Employer  : [[ company.street or '' ]]</para>
+                        </td>
+                      </tr>
+                </blockTable>
+                
+                <blockTable colWidths="220,80,80,80,80" style="Table2">
+                      <tr>
+                        <td>
+                            <para style="P2" alignment="LEFT"> [[ rec['autho_user'] ]]</para>
+                            <para style="P2" alignment="LEFT">Name of authorised person making the declaration</para>                                                                         
+
+                        </td>
+                        <td>
+                            <para style="P2" alignment="LEFT">[[ rec['designation'] ]]</para>
+                            <para style="P2" alignment="LEFT">Designation</para>
+                        </td>
+                        <td>
+                            <para style="P2" alignment="LEFT">[[ rec['tel_no'] ]]</para>
+                            <para style="P2" alignment="LEFT">Tel. No.</para>
+                        </td>
+                        <td>
+                            <para style="P2" alignment="LEFT">.</para>
+                            <para style="P2" alignment="LEFT">Signature</para>
+                        </td>
+                        <td>
+                            <para style="P2" alignment="LEFT">[[ formatLang(rec['date_today'], date=True) ]]</para>
+                            <para style="P2" alignment="LEFT">Date</para>
+                        </td>
+                      </tr>
+                </blockTable>
+                
+                <blockTable colWidths="540" style="Table1">
+                      <tr>
+                        <td>
+                            <para style="P2" alignment="CENTER">There are penalties for failing to give a return or furnishing an incorrect or late return.</para>
+                        </td>
+                      </tr>
+                </blockTable>
+                <blockTable colWidths="270,270" style="Table1">
+                      <tr>
+                        <td>
+                            <para style="P2" alignment="LEFT">IR8A(1/[[ data['form'].get('year_id') and data['form'].get('year_id')[1] or ''  ]]) </para>
+                        </td>
+                        <td>
+                            <para style="P2" alignment="RIGHT">* Delete where applicable</para>
+                        </td>
+                      </tr>
+                </blockTable>
+  </story>
+</document>

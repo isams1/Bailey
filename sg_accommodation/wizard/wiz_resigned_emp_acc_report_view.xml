@@ -1,0 +1,59 @@
+<openerp>
+	<data>
+	    
+           <!-- View of Wizard to Back on Print Resigned Employee Accommodation Report wizard-->
+        
+            <record id="acc_report_resigned_emp_export_report_wiz" model="ir.ui.view">
+                <field name="name">acc.report.resigned.emp.standard.export</field>
+                <field name="model">acc.report.resigned.emp.standard.export</field>
+                <field name="type">form</field>
+                <field name="arch" type="xml">
+                    <form string="Export File" version="8.0">
+                        <group col="4" colspan="4">
+                            <label string="Save the File with '.xls' extension." colspan="4"/>
+                            <field name="name" invisible="1"/>
+                            <field name="file" readonly="1" filename="name" nolabel="1"/>
+                        </group>
+                        <footer>
+                            <button name="action_back" string="_Back" 
+                                    type="object" class="oe_highlight"/>
+                            or
+                            <button string="Close" class="oe_highlight" special="cancel"/>
+                        </footer>
+                    </form>
+               </field>
+            </record>
+	    
+			<!-- View of Wizard to Print Resigned Employee Accommodation Report -->
+			
+			<record id="view_wiz_emp_resigned_report" model="ir.ui.view">
+				<field name="name">view.wiz.emp.resigned.report</field>
+				<field name="model">acc.report.resigned.emp</field>
+				<field name="arch" type="xml">
+					<form string="Resigned Employee Accommodation">
+						<group>
+							<field name="start_month" domain="[('company_id','=',company_id),('special','=',False)]"/>
+                            <field name="end_month" domain="[('company_id','=',company_id),('special','=',False)]"/>
+                            <field name="company_id" invisible="True"/>
+						</group>
+						<footer>
+							<button special="cancel" string="Cancel" class="oe_link"/>
+							or
+							<button name="print_report" type="object" string="Print" class="oe_highlight"/>
+						</footer>
+					</form>
+				</field>
+			</record>
+
+			<!-- Action of the Resigned Employee Report Wizard -->
+			
+			<record id="action_wiz_resigned_emp_report" model="ir.actions.act_window">
+				<field name="name">Resigned Employees</field>
+				<field name="res_model">acc.report.resigned.emp</field>
+				<field name="view_mode">form</field>
+				<field name="target">new</field>
+			</record>
+
+			<menuitem id="menu_resigned_emp_report" action="action_wiz_resigned_emp_report" parent="menu_report_setting"/>
+	</data>
+</openerp>

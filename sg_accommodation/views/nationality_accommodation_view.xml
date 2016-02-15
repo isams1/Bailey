@@ -1,0 +1,93 @@
+<openerp>
+    <data>
+        
+        <template id="view_nationality_report">
+            <t t-call="report.html_container">
+                <div class="page">
+                <table class="table">
+                    <tr>
+                        <th>Sr.no</th>
+                        <th>Location</th>
+                        <th>Accommodation</th>
+                        <t t-foreach="get_companies()" t-as="comp">
+                                    <th t-esc="comp" />
+                         </t>
+                        <th>Total</th>
+                        <th>Stay Men.</th>
+                        <th>Max. Capacity</th>
+                        <th>Vacancies</th>
+                    </tr>
+                        <tr t-foreach="data['form']['loc_dict1']" t-as="acc">
+                            <t t-if="acc['country'] == 1">
+                            <td colspan="12">
+                                <span t-esc="acc['sr_no']"/>
+                            </td>
+                            </t>
+                            <t t-if="acc['country'] == 0">
+                            <td>
+                                <span t-esc="acc['sr_no']"/>
+                            </td>
+                            <td><span t-esc="acc['loc']"></span></td>
+                            <td align="center"><table class="table">
+                                <t t-foreach="acc['acc_list']" t-as="con">
+                                    <tr><td><span t-esc="con['acc_name']"></span></td>
+                                </tr>
+                                </t>
+                                </table></td>
+                                <td align="center"><table class="table">
+                                <t t-foreach="acc['acc_list']" t-as="con">
+                                    <tr>
+                                    <td><span t-esc="con['CM']"></span></td>
+                                </tr>
+                                </t>
+                                </table></td>
+                                <td align="center"><table class="table">
+                                <t t-foreach="acc['acc_list']" t-as="con">
+                                    <tr>
+                                    <td><span t-esc="con['DV']"></span></td>
+                                </tr>
+                                </t>
+                                </table></td>
+
+                                <td align="center"><table class="table">
+                                <t t-foreach="acc['acc_list']" t-as="con">
+                                    <tr>
+                                    <td><span t-esc="con['SBT']"></span></td>
+                                </tr>
+                                </t>
+                                </table></td>
+
+                                <td align="center"><table class="table">
+                                <t t-foreach="acc['acc_list']" t-as="con">
+                                    <tr>
+                                    <td><span t-esc="con['SMT']"></span></td>
+                                </tr>
+                                </t>
+                                </table></td>
+
+                                 <td align="center"><table class="table">
+                                <t t-foreach="acc['acc_list']" t-as="con">
+                                    <tr>
+                                    <td><span t-esc="con['UM']"></span></td>
+                                </tr>
+                                </t>
+                                </table></td>
+
+                                <td align="center"><table class="table">
+                                <t t-foreach="acc['acc_list']" t-as="con">
+                                    <tr>
+                                    <td><span t-esc="con['total']"></span></td>
+                                </tr>
+                                </t>
+                                </table></td>
+                            <td align="center"><table class="table"><span t-esc="acc['occupied']"></span></table></td>
+                            <td align="center"><table class="table"><span t-esc="acc['max']"></span></table></td>
+                            <td align="center"><table class="table"><span t-esc="acc['available']"></span></table></td>
+                            </t>
+                        </tr>
+                </table>
+                </div>
+                </t>
+        </template>
+    </data>
+</openerp>

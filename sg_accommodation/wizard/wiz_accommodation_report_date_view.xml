@@ -1,0 +1,54 @@
+<openerp>
+	<data>
+
+		<!-- Accommodation Report Wizard -->
+		<record id="view_acc_report_form_dt" model="ir.ui.view">
+			<field name="name">view.acc.report.date.form</field>
+			<field name="model">acc.report.date</field>
+			<field name="arch" type="xml">
+				<form string="Accommodation Report Date">
+					<label string='Location Wise Country Wise Vacancy on a particular Date'/>
+					<group colspan="4" col="4">
+					<field name="date" required="True"/>
+					</group>
+					<footer>
+						<button name="print_report" string="Print" type="object" />
+					</footer>
+				</form>
+			</field>
+		</record>
+		
+	 	<record id="wiz_dwnld_acc_report_form_dt" model="ir.ui.view">
+            <field name="name">wiz.dwnld.acc.report.form.dt</field>
+            <field name="model">accom.dwnld.datewise.report</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Download File" version="7.0">
+                    <group col="4" colspan="4">
+                        <label string="Save the File with '.xls' extension." colspan="4"/>
+                        <field name="file_name" invisible="1"/>
+                        <field name="file" readonly="1" filename="file_name" nolabel="1"/>
+                    </group>
+                    <footer>
+                        <button name="action_back" string="_Back" 
+                                type="object" class="oe_highlight"/>
+                        or
+                        <button string="Close" class="oe_highlight" special="cancel"/>
+                    </footer>
+                </form>
+           </field>
+        </record> 
+
+		<!-- Action for the wizard -->
+		<record id="action_acc_report_dt" model="ir.actions.act_window">
+			<field name="name">Vacancy Details</field>
+			<field name="res_model">acc.report.date</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+		</record>
+
+		<!-- Menu fo the Accommodation Location/Country/Company wise report -->
+		<menuitem id="menu_wiz_acc_report_dt" action="action_acc_report_dt" parent="menu_report_setting"/>		
+	</data>
+</openerp>

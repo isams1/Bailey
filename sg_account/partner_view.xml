@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!-- Partner Form View Inherited -->
+        <record id="view_partner_form_inherited" model="ir.ui.view">
+            <field name="name">view.res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form" />
+            <field name="arch" type="xml">
+                <field name="phone" position="after">
+                    <field name="customer_uen" attrs="{'invisible':[('customer','=',False)]}"/>
+                    <field name="customer_id" attrs="{'invisible':[('customer','=',False)]}"/>
+                   <field name="supplier_uen" attrs="{'invisible':[('supplier','=',False)]}"/>
+                </field>
+            </field>
+        </record>
+
+        <!-- Company Form View Inherited -->
+        <record id="view_company_form_inherited" model="ir.ui.view">
+            <field name="name">view.res.company.form</field>
+            <field name="model">res.company</field>
+            <field name="inherit_id" ref="base.view_company_form" />
+            <field name="arch" type="xml">
+                <field name="company_registry" position="after">
+                    <field name="company_uen" />
+                    <field name="gst_no" />
+                    <field name="period_start" />
+                    <field name="period_end" />
+                    <field name="iaf_creation_date" />
+                </field>
+                <field name="website" position="after">
+                    <field name="product_version" />
+                    <field name="iaf_version" />
+                </field>
+            </field>
+        </record>
+
+        <!-- Invoice Form View Inherited -->
+        <record id="view_supplier_invoice_form_inherited" model="ir.ui.view">
+            <field name="name">view.supplier.invoice.form</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_supplier_form" />
+            <field name="arch" type="xml">
+                <field name="check_total" position="after">
+                    <field name="permit_no" />
+                </field>
+            </field>
+        </record>
+        <record id="view_customer_invoice_form_inherited" model="ir.ui.view">
+            <field name="name">view.customer.invoice.form</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//form/sheet/group/group/field[@name='fiscal_position']" position="after">
+                    <field name="permit_no" />
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</openerp>

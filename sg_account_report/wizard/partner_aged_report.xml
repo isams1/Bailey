@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+     <data>
+
+        <record id="account_aged_balance_view_inherited" model="ir.ui.view">
+            <field name="name">Aged Partner Balance1</field>
+            <field name="model">account.aged.trial.balance</field>
+            <field name="inherit_id" ref="account.account_aged_balance_view" />
+            <field name="arch" type="xml">
+               <field name="direction_selection" position="after">
+                     <separator string="Customers" colspan="4"/>
+                     <field name="partner_ids" colspan='4' nolabel="1" domain="['|',('customer','=',True),('supplier','=',True)]"/>             
+               </field>
+            </field>
+        </record>
+
+    </data>
+</openerp>

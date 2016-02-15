@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        
+		<!--
+		<template id="accommodation_qweb_header">
+			<div class="wrapper">
+            <div class="header">
+			
+			
+		      </div>
+		      </div>
+		</template>
+		-->
+		
+		<template id="rep_acco_tenancy_agreement">
+				<t >
+					<t t-foreach="docs" t-as="o">
+						<div class="row">
+						<div class="col-md-12">
+							<div class="page">
+								  <p>
+				<div class="row zero_min_height">
+		            <div class="col-xs-12">
+		                <div style="border-bottom: 1px solid black;"></div>
+		            </div>
+		        </div>
+		           <div class="col-xs-4">
+		           	<br/>
+			           	<div class="row" t-if="o.land_lord_id.image">
+			           		<img t-att-src="'data:image/png;base64,%s' % o.land_lord_id.image" style="max-height: 75px;"/>	           	
+			           	</div>
+		                <br/>
+		                <span t-esc="get_date()"/>
+		        		<div style="color:#1A4378;font-size:25px" t-field="o.paying_comp_id.name" t-att-value="o.paying_comp_id.name" />
+	        			<address  t-field="o.paying_comp_id.partner_id"
+                    		t-field-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": true}' />
+						<p>Attn :</p>
+		        		<p><strong><span t-field="o.name" t-att-value="o.name" ></span></strong></p>
+		        		</div>
+		            <div class="col-xs-4"/>
+		            <div class="col-xs-4">
+		                <div style="color:#1A4378;font-size:30px" t-field="o.land_lord_id.name" t-att-value="o.land_lord_id.name" />
+		            	<address  t-field="o.land_lord_id"
+                        		t-field-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": true}' />
+						</div>
+		        <div class="row zero_min_height">
+		            <div class="col-xs-12">
+		                <div style="border-bottom: 1px solid black;"></div>
+		            </div>
+		        </div>
+		        </p>
+								<table class="table">
+										<tr>
+										<t t-if="o.paying_comp_id">
+										</t>
+										<br/>
+			                                Dear Sir,
+			                             <br/>
+			                                We are pleased to quote the followings:
+			                             <br/>
+			                             </tr>
+			                            <tr>
+			                                <td style="border:0px;">
+			                                <strong>Location:</strong>
+			                                </td>
+			                                <td style="width:100%;border:0px">
+			                                <span t-field="o.land_lord_id.street"></span>
+			                                <span t-field="o.land_lord_id.street2"></span>
+			                                <span t-field="o.land_lord_id.city"></span>
+			                                <span t-field="o.land_lord_id.state_id"></span>
+			                                <span t-field="o.land_lord_id.zip"></span>
+			                                <span t-field="o.land_lord_id.country_id"></span>
+			                                </td>
+			                             </tr>
+										 <tr>
+			                                <td style="border:0px;">
+			                                	<strong>Rate:</strong>
+			                                </td>
+			                                <td style="width:100%;border:0px">
+				                                Rental for <span t-esc="get_rooms(o.maximum_capacity, o.stay_capacity)"/> units of standard room.
+				                                <br/>
+				                                Total capacity = <span t-field="o.maximum_capacity"></span> pax.
+				                                <br/>
+				                                Total Rental charge = <span t-field="o.paying_comp_id.currency_id.symbol"></span><span t-field="o.rent" /> per month.
+												<br/>
+				                                The lease shall commence on the <span t-esc="get_date_format(o.date_start)"></span>
+			                                </td>
+			                             </tr>
+			                             
+										 <tr>
+			                                <td style="border:0px;">
+			                                <strong>Tenure:</strong>
+			                                </td>
+			                                <td style="width:100%;border:0px">
+			                                The lease shall be for the term of <span t-field="o.tenure"></span> months effective  <span t-esc="get_date_format(o.date_start)"></span>
+			                                </td>
+			                             </tr>
+											 <tr>
+				                                <td style="border:0px;">
+				                                <strong>Amenties:</strong>
+				                                </td>
+					                                <td style="width:100%;border:0px">
+					                                	<t t-foreach="o.amenities_ids" t-as="line">
+						                                	<span t-field="line.name"></span>
+						                                	<br/>
+						                                </t>
+				                               		 </td>
+				                             </tr>
+										 <tr>
+			                                <td style="border:0px;">
+			                                <strong>Security:</strong>
+			                                </td>
+			                                <td style="width:100%;border:0px">
+			                                <span t-field="o.security_ids.name"></span> - charge <span t-field="o.paying_comp_id.currency_id.symbol"></span><span t-field="o.security_ids.price"></span>
+			                                </td>
+			                                <br/>
+			                             </tr>
+										 <tr>
+			                                <td style="border:0px;">
+			                                <strong>Exclusion:</strong>
+			                                </td>
+			                                <td style="width:100%;border:0px" >
+			                                <t t-foreach="o.exclusion_ids" t-as="line">
+				                                <span t-field="line.name"></span>
+												<br/>
+											</t>
+		                                </td>
+			                             </tr>
+										 <tr>
+			                                <td style="border:0px;">
+			                                <strong>Mandatory:</strong>
+			                                </td>
+			                                <td style="width:100%;border:0px">
+			                                <span t-field="o.mandatory"></span>
+			                                </td>
+			                             </tr>
+			                             
+										 <tr>
+			                                <td style="width:20%;border:0px;">
+			                                <strong>Terms of Payment:</strong>
+			                                </td>
+			                                <td style="width:100%;border:0px">
+			                                <span t-field="o.payment_term_id"></span>
+			                                </td>
+			                             </tr>
+										 <tr>
+			                                <td style="border:0px;">
+			                                	<strong>Deposit:</strong>
+			                                </td>
+			                                <td style="width:100%;border:0px">
+			                                	<span t-field="o.deposit"></span> month of rental charge to be refunded upon termination/expiry.
+			                                </td>
+			                             </tr>
+										 <tr>
+			                                <td style="border:0px;">
+			                                	<strong>Change of Worker:</strong>
+			                                </td>
+			                                <td style="width:100%;border:0px">
+			                                	<span t-field="o.change_of_worker"></span> days written notice in advance.
+			                                </td>
+			                             </tr>
+			                             
+										 <tr>
+			                                <td style="border:0px;">
+			                                	<strong>Termination:</strong>
+			                                </td>
+			                                <td style="width:100%;border:0px">
+			                                	<span t-field="o.termination"></span> months notice in writing for termination.
+			                                </td>
+			                             </tr>
+										 <tr>
+			                                <td style="border:0px;">
+			                                	<strong>Liabilities:</strong>
+			                                </td>
+			                                <td style="width:100%;border:0px">
+			                                	<span t-field="o.liabilities"></span>
+			                                </td>
+			                             </tr>
+			                      </table>
+								<br/>
+								<table>
+									<col width="200"/>
+		                            <col width="300"/>
+		                            <col width="200"/>
+								<tr>
+									<td>
+								<table >
+                            <tr>
+                                <td>
+                                    <u> Yours faithfully,</u>
+                                </td>
+                            </tr>
+                            <tr></tr>
+                            <tr>
+                               <td>
+                               		<span t-field="o.land_lord_id"></span>
+                               	</td>
+                            </tr>
+                           </table>
+                           <hr style=" margin-top:80px;color:#000000;border-style: solid"></hr>
+                           </td>
+							<td></td>
+							<td>
+								<table >
+		                            <tr>
+		                                <td>
+		                                    <u> Confirmed and Agreed by,</u>
+		                                </td>
+		                            </tr>
+		                            <tr></tr>
+		                            <tr>
+		                                <td>
+		                               		<span t-field="o.paying_comp_id"></span>
+		                               	</td>
+		                            </tr>
+	                           </table>
+	                           <hr style=" margin-top:80px;color:#000000;border-style: solid"></hr>
+                           </td>
+                           </tr>
+							</table>
+							</div>
+						</div>
+					</div>
+				</t>
+			</t>
+		</template>
+	</data>
+</openerp>

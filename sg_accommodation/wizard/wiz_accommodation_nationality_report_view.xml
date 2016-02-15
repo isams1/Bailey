@@ -1,0 +1,53 @@
+<openerp>
+	<data>
+
+		<record id="view_acco_nationality_report_wiz" model="ir.ui.view">
+            <field name="name">acco.nationality.report.form</field>
+            <field name="model">acco.nationality.report</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Export File" version="8.0">
+                    <group col="4" colspan="4">
+                        <field name="name" invisible="1"/>
+                        <field name="file" readonly="1" filename="name" nolabel="1"/>
+                    </group>
+                    <footer>
+                        <button name="action_back" string="_Back" 
+                                type="object" class="oe_highlight"/>
+                        or
+                        <button string="Close" class="oe_highlight" special="cancel"/>
+                    </footer>
+                </form>
+           </field>
+        </record>
+
+		<!-- Accommodation Nationality Report Wizard -->
+		<record id="view_acc_nation_report_form" model="ir.ui.view">
+			<field name="name">view.accommodation.nationality.form</field>
+			<field name="model">wiz.accommodation.nationality.report</field>
+			<field name="arch" type="xml">
+				<form string="Accommodation Nationality Report">
+						<field name="nationality_ids" required="True"/>
+<!--						<button name="print_report" string="Print" type="object" /-->
+						<footer>
+	                    <button name="check_report" string="Print" type="object" default_focus="1" class="oe_highlight"/>
+	                    or 
+	                    <button string="Cancel" class="oe_link" special="cancel" />
+                </footer>
+				</form>
+			</field>
+		</record>
+
+		<!-- Action for the wizard -->
+		<record id="action_acc_nation_report111" model="ir.actions.act_window">
+			<field name="name">Nationality Wise</field>
+			<field name="res_model">wiz.accommodation.nationality.report</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+		</record>
+
+		<!-- Menu fo the Accommodation Location/Country/Company wise report -->
+		<menuitem id="menu_wiz_acc_nation_report" name="Nationality Wise" action="action_acc_nation_report111" parent="menu_report_setting"/>		
+	</data>
+</openerp>

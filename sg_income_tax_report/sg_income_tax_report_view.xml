@@ -1,0 +1,143 @@
+<openerp>
+    <data>
+        <!-- IRAS Menu -->
+        <menuitem id="menu_payroll_iras" name="IRAS"
+             parent="l10n_sg_hr_payroll.menu_report_payroll1" groups="l10n_sg_hr_payroll.group_hr_payroll_admin"
+             sequence="15" />
+
+        <record id="view_hr_contract_commission_form_inherited1" model="ir.ui.view">
+            <field name="name">view.hr.contract.commission.form.inherit</field>
+            <field name="model">hr.contract</field>
+            <field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="/form/sheet/notebook/page[@string='Work Permit']" position="after">
+                    <page string="Income Tax" groups='l10n_sg_hr_payroll.group_hr_payroll_admin'>
+                        <separator colspan="4" string="Income Tax"/>
+                        <field name="hr_contract_income_tax_ids" nolabel="1" colspan="4"/>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Contract Incometax Form, Tree View-->
+        <record id="view_hr_contract_income_tax_form" model="ir.ui.view">
+            <field name="name">view.hr.contract.income.tax.form</field>
+            <field name="model">hr.contract.income.tax</field>
+            <field name="arch" type="xml">
+            <form string="Income Tax" >
+                <group col="4" colspan="4">
+                    <field name="year_id" required="True"/>
+                </group>
+                <notebook colspan="4">
+                    <page string="IR8A" >
+                        <notebook colspan="4">
+                            <page string="Income">
+	                            <separator string="Section A-C" colspan="4"/>
+	                            <group col="4" colspan="4">
+	                                <field name="director_fee" colspan="2" />
+	                                <field name="director_fee_approval_date" colspan="2"/>
+		                        </group>
+	                            <group col="4">
+	                                <field name="gain_profit" colspan="4"/>
+	                                <field name="exempt_income" colspan="4" />
+	                                <field align="0.0" name="exempt_remission" colspan="4" />
+	                                <field align="0.0" name="from_ir8s" colspan="4" />
+                                </group>
+                                <separator string="Section d1" colspan="4"/>
+                                <group col="4" colspan="4" >
+	                                <field align="0.0" name="entertainment_allowance" colspan="2" />
+	                                <field align="0.0" name="other_allowance" colspan="2" />
+	                                <field align="0.0" name="pension" colspan="2" />
+	                            </group>
+                                <separator string="Section d4" colspan="4"/>
+	                            <group col="4">
+                                <field align="0.0" name="gratuity_payment" colspan="4" />
+                                <field align="0.0" name="compensation" colspan="4" />
+                                <field align="0.0" name="approve_obtain_iras" colspan="4" />
+                                <field align="0.0" name="approval_date" colspan="4" />
+                                <field align="0.0" name="compensation_loss_office" colspan="4" />
+                                <field align="0.0" name="gratuity_payment_amt" colspan="4" />
+                                </group>
+                                <separator string="Section d5" colspan="4"/>
+                                <group col="4" >
+                                <field align="0.0" name="fund_name" colspan="4" />
+                                <field align="0.0" name="retirement_benifit_up" colspan="4" />
+                                <field align="0.0" name="retirement_benifit_from" colspan="4" />
+                                </group>
+                                <separator string="Section d6-9" colspan="4"/>
+                                <group col="4" >
+                                <field align="0.0" name="benefits_kind" colspan="4" />
+                                <field align="0.0" name="section_applicable" colspan="4" />
+                                <field align="0.0" name="contribution_employer" colspan="4" />
+                                <field align="0.0" name="excess_voluntary_contribution_cpf_employer" colspan="4" />
+                                <field align="0.0" name="gains_profit_share_option" colspan="4" />
+                                <field align="0.0" name="benifits_in_kinds" colspan="4" />
+                                <field align="0.0" name="emp_voluntary_contribution_cpf" colspan="4" />
+                                </group>
+                                <separator string="Section E" colspan="4"/>
+                                <group col="4" >
+                                <field align="0.0" name="employment_income" colspan="4" />
+                                <field align="0.0" name="employee_income_tax" colspan="4" />
+                                </group>
+                            </page>
+                            <page string="Deductions">
+                                <group colspan="4" col="2">
+                                    <field name="mbf" />
+                                    <field name="mbf_handler" invisible="1"/>
+                                    <field name="ymf" />
+                                    <field name="donation" />
+                                    <field name="donation_handler" invisible="1"/>
+                                    <field name="CPF_designated_pension_provident_fund" />
+                                    <field name="CPF_designated_pension_provident_fund_handler" invisible="1"/>
+                                    <field name="insurance"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </page>
+                    <page string="IR8S" >
+                        <notebook colspan="4">
+                            <page string="Section A">
+                                <group col="2" colspan="4" >
+                                    <field name="CPF_capping_indicator" />
+                                    <field name="singapore_permanent_resident_status" />
+                                    <field name="approval_has_been_obtained_CPF_board" />
+                                    <field name="indicator_for_CPF_contributions" />
+                                </group>
+                            </page>
+                            <page string="Section B">
+                                <group col="2" colspan="4">
+                                    <field name="eyer_contibution" />
+                                    <field name="eyee_contibution" />
+                                </group>
+                            </page>
+                            <page string="Section C">
+                                <group col="2" colspan="4" >
+                                    <field name="additional_wage" />
+                                    <field name="add_wage_pay_date" />
+                                    <field name="refund_eyers_contribution" />
+                                    <field name="refund_eyees_contribution" />
+                                    <field name="refund_eyers_date" />
+                                    <field name="refund_eyees_date" />
+                                    <field name="refund_eyers_interest_contribution" />
+                                    <field name="refund_eyees_interest_contribution" />
+                                </group>
+                            </page>
+                        </notebook>
+                    </page>
+                </notebook>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_hr_contract_income_tax_tree" model="ir.ui.view">
+            <field name="name">view.hr.contract.income.tax.tree</field>
+            <field name="model">hr.contract.income.tax</field>
+            <field name="arch" type="xml">
+            <tree string="Income Tax">
+                <field name="year_id" />
+            </tree>
+            </field>
+        </record>
+
+      </data>
+</openerp>

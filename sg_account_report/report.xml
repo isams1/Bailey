@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <report
+            auto="False"
+            id="1_col_report"
+            menu="True"
+            model="wizard.report"
+            name="afr.1cols"
+            rml="sg_account_report/report/balance_full.rml"
+            string="Balance 1 Columna"
+            header="False"
+        />
+
+        <report 
+            auto="False"
+            id="2_col_report"
+            menu="True"
+            model="wizard.report"
+            name="afr.2cols"
+            rml="sg_account_report/report/pl_balance_full.rml"
+            string="Profit Loss"
+            header="False"
+        />
+
+    </data>
+</openerp>
