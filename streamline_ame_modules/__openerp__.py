@@ -12,6 +12,7 @@
     'js': ['static/src/js/datetimepicker.js'],
     'data' : [
         'security/res.groups.csv',
+        'security/ame_security.xml',
         'reports/header.xml',
         'reports/account/wizard/invoice_summary_view.xml',
         'reports/account/wizard/stock_report_view.xml',
@@ -43,6 +44,7 @@
         'base/views/company_view.xml',
         'view/templates.xml',
         'security/ir.model.access.csv',
+
     ],
     'pre_init_hook': 'update_null_and_slash_codes',
     'demo' : [],

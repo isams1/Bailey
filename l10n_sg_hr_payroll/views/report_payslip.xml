@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+
+    <template id="payslip_inherit_report" inherit_id="hr_payroll.report_payslip">
+        <xpath expr="//div[@class='page']/table[@class='table table-condensed table-bordered']/tr[3]/td[4]" position="replace">
+            <td><span t-field="o.employee_id.identification_id"/></td>
+        </xpath>
+        <xpath expr="//div[@class='page']/table[@class='table table-condensed table-bordered']/tr[4]/td[4]" position="replace">
+            <td><span t-field="o.employee_id.bank_account_id.acc_number"/></td>
+        </xpath>
+    </template>
+
+</data>
+</openerp>

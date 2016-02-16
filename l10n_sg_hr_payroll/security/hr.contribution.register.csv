@@ -1,0 +1,10 @@
+id,company_id/id,note,name
+hr_contribution_register_4,base.main_company,,CPF - MBMF
+hr_contribution_register_5,base.main_company,,CPF - SINDA
+hr_contribution_register_6,base.main_company,,CPF - CDAC
+hr_contribution_register_7,base.main_company,,CPF - ECF
+hr_contribution_register_8,base.main_company,,CPF - SDL
+hr_contribution_register_9,base.main_company,,CPF - FWL
+hr_contribution_register_10,base.main_company,,CPF
+hr_contribution_register_12,base.main_company,,BASIC
+hr_contribution_register_13,base.main_company,,BONUS

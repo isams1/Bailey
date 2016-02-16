@@ -62,8 +62,8 @@ class product_product(models.Model):
         if 'default_code' not in vals or vals['default_code'] == '/':
             vals['default_code'] = self.env['ir.sequence'].get(
                 'product.product')
-        if not self.env['res.users'].has_group('warehouse_extended.group_ame_purchaser'):
-            raise except_orm(_('Invalid Action!'), _('Only Purchaser can create product.'))
+        if not self.env['res.users'].has_group('streamline_ame_modules.group_ame_create_product'):
+            raise except_orm(_('Invalid Action!'), _('User is not in "Creating Product" group.'))
         product_id = super(product_product, self).create(vals)
 
         tmpl = self.env['product.template'].browse(vals['product_tmpl_id'])
@@ -73,6 +73,9 @@ class product_product(models.Model):
 
     @api.multi
     def write(self, vals):
+        if not self.env['res.users'].has_group('streamline_ame_modules.group_ame_edit_product'):
+            raise except_orm(_('Invalid Action!'), _('User is not in "Editing Product" group.'))
+
         for product in self:
             if product.default_code in [False, '/']:
                 vals['default_code'] = self.env['ir.sequence'].get(
@@ -167,4 +170,19 @@ class product_template(models.Model):
     machinery_material_by_ame = fields.Boolean('By AME')
     machinery_labour_by_ame = fields.Boolean('By AME')
     active = fields.Boolean('Active', default=False)
+    loc_case = fields.Char('Level', size=16)
+    loc_area = fields.Char('Area', size=16)
+
+    @api.multi
+    def write(self, vals):
+        if not self.env['res.users'].has_group('streamline_ame_modules.group_ame_edit_product'):
+            raise except_orm(_('Invalid Action!'), _('User is not in "Editing Product" group.'))
+        return super(product_template, self).write(vals)
+
+    @api.model
+    def create(self, vals):
+        if not self.env['res.users'].has_group('streamline_ame_modules.group_ame_create_product'):
+            raise except_orm(_('Invalid Action!'), _('User is not in "Creating Product" group.'))
+        return super(product_template, self).create(vals)
+
 product_template()    

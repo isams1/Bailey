@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data noupdate="0">
+        <record id="view_hr_salary_rule_gl_code_inherits" model="ir.ui.view">
+            <field name="name">hr.salary.rule.gl.code.inherits</field>
+            <field name="model">hr.salary.rule</field>
+            <field name="inherit_id" ref="hr_payroll.hr_salary_rule_form" />
+            <field name="arch" type="xml">
+                <field name="appears_on_payslip" position="replace">
+                    <field name="appears_on_payslip" invisible="1"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="hr_salary_rule_category_admin_form" model="ir.ui.view">
+            <field name="name">hr.payroll.structure.form</field>
+            <field name="model">hr.payroll.structure</field>
+            <field name="inherit_id" ref="hr_payroll.view_hr_employee_grade_form" />
+            <field name="arch" type="xml">
+                <field name="rule_ids" position="replace">
+                    <field colspan="4" name="rule_ids" nolabel="1" domain="[('parent_rule_id','=',False)]">
+                      <tree string="Salary Rule">
+                         <field name="name"/>
+                         <field name="code"/>
+                         <field name="category_id"/>
+                         <field name="sequence" groups="base.group_extended" invisible="1"/>
+                         <field name="register_id"/>
+                      </tree>
+                   </field>
+                </field>
+            </field>
+        </record>
+
+        <record id="res_partner_bank_inherits" model="ir.ui.view">
+            <field name="name">hr.partner.bank.inherits</field>
+            <field name="model">res.partner.bank</field>
+            <field name="inherit_id" ref="base.view_partner_bank_form" />
+            <field name="arch" type="xml">
+                <field name="bank_bic" position="after">
+                    <field name="branch_id"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="hr_salary_rule_sequence_tree" model="ir.ui.view">
+            <field name="name">hr.salary.rule.sequence.tree</field>
+            <field name="model">hr.salary.rule</field>
+            <field name="inherit_id" ref="hr_payroll.hr_salary_rule_list" />
+            <field name="arch" type="xml">
+                <field name="name" position="before">
+                    <field name="id" readonly="1"/>
+                    <field name="sequence"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="hr_payroll.action_view_hr_payslip_form" model="ir.actions.act_window">
+            <field name="name">Employee Payslips</field>
+            <field name="res_model">hr.payslip</field>
+            <field name="view_type">form</field>
+            <field name="context">{'search_default_draft': True}</field>
+            <field name="view_id" ref="hr_payroll.view_hr_payslip_tree"/>
+            <field name="search_view_id" ref="hr_payroll.view_hr_payslip_filter"/>
+        </record>
+
+        <record model="ir.ui.view" id="hr_payslip_extended_form_view">
+            <field name="name">hr.payslip.extended.form</field>
+            <field name="model">hr.payslip</field>
+            <field name="inherit_id" ref="hr_payroll.view_hr_payslip_form" />
+            <field name="arch" type="xml">
+                <xpath expr="/form/header/button[@name='refund_sheet']" position="attributes">
+                    <attribute name="invisible" >True</attribute>
+                </xpath>
+                <field name="credit_note" position="replace">
+                    <field name="active"/>
+                    <field name="total_timesheet_hours" readonly="1"/>
+                    <field name="total_hours" readonly="1"/>
+                    <field name="pub_holiday_hours" readonly="1"/>
+                    <field name="overtime_hours" readonly="1"/>
+                    <field name="pay_by_cheque"/>
+                    <field name="date"/>
+                    <field name="cheque_number" attrs="{'invisible':[('pay_by_cheque', '=', False)], 'required':[('pay_by_cheque', '=', True)]}"/>
+                </field>
+                <xpath expr="//page[@string='Details By Salary Rule Category']" position="replace"/>
+                <field name="date_to" position="attributes">
+                    <attribute name="on_change">onchange_employee_id(date_from, date_to, employee_id, contract_id)</attribute>
+                </field>
+                <xpath expr="//page[@string='Salary Computation']//tree/field[@name='sequence']" position="replace"/>
+                <xpath expr="//page[@string='Salary Computation']//tree/field[@name='name']" position="before">
+                    <field name="sequence"/>
+                </xpath>
+                <xpath expr="//page[@string='Salary Computation']//tree/field[@name='quantity']" position="replace"/>
+                <xpath expr="//page[@string='Salary Computation']//tree/field[@name='rate']" position="replace"/>
+                <xpath expr="//page[@string='Salary Computation']//tree/field[@name='code']" position="replace" >
+                    <field name="code" string="SALARYCODE" />
+                </xpath>
+                <xpath expr="//page[@string='Salary Computation']//tree/field[@name='amount']" position="replace"/>
+                
+                <xpath expr="//page[@string='Worked Days &amp; Inputs']//tree[@string='Input Data']/field[@name='contract_id']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//page[@string='Worked Days &amp; Inputs']//tree[@string='Input Data']/field[@name='sequence']" position="replace"/>
+                <xpath expr="//page[@string='Worked Days &amp; Inputs']//tree[@string='Input Data']/field[@name='code']" position="replace"/>
+                <xpath expr="//page[@string='Worked Days &amp; Inputs']//tree[@string='Input Data']/field[@name='name']" position="before">
+                   <field name="code"/>
+                </xpath>
+                
+                <xpath expr="//page[@string='Worked Days &amp; Inputs']//tree[@string='Worked Days']/field[@name='contract_id']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//page[@string='Worked Days &amp; Inputs']//tree[@string='Worked Days']/field[@name='sequence']" position="replace"/>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="hr_payslip_extended_search_view">
+            <field name="name">hr.payslip.extended.search</field>
+            <field name="model">hr.payslip</field>
+            <field name="inherit_id" ref="hr_payroll.view_hr_payslip_filter" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='date_from']" position="after">
+                    <field name="date_to"/>
+                </xpath>
+                <xpath expr="/search/filter[@string='Done']" position="after">
+                    <filter domain="[('active_employee','=',True)]" string="Active" />
+                    <filter string="Inactive" domain="[('active_employee','=',False)]" help="Inactive Employee"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Employee Country View -->
+        <record id="view_employee_country_tree" model="ir.ui.view">
+            <field name="name">view.employee.country.tree</field>
+            <field name="model">employee.country</field>
+            <field name="arch" type="xml">
+                <tree string="Employee Country">
+                    <field name="name" />
+                    <field name="code" />
+                </tree>
+            </field>
+        </record>
+        <record id="view_employee_country_form" model="ir.ui.view">
+            <field name="name">view.employee.country.form</field>
+            <field name="model">employee.country</field>
+            <field name="arch" type="xml">
+                <form string="Employee Country" version="7.0">
+                    <sheet>
+                        <group>
+                            <field name="name" required="1" />
+                            <field name="code" required="True" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Employee Nationality View -->
+        <record id="view_employee_nationality_tree" model="ir.ui.view">
+            <field name="name">view.employee.nationality.tree</field>
+            <field name="model">employee.nationality</field>
+            <field name="arch" type="xml">
+                <tree string="Employee Nationality">
+                    <field name="name" />
+                    <field name="code" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_employee_nationality_form" model="ir.ui.view">
+            <field name="name">view.employee.nationality.form</field>
+            <field name="model">employee.nationality</field>
+            <field name="arch" type="xml">
+                <form string="Employee Nationality" version="7.0">
+                    <sheet>
+                        <group>
+                            <field name="name" required="1" />
+                            <field name="code" required="1" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_hr_employee_small_form" model="ir.ui.view">
+            <field name="name">view.hr.employee.form</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr_holidays.hr_holidays_leaves_assign_tree_view"/>
+            <field name="arch" type="xml">
+                <field name="remaining_leaves" position="replace"/>
+            </field>
+        </record>
+
+        <record id="view_hr_view_employee_form_inherited" model="ir.ui.view">
+            <field name="name">view.hr.employee.form.inherited</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <field name="birthday" position="attributes">
+                    <attribute name="required">True</attribute>
+                </field>
+                <field name="birthday" position="after">
+                    <field name="age"/>
+                </field>
+                <xpath expr="/form/sheet/notebook/page[@string='Personal Information']/group/group[@string='Citizenship &amp; Other Info']/field[@name='otherid']" position="after">
+                     <field name="employee_type" attrs="{'required': [('pr_date', '!=', False)]}"/>
+                </xpath>
+                <xpath expr="/form/sheet/notebook/page[@string='Personal Information']" position="inside">
+                    <group col="4" colspan="4" groups="base.group_hr_user" string="INCOME TAX">
+                        <field name="identification_no" required="True" />
+                        <field name="address_type" required="True" />
+                        <field name="empcountry_id"/>
+                        <field name="empnationality_id"/>
+                        <field name="cessation_provisions" required="True" />
+                        <field name="cessation_date"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Partner Form View Inherited -->
+        <record model='ir.ui.view' id="view_res_partner_inherit_form">
+            <field name='name'>res.partner.form.inherit</field>
+            <field name='model'>res.partner</field>
+            <field name='inherit_id' ref='base.view_partner_form' />
+            <field name='arch' type='xml'>
+                <data>
+                    <field name="street" position="before">
+                    <div class="address_format" attrs="{'invisible': [('use_parent_address','=', True)]}">
+                        <field name="house_no" style="width: 40%%" placeholder="House No"/>
+                        <field name="level_no" style="width: 37%%" placeholder="Level No"/>
+                        <field name="unit_no" style="width: 20%%" placeholder="Unit No"/></div>
+                    </field>
+                </data>
+            </field>
+        </record>
+
+        <record id="hr_payslip_run_form" model="ir.ui.view">
+            <field name="name">hr.payslip.run.form</field>
+            <field name="model">hr.payslip.run</field>
+            <field name="inherit_id" ref="hr_payroll.hr_payslip_run_form"/>
+            <field name="arch" type="xml">
+                <button name="%(hr_payroll.action_hr_payslip_by_employees)d" position="replace">
+                    <button name="open_payslip_employee" type="object" states="draft" icon="gtk-execute" string="Generate Payslips" />
+                </button>
+            </field>
+        </record>
+
+        <record id="view_hr_payslip_by_employees_view_inherited" model="ir.ui.view">
+            <field name="name">hr_payroll_payslip_employees</field>
+            <field name="model">hr.payslip.employees</field>
+            <field name="inherit_id" ref="hr_payroll.view_hr_payslip_by_employees"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='employee_ids']" position="replace">
+                    <field name="date_start" invisible="1"/>
+                    <field name="date_end" invisible="1"/>
+                    <field name="employee_ids" nolabel="1" context="{'batch_start_date': date_start, 'batch_end_date': date_end}">
+                        <tree string="Employees" editable="bottom">
+                            <field name="name" string="Employee"/>
+                        </tree>
+                    </field>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Res Users usr_ids m2m field Inherited -->
+        <record id="view_res_users_form_view_inherited" model="ir.ui.view">
+            <field name="name">view.res.user.form.view.inherited</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//form/sheet/notebook/page[@string='Preferences']" position="after">
+                    <page string="Payroll Users">
+                        <field nolabel="1" name="user_ids"/>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Contribution Register View Inherited Added GL Code O2M Field -->
+        <record id="view_hr_contribution_register_form_view_inherited" model="ir.ui.view">
+            <field name="name">view.hr.contribution.register.inherited</field>
+            <field name="model">hr.contribution.register</field>
+            <field name="inherit_id" ref="hr_payroll.hr_contribution_register_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//form/group/field[@name='name']" position="after">
+                    <field name="partner_id"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Company Form View Inherited -->
+        <record id="res_company_form_inherited" model="ir.ui.view">
+            <field name="name">view.res.company.form</field>
+            <field name="model">res.company</field>
+            <field name="inherit_id" ref="base.view_company_form" />
+            <field name="arch" type="xml">
+                <field name="vat" position="after">
+                    <field name="company_code" />
+                </field>
+            </field>
+        </record>
+
+    </data>
+</openerp>

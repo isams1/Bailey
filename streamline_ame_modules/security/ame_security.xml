@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data noupdate="0">
+
+    <record id="group_ame_edit_product" model="res.groups">
+        <field name="name">Editing Product</field>
+    </record>
+
+    <record id="group_ame_create_product" model="res.groups">
+        <field name="name">Creating Product</field>
+        <field name="implied_ids" eval="[(4, ref('group_ame_edit_product'))]"/>
+    </record>
+    
+    <record id="warehouse_extended.group_ame_purchaser" model="res.groups">
+        <field name="name">Purchaser</field>
+        <field name="implied_ids" eval="[(4, ref('group_ame_create_product'))]"/>
+    </record>
+    
+</data>
+
+</openerp>

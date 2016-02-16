@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<openerp>
+  <data>
+  
+        <record id="group_hr_payroll_admin" model="res.groups">
+            <field name="name">Payroll Admin</field>
+            <field name="category_id" ref="base.module_category_human_resources"/>
+            <field name="implied_ids" eval="[(6,0, [ref('base.group_user')])]"/>
+        </record>
+
+        <record id="property_rule_hr_payslip" model="ir.rule">
+            <field name="name">HR Payslip</field>
+            <field name="model_id" ref="model_hr_payslip"/>
+            <field name="domain_force">[('employee_id.user_id', 'in', [usr.id for usr in user.user_ids])]</field>
+            <field name="groups" eval="[(6, 0 ,[ref('group_hr_payroll_admin')])]"/>
+        </record>
+
+        <record id="property_rule_hr_employee" model="ir.rule">
+            <field name="name">HR Employee</field>
+            <field name="perm_unlink" eval="False"/>
+            <field name="model_id" ref="model_hr_employee"/>
+            <field name="domain_force">[('user_id', 'in', [usr.id for usr in user.user_ids] + [user.id])]</field>
+            <field name="groups" eval="[(6, 0 ,[ref('group_hr_payroll_admin')])]"/>
+        </record>
+
+        <record id="property_rule_hr_manager_employee" model="ir.rule">
+            <field name="name">HR Manager Employee</field>
+            <field name="model_id" ref="model_hr_employee"/>
+            <field name="domain_force">[(1,'=',1)]</field>
+            <field name="groups" eval="[(6, 0 ,[ref('base.group_hr_manager')])]"/>
+        </record>
+
+        <record id="property_rule_holidays_payroll_admin1" model="ir.rule">
+            <field name="name">Payroll Admin Holidays</field>
+            <field name="model_id" ref="hr_holidays.model_hr_holidays"/>
+            <field name="domain_force">[('employee_id.user_id', 'in', [usr.id for usr in user.user_ids] + [user.id] )]</field>
+            <field name="groups" eval="[(6, 0, [ref('group_hr_payroll_admin')])]"/>
+        </record>
+
+  </data>
+</openerp>

@@ -1,0 +1,1769 @@
+<?xml version="1.0" ?>
+<openerp>
+    <data>
+
+        <!-- Basic Category of Salary Rules -->
+        <record id="hr_payroll.hr_rule_basic" model="hr.salary.rule">
+            <field name="code">BASIC</field>
+            <field eval="101" name="sequence"/>
+            <field eval="1" name="appears_on_payslip"/>
+            <field name="condition_range">contract.wage</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="condition_select">none</field>
+            <field name="register_id" ref="hr_contribution_register_12"/>
+            <field name="amount_select">code</field>
+            <field eval="1" name="active" />
+            <field name="name">Basic</field>
+            <field name="condition_python">
+# Available variables:
+#----------------------
+# payslip: object containing the payslips
+# employee: hr.employee object
+# contract: hr.contract object
+# rules: object containing the rules code (previously computed)
+# categories: object containing the computed salary rule categories (sum of amount of all rules belonging to that category).
+# worked_days: object containing the computed worked days
+# inputs: object containing the computed inputs
+
+# Note: returned value have to be set in the variable 'result'
+
+result = rules.NET &gt; categories.NET * 0.10</field>
+            <field name="amount_python_compute">result = (contract.wage / worked_days.TTLCURRWKDAYINMTH.number_of_days) * worked_days.TTLCURCONTDAY.number_of_days</field>
+            <field name="category_id" ref="hr_payroll.BASIC"/>
+            <field name="quantity">1.0</field>
+        </record>
+
+        <record id="hr_salary_rule_basicbackpay0" model="hr.salary.rule">
+            <field name="code">SC48</field>
+            <field eval="102" name="sequence"/>
+            <field eval="1" name="appears_on_payslip"/>
+            <field name="condition_range">contract.wage</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field eval="1" name="active"/>
+            <field name="name">Basic - Back Pay</field>
+            <field name="condition_python">
+# Available variables:
+#----------------------
+# payslip: object containing the payslips
+# employee: hr.employee object
+# contract: hr.contract object
+# rules: object containing the rules code (previously computed)
+# categories: object containing the computed salary rule categories (sum of amount of all rules belonging to that category).
+# worked_days: object containing the computed worked days
+# inputs: object containing the computed inputs
+
+# Note: returned value have to be set in the variable 'result'
+
+result = rules.NET &gt; categories.NET * 0.10</field>
+            <field name="amount_python_compute">result = inputs.SC48I.amount</field>
+            <field name="category_id" ref="hr_payroll.BASIC"/>
+            <field name="quantity">1.0</field>
+        </record>
+
+        <record id="hr_salary_rule_deductionm0" model="hr.salary.rule">
+            <field name="code">SC49</field>
+            <field eval="103" name="sequence"/>
+            <field eval="1" name="appears_on_payslip"/>
+            <field name="condition_range">contract.wage</field>
+            <field eval="-300.0" name="amount_fix"/>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field eval="1" name="active"/>
+            <field name="name">Deduction - M</field>
+            <field name="condition_python">
+# Available variables:
+#----------------------
+# payslip: object containing the payslips
+# employee: hr.employee object
+# contract: hr.contract object
+# rules: object containing the rules code (previously computed)
+# categories: object containing the computed salary rule categories (sum of amount of all rules belonging to that category).
+# worked_days: object containing the computed worked days
+# inputs: object containing the computed inputs
+
+# Note: returned value have to be set in the variable 'result'
+
+result = rules.NET &gt; categories.NET * 0.10</field>
+            <field name="amount_python_compute">result = - inputs.SC49I.amount</field>
+            <field name="category_id" ref="hr_payroll.BASIC"/>
+            <field name="quantity">1.0</field>
+        </record>
+
+        <record id="hr_salary_rule_deductionsm0" model="hr.salary.rule">
+            <field name="code">SC50</field>
+            <field eval="104" name="sequence"/>
+            <field eval="1" name="appears_on_payslip"/>
+            <field name="condition_range">contract.wage</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field eval="1" name="active"/>
+            <field name="name">Deductions - M</field>
+            <field name="condition_python">
+# Available variables:
+#----------------------
+# payslip: object containing the payslips
+# employee: hr.employee object
+# contract: hr.contract object
+# rules: object containing the rules code (previously computed)
+# categories: object containing the computed salary rule categories (sum of amount of all rules belonging to that category).
+# worked_days: object containing the computed worked days
+# inputs: object containing the computed inputs
+
+# Note: returned value have to be set in the variable 'result'
+
+result = rules.NET &gt; categories.NET * 0.10</field>
+            <field name="amount_python_compute">result = -inputs.SC50I.amount</field>
+            <field name="category_id" ref="hr_payroll.BASIC"/>
+            <field name="quantity">1.0</field>
+        </record>
+
+        <record id="hr_salary_rule_basicproratedeductionpromoters0" model="hr.salary.rule">
+            <field name="code">SC98</field>
+            <field eval="105" name="sequence"/>
+            <field eval="1" name="appears_on_payslip"/>
+            <field name="condition_range">contract.wage</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field eval="1" name="active"/>
+            <field name="name">Basic - Prorate Deduction (Promoters)</field>
+            <field name="condition_python">
+# Available variables:
+#----------------------
+# payslip: object containing the payslips
+# employee: hr.employee object
+# contract: hr.contract object
+# rules: object containing the rules code (previously computed)
+# categories: object containing the computed salary rule categories (sum of amount of all rules belonging to that category).
+# worked_days: object containing the computed worked days
+# inputs: object containing the computed inputs
+
+# Note: returned value have to be set in the variable 'result'
+
+result = rules.NET &gt; categories.NET * 0.10</field>
+            <field name="amount_python_compute">result = -(categories.BASIC * 12 / 312) *inputs.SC98I.amount</field>
+            <field name="category_id" ref="hr_payroll.BASIC"/>
+            <field name="quantity">1.0</field>
+        </record>
+
+        <record id="hr_salary_rule_basicproratedeductionwarehouse0" model="hr.salary.rule">
+            <field name="code">SC99</field>
+            <field eval="106" name="sequence"/>
+            <field eval="1" name="appears_on_payslip"/>
+            <field name="condition_range">contract.wage</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field eval="1" name="active"/>
+            <field name="name">Basic - Prorate Deduction (Warehouse)</field>
+            <field name="condition_python">
+# Available variables:
+#----------------------
+# payslip: object containing the payslips
+# employee: hr.employee object
+# contract: hr.contract object
+# rules: object containing the rules code (previously computed)
+# categories: object containing the computed salary rule categories (sum of amount of all rules belonging to that category).
+# worked_days: object containing the computed worked days
+# inputs: object containing the computed inputs
+
+# Note: returned value have to be set in the variable 'result'
+
+result = rules.NET &gt; categories.NET * 0.10</field>
+            <field name="amount_python_compute">result = -(categories.BASIC * 12 / 286) *inputs.SC99I.amount</field>
+            <field name="category_id" ref="hr_payroll.BASIC"/>
+            <field name="quantity">1.0</field>
+        </record>
+
+        <record id="hr_salary_rule_parttimerwage0" model="hr.salary.rule">
+            <field name="code">SC100</field>
+            <field eval="107" name="sequence"/>
+            <field eval="1" name="appears_on_payslip"/>
+            <field name="condition_range">contract.wage</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field eval="1" name="active"/>
+            <field name="name">Part Timer Wage</field>
+            <field name="condition_python">
+# Available variables:
+#----------------------
+# payslip: object containing the payslips
+# employee: hr.employee object
+# contract: hr.contract object
+# rules: object containing the rules code (previously computed)
+# categories: object containing the computed salary rule categories (sum of amount of all rules belonging to that category).
+# worked_days: object containing the computed worked days
+# inputs: object containing the computed inputs
+
+# Note: returned value have to be set in the variable 'result'
+
+result = rules.NET &gt; categories.NET * 0.10</field>
+            <field name="amount_python_compute">result = ((contract.rate_per_hour * (inputs.SC100I.amount or 0)))</field>
+            <field name="category_id" ref="hr_payroll.BASIC"/>
+            <field name="quantity">1.0</field>
+        </record>
+
+        <!-- Additions or Allowances Category of Salary Rules -->
+        <record id="hr_salary_rule_overtime0" model="hr.salary.rule">
+            <field name="code">SC102</field>
+            <field eval="201" name="sequence"/>
+            <field eval="1" name="appears_on_payslip"/>
+            <field name="condition_range">contract.wage</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field eval="1" name="active"/>
+            <field name="name">Over Time (1.5)</field>
+            <field name="condition_python">
+# Available variables:
+#----------------------
+# payslip: object containing the payslips
+# employee: hr.employee object
+# contract: hr.contract object
+# rules: object containing the rules code (previously computed)
+# categories: object containing the computed salary rule categories (sum of amount of all rules belonging to that category).
+# worked_days: object containing the computed worked days
+# inputs: object containing the computed inputs
+
+# Note: returned value have to be set in the variable 'result'
+
+result = rules.NET &gt; categories.NET * 0.10</field>
+            <field name="amount_python_compute">result = ((categories.BASIC *12 / 2288) * 1.5) * inputs.SC102I.amount</field>
+            <field name="category_id" ref="hr_salary_rule_category_7"/>
+            <field name="quantity">1.0</field>
+        </record>
+
+        <record id="hr_salary_rule_overtime1" model="hr.salary.rule">
+            <field name="code">SC103</field>
+            <field eval="202" name="sequence"/>
+            <field eval="1" name="appears_on_payslip"/>
+            <field name="condition_range">contract.wage</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field eval="1" name="active"/>
+            <field name="name">Over Time (2)</field>
+            <field name="condition_python">
+# Available variables:
+#----------------------
+# payslip: object containing the payslips
+# employee: hr.employee object
+# contract: hr.contract object
+# rules: object containing the rules code (previously computed)
+# categories: object containing the computed salary rule categories (sum of amount of all rules belonging to that category).
+# worked_days: object containing the computed worked days
+# inputs: object containing the computed inputs
+
+# Note: returned value have to be set in the variable 'result'
+
+result = rules.NET &gt; categories.NET * 0.10</field>
+            <field name="amount_python_compute">result = ((categories.BASIC *12 / 2288) * 2.0) * inputs.SC103I.amount</field>
+            <field name="category_id" ref="hr_salary_rule_category_7"/>
+            <field name="quantity">1.0</field>
+        </record>
+
+        <record id="hr_salary_rule_commission0" model="hr.salary.rule">
+            <field name="code">SC104</field>
+            <field eval="203" name="sequence"/>
+            <field eval="1" name="appears_on_payslip"/>
+            <field name="condition_range">contract.wage</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field eval="1" name="active"/>
+            <field name="name">Commission</field>
+            <field name="condition_python">
+# Available variables:
+#----------------------
+# payslip: object containing the payslips
+# employee: hr.employee object
+# contract: hr.contract object
+# rules: object containing the rules code (previously computed)
+# categories: object containing the computed salary rule categories (sum of amount of all rules belonging to that category).
+# worked_days: object containing the computed worked days
+# inputs: object containing the computed inputs
+
+# Note: returned value have to be set in the variable 'result'
+
+result = rules.NET &gt; categories.NET * 0.10</field>
+            <field name="amount_python_compute">result = inputs.SC104I.amount</field>
+            <field name="category_id" ref="hr_salary_rule_category_7"/>
+            <field name="quantity">1.0</field>
+        </record>
+
+        <record id="hr_salary_rule_incentive0" model="hr.salary.rule">
+            <field name="code">SC105</field>
+            <field eval="204" name="sequence"/>
+            <field eval="1" name="appears_on_payslip"/>
+            <field name="condition_range">contract.wage</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field eval="1" name="active"/>
+            <field name="name">Incentive</field>
+            <field name="condition_python">
+# Available variables:
+#----------------------
+# payslip: object containing the payslips
+# employee: hr.employee object
+# contract: hr.contract object
+# rules: object containing the rules code (previously computed)
+# categories: object containing the computed salary rule categories (sum of amount of all rules belonging to that category).
+# worked_days: object containing the computed worked days
+# inputs: object containing the computed inputs
+
+# Note: returned value have to be set in the variable 'result'
+
+result = rules.NET &gt; categories.NET * 0.10</field>
+            <field name="amount_python_compute">result = inputs.SC105I.amount</field>
+            <field name="category_id" ref="hr_salary_rule_category_7"/>
+            <field name="quantity">1.0</field>
+        </record>
+
+        <record id="hr_salary_rule_groomingallowance0" model="hr.salary.rule">
+            <field name="code">SC106</field>
+            <field eval="205" name="sequence"/>
+            <field eval="1" name="appears_on_payslip"/>
+            <field name="condition_range">contract.wage</field>
+            <field eval="50.0" name="amount_fix"/>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field eval="1" name="active"/>
+            <field name="name">Grooming Allowance</field>
+            <field name="condition_python">
+# Available variables:
+#----------------------
+# payslip: object containing the payslips
+# employee: hr.employee object
+# contract: hr.contract object
+# rules: object containing the rules code (previously computed)
+# categories: object containing the computed salary rule categories (sum of amount of all rules belonging to that category).
+# worked_days: object containing the computed worked days
+# inputs: object containing the computed inputs
+
+# Note: returned value have to be set in the variable 'result'
+
+result = rules.NET &gt; categories.NET * 0.10</field>
+            <field name="amount_python_compute">result = inputs.SC106I.amount</field>
+            <field name="category_id" ref="hr_payroll.ALW"/>
+            <field name="quantity">1.0</field>
+        </record>
+
+        <record id="hr_salary_rule_supervisoryallowance0" model="hr.salary.rule">
+            <field name="code">SC108</field>
+            <field eval="206" name="sequence"/>
+            <field eval="1" name="appears_on_payslip"/>
+            <field name="condition_range">contract.wage</field>
+            <field eval="100.0" name="amount_fix"/>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field eval="1" name="active"/>
+            <field name="name">Supervisory Allowance</field>
+            <field name="condition_python">
+# Available variables:
+#----------------------
+# payslip: object containing the payslips
+# employee: hr.employee object
+# contract: hr.contract object
+# rules: object containing the rules code (previously computed)
+# categories: object containing the computed salary rule categories (sum of amount of all rules belonging to that category).
+# worked_days: object containing the computed worked days
+# inputs: object containing the computed inputs
+
+# Note: returned value have to be set in the variable 'result'
+
+result = rules.NET &gt; categories.NET * 0.10</field>
+            <field name="amount_python_compute">result = inputs.SC108I.amount</field>
+            <field name="category_id" ref="hr_payroll.ALW"/>
+            <field name="quantity">1.0</field>
+        </record>
+
+        <record id="hr_salary_rule_bonus0" model="hr.salary.rule">
+            <field name="code">SC121</field>
+            <field eval="207" name="sequence"/>
+            <field eval="1" name="appears_on_payslip"/>
+            <field name="condition_range">contract.wage</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="condition_select">none</field>
+            <field name="register_id" ref="hr_contribution_register_13"/>
+            <field name="amount_select">code</field>
+            <field eval="1" name="active"/>
+            <field name="name">Bonus</field>
+            <field name="condition_python">
+# Available variables:
+#----------------------
+# payslip: object containing the payslips
+# employee: hr.employee object
+# contract: hr.contract object
+# rules: object containing the rules code (previously computed)
+# categories: object containing the computed salary rule categories (sum of amount of all rules belonging to that category).
+# worked_days: object containing the computed worked days
+# inputs: object containing the computed inputs
+
+# Note: returned value have to be set in the variable 'result'
+
+result = rules.NET &gt; categories.NET * 0.10</field>
+            <field name="amount_python_compute">if inputs.SC121I.amount:
+    result =  inputs.SC121I.amount
+else:
+    result = 0</field>
+            <field name="category_id" ref="hr_salary_rule_category_7"/>
+            <field name="quantity">1.0</field>
+        </record>
+
+        <record id="hr_salary_rule_others0" model="hr.salary.rule">
+            <field name="code">SC122</field>
+            <field eval="208" name="sequence"/>
+            <field eval="1" name="appears_on_payslip"/>
+            <field name="condition_range">contract.wage</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field eval="1" name="active"/>
+            <field name="name">Others</field>
+            <field name="condition_python">
+# Available variables:
+#----------------------
+# payslip: object containing the payslips
+# employee: hr.employee object
+# contract: hr.contract object
+# rules: object containing the rules code (previously computed)
+# categories: object containing the computed salary rule categories (sum of amount of all rules belonging to that category).
+# worked_days: object containing the computed worked days
+# inputs: object containing the computed inputs
+
+# Note: returned value have to be set in the variable 'result'
+
+result = rules.NET &gt; categories.NET * 0.10</field>
+            <field name="amount_python_compute">result = inputs.SC122I.amount</field>
+            <field name="category_id" ref="hr_salary_rule_category_7"/>
+            <field name="quantity">1.0</field>
+        </record>
+
+
+
+
+        <record id="hr_salary_rule_housingallowance0" model="hr.salary.rule">
+            <field name="code">SC123</field>
+            <field eval="209" name="sequence"/>
+            <field eval="1" name="appears_on_payslip"/>
+            <field name="condition_range">contract.wage</field>
+            <field eval="1.0" name="amount_fix"/>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field eval="1" name="active"/>
+            <field name="name">Housing Allowance</field>
+            <field name="condition_python">
+# Available variables:
+#----------------------
+# payslip: object containing the payslips
+# employee: hr.employee object
+# contract: hr.contract object
+# rules: object containing the rules code (previously computed)
+# categories: object containing the computed salary rule categories (sum of amount of all rules belonging to that category).
+# worked_days: object containing the computed worked days
+# inputs: object containing the computed inputs
+
+# Note: returned value have to be set in the variable 'result'
+
+result = rules.NET &gt; categories.NET * 0.10</field>
+            <field name="amount_python_compute">result = inputs.SC123I.amount</field>
+            <field name="category_id" ref="hr_payroll.ALW"/>
+            <field name="quantity">1.0</field>
+        </record>
+
+        <record id="hr_salary_rule_transport_allowances" model="hr.salary.rule">
+            <field name="code">TA</field>
+            <field eval="210" name="sequence"/>
+            <field eval="1" name="appears_on_payslip"/>
+            <field name="condition_range">contract.wage</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field eval="1" name="active"/>
+            <field name="name">Transport Allowance</field>
+            <field name="condition_python">
+# Available variables:
+#----------------------
+# payslip: object containing the payslips
+# employee: hr.employee object
+# contract: hr.contract object
+# rules: object containing the rules code (previously computed)
+# categories: object containing the computed salary rule categories (sum of amount of all rules belonging to that category).
+# worked_days: object containing the computed worked days
+# inputs: object containing the computed inputs
+
+# Note: returned value have to be set in the variable 'result'
+
+result = rules.NET &gt; categories.NET * 0.10</field>
+            <field name="amount_python_compute">result = inputs.TAI.amount</field>
+            <field name="category_id" ref="hr_payroll.ALW"/>
+            <field name="quantity">1.0</field>
+        </record>
+
+        <record id="hr_salary_rule_food_allowances" model="hr.salary.rule">
+            <field name="code">FA</field>
+            <field eval="211" name="sequence"/>
+            <field eval="1" name="appears_on_payslip"/>
+            <field name="condition_range">contract.wage</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field eval="1" name="active"/>
+            <field name="name">Food Allowances</field>
+            <field name="condition_python">
+# Available variables:
+#----------------------
+# payslip: object containing the payslips
+# employee: hr.employee object
+# contract: hr.contract object
+# rules: object containing the rules code (previously computed)
+# categories: object containing the computed salary rule categories (sum of amount of all rules belonging to that category).
+# worked_days: object containing the computed worked days
+# inputs: object containing the computed inputs
+
+# Note: returned value have to be set in the variable 'result'
+
+result = rules.NET &gt; categories.NET * 0.10</field>
+            <field name="amount_python_compute">result = inputs.FAI.amount</field>
+            <field name="category_id" ref="hr_payroll.ALW"/>
+            <field name="quantity">1.0</field>
+        </record>
+
+        <!--  Deduction (Inclusive CPF) Category of Salary Rules-->
+        <record id="hr_salary_rule_unpaidleave_childcare" model="hr.salary.rule">
+            <field name="code">SC195</field>
+            <field eval="301" name="sequence"/>
+            <field eval="1" name="appears_on_payslip"/>
+            <field name="condition_range">contract.wage</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field eval="1" name="active"/>
+            <field name="name">Unpaid Leave(Child Care) </field>
+            <field name="condition_python">
+# Available variables:
+#----------------------
+# payslip: object containing the payslips
+# employee: hr.employee object
+# contract: hr.contract object
+# rules: object containing the rules code (previously computed)
+# categories: object containing the computed salary rule categories (sum of amount of all rules belonging to that category).
+# worked_days: object containing the computed worked days
+# inputs: object containing the computed inputs
+
+# Note: returned value have to be set in the variable 'result'
+
+result = rules.NET &gt; categories.NET * 0.10</field>
+            <field name="amount_python_compute">result = categories.BASIC / (worked_days.TTLCURRDAYINMTH.number_of_days - 4) * worked_days.UCCL.number_of_days</field>
+            <field name="category_id" ref="hr_salary_rule_category_19"/>
+            <field name="quantity">1.0</field>
+        </record>
+
+        <record id="hr_salary_rule_unpaidleave_auto" model="hr.salary.rule">
+            <field name="code">SC196</field>
+            <field eval="302" name="sequence"/>
+            <field eval="1" name="appears_on_payslip"/>
+            <field name="condition_range">contract.wage</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="note">#result = (categories.BASIC / (worked_days.TTLDAYINMTH.number_of_days -  ) * worked_days.UPL.number_of_days) + (categories.BASIC / (worked_days.TTLDAYINMTH.number_of_days - worked_days.TTLSUNINMONTH.number_of_days) * worked_days.Unpaid.number_of_days)</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field eval="1" name="active"/>
+            <field name="name">Unpaid Leave (AUTO CALC)</field>
+            <field name="condition_python">
+# Available variables:
+#----------------------
+# payslip: object containing the payslips
+# employee: hr.employee object
+# contract: hr.contract object
+# rules: object containing the rules code (previously computed)
+# categories: object containing the computed salary rule categories (sum of amount of all rules belonging to that category).
+# worked_days: object containing the computed worked days
+# inputs: object containing the computed inputs
+
+# Note: returned value have to be set in the variable 'result'
+
+result = rules.NET &gt; categories.NET * 0.10</field>
+            <field name="amount_python_compute">result = (categories.BASIC * 12 / 312) * worked_days.Unpaid.number_of_days</field>
+            <field name="category_id" ref="hr_salary_rule_category_19"/>
+            <field name="quantity">1.0</field>
+        </record>
+
+        <record id="hr_salary_rule_unpaidleave_bensius_auto" model="hr.salary.rule">
+            <field name="code">SC197</field>
+            <field eval="303" name="sequence"/>
+            <field eval="1" name="appears_on_payslip"/>
+            <field name="condition_range">contract.wage</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field eval="1" name="active"/>
+            <field name="name">Unpaid Leave Auto(Bensius) </field>
+            <field name="condition_python">
+# Available variables:
+#----------------------
+# payslip: object containing the payslips
+# employee: hr.employee object
+# contract: hr.contract object
+# rules: object containing the rules code (previously computed)
+# categories: object containing the computed salary rule categories (sum of amount of all rules belonging to that category).
+# worked_days: object containing the computed worked days
+# inputs: object containing the computed inputs
+
+# Note: returned value have to be set in the variable 'result'
+
+result = rules.NET &gt; categories.NET * 0.10</field>
+            <field name="amount_python_compute">result = categories.BASIC / (worked_days.TTLCURRDAYINMTH.number_of_days - 4) * worked_days.Unpaid.number_of_days</field>
+            <field name="category_id" ref="hr_salary_rule_category_19"/>
+            <field name="quantity">1.0</field>
+        </record>
+
+        <record id="hr_salary_rule_undertime0" model="hr.salary.rule">
+            <field name="code">SC200</field>
+            <field eval="304" name="sequence"/>
+            <field eval="1" name="appears_on_payslip"/>
+            <field name="condition_range">contract.wage</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field eval="1" name="active"/>
+            <field name="name">Undertime</field>
+            <field name="condition_python">
+# Available variables:
+#----------------------
+# payslip: object containing the payslips
+# employee: hr.employee object
+# contract: hr.contract object
+# rules: object containing the rules code (previously computed)
+# categories: object containing the computed salary rule categories (sum of amount of all rules belonging to that category).
+# worked_days: object containing the computed worked days
+# inputs: object containing the computed inputs
+
+# Note: returned value have to be set in the variable 'result'
+
+result = rules.NET &gt; categories.NET * 0.10</field>
+            <field name="amount_python_compute">result = ((categories.BASIC - SC48) * 12 / 2288 * inputs.SC200I.amount)</field>
+            <field name="category_id" ref="hr_salary_rule_category_19"/>
+            <field name="quantity">1.0</field>
+        </record>
+
+        <record id="hr_salary_rule_unpaidleavenormal0" model="hr.salary.rule">
+            <field name="code">SC206</field>
+            <field eval="305" name="sequence"/>
+            <field eval="1" name="appears_on_payslip"/>
+            <field name="condition_range">contract.wage</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="note">#result = (categories.BASIC / (worked_days.TTLDAYINMTH.number_of_days - worked_days.TTLSUNINMONTH.number_of_days) * worked_days.UPL.number_of_days) + (categories.BASIC / (worked_days.TTLDAYINMTH.number_of_days - worked_days.TTLSUNINMONTH.number_of_days) * inputs.SC206I.amount)</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field eval="1" name="active"/>
+            <field name="name">Unpaid Leave (Normal)</field>
+            <field name="condition_python">
+# Available variables:
+#----------------------
+# payslip: object containing the payslips
+# employee: hr.employee object
+# contract: hr.contract object
+# rules: object containing the rules code (previously computed)
+# categories: object containing the computed salary rule categories (sum of amount of all rules belonging to that category).
+# worked_days: object containing the computed worked days
+# inputs: object containing the computed inputs
+
+# Note: returned value have to be set in the variable 'result'
+
+result = rules.NET &gt; categories.NET * 0.10</field>
+            <field name="amount_python_compute">result = (categories.BASIC * 12 / 312) * inputs.SC206I.amount</field>
+            <field name="category_id" ref="hr_salary_rule_category_8"/>
+            <field name="quantity">1.0</field>
+        </record>
+
+        <!-- Deduction Category of Salary Rules -->
+        <record id="hr_salary_rule_adjtocomm0" model="hr.salary.rule">
+            <field name="code">SC201</field>
+            <field eval="501" name="sequence"/>
+            <field eval="1" name="appears_on_payslip"/>
+            <field name="condition_range">contract.wage</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field eval="1" name="active"/>
+            <field name="name">ADJ To Comm</field>
+            <field name="condition_python">
+# Available variables:
+#----------------------
+# payslip: object containing the payslips
+# employee: hr.employee object
+# contract: hr.contract object
+# rules: object containing the rules code (previously computed)
+# categories: object containing the computed salary rule categories (sum of amount of all rules belonging to that category).
+# worked_days: object containing the computed worked days
+# inputs: object containing the computed inputs
+
+# Note: returned value have to be set in the variable 'result'
+
+result = rules.NET &gt; categories.NET * 0.10</field>
+            <field name="amount_python_compute">result = inputs.SC201I.amount</field>
+            <field name="category_id" ref="hr_salary_rule_category_8"/>
+            <field name="quantity">1.0</field>
+        </record>
+
+        <record id="hr_salary_rule_loan0" model="hr.salary.rule">
+            <field name="code">SC202</field>
+            <field eval="502" name="sequence"/>
+            <field eval="1" name="appears_on_payslip"/>
+            <field name="condition_range">contract.wage</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field eval="1" name="active"/>
+            <field name="name">Loan</field>
+            <field name="condition_python">
+# Available variables:
+#----------------------
+# payslip: object containing the payslips
+# employee: hr.employee object
+# contract: hr.contract object
+# rules: object containing the rules code (previously computed)
+# categories: object containing the computed salary rule categories (sum of amount of all rules belonging to that category).
+# worked_days: object containing the computed worked days
+# inputs: object containing the computed inputs
+
+# Note: returned value have to be set in the variable 'result'
+
+result = rules.NET &gt; categories.NET * 0.10</field>
+            <field name="amount_python_compute">result = inputs.SC202I.amount</field>
+            <field name="category_id" ref="hr_salary_rule_category_8"/>
+            <field name="quantity">1.0</field>
+        </record>
+
+        <record id="hr_salary_rule_payabsent0" model="hr.salary.rule">
+            <field name="code">SC203</field>
+            <field eval="503" name="sequence"/>
+            <field eval="1" name="appears_on_payslip"/>
+            <field name="condition_range">contract.wage</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field eval="1" name="active"/>
+            <field name="name">Pay / Absent</field>
+            <field name="condition_python">
+# Available variables:
+#----------------------
+# payslip: object containing the payslips
+# employee: hr.employee object
+# contract: hr.contract object
+# rules: object containing the rules code (previously computed)
+# categories: object containing the computed salary rule categories (sum of amount of all rules belonging to that category).
+# worked_days: object containing the computed worked days
+# inputs: object containing the computed inputs
+
+# Note: returned value have to be set in the variable 'result'
+
+result = rules.NET &gt; categories.NET * 0.10</field>
+            <field name="amount_python_compute">result = inputs.SC203I.amount</field>
+            <field name="category_id" ref="hr_salary_rule_category_8"/>
+            <field name="quantity">1.0</field>
+        </record>
+
+        <record id="hr_salary_rule_nspay0" model="hr.salary.rule">
+            <field name="code">SC204</field>
+            <field eval="504" name="sequence"/>
+            <field eval="1" name="appears_on_payslip"/>
+            <field name="condition_range">contract.wage</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field eval="1" name="active"/>
+            <field name="name">NS Pay</field>
+            <field name="condition_python">
+# Available variables:
+#----------------------
+# payslip: object containing the payslips
+# employee: hr.employee object
+# contract: hr.contract object
+# rules: object containing the rules code (previously computed)
+# categories: object containing the computed salary rule categories (sum of amount of all rules belonging to that category).
+# worked_days: object containing the computed worked days
+# inputs: object containing the computed inputs
+
+# Note: returned value have to be set in the variable 'result'
+
+result = rules.NET &gt; categories.NET * 0.10</field>
+            <field name="amount_python_compute">result = inputs.SC204I.amount</field>
+            <field name="category_id" ref="hr_salary_rule_category_19"/>
+            <field name="quantity">1.0</field>
+        </record>
+
+        <record id="hr_salary_rule_agentrebates0" model="hr.salary.rule">
+            <field name="code">SC250</field>
+            <field eval="505" name="sequence"/>
+            <field eval="1" name="appears_on_payslip"/>
+            <field name="condition_range">contract.wage</field>
+            <field eval="220.0" name="amount_fix"/>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field eval="1" name="active"/>
+            <field name="name">Agent Rebates</field>
+            <field name="condition_python">
+# Available variables:
+#----------------------
+# payslip: object containing the payslips
+# employee: hr.employee object
+# contract: hr.contract object
+# rules: object containing the rules code (previously computed)
+# categories: object containing the computed salary rule categories (sum of amount of all rules belonging to that category).
+# worked_days: object containing the computed worked days
+# inputs: object containing the computed inputs
+
+# Note: returned value have to be set in the variable 'result'
+
+result = rules.NET &gt; categories.NET * 0.10</field>
+            <field name="amount_python_compute">result = inputs.SC250I.amount</field>
+            <field name="category_id" ref="hr_salary_rule_category_8"/>
+            <field name="quantity">1.0</field>
+        </record>
+
+        <record id="hr_salary_rule_ded0" model="hr.salary.rule">
+            <field name="code">SC298</field>
+            <field eval="506" name="sequence"/>
+            <field eval="1" name="appears_on_payslip"/>
+            <field name="condition_range">contract.wage</field>
+            <field eval="500.0" name="amount_fix"/>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">fix</field>
+            <field eval="1" name="active"/>
+            <field name="name">Ded - ($500)</field>
+            <field name="condition_python">
+# Available variables:
+#----------------------
+# payslip: object containing the payslips
+# employee: hr.employee object
+# contract: hr.contract object
+# rules: object containing the rules code (previously computed)
+# categories: object containing the computed salary rule categories (sum of amount of all rules belonging to that category).
+# worked_days: object containing the computed worked days
+# inputs: object containing the computed inputs
+
+# Note: returned value have to be set in the variable 'result'
+
+result = rules.NET &gt; categories.NET * 0.10</field>
+            <field name="amount_python_compute">result = inputs.SC299I.amount</field>
+            <field name="category_id" ref="hr_salary_rule_category_8"/>
+            <field name="quantity">1.0</field>
+        </record>
+
+        <record id="hr_salary_rule_others1" model="hr.salary.rule">
+            <field name="code">SC299</field>
+            <field eval="507" name="sequence"/>
+            <field eval="1" name="appears_on_payslip"/>
+            <field name="condition_range">contract.wage</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field eval="1" name="active"/>
+            <field name="name">Others</field>
+            <field name="condition_python">
+# Available variables:
+#----------------------
+# payslip: object containing the payslips
+# employee: hr.employee object
+# contract: hr.contract object
+# rules: object containing the rules code (previously computed)
+# categories: object containing the computed salary rule categories (sum of amount of all rules belonging to that category).
+# worked_days: object containing the computed worked days
+# inputs: object containing the computed inputs
+
+# Note: returned value have to be set in the variable 'result'
+
+result = rules.NET &gt; categories.NET * 0.10</field>
+            <field name="amount_python_compute">result = inputs.SC299I.amount</field>
+            <field name="category_id" ref="hr_salary_rule_category_8"/>
+            <field name="quantity">1.0</field>
+        </record>
+
+        <!-- CPF Employer category of Salary Rules -->
+        <record id="hr_salary_rule_cpfemployersprsingaporean0" model="hr.salary.rule">
+            <field name="code">CPFER_SPR_SIN</field>
+            <field eval="601" name="sequence"/>
+            <field eval="1" name="appears_on_payslip"/>
+            <field name="condition_range">contract.wage</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="condition_select">python</field>
+            <field name="register_id" ref="hr_contribution_register_10"/>
+            <field name="amount_select">code</field>
+            <field eval="1" name="active"/>
+            <field name="name">CPF Employer</field>
+            <field name="condition_python">if categories.GROSS &gt; 49:
+  result = True
+else:
+  result = False</field>
+            <field name="amount_python_compute">result = categories.CAT_CPF_TOTAL - categories.CAT_CPF_EMPLOYEE</field>
+            <field name="category_id" ref="hr_salary_rule_category_16"/>
+            <field name="quantity">1.0</field>
+        </record>
+
+        <!-- CPF - Agency Services (Employer) category of Salary Rules -->
+        <record id="hr_salary_rule_fwl" model="hr.salary.rule">
+            <field name="code">FWL</field>
+            <field name="name">Foreign Worker Levy</field>
+            <field eval="701" name="sequence"/>
+            <field eval="1" name="appears_on_payslip"/>
+            <!-- field name="condition_range">contract.wage</field> -->
+            <field name="company_id" ref="base.main_company"/>
+            <field eval="1" name="active"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">if employee.factors == 'skilled' and employee.sectors == 'service' and employee.type_tiers == 'basic_tier_1':
+    result = 300
+elif employee.factors == 'skilled' and employee.sectors == 'service' and employee.type_tiers == 'tier_2':
+    result = 400
+elif employee.factors == 'skilled' and employee.sectors == 'service' and employee.type_tiers == 'tier_3':
+    result = 600
+elif employee.factors == 'unskilled' and employee.sectors == 'service' and employee.type_tiers == 'basic_tier_1':
+    result = 420
+elif employee.factors == 'unskilled' and employee.sectors == 'service' and employee.type_tiers == 'tier_2':
+    result = 550
+elif employee.factors == 'unskilled' and employee.sectors == 'service' and employee.type_tiers == 'tier_3':
+    result = 700
+elif employee.factors == 'skilled' and employee.sectors == 'manufacturing' and employee.type_tiers == 'basic_tier_1':
+    result = 250
+elif employee.factors == 'skilled' and employee.sectors == 'manufacturing' and employee.type_tiers == 'tier_2':
+    result = 350
+elif employee.factors == 'skilled' and employee.sectors == 'manufacturing' and employee.type_tiers == 'tier_3':
+    result = 550
+elif employee.factors == 'unskilled' and employee.sectors == 'manufacturing' and employee.type_tiers == 'basic_tier_1':
+    result = 370
+elif employee.factors == 'unskilled' and employee.sectors == 'manufacturing' and employee.type_tiers == 'tier_2':
+    result = 470
+elif employee.factors == 'unskilled' and employee.sectors == 'manufacturing' and employee.type_tiers == 'tier_3':
+    result = 650
+elif employee.factors == 'skilled' and employee.sectors == 'construction' and employee.type_tiers == 'mye':
+    result = 300
+elif employee.factors == 'unskilled' and employee.sectors == 'construction' and employee.type_tiers == 'mye':
+    result = 550
+elif employee.factors == 'skilled' and employee.sectors == 'construction' and employee.type_tiers == 'mye-waiver':
+    result = 600
+elif employee.factors == 'unskilled' and employee.sectors == 'construction' and employee.type_tiers == 'mye-waiver':
+    result = 950
+elif employee.factors == 'skilled' and employee.sectors == 'process' and employee.type_tiers == 'mye':
+    result = 300
+elif employee.factors == 'unskilled' and employee.sectors == 'process' and employee.type_tiers == 'mye':
+    result = 450
+elif employee.factors == 'skilled' and employee.sectors == 'process' and employee.type_tiers == 'mye-waiver':
+    result = 600
+elif employee.factors == 'unskilled' and employee.sectors == 'process' and employee.type_tiers == 'mye-waiver':
+    result = 750
+elif employee.factors == 'skilled' and employee.sectors == 'marine' and employee.type_tiers == 'basic_tier_1':
+    result = 300
+elif employee.factors == 'unskilled' and employee.sectors == 'marine' and employee.type_tiers == 'basic_tier_1':
+    result = 400
+elif employee.factors == 'unskilled' and employee.sectors == 's_pass' and employee.type_tiers == 'basic_tier_1':
+    result = 315
+elif employee.factors == 'unskilled' and employee.sectors == 's_pass' and employee.type_tiers == 'tier_2':
+    result = 550
+elif employee.factors == 'skilled' and employee.sectors == 's_pass' and employee.type_tiers == 'basic_tier_1':
+    result = 315
+elif employee.factors == 'skilled' and employee.sectors == 's_pass' and employee.type_tiers == 'tier_2':
+    result = 550
+elif employee.factors == 'skilled' and employee.sectors == 'manufacturing' and employee.type_tiers == 'tier_3':
+    result = 150
+else:
+    result = 0.0
+            </field>
+            <field name="category_id" ref="hr_salary_rule_category_23"/>
+            <field name="quantity">1.0</field>
+        </record>
+
+        <record id="hr_salary_rule_cpfmbmf0" model="hr.salary.rule">
+            <field name="code">CPFMBMF</field>
+            <field eval="702" name="sequence"/>
+            <field eval="1" name="appears_on_payslip"/>
+            <field name="condition_range">contract.wage</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="condition_select">none</field>
+            <field name="register_id" ref="hr_contribution_register_4"/>
+            <field name="amount_select">code</field>
+            <field eval="1" name="active"/>
+            <field name="name">CPF - MBMF</field>
+            <field name="condition_python">
+# Available variables:
+#----------------------
+# payslip: object containing the payslips
+# employee: hr.employee object
+# contract: hr.contract object
+# rules: object containing the rules code (previously computed)
+# categories: object containing the computed salary rule categories (sum of amount of all rules belonging to that category).
+# worked_days: object containing the computed worked days
+# inputs: object containing the computed inputs
+
+# Note: returned value have to be set in the variable 'result'
+
+result = rules.NET &gt; categories.NET * 0.10</field>
+            <field name="amount_python_compute">if categories.GROSS &gt;= 4001:
+    result = 16.00
+elif categories.GROSS &gt;= 3001 and categories.GROSS &lt;= 4000:
+    result = 12.50
+elif categories.GROSS &gt;= 2001 and categories.GROSS &lt;= 3000:
+    result = 5
+elif categories.GROSS &gt;= 1001 and categories.GROSS &lt;= 2000:
+    result = 3.50
+elif categories.GROSS &gt; 200 and categories.GROSS &lt;= 1000:
+    result = 2
+else:
+    result = 0</field>
+            <field name="category_id" ref="hr_salary_rule_category_21"/>
+            <field name="quantity">1.0</field>
+        </record>
+
+        <record id="hr_salary_rule_cpfsinda0" model="hr.salary.rule">
+            <field name="code">CPFSINDA</field>
+            <field eval="703" name="sequence"/>
+            <field eval="1" name="appears_on_payslip"/>
+            <field name="condition_range">contract.wage</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="condition_select">none</field>
+            <field name="register_id" ref="hr_contribution_register_5"/>
+            <field name="amount_select">code</field>
+            <field eval="1" name="active"/>
+            <field name="name">CPF - SINDA</field>
+            <field name="condition_python">
+# Available variables:
+#----------------------
+# payslip: object containing the payslips
+# employee: hr.employee object
+# contract: hr.contract object
+# rules: object containing the rules code (previously computed)
+# categories: object containing the computed salary rule categories (sum of amount of all rules belonging to that category).
+# worked_days: object containing the computed worked days
+# inputs: object containing the computed inputs
+
+# Note: returned value have to be set in the variable 'result'
+
+result = rules.NET &gt; categories.NET * 0.10</field>
+            <field name="amount_python_compute">if categories.GROSS &gt; 15000:
+    result = 30
+elif categories.GROSS &gt;= 10001 and categories.GROSS &lt;= 15000:
+    result = 18
+elif categories.GROSS &gt;= 7501 and categories.GROSS &lt;= 10000:
+    result = 12
+elif categories.GROSS &gt;= 4501 and categories.GROSS &lt;= 7500:
+    result = 9
+elif categories.GROSS &gt;= 2501 and categories.GROSS &lt;= 4500:
+    result = 7
+elif categories.GROSS &gt;= 1501 and categories.GROSS &lt;= 2500:
+    result = 5
+elif categories.GROSS &gt;= 1001 and categories.GROSS &lt;= 1500:
+    result = 3
+elif categories.GROSS &gt;= 0 and categories.GROSS &lt;= 1000:
+    result = 1</field>
+            <field name="category_id" ref="hr_salary_rule_category_21"/>
+            <field name="quantity">1.0</field>
+        </record>
+
+        <record id="hr_salary_rule_cpfcdac0" model="hr.salary.rule">
+            <field name="code">CPFCDAC</field>
+            <field eval="704" name="sequence"/>
+            <field eval="1" name="appears_on_payslip"/>
+            <field name="condition_range">contract.wage</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="condition_select">none</field>
+            <field name="register_id" ref="hr_contribution_register_6"/>
+            <field name="amount_select">code</field>
+            <field eval="1" name="active"/>
+            <field name="name">CPF - CDAC</field>
+            <field name="condition_python">
+# Available variables:
+#----------------------
+# payslip: object containing the payslips
+# employee: hr.employee object
+# contract: hr.contract object
+# rules: object containing the rules code (previously computed)
+# categories: object containing the computed salary rule categories (sum of amount of all rules belonging to that category).
+# worked_days: object containing the computed worked days
+# inputs: object containing the computed inputs
+
+# Note: returned value have to be set in the variable 'result'
+
+result = rules.NET &gt; categories.NET * 0.10</field>
+            <field name="amount_python_compute">if categories.GROSS &gt;= 7500:
+    result = 3
+elif categories.GROSS &gt;= 5001 and categories.GROSS &lt;= 7500:
+    result = 2
+elif categories.GROSS &gt;= 3501 and categories.GROSS &lt;= 6000:
+    result = 1.5
+elif categories.GROSS &gt;= 2001 and categories.GROSS &lt;= 3500:
+    result = 1
+elif categories.GROSS &gt;= 0 and categories.GROSS &lt;= 2000:
+    result = 0.5</field>
+            <field name="category_id" ref="hr_salary_rule_category_21"/>
+            <field name="quantity">1.0</field>
+        </record>
+
+         <record id="hr_salary_rule_cpfecf0" model="hr.salary.rule">
+            <field name="code">CPFECF</field>
+            <field eval="705" name="sequence"/>
+            <field eval="1" name="appears_on_payslip"/>
+            <field name="condition_range">contract.wage</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="condition_select">none</field>
+            <field name="register_id" ref="hr_contribution_register_7"/>
+            <field name="amount_select">code</field>
+            <field eval="1" name="active"/>
+            <field name="name">CPF - ECF</field>
+            <field name="condition_python">
+# Available variables:
+#----------------------
+# payslip: object containing the payslips
+# employee: hr.employee object
+# contract: hr.contract object
+# rules: object containing the rules code (previously computed)
+# categories: object containing the computed salary rule categories (sum of amount of all rules belonging to that category).
+# worked_days: object containing the computed worked days
+# inputs: object containing the computed inputs
+
+# Note: returned value have to be set in the variable 'result'
+
+result = rules.NET &gt; categories.NET * 0.10</field>
+            <field name="amount_python_compute">if categories.GROSS &gt;= 10000.01:
+    result = 20
+elif categories.GROSS &gt;= 7000.01 and categories.GROSS &lt;= 10000:
+    result = 16
+elif categories.GROSS &gt;= 4000.01 and categories.GROSS &lt;= 7000:
+    result = 12
+elif categories.GROSS &gt;= 2500.01 and categories.GROSS &lt;= 4000:
+    result = 9
+elif categories.GROSS &gt;= 1500.01 and categories.GROSS &lt;= 2500:
+    result = 6
+elif categories.GROSS &gt;= 1000.01 and categories.GROSS &lt;= 1500:
+    result = 4
+elif categories.GROSS &gt;= 0 and categories.GROSS &lt;= 1000:
+    result = 2</field>
+            <field name="category_id" ref="hr_salary_rule_category_21"/>
+            <field name="quantity">1.0</field>
+        </record>
+
+        <record id="hr_salary_rule_cpfsdl0" model="hr.salary.rule">
+            <field name="code">CPFSDL</field>
+            <field eval="706" name="sequence"/>
+            <field eval="1" name="appears_on_payslip"/>
+            <field name="condition_range">contract.wage</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="condition_select">none</field>
+            <field name="register_id" ref="hr_contribution_register_8"/>
+            <field name="amount_select">code</field>
+            <field eval="1" name="active"/>
+            <field name="name">CPF - SDL</field>
+            <field name="condition_python">
+# Available variables:
+#----------------------
+# payslip: object containing the payslips
+# employee: hr.employee object
+# contract: hr.contract object
+# rules: object containing the rules code (previously computed)
+# categories: object containing the computed salary rule categories (sum of amount of all rules belonging to that category).
+# worked_days: object containing the computed worked days
+# inputs: object containing the computed inputs
+
+# Note: returned value have to be set in the variable 'result'
+
+result = rules.NET &gt; categories.NET * 0.10</field>
+            <field name="amount_python_compute">if categories.GROSS &gt;= 4500:
+    result = 11.25
+elif categories.GROSS &gt;= 800 and categories.GROSS &lt;= 4499:
+    result = categories.GROSS * 0.0025
+elif categories.GROSS &gt;= 0 and categories.GROSS &lt;= 799:
+    result = 2
+</field>
+            <field name="category_id" ref="hr_salary_rule_category_23"/>
+            <field name="quantity">1.0</field>
+        </record>
+
+        <record id="hr_salary_rule_fwlspass0" model="hr.salary.rule">
+            <field name="code">SC400</field>
+            <field eval="707" name="sequence"/>
+            <field eval="1" name="appears_on_payslip"/>
+            <field name="condition_range">contract.wage</field>
+            <field eval="300.0" name="amount_fix"/>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="condition_select">none</field>
+            <field name="register_id" ref="hr_contribution_register_9"/>
+            <field name="amount_select">code</field>
+            <field eval="1" name="active"/>
+            <field name="name">FWL - S Pass</field>
+            <field name="condition_python">
+# Available variables:
+#----------------------
+# payslip: object containing the payslips
+# employee: hr.employee object
+# contract: hr.contract object
+# rules: object containing the rules code (previously computed)
+# categories: object containing the computed salary rule categories (sum of amount of all rules belonging to that category).
+# worked_days: object containing the computed worked days
+# inputs: object containing the computed inputs
+
+# Note: returned value have to be set in the variable 'result'
+
+result = rules.NET &gt; categories.NET * 0.10</field>
+            <field name="amount_python_compute">result  = inputs.SC400I.amount</field>
+            <field name="category_id" ref="hr_salary_rule_category_23"/>
+            <field name="quantity">1.0</field>
+        </record>
+
+        <record id="hr_salary_rule_fwlworkpermit0" model="hr.salary.rule">
+            <field name="code">SC401</field>
+            <field eval="708" name="sequence"/>
+            <field eval="1" name="appears_on_payslip"/>
+            <field name="condition_range">contract.wage</field>
+            <field eval="400.0" name="amount_fix"/>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="condition_select">none</field>
+            <field name="register_id" ref="hr_contribution_register_9"/>
+            <field name="amount_select">code</field>
+            <field eval="1" name="active"/>
+            <field name="name">FWL - Work Permit</field>
+            <field name="condition_python">
+# Available variables:
+#----------------------
+# payslip: object containing the payslips
+# employee: hr.employee object
+# contract: hr.contract object
+# rules: object containing the rules code (previously computed)
+# categories: object containing the computed salary rule categories (sum of amount of all rules belonging to that category).
+# worked_days: object containing the computed worked days
+# inputs: object containing the computed inputs
+
+# Note: returned value have to be set in the variable 'result'
+
+result = rules.NET &gt; categories.NET * 0.10</field>
+            <field name="amount_python_compute">result = inputs.SC401I.amount</field>
+            <field name="category_id" ref="hr_salary_rule_category_23"/>
+            <field name="quantity">1.0</field>
+        </record>
+        
+
+
+
+        <record id="hr_salary_rule_cpfemployeesprsingaporean0" model="hr.salary.rule">
+            <field name="code">CPFEE_SPR_SIN</field>
+            <field eval="301" name="sequence"/>
+            <field eval="1" name="appears_on_payslip"/>
+            <field name="condition_range">contract.wage</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="condition_select">python</field>
+            <field name="register_id" ref="hr_contribution_register_10"/>
+            <field name="amount_select">code</field>
+            <field eval="1" name="active"/>
+            <field name="name">CPF Employee</field>
+            <field name="condition_python">if categories.GROSS &gt; 49:
+  result = True
+else:
+  result = False</field>
+            <field name="amount_python_compute">
+if not employee.singaporean and employee.pr_year == 1:
+    if employee.age &gt;= 66:
+        if categories.GROSS &gt; 500.01 and categories.GROSS &lt;= 750:
+            result =  math.floor((categories.GROSS - 500) * 0.15)
+        elif categories.GROSS &gt; 750:
+            if categories.GROSS &gt; 6000:
+                result =  math.floor(6000 * 0.05)
+            else:
+                result =  math.floor(categories.GROSS * 0.05)
+        else:
+            result=0
+    elif employee.age &gt;= 61 and employee.age &lt;=65:
+        if categories.GROSS &gt; 500.01 and categories.GROSS &lt;= 750:
+            result =  math.floor((categories.GROSS - 500) * 0.15)
+        elif categories.GROSS &gt; 750:
+            if categories.GROSS &gt; 6000:
+                result =  math.floor(6000 * 0.05)
+            else:
+                result =  math.floor(categories.GROSS * 0.05)
+        else:
+            result=0
+    elif employee.age &gt;= 56 and employee.age &lt;=60:
+        if categories.GROSS &gt; 500.01 and categories.GROSS &lt;= 750:
+            result =  math.floor((categories.GROSS - 500) * 0.15)
+        elif categories.GROSS &gt; 750:
+            if categories.GROSS &gt; 6000:
+                result =  math.floor(6000 * 0.05)
+            else:
+                result =  math.floor(categories.GROSS * 0.05)
+        else:
+            result=0
+    elif employee.age &lt;=55:
+        if categories.GROSS &gt; 500.01 and categories.GROSS &lt;= 750:
+            result =  math.floor((categories.GROSS - 500) * 0.15)
+        elif categories.GROSS &gt; 750:
+            if categories.GROSS &gt; 6000:
+                result =   math.floor(6000 * 0.05)
+            else:
+                result =  math.floor(categories.GROSS * 0.05)
+        else:
+            result=0
+elif not employee.singaporean and employee.pr_year == 2:
+    if employee.age &gt;= 66:
+        if categories.GROSS &gt; 500.01 and categories.GROSS &lt;= 750:
+            result =  math.floor((categories.GROSS - 500) * 0.15)
+        elif categories.GROSS &gt; 750:
+            if categories.GROSS &gt; 6000:
+                result =  math.floor(6000 * 0.05)
+            else:
+                result =  math.floor(categories.GROSS * 0.05)
+        else:
+            result=0
+    elif employee.age &gt;= 61 and employee.age &lt;=65:
+        if categories.GROSS &gt; 500.01 and categories.GROSS &lt;= 750:
+            result =  math.floor((categories.GROSS - 500) * 0.225)
+        elif categories.GROSS &gt; 750:
+            if categories.GROSS &gt; 6000:
+                result =  math.floor(6000 * 0.075)
+            else:
+                result =  math.floor(categories.GROSS * 0.075)
+        else:
+            result=0
+    elif employee.age &gt;= 56 and employee.age &lt;=60:
+        if categories.GROSS &gt; 500.01 and categories.GROSS &lt;= 750:
+            result =  math.floor((categories.GROSS - 500) * 0.375)
+        elif categories.GROSS &gt; 750:
+            if categories.GROSS &gt; 6000:
+                result =  math.floor(6000 * 0.125)
+            else:
+                result =  math.floor(categories.GROSS * 0.125)
+        else:
+            result=0
+    elif employee.age &lt;=55:
+        if categories.GROSS &gt; 500.01 and categories.GROSS &lt;= 750:
+            result =  math.floor((categories.GROSS - 500) * 0.45)
+        elif categories.GROSS &gt; 750:
+            if categories.GROSS &gt; 6000:
+                result = math.floor(6000 * 0.15)
+            else:
+                result = math.floor(categories.GROSS * 0.15)
+        else:
+            result=0
+elif employee.singaporean or employee.pr_year &gt;= 3:
+    if employee.age &gt;= 66:
+        if categories.GROSS &gt; 500.01 and categories.GROSS &lt;= 750:
+            result =  math.floor((categories.GROSS - 500) * 0.15)
+        elif categories.GROSS &gt; 750:
+            if categories.GROSS &gt; 6000:
+                result = math.floor(6000 * 0.05)
+            else:
+                result =  math.floor(categories.GROSS * 0.05)
+        else:
+            result=0
+    elif employee.age &gt;= 61 and employee.age &lt;=65:
+        if categories.GROSS &gt; 500.01 and categories.GROSS &lt;= 750:
+            result =  math.floor((categories.GROSS - 500) * 0.225)
+        elif categories.GROSS &gt; 750:
+            if categories.GROSS &gt; 6000:
+                result =  math.floor(6000 * 0.075)
+            else:
+                result =  math.floor(categories.GROSS * 0.075)
+        else:
+            result=0
+    elif employee.age &gt;= 56 and employee.age &lt;=60:
+        if categories.GROSS &gt; 500.01 and categories.GROSS &lt;= 750:
+            result =  math.floor((categories.GROSS - 500) * 0.39)
+        elif categories.GROSS &gt; 750:
+            if categories.GROSS &gt; 6000:
+                result =  math.floor(6000 * 0.13)
+            else:
+                result =  math.floor(categories.GROSS * 0.13)
+        else:
+            result=0
+    elif employee.age &lt;=55:
+        if categories.GROSS &gt; 500.01 and categories.GROSS &lt;= 750:
+            result =  math.floor((categories.GROSS - 500) * 0.6)
+        elif categories.GROSS &gt; 750:
+            if categories.GROSS &gt; 6000:
+                result =   math.floor(6000 * 0.20)
+            else:
+                result =  math.floor(categories.GROSS * 0.20)
+        else:
+            result=0
+else:
+    result=0</field>
+            <field name="category_id" ref="hr_salary_rule_category_18"/>
+            <field name="quantity">1.0</field>
+        </record>
+
+        <record id="hr_salary_rule_cpftotalsprsingaporean0" model="hr.salary.rule">
+            <field name="code">CPFTOTAL_SPR_SIN</field>
+            <field eval="302" name="sequence"/>
+            <field eval="1" name="appears_on_payslip"/>
+            <field name="condition_range">contract.wage</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="condition_select">python</field>
+            <field name="amount_select">code</field>
+            <field eval="1" name="active"/>
+            <field name="name">CPF Total</field>
+            <field name="condition_python">if categories.GROSS &gt; 49:
+  result = True
+else:
+  result = False</field>
+            <field name="amount_python_compute">
+if not employee.singaporean and employee.employee_type=='graduated_employee' and employee.pr_year == 1:
+    if employee.age &gt;= 66:
+        if categories.GROSS &gt; 50.01 and categories.GROSS &lt;= 500:
+            result = round(0.035 * (categories.GROSS))
+        elif categories.GROSS &gt; 500.01 and categories.GROSS &lt;= 750:
+            result = round(0.035 * (categories.GROSS) + math.floor((categories.GROSS - 500) * 0.15))
+        elif categories.GROSS &gt; 750:
+            if categories.GROSS &gt; 6000:
+                result =  round(6000 * 0.085)
+            else:
+                result =  round(categories.GROSS * 0.085)
+        else:
+            result=0
+    elif employee.age &gt;= 61 and employee.age &lt;=65:
+        if categories.GROSS &gt; 50.01 and categories.GROSS &lt;= 500:
+            result = round(0.035 * (categories.GROSS))
+        elif categories.GROSS &gt; 500.01 and categories.GROSS &lt;= 750:
+            result = round(0.035 * (categories.GROSS) + math.floor((categories.GROSS - 500) * 0.15))
+        elif categories.GROSS &gt; 750:
+            if categories.GROSS &gt; 6000:
+                result =  round(6000 * 0.085)
+            else:
+                result =  round(categories.GROSS * 0.085)
+        else:
+            result=0
+    elif employee.age &gt;= 56 and employee.age &lt;=60:
+        if categories.GROSS &gt; 50.01 and categories.GROSS &lt;= 500:
+            result = round(0.04 * (categories.GROSS))
+        elif categories.GROSS &gt; 500.01 and categories.GROSS &lt;= 750:
+            result = round(0.04 * (categories.GROSS) + math.floor((categories.GROSS - 500) * 0.15))
+        elif categories.GROSS &gt; 750:
+            if categories.GROSS &gt; 6000:
+                result =  round(6000 * 0.09)
+            else:
+                result =  round(categories.GROSS * 0.09)
+        else:
+            result=0
+    elif employee.age &lt;=55:
+        if categories.GROSS &gt; 50.01 and categories.GROSS &lt;= 500:
+            result = round(0.04 * (categories.GROSS))
+        elif categories.GROSS &gt; 500.01 and categories.GROSS &lt;= 750:
+            result = round(0.04 * (categories.GROSS) + math.floor((categories.GROSS - 500) * 0.15))
+        elif categories.GROSS &gt; 750:
+            if categories.GROSS &gt; 6000:
+                result =  round(6000 * 0.09)
+            else:
+                result =  round(categories.GROSS * 0.09)
+        else:
+            result=0
+elif not employee.singaporean and employee.employee_type=='full_employeement' and employee.pr_year == 1:
+    if employee.age &gt;= 66:
+        if categories.GROSS &gt; 50.01 and categories.GROSS &lt;= 500:
+            result =  round(0.075 * (categories.GROSS))
+        elif categories.GROSS &gt; 500.01 and categories.GROSS &lt;= 750:
+            result = round(0.075 * (categories.GROSS) + math.floor((categories.GROSS - 500) * 0.15))
+        elif categories.GROSS &gt; 750:
+            if categories.GROSS &gt; 6000:
+                result =  round(6000 * 0.125)
+            else:
+                result =  round(categories.GROSS * 0.125)
+        else:
+            result=0
+    elif employee.age &gt;= 61 and employee.age &lt;=65:
+        if categories.GROSS &gt; 50.01 and categories.GROSS &lt;= 500:
+            result = round(0.09 * (categories.GROSS))
+        elif categories.GROSS &gt; 500.01 and categories.GROSS &lt;= 750:
+            result = round(0.09 * (categories.GROSS) + math.floor((categories.GROSS - 500) * 0.15))
+        elif categories.GROSS &gt; 750:
+            if categories.GROSS &gt; 6000:
+                result =  round(6000 * 0.14)
+            else:
+                result =  round(categories.GROSS * 0.14)
+        else:
+            result=0
+    elif employee.age &gt;= 56 and employee.age &lt;=60:
+        if categories.GROSS &gt; 50.01 and categories.GROSS &lt;= 500:
+            result = round(0.13 * (categories.GROSS))
+        elif categories.GROSS &gt; 500.01 and categories.GROSS &lt;= 750:
+            result = round(0.13 * (categories.GROSS) + math.floor((categories.GROSS - 500) * 0.15))
+        elif categories.GROSS &gt; 750:
+            if categories.GROSS &gt; 6000:
+                result =  round(6000 * 0.18)
+            else:
+                result =  round(categories.GROSS * 0.18)
+        else:
+            result=0
+    elif employee.age &lt;=55:
+        if categories.GROSS &gt; 50.01 and categories.GROSS &lt;= 500:
+            result = round(0.17 * (categories.GROSS))
+        elif categories.GROSS &gt; 500.01 and categories.GROSS &lt;= 750:
+            result = round(0.17 * (categories.GROSS) + math.floor((categories.GROSS - 500) * 0.15))
+        elif categories.GROSS &gt; 750:
+            if categories.GROSS &gt; 6000:
+                result =  round(6000 * 0.22)
+            else:
+                result =  round(categories.GROSS * 0.22)
+        else:
+            result=0
+elif not employee.singaporean and employee.employee_type=='graduated_employee' and employee.pr_year == 2:
+    if employee.age &gt;= 66:
+        if categories.GROSS &gt; 50.01 and categories.GROSS &lt;= 500:
+            result = round(0.035 * (categories.GROSS))
+        elif categories.GROSS &gt; 500.01 and categories.GROSS &lt;= 750:
+            result = round(0.035 * (categories.GROSS) + math.floor((categories.GROSS - 500) * 0.15))
+        elif categories.GROSS &gt; 750:
+            if categories.GROSS &gt; 6000:
+                result =  round(6000 * 0.085)
+            else:
+                result =  round(categories.GROSS * 0.085)
+        else:
+            result=0
+    elif employee.age &gt;= 61 and employee.age &lt;=65:
+        if categories.GROSS &gt; 50.01 and categories.GROSS &lt;= 500:
+            result = round(0.035 * (categories.GROSS))
+        elif categories.GROSS &gt; 500.01 and categories.GROSS &lt;= 750:
+            result = round(0.035 * (categories.GROSS) + math.floor((categories.GROSS - 500) * 0.225))
+        elif categories.GROSS &gt; 750:
+            if categories.GROSS &gt; 6000:
+                result =  round(6000 * 0.11)
+            else:
+                result =  round(categories.GROSS * 0.11)
+        else:
+            result=0
+    elif employee.age &gt;= 56 and employee.age &lt;=60:
+        if categories.GROSS &gt; 50.01 and categories.GROSS &lt;= 500:
+            result = round(0.06 * (categories.GROSS))
+        elif categories.GROSS &gt; 500.01 and categories.GROSS &lt;= 750:
+            result = round(0.06 * (categories.GROSS) + math.floor((categories.GROSS - 500) * 0.375))
+        elif categories.GROSS &gt; 750:
+            if categories.GROSS &gt; 6000:
+                result =  round(6000 * 0.185)
+            else:
+                result =  round(categories.GROSS * 0.185)
+        else:
+            result=0
+    elif employee.age &lt;=55:
+        if categories.GROSS &gt; 50.01 and categories.GROSS &lt;= 500:
+            result = round(0.09 * (categories.GROSS))
+        elif categories.GROSS &gt; 500.01 and categories.GROSS &lt;= 750:
+            result = round(0.09 * (categories.GROSS) + math.floor((categories.GROSS - 500) * 0.45))
+        elif categories.GROSS &gt; 750:
+            if categories.GROSS &gt; 6000:
+                result =  round(6000 * 0.24)
+            else:
+                result =  round(categories.GROSS * 0.24)
+        else:
+            result=0
+elif not employee.singaporean and employee.employee_type=='full_employeement' and employee.pr_year == 2:
+    if employee.age &gt;= 66:
+        if categories.GROSS &gt; 50.01 and categories.GROSS &lt;= 500:
+            result =  round(0.075 * (categories.GROSS))
+        elif categories.GROSS &gt; 500.01 and categories.GROSS &lt;= 750:
+            result = round(0.075 * (categories.GROSS) + math.floor((categories.GROSS - 500) * 0.15))
+        elif categories.GROSS &gt; 750:
+            if categories.GROSS &gt; 6000:
+                result =  round(6000 * 0.125)
+            else:
+                result =  round(categories.GROSS * 0.125)
+        else:
+            result=0
+    elif employee.age &gt;= 61 and employee.age &lt;=65:
+        if categories.GROSS &gt; 50.01 and categories.GROSS &lt;= 500:
+            result = round(0.09 * (categories.GROSS))
+        elif categories.GROSS &gt; 500.01 and categories.GROSS &lt;= 750:
+            result = round(0.09 * (categories.GROSS) + math.floor((categories.GROSS - 500) * 0.225))
+        elif categories.GROSS &gt; 750:
+            if categories.GROSS &gt; 6000:
+                result =  round(6000 * 0.165)
+            else:
+                result =  round(categories.GROSS * 0.165)
+        else:
+            result=0
+    elif employee.age &gt;= 56 and employee.age &lt;=60:
+        if categories.GROSS &gt; 50.01 and categories.GROSS &lt;= 500:
+            result = round(0.13 * (categories.GROSS))
+        elif categories.GROSS &gt; 500.01 and categories.GROSS &lt;= 750:
+            result = round(0.13 * (categories.GROSS) + math.floor((categories.GROSS - 500) * 0.375))
+        elif categories.GROSS &gt; 750:
+            if categories.GROSS &gt; 6000:
+                result =  round(6000 * 0.255)
+            else:
+                result =  round(categories.GROSS * 0.255)
+        else:
+            result=0
+    elif employee.age &lt;=55:
+        if categories.GROSS &gt; 50.01 and categories.GROSS &lt;= 500:
+            result = round(0.17 * (categories.GROSS))
+        elif categories.GROSS &gt; 500.01 and categories.GROSS &lt;= 750:
+            result = round(0.17 * (categories.GROSS) + math.floor((categories.GROSS - 500) * 0.45))
+        elif categories.GROSS &gt; 750:
+            if categories.GROSS &gt; 6000:
+                result =  round(6000 * 0.32)
+            else:
+                result =  round(categories.GROSS * 0.32)
+        else:
+            result=0
+elif employee.singaporean or employee.pr_year &gt;= 3:
+    if employee.age &gt;= 66:
+        if categories.GROSS &gt; 50.01 and categories.GROSS &lt;= 500:
+            result =  round(0.075 * (categories.GROSS))
+        elif categories.GROSS &gt; 500.01 and categories.GROSS &lt;= 750:
+            result = round(0.075 * (categories.GROSS) + math.floor((categories.GROSS - 500) * 0.15))
+        elif categories.GROSS &gt; 750:
+            if categories.GROSS &gt; 6000:
+                result =  round(6000 * 0.125)
+            else:
+                result =  round(categories.GROSS * 0.125)
+        else:
+            result=0
+    elif employee.age &gt;= 61 and employee.age &lt;=65:
+        if categories.GROSS &gt; 50.01 and categories.GROSS &lt;= 500:
+            result = round(0.09 * (categories.GROSS))
+        elif categories.GROSS &gt; 500.01 and categories.GROSS &lt;= 750:
+            result = round(0.09 * (categories.GROSS) + math.floor((categories.GROSS - 500) * 0.225))
+        elif categories.GROSS &gt; 750:
+            if categories.GROSS &gt; 6000:
+                result =  round(6000 * 0.165)
+            else:
+                result =  round(categories.GROSS * 0.165)
+        else:
+            result=0
+    elif employee.age &gt;= 56 and employee.age &lt;=60:
+        if categories.GROSS &gt; 50.01 and categories.GROSS &lt;= 500:
+            result = round(0.13 * (categories.GROSS))
+        elif categories.GROSS &gt; 500.01 and categories.GROSS &lt;= 750:
+            result = round(0.13 * (categories.GROSS) + math.floor((categories.GROSS - 500) * 0.39))
+        elif categories.GROSS &gt; 750:
+            if categories.GROSS &gt; 6000:
+                result =  round(6000 * 0.26)
+            else:
+                result =  round(categories.GROSS * 0.26)
+        else:
+            result=0
+    elif employee.age &lt;=55:
+        if categories.GROSS &gt; 50.01 and categories.GROSS &lt;= 500:
+            result = round(0.17 * (categories.GROSS))
+        elif categories.GROSS &gt; 500.01 and categories.GROSS &lt;= 750:
+            result = round(0.17 * (categories.GROSS) + math.floor((categories.GROSS - 500) * 0.6))
+        elif categories.GROSS &gt; 750:
+            if categories.GROSS &gt; 6000:
+                result =  round(6000 * 0.37)
+            else:
+                result =  round(categories.GROSS * 0.37)
+        else:
+            result=0
+else:
+    result = 0</field>
+            <field name="category_id" ref="hr_salary_rule_category_17"/>
+            <field name="quantity">1.0</field>
+        </record>
+
+        <record id="hr_salary_rule_unpaidleavebensius0" model="hr.salary.rule">
+            <field name="code">SC207</field>
+            <field eval="199" name="sequence"/>
+            <field eval="1" name="appears_on_payslip"/>
+            <field name="condition_range">contract.wage</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field eval="1" name="active"/>
+            <field name="name">Unpaid Leave (Bensius)</field>
+            <field name="condition_python">
+# Available variables:
+#----------------------
+# payslip: object containing the payslips
+# employee: hr.employee object
+# contract: hr.contract object
+# rules: object containing the rules code (previously computed)
+# categories: object containing the computed salary rule categories (sum of amount of all rules belonging to that category).
+# worked_days: object containing the computed worked days
+# inputs: object containing the computed inputs
+
+# Note: returned value have to be set in the variable 'result'
+
+result = rules.NET &gt; categories.NET * 0.10</field>
+            <field name="amount_python_compute">result = categories.BASIC / (worked_days.TTLCURRDAYINMTH.number_of_days - 4) * inputs.SC207I.amount</field>
+            <field name="category_id" ref="hr_salary_rule_category_19"/>
+            <field name="quantity">1.0</field>
+        </record>
+
+        <record id="hr_salary_rule_others2" model="hr.salary.rule">
+            <field name="code">SC208</field>
+            <field eval="307" name="sequence"/>
+            <field eval="1" name="appears_on_payslip"/>
+            <field name="condition_range">contract.wage</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field eval="1" name="active"/>
+            <field name="name">Others</field>
+            <field name="condition_python">
+# Available variables:
+#----------------------
+# payslip: object containing the payslips
+# employee: hr.employee object
+# contract: hr.contract object
+# rules: object containing the rules code (previously computed)
+# categories: object containing the computed salary rule categories (sum of amount of all rules belonging to that category).
+# worked_days: object containing the computed worked days
+# inputs: object containing the computed inputs
+
+# Note: returned value have to be set in the variable 'result'
+
+result = rules.NET &gt; categories.NET * 0.10</field>
+            <field name="amount_python_compute">result = inputs.SC208I.amount</field>
+            <field name="category_id" ref="hr_salary_rule_category_19"/>
+            <field name="quantity">1.0</field>
+        </record>
+
+        
+        <!-- Gross Category of Salary Rules -->
+        <record id="hr_payroll.hr_rule_taxable" model="hr.salary.rule">
+            <field name="name">Gross</field>
+            <field name="sequence" eval="401"/>
+            <field name="code">GROSS</field>
+            <field name="category_id" ref="hr_payroll.GROSS"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = categories.BASIC + categories.ALW + categories.ADD - categories.DED_INCL_CPF</field>
+        </record>
+
+        <!-- Net Category of Salary Rule -->
+        <record id="hr_payroll.hr_rule_net" model="hr.salary.rule">
+            <field name="code">NET</field>
+            <field eval="801" name="sequence"/>
+            <field eval="1" name="appears_on_payslip"/>
+            <field name="condition_range">contract.wage</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field eval="1" name="active"/>
+            <field name="name">Net</field>
+            <field name="condition_python">
+# Available variables:
+#----------------------
+# payslip: object containing the payslips
+# employee: hr.employee object
+# contract: hr.contract object
+# rules: object containing the rules code (previously computed)
+# categories: object containing the computed salary rule categories (sum of amount of all rules belonging to that category).
+# worked_days: object containing the computed worked days
+# inputs: object containing the computed inputs
+
+# Note: returned value have to be set in the variable 'result'
+
+result = rules.NET &gt; categories.NET * 0.10</field>
+            <field name="amount_python_compute">result = categories.GROSS - categories.DED - categories.CAT_CPF_EMPLOYEE - categories. CATCPFAGENCYSERVICESEE</field>
+            <field name="category_id" ref="hr_payroll.NET"/>
+            <field name="quantity">1.0</field>
+        </record>
+
+    </data>
+</openerp>

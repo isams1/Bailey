@@ -1,0 +1,45 @@
+<openerp>
+    <data>
+         <record id="view_hr_contract_commission_form_inherited" model="ir.ui.view">
+            <field name="name">view.hr.contract.commission.form.inherit</field>
+            <field name="model">hr.contract</field>
+            <field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
+            <field name="arch" type="xml">
+                 <field name="employee_id" position="replace">
+                     <field name="employee_id" required="True" on_change="onchange_employee_id(employee_id)"/>
+                 </field>
+                <field name="wage" position="after">
+                    <field name="active_employee" />
+                    <field name="wage_to_pay" required="True" />
+                    <field name="rate_per_hour" required="True" />
+                </field>
+            </field>
+        </record>
+
+        <!-- HR Contract Tree View Inherited -->
+        <record id="hr_contract_view_tree_inherit" model="ir.ui.view">
+            <field name="name">hr.contract.view.tree.inherit</field>
+            <field name="model">hr.contract</field>
+            <field name="inherit_id" ref="hr_contract.hr_contract_view_tree"/>
+            <field name="arch" type="xml">
+                <field name="job_id" position="after">
+                    <field name="wage" />
+                    <field name="wage_to_pay"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="hr_contract_view_search_inherited" model="ir.ui.view">
+            <field name="name">hr.contract.search</field>
+            <field name="model">hr.contract</field>
+            <field name="inherit_id" ref="hr_contract.hr_contract_view_search" />
+            <field name="arch" type="xml">
+                <field name="employee_id" position="after">
+                    <filter icon="terp-personal+" domain="[('active_employee','=',True)]" string="Active" />
+                    <filter icon="gtk-no" string="Inactive" domain="[('active_employee','=',False)]" help="Inactive Employee"/>
+                </field>
+            </field>
+        </record>
+
+    </data>
+</openerp>

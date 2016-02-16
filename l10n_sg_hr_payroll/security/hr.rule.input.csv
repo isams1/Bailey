@@ -1,0 +1,31 @@
+id,code,name,input_id/id
+hr_rule_input_9,SC104I,Additions - Commission,hr_salary_rule_commission0
+hr_rule_input_10,SC105I,Additions - Incentive,hr_salary_rule_incentive0
+hr_rule_input_11,SC122I,Additions - Others,hr_salary_rule_others0
+hr_rule_input_12,SC200I,Deductions - Undertime,hr_salary_rule_undertime0
+hr_rule_input_13,SC201I,Deductions- ADJ To Comm,hr_salary_rule_adjtocomm0
+hr_rule_input_14,SC202I,Deductions - Loan,hr_salary_rule_loan0
+hr_rule_input_15,SC203I,Deductions- Pay / Absent,hr_salary_rule_payabsent0
+hr_rule_input_16,SC204I,Deductions - NS Pay,hr_salary_rule_nspay0
+hr_rule_input_17,SC299I,Deductions - Others,hr_salary_rule_others1
+hr_rule_input_18,SC100I,Additions - Part Time Employee (Normal Hours Worked),hr_salary_rule_parttimerwage0
+hr_rule_input_20,SC121I,Additions - Bonus,hr_salary_rule_bonus0
+hr_rule_input_21,SC102I,Additions - Overtime (1.5),hr_salary_rule_overtime0
+hr_rule_input_211,SC103I,Additions - Overtime (2),hr_salary_rule_overtime1
+hr_rule_input_22,SC298I,Other Deductions,hr_salary_rule_ded0
+hr_rule_input_23,SC48I,Basic - Back Pay,hr_salary_rule_basicbackpay0
+hr_rule_input_24,SC207I,Deductions - Unpaid Leave (Bensius),hr_salary_rule_unpaidleavebensius0
+hr_rule_input_25,SC206I,Deductions - Unpaid Leave (Normal),hr_salary_rule_unpaidleavenormal0
+hr_rule_input_26,SC50I,Deductions - M,hr_salary_rule_deductionsm0
+hr_rule_input_28,SC106I,Additions - Grooming Alllowance,hr_salary_rule_groomingallowance0
+hr_rule_input_29,SC108I,Additions - Supervisory Allowance,hr_salary_rule_supervisoryallowance0
+hr_rule_input_30,SC208I,Deductions - Others,hr_salary_rule_others2
+hr_rule_input_31,SC49I,Services,hr_salary_rule_deductionm0
+hr_rule_input_32,SC401I,FWL - Work Permit,hr_salary_rule_fwlworkpermit0
+hr_rule_input_33,SC400I,FWL - S Pass,hr_salary_rule_fwlspass0
+hr_rule_input_34,SC250I,Deductions - Agent Rebates,hr_salary_rule_agentrebates0
+hr_rule_input_35,SC123I,Addtions - Housing Allowance,hr_salary_rule_housingallowance0
+hr_rule_input_36,SC99I,Basic - Prorate Deduction (Warehouse),hr_salary_rule_basicproratedeductionpromoters0
+hr_rule_input_37,SC98I,Basic - Prorate Deduction (Promoters),hr_salary_rule_basicproratedeductionwarehouse0
+hr_rule_input_38,TAI,Transport-Allowances,hr_salary_rule_transport_allowances
+hr_rule_input_39,FAI,Food-Allowances,hr_salary_rule_food_allowances
