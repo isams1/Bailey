@@ -21,6 +21,19 @@
                     	$("img[name='letterhead']").css('max-width', '800px ! important'); 
                     	$("img[name='letterhead']").css('max-height', '800px ! important');
                     </script>
+
+                    <div style="clear: both;">
+                        <field name="letterfoot" widget="image" class="oe_avatar oe_left"/>
+                    </div>
+                    <div attrs="{'invisible' : [('letterfoot','!=',False)]}" class="oe_view_nocontent oe_clear">
+                        <p class="oe_view_nocontent_create oe_edit_only">
+                            Click to set your company letterfoot.
+                        </p>
+                    </div>
+                    <script>
+                    	$("img[name='letterfoot']").css('max-width', '800px ! important');
+                    	$("img[name='letterfoot']").css('max-height', '800px ! important');
+                    </script>
             	</xpath>
             </field>
         </record>

@@ -51,11 +51,15 @@
 							</div>
 							<div class="col-xs-5">
 								<div class="col-xs-4" style="text-align:right">
-									<span>P.O no:</span>
-									<br />
-									<span>Date:</span>
-									<br />
-									<span>Your Ref:</span>
+									<div style="text-align:right">
+										<span>P.O no:</span>
+									</div>
+									<div style="text-align:right">
+										<span>Date:</span>
+									</div>
+									<div style="text-align:right">
+										<span>Your Ref:</span>
+									</div>
 								</div>
 								<div class="col-xs-8">
 									<span t-field="o.name" />
@@ -308,8 +312,8 @@
 							</div>
 						</div>
                         <div class="row">
-							<t t-if="report.footer_img">
-								<img t-att-src="'data:image/jpg;base64,%s' % report.footer_img" />
+							<t t-if="company.letterfoot">
+								<img t-att-src="'data:image/jpg;base64,%s' % company.letterfoot" />
 							</t>
 						</div>
 					</div>
