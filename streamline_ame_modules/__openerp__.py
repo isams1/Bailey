@@ -7,7 +7,7 @@
         All modules of AME client need to put in here.
     ''',
     'category' : "Streamline Pte Ltd - AME",
-    'depends' : ['base','web','report','account', 'product', 'purchase', 'warehouse_extended', 'report_xls','purchase_double_validation'],
+    'depends' : ['base','web','report','account', 'product', 'purchase', 'warehouse_extended', 'report_xls','purchase_double_validation', 'base_report'],
     'website': 'http://streamline.sg/',
     'js': ['static/src/js/datetimepicker.js'],
     'data' : [

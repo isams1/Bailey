@@ -18,9 +18,13 @@
 							<img height="130" width="500"
 								t-att-src="'data:image/jpg;base64,%s' % company.logo" />
 						</t>
-						<t t-if="company.letterhead">
+						<t t-if="company.letterhead and report.header_img == None">
 							<img height="130" width="650"
 								t-att-src="'data:image/jpg;base64,%s' % company.letterhead" />
+						</t>
+						<t t-if="report.header_img">
+							<img height="130" width="650"
+								t-att-src="'data:image/jpg;base64,%s' % report.header_img" />
 						</t>
 					</div>
 					<div class="col-xs-4" style="float: right; width: 30%;" />
