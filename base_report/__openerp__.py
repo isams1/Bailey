@@ -33,6 +33,7 @@
     'depends': ['base','report'],
     'data': [
         'view/report_view.xml',
+        'security/ir.model.access.csv',
         ],
     'active': True,
     'installable': True,

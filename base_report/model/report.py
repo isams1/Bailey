@@ -25,9 +25,29 @@ from openerp import models, fields, api
 class ir_actions_report_xml(models.Model):
     _inherit = "ir.actions.report.xml"
 
-    header_img = fields.Binary("Header", help="This field holds the image used as Report Header")
-    footer_img = fields.Binary("Footer", help="This field holds the image used as Report Footer")
+    header_footer_ids = fields.One2many('ir.actions.report.xml.header.footer', 'action_report_id', 'Header Footer IMG')
 
+    def get_header(self, company_id):
+        header = False
+        for report in self:
+            for line in report.header_footer_ids:
+                if line.company_id and line.company_id.id == company_id:
+                    header = line.header_img
+                    break
+                if not line.company_id:
+                    header = line.header_img
+        return header
+
+    def get_footer(self, company_id):
+        footer = False
+        for report in self:
+            for line in report.header_footer_ids:
+                if line.company_id and line.company_id.id == company_id:
+                    footer = line.footer_img
+                    break
+                if not line.company_id:
+                    footer = line.footer_img
+        return footer
 
 class Report(models.Model):
     _inherit = "report"

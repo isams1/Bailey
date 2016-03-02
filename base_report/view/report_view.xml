@@ -9,36 +9,49 @@
             <field name="arch" type="xml">
             	<xpath expr="//page[@string='Security']" position="after">
                     <page string="Header - Footer Image">
-                        <label for="header_img" />
-                        <div style="clear: both;">
-                            <field name="header_img" widget="image" class="oe_avatar oe_left"/>
-                        </div>
-                        <div attrs="{'invisible' : [('header_img','!=',False)]}" class="oe_view_nocontent oe_clear">
-                            <p class="oe_view_nocontent_create oe_edit_only">
-                                Click to set your company header_img.
-                            </p>
-                        </div>
-                        <script>
-                            $("img[name='header_img']").css('max-width', '800px ! important'); 
-                            $("img[name='header_img']").css('max-height', '800px ! important');
-                        </script>
-
-                        <newline />
-                        <newline />
-
-                        <label for="footer_img" />
-                         <div style="clear: both;">
-                            <field name="footer_img" widget="image" class="oe_avatar oe_left"/>
-                        </div>
-                        <div attrs="{'invisible' : [('footer_img','!=',False)]}" class="oe_view_nocontent oe_clear">
-                            <p class="oe_view_nocontent_create oe_edit_only">
-                                Click to set your company footer_img.
-                            </p>
-                        </div>
-                        <script>
-                            $("img[name='footer_img']").css('max-width', '800px ! important');
-                            $("img[name='footer_img']").css('max-height', '800px ! important');
-                        </script>
+                        <field name="header_footer_ids">
+                            <tree string="IMG">
+                                <field name="header_img" widget="image" class="oe_avatar oe_left"/>
+                                <field name="footer_img" widget="image" class="oe_avatar oe_left"/>
+                                <field name="company_id" />
+                            </tree>
+                            <form string="IMG">
+                                <div>
+                                    <label for="header_img" />
+                                    <div style="clear: both;">
+                                        <field name="header_img" widget="image" class="oe_avatar oe_left"/>
+                                    </div>
+                                    <div attrs="{'invisible' : [('header_img','!=',False)]}" class="oe_view_nocontent oe_clear">
+                                        <p class="oe_view_nocontent_create oe_edit_only">
+                                            Click to set your company header_img.
+                                        </p>
+                                    </div>
+                                    <script>
+                                        $("img[name='header_img']").css('max-width', '800px ! important');
+                                        $("img[name='header_img']").css('max-height', '800px ! important');
+                                    </script>
+                                </div>
+                                <newline />
+                                <newline />
+                                <div>
+                                    <label for="footer_img" />
+                                     <div style="clear: both;">
+                                        <field name="footer_img" widget="image" class="oe_avatar oe_left"/>
+                                    </div>
+                                    <div attrs="{'invisible' : [('footer_img','!=',False)]}" class="oe_view_nocontent oe_clear">
+                                        <p class="oe_view_nocontent_create oe_edit_only">
+                                            Click to set your company footer_img.
+                                        </p>
+                                    </div>
+                                    <script>
+                                        $("img[name='footer_img']").css('max-width', '800px ! important');
+                                        $("img[name='footer_img']").css('max-height', '800px ! important');
+                                    </script>
+                                    <newline></newline>
+                                </div>
+                                <field name="company_id" />
+                            </form>
+                        </field>
                     </page>
             	</xpath>
             </field>
