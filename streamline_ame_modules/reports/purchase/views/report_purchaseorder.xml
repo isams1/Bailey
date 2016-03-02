@@ -169,25 +169,25 @@
 							</thead>
 							<tbody>
 								<tr t-foreach="o.order_line" t-as="order_line">
-									<td style="border-bottom-style: hidden; border-right: medium solid;border-left: medium solid; border-width: 1px; vertical-align: middle;width: 10%">
+									<td style="border-bottom-style: hidden; border-right: medium solid;border-left: medium solid; border-width: 1px; vertical-align: middle;width: 5%">
 										<span t-esc="order_line_index + 1" />
 									</td>
-									<td style="border-bottom-style: hidden;border-right: medium solid; border-width: 1px; vertical-align: middle;width: 40%">
-										<span t-field="order_line.product_id.name" />
+									<td style="border-bottom-style: hidden;border-right: medium solid; border-width: 1px; vertical-align: middle;width: 60%">
+										<span t-field="order_line.name" />
 										<br />
-										<span t-field="order_line.product_id.product_tmpl_id.description" />
+										<span t-field="order_line.product_id.description" />
 									</td>
-									<td class="text-right" style="border-bottom-style: hidden;border-right: medium solid; border-width: 1px; vertical-align: middle;width: 15%">
+									<td class="text-right" style="border-bottom-style: hidden;border-right: medium solid; border-width: 1px; vertical-align: middle;width: 8%">
 										<span t-esc="int(order_line.product_qty)" />
 									</td>
-									<td class="text-center" style="border-bottom-style: hidden;border-right: medium solid; border-width: 1px; vertical-align: middle;width: 15%">
-										<span t-field="order_line.product_id.product_tmpl_id.uom_id.name" />
+									<td class="text-center" style="border-bottom-style: hidden;border-right: medium solid; border-width: 1px; vertical-align: middle;width: 7%">
+										<span t-field="order_line.product_uom.name" />
 									</td>
 									<td class="text-right" style="border-bottom-style: hidden;border-right: medium solid; border-width: 1px; vertical-align: middle;width: 10%">
 										<div style="float: left; width: 100%">
 											<span style="float: left">$</span>
 											<span style="float: right"
-												t-field="order_line.product_id.product_tmpl_id.standard_price" />
+												t-field="order_line.price_unit" />
 										</div>
 									</td>
 									<td class="text-right" style="border-bottom-style: hidden;border-right: medium solid; border-width: 1px; vertical-align: middle;width: 10%">
@@ -198,15 +198,15 @@
 									</td>
 								</tr>
                                 <tr>
-									<td style="border-bottom-style: hidden;border-left: medium solid; border-right: medium solid; border-width: 1px; vertical-align: middle;width: 10%">
+									<td style="border-bottom-style: hidden;border-left: medium solid; border-right: medium solid; border-width: 1px; vertical-align: middle;">
 									</td>
-									<td style="border-bottom-style: hidden;border-right: medium solid; border-width: 1px; vertical-align: middle;width: 40%">
+									<td style="border-bottom-style: hidden;border-right: medium solid; border-width: 1px; vertical-align: middle;">
 									</td>
-									<td class="text-right" style="border-bottom-style: hidden;border-right: medium solid; border-width: 1px; vertical-align: middle;width: 15%">
+									<td class="text-right" style="border-bottom-style: hidden;border-right: medium solid; border-width: 1px; vertical-align: middle;">
 									</td>
-									<td class="text-center" style="border-bottom-style: hidden;border-right: medium solid; border-width: 1px; vertical-align: middle;width: 15%">
+									<td class="text-center" style="border-bottom-style: hidden;border-right: medium solid; border-width: 1px; vertical-align: middle;">
 									</td>
-									<td class="text-right" style="border-bottom-style: hidden;border-right: medium solid; border-width: 1px; vertical-align: middle;width: 10%">
+									<td class="text-right" style="border-bottom-style: hidden;border-right: medium solid; border-width: 1px; vertical-align: middle;">
 										<strong>SUBTOTAL:</strong>
 									</td>
 									<td class="text-right" style="border-bottom-style: hidden;border-right: medium solid; border-width: 1px; vertical-align: middle;">
@@ -217,15 +217,15 @@
 									</td>
 								</tr>
 								<tr>
-									<td style="border-left: medium solid; border-right: medium solid; border-bottom: medium solid; border-width: 1px; vertical-align: middle;width: 10%">
+									<td style="border-left: medium solid; border-right: medium solid; border-bottom: medium solid; border-width: 1px; vertical-align: middle;">
 									</td>
 									<td style="border-right: medium solid; border-bottom: medium solid; border-width: 1px; vertical-align: middle;width: 40%">
 									</td>
-									<td class="text-right" style="border-right: medium solid; border-bottom: medium solid; border-width: 1px; vertical-align: middle;width: 15%">
+									<td class="text-right" style="border-right: medium solid; border-bottom: medium solid; border-width: 1px; vertical-align: middle;">
 									</td>
-									<td class="text-center" style="border-right: medium solid; border-bottom: medium solid; border-width: 1px; vertical-align: middle;width: 15%">
+									<td class="text-center" style="border-right: medium solid; border-bottom: medium solid; border-width: 1px; vertical-align: middle;">
 									</td>
-									<td class="text-right" style="border-right: medium solid; border-bottom: medium solid; border-width: 1px; vertical-align: middle;width: 10%">
+									<td class="text-right" style="border-right: medium solid; border-bottom: medium solid; border-width: 1px; vertical-align: middle;">
 										<strong>GST 7%:</strong>
 									</td>
 									<td class="text-right" style="border-right: medium solid; border-bottom: medium solid; border-width: 1px; vertical-align: middle;">

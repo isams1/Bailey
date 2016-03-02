@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from openerp import models, fields, api, _
-from openerp import SUPERUSER_ID
+import time
+from openerp.tools import DEFAULT_SERVER_DATETIME_FORMAT
 import openerp.addons.decimal_precision as dp
 from openerp.exceptions import except_orm
 
@@ -66,8 +67,12 @@ class product_product(models.Model):
             raise except_orm(_('Invalid Action!'), _('User is not in "Creating Product" group.'))
         product_id = super(product_product, self).create(vals)
 
+        user = self.env['res.users'].browse(self._uid)
         tmpl = self.env['product.template'].browse(vals['product_tmpl_id'])
-        vals = {'name': tmpl.name, 'default_code': vals.get('default_code', '')}
+        vals = {'name': tmpl.name,
+                'user': user.name,
+                'date': time.strftime(DEFAULT_SERVER_DATETIME_FORMAT),
+                'default_code': vals.get('default_code', '')}
         self.action_send_mail(product_id, vals)
         return product_id
 
@@ -144,6 +149,17 @@ class product_product(models.Model):
                 composer_values.update(composer_obj.onchange_template_id(cr, uid, None, *template_values, context=context).get('value', {}))
                 if not composer_values.get('email_from'):
                     composer_values['email_from'] = self.pool.get('res.users').browse(cr, uid, uid, context=context).company_id.email
+
+                try:
+                    model, group_id = self.pool.get('ir.model.data').get_object_reference(cr, uid, 'warehouse_extended', 'group_ame_purchaser')
+                except ValueError:
+                    return False
+                partner_ids = []
+                user_ids = self.pool.get('res.users').search(cr, uid, [('groups_id', '=', group_id)])
+                for user in self.pool.get('res.users').browse(cr, uid, user_ids):
+                    partner_ids += [user.partner_id.id]
+                if partner_ids:
+                     composer_values['partner_ids'] = partner_ids
                 print vals
                 composer_values['body'] = composer_values['body']%vals
                 for key in ['attachment_ids', 'partner_ids']:
