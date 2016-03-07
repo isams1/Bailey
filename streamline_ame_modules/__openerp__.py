@@ -29,6 +29,7 @@
         'reports/stock/wizard/inventory_listing_view.xml',
         'reports/stock/views/report_inventory_listing.xml',
         'reports/purchase/views/report_purchaseorder.xml',
+        'reports/purchase/views/report_purchasequotation.xml',
         'reports/menu.xml',
         'products/data/product_sequence.xml',
         'products/views/product_minimum_view.xml',
