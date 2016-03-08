@@ -10,7 +10,7 @@
     'depends' : ['base','web','report','account', 'product', 'purchase', 'warehouse_extended', 'report_xls','purchase_double_validation', 'base_report'],
     'website': 'http://streamline.sg/',
     'js': ['static/src/js/datetimepicker.js'],
-    'data' : [
+    'data': [
         'security/res.groups.csv',
         'security/ame_security.xml',
         'reports/header.xml',
