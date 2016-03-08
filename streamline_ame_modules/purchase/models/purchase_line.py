@@ -21,6 +21,6 @@ class purchase_order_line(osv.osv):
 
         product = self.pool.get('product.product').browse(cr, uid, product_id, context)
         if product_inventory and product_inventory[product.id]['qty_available'] > 0:
-            result['warning'] = {'title': _('Warning!'), 'message': _('Item %s have a total qty of %s %s.' % (
-            product.name, product_inventory[product.id]['qty_available'], product.uom_id.name))}
+            result['warning'] = {'title': _('Warning!'), 'message': _('There is currently %s %s of %s. Are you sure you want to proceed?' % (
+            product_inventory[product.id]['qty_available'], product.uom_id.name, product.name))}
         return result
