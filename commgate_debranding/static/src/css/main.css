@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+.openerp .oe_leftbar > div .oe_footer a span {
+  color: #F2850A;
+}
+
+.openerp .label-danger-commgate {
+  background-color: #F2850A;
+}
+.openerp .label-danger-commgate[href]:hover,
+.openerp .label-danger-commgate[href]:focus {
+  background-color: #D48F4E;
+}

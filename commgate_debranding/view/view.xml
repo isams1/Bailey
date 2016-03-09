@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ********************************************************************** -->
+<!--Point Of Sale - Product Template module for Odoo                        -->
+<!--Copyright (C) 2014-Today Akretion (http://www.akretion.com)             -->
+<!--@author Sylvain LE GAL (https://twitter.com/legalsylvain)               -->
+
+<!--This program is free software: you can redistribute it and/or modify    -->
+<!--it under the terms of the GNU Affero General Public License as          -->
+<!--published by the Free Software Foundation, either version 3 of the      -->
+<!--License, or (at your option) any later version.                         -->
+
+<!--This program is distributed in the hope that it will be useful,         -->
+<!--but WITHOUT ANY WARRANTY; without even the implied warranty of          -->
+<!--MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the           -->
+<!--GNU Affero General Public License for more details.                     -->
+
+<!--You should have received a copy of the GNU Affero General Public License-->
+<!--along with this program.  If not, see <http://www.gnu.org/licenses/>.   -->
+<!-- ********************************************************************** -->
+<openerp>
+    <data>
+
+        <!-- jQuery import -->
+
+        <template id="assets_backend" name="debranding_commgate" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+                <link rel="stylesheet" href="/commgate_debranding/static/src/css/main.css"/>
+                <script type="text/javascript" src="/commgate_debranding/static/src/js/debranding.js"></script>
+            </xpath>
+        </template>
+
+        <!-- Footer Page -->
+
+        <template id="web.menu_secondary_commgate" name="Commgate Secondary" inherit_id="web.menu_secondary">
+            <xpath expr="div[@class='oe_footer']" position="replace">
+                <div class="oe_footer">
+                    Powered by <a href="http://erp.commgate.net" target="_blank"><span>CommGate</span></a>
+                </div>
+            </xpath>
+        </template>
+
+        <!-- Title POS 
+
+        <template id="index" name="pos_product_template index" inherit_id="point_of_sale.index">
+            <xpath expr="//title" position="replace">
+                <title>CommGate POS</title>
+            </xpath>
+            <xpath expr="//link[@type='image/x-icon']" position="replace">
+                <link rel="shortcut icon" href="/debranding_commgate/static/src/img/commgate-favicon.ico" type="image/x-icon"/>
+            </xpath>
+        </template>-->
+
+        <!-- Main login -->
+
+        <template id="web.login_layout_commgate" name="Login Layout" inherit_id="web.login_layout">
+            <xpath expr="//div[@class='oe_single_form_footer']" position="replace">
+                <div class="oe_single_form_footer" t-if="not disable_footer">
+                    <t t-if="not disable_database_manager">
+                        <a class="oe_login_manage_db" t-attf-href="/web/database/manager{{ '?debug' if debug else '' }}">Manage Databases</a>
+                        <span class="oe_footer_seperator"> | </span>
+                    </t>
+                    <a href="http://erp.commgate.net" target="_blank">Powered by <span>CommGate</span></a>
+                </div>
+            </xpath>
+        </template>
+
+        <!-- Title Main Page -->
+
+        <template id="web.layout" name="Web layout">&lt;!DOCTYPE html&gt;
+            <html style="height: 100%">
+                <head>
+                    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+                    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+                    <title>CommGate</title>
+                    <link rel="shortcut icon" href="/commgate_debranding/static/src/img/commgate-favicon.ico" type="image/x-icon"/>
+                    <link rel="stylesheet" href="/web/static/src/css/full.css" />
+                    <t t-raw="head or ''"/>
+                </head>
+                <body t-att-class="body_classname">
+                    <t t-raw="0"/>
+                </body>
+            </html>
+        </template>
+
+        <!--Remove footer odoo on website sale
+        <template id="website.layout_footer_copyright_commgate" inherit_id="website.layout_footer_copyright" name="Footer Copyright" >
+            <xpath expr="//div[@class='pull-right']" position="replace">
+                <div class="pull-right" t-ignore="true" t-if="not editable">
+                    Powered by <a class="label label-danger" style="background-color: #F2850A;" href="http://erp.commgate.net">CommGate</a>
+                </div>
+            </xpath>
+        </template>-->
+
+    </data>
+</openerp>
