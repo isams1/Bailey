@@ -312,8 +312,11 @@
 							</div>
 						</div>
                         <div class="row">
-							<t t-if="company.letterfoot">
-								<img t-att-src="'data:image/jpg;base64,%s' % company.letterfoot" />
+							<t t-if="company.letterhead and not report.get_footer(company.id)">
+								<img t-att-src="'data:image/jpg;base64,%s' % company.letterhead" />
+							</t>
+							<t t-if="report.get_footer(company.id)">
+								<img t-att-src="'data:image/jpg;base64,%s' % report.get_footer(company.id)" />
 							</t>
 						</div>
 					</div>

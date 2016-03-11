@@ -14,17 +14,13 @@
 				<div class="row" id="table_header">
 					<div class="col-xs-3" style=" width: 22%;" />
 					<div style="position: relative;min-height: 1px;padding-right: 15px;padding-left: 15px;float: left;">
-						<t t-if="company.letterhead == None">
-							<img height="130" width="500"
-								t-att-src="'data:image/jpg;base64,%s' % company.logo" />
-						</t>
-						<t t-if="company.letterhead and not report.get_footer(o.company_id.id)">
+						<t t-if="company.letterhead and not report.get_header(company.id)">
 							<img height="130" width="650"
 								t-att-src="'data:image/jpg;base64,%s' % company.letterhead" />
 						</t>
-						<t t-if="report.get_footer(o.company_id.id)">
+						<t t-if="report.get_header(company.id)">
 							<img height="130" width="650"
-								t-att-src="'data:image/jpg;base64,%s' % report.header_img" />
+								t-att-src="'data:image/jpg;base64,%s' % report.get_header(company.id)" />
 						</t>
 					</div>
 					<div class="col-xs-4" style="float: right; width: 30%;" />
