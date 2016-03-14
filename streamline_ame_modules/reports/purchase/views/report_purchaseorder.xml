@@ -5,11 +5,11 @@
 			<t t-call="report.html_container">
 				<t t-foreach="docs" t-as="o">
 					<t t-call="streamline_ame_modules.streamline_ame_custom_report_header" />
-					<div class="page" style="font-size: 12px">
+					<div class="page">
 						<div class="oe_structure" />
 						<div class="row text-center">
 							<br/>
-							<span style="font-size: 16px"><b><u>PURCHASE ORDER</u></b></span>
+							<span style="font-size: 18px"><b><u>PURCHASE ORDER</u></b></span>
 						</div>
 						<div class="row">
 							<br />
@@ -123,13 +123,8 @@
 							</div>
 							<div class="col-xs-2">
 							</div>
-							<div class="col-xs-5">
-								<div class="col-xs-4" style="text-align:right">
-
-								</div>
-								<div class="col-xs-8">
-									<b>PAYMENT TERM: <t t-if="o.payment_term_id"><span t-field="o.payment_term_id.name" /></t></b>
-								</div>
+							<div class="col-xs-5" style="text-align:center">
+								<b>PAYMENT TERM: <t t-if="o.payment_term_id"><span t-field="o.payment_term_id.name" /></t></b>
 							</div>
 						</div>
 						<table class="table table-condensed" style="margin-left: 15px;">
@@ -235,8 +230,6 @@
 										</div>
 									</td>
 								</tr>
-							</tbody>
-							<tfoot>
 								<tr>
 									<td colspan="4" style="border-top: medium solid; border-width: 1px; vertical-align: middle;"/>
 									<td class="text-right" style="border-top: medium solid; border-left: medium solid;border-right: medium solid; border-bottom: medium solid; border-width: 1px; vertical-align: middle;">
@@ -249,7 +242,7 @@
 										</div>
 									</td>
 								</tr>
-							</tfoot>
+							</tbody>
 						</table>
 						<div class="row">
 							<div class="col-xs-8">
