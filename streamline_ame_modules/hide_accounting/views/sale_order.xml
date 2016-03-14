@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+
+    <record id="view_order_form_ame_hidden_inherit" model="ir.ui.view">
+      <field name="name">sale.order.form</field>
+      <field name="model">sale.order</field>
+      <field name="inherit_id" ref="sale.view_order_form"/>
+      <field name="arch" type="xml">
+        <xpath expr="//button[@name='action_view_invoice']" position="attributes">
+            <attribute name="groups" />
+        </xpath>
+        <xpath expr="//button[10]" position="attributes">
+            <attribute name="groups" />
+        </xpath>
+
+
+        <xpath expr="//button[@name='action_view_invoice']" position="attributes">
+            <attribute name="groups">streamline_ame_modules.group_ame_hidden</attribute>
+        </xpath>
+        <xpath expr="//button[10]" position="attributes">
+            <attribute name="groups">streamline_ame_modules.group_ame_hidden</attribute>
+        </xpath>
+
+      </field>
+    </record>
+     <record id="view_order_form_inherit_hidden_inherit" model="ir.ui.view">
+        <field name="name">sale.order.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale_stock.view_order_form_inherit"/>
+        <field name="arch" type="xml">
+            <xpath expr="///field[@name='order_policy']" position="attributes">
+                <attribute name="groups">streamline_ame_modules.group_ame_hidden</attribute>
+            </xpath>
+        </field>
+     </record>
+
+  </data>
+</openerp>

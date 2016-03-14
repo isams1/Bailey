@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="0">
+
+        <record id="group_ame_hidden" model="res.groups">
+            <field name="name">Hidden Group</field>
+        </record>
+
+    </data>
+
+</openerp>
