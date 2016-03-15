@@ -52,6 +52,7 @@
         'hide_accounting/views/sale_order.xml',
         'hide_accounting/views/purchase_view.xml',
         'hide_accounting/views/stock_view.xml',
+        'hide_accounting/views/product_view.xml',
     ],
     'pre_init_hook': 'update_null_and_slash_codes',
     'demo' : [],

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+
+        <record id="hidden_view_category_property_form1" model="ir.ui.view">
+            <field name="name">product.category.property.form.inherit</field>
+            <field name="model">product.category</field>
+            <field name="inherit_id" ref="account.view_category_property_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//group[@name='account_property']" position="attributes">
+                        <attribute name="groups">streamline_ame_modules.group_ame_hidden</attribute>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+
+        <record id="hidden_view_category_property_form2" model="ir.ui.view">
+            <field name="name">product.category.stock.property.form.inherit</field>
+            <field name="model">product.category</field>
+            <field name="inherit_id" ref="stock_account.view_category_property_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//group[@name='account_stock_property']" position="attributes">
+                        <attribute name="groups">streamline_ame_modules.group_ame_hidden</attribute>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+
+  </data>
+</openerp>
