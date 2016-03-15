@@ -11,9 +11,9 @@
         <xpath expr="//field[@name='partner_id']" position="after">
           <field name="origin" string="Quotation Name"/>
         </xpath>
-        <xpath expr="//field[@name='price_subtotal']" position="after">
+        <!--<xpath expr="//field[@name='price_subtotal']" position="after">
           <field name="remark"/>
-        </xpath>
+        </xpath>-->
         <xpath expr="//field[@name='note']" position="attributes">
             <attribute name="placeholder">Add an internal note...</attribute>
         </xpath>
