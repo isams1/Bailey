@@ -2,20 +2,9 @@
 <openerp>
 	<data noupdate="1">
 		<!-- ame_sale -->
-		<record id="partner_sale_1" model="res.partner">
+		<record id="streamline_ame_modules.seantang" model="res.users">
 			<field name="name">Mr Sean Tang</field>
-			<field name="company_id" ref="base.main_company" />
-			<field name="customer" eval="False" />
-			<field name="email">seantang@alliancemarine.com.sg</field>
-			<field name="street"></field>
-			<field name="city"></field>
-			<field name="zip"></field>
-			<field name="country_id" ref="base.sg" />
-		</record>
-		<record id="user_salel_1" model="res.users">
-			<field name="partner_id" ref="partner_sale_1" />
 			<field name="login">seantang@alliancemarine.com.sg</field>
-			<field name="password">seantang</field>
 			<field name="signature">--Mr Sean Tang</field>
 			<field name="company_id" ref="base.main_company" />
 			<field name="company_ids"
@@ -23,20 +12,9 @@
 			<field name="groups_id" eval="[(6,0,[ref('ame_sale')])]" />
 			<field name="image" type="base64" file="base/static/img/user_demo-image.jpg" />
 		</record>
-		<record id="partner_sale_2" model="res.partner">
+		<record id="streamline_ame_modules.chentk" model="res.users">
 			<field name="name">Mr Chen Tin Kong</field>
-			<field name="company_id" ref="base.main_company" />
-			<field name="customer" eval="False" />
-			<field name="email">chentk@alliancemarine.com.sg</field>
-			<field name="street"></field>
-			<field name="city"></field>
-			<field name="zip"></field>
-			<field name="country_id" ref="base.sg" />
-		</record>
-		<record id="user_salel_2" model="res.users">
-			<field name="partner_id" ref="partner_sale_2" />
 			<field name="login">chentk@alliancemarine.com.sg</field>
-			<field name="password">chentk</field>
 			<field name="signature">--Mr Chen Tin Kong</field>
 			<field name="company_id" ref="base.main_company" />
 			<field name="company_ids"
@@ -44,20 +22,9 @@
 			<field name="groups_id" eval="[(6,0,[ref('ame_sale')])]" />
 			<field name="image" type="base64" file="base/static/img/user_demo-image.jpg" />
 		</record>
-		<record id="partner_sale_3" model="res.partner">
+		<record id="streamline_ame_modules.melvyntan" model="res.users">
 			<field name="name">Mr Melvyn Tan</field>
-			<field name="company_id" ref="base.main_company" />
-			<field name="customer" eval="False" />
-			<field name="email">melvyntan@alliancemarine.som.sg</field>
-			<field name="street"></field>
-			<field name="city"></field>
-			<field name="zip"></field>
-			<field name="country_id" ref="base.sg" />
-		</record>
-		<record id="user_salel_3" model="res.users">
-			<field name="partner_id" ref="partner_sale_3" />
 			<field name="login">melvyntan@alliancemarine.som.sg</field>
-			<field name="password">melvyntan</field>
 			<field name="signature">--Mr Melvyn Tan</field>
 			<field name="company_id" ref="base.main_company" />
 			<field name="company_ids"
@@ -66,20 +33,9 @@
 			<field name="image" type="base64" file="base/static/img/user_demo-image.jpg" />
 		</record>
 		<!-- Engineering -->
-		<record id="partner_engineering_1" model="res.partner">
+		<record id="streamline_ame_modules.alishachan" model="res.users">
 			<field name="name">Ms Alisha</field>
-			<field name="company_id" ref="base.main_company" />
-			<field name="customer" eval="False" />
-			<field name="email">alishachan@alliancemarine.com.sg</field>
-			<field name="street"></field>
-			<field name="city"></field>
-			<field name="zip"></field>
-			<field name="country_id" ref="base.sg" />
-		</record>
-		<record id="user_engineering_1" model="res.users">
-			<field name="partner_id" ref="partner_engineering_1" />
 			<field name="login">alishachan@alliancemarine.com.sg</field>
-			<field name="password">alishachan</field>
 			<field name="signature">--Ms Alisha</field>
 			<field name="company_id" ref="base.main_company" />
 			<field name="company_ids"
@@ -87,21 +43,9 @@
 			<field name="groups_id" eval="[(6,0,[ref('ame_engineering')])]" />
 			<field name="image" type="base64" file="base/static/img/user_demo-image.jpg" />
 		</record>
-
-		<record id="partner_engineering_2" model="res.partner">
+		<record id="streamline_ame_modules.vikneshwari" model="res.users">
 			<field name="name">Ms Vikneshwari</field>
-			<field name="company_id" ref="base.main_company" />
-			<field name="customer" eval="False" />
-			<field name="email">vikneshwari@alliancemarine.sg</field>
-			<field name="street"></field>
-			<field name="city"></field>
-			<field name="zip"></field>
-			<field name="country_id" ref="base.sg" />
-		</record>
-		<record id="user_engineering_2" model="res.users">
-			<field name="partner_id" ref="partner_engineering_2" />
 			<field name="login">vikneshwari@alliancemarine.sg</field>
-			<field name="password">vikneshwari</field>
 			<field name="signature">--Ms Vikneshwari</field>
 			<field name="company_id" ref="base.main_company" />
 			<field name="company_ids"
@@ -110,20 +54,9 @@
 			<field name="image" type="base64" file="base/static/img/user_demo-image.jpg" />
 		</record>
 
-		<record id="partner_engineering_3" model="res.partner">
+		<record id="streamline_ame_modules.yoonmie" model="res.users">
 			<field name="name">Ms Yoon</field>
-			<field name="company_id" ref="base.main_company" />
-			<field name="customer" eval="False" />
-			<field name="email">yoonmie@alliancemarine.sg</field>
-			<field name="street"></field>
-			<field name="city"></field>
-			<field name="zip"></field>
-			<field name="country_id" ref="base.sg" />
-		</record>
-		<record id="user_engineering_3" model="res.users">
-			<field name="partner_id" ref="partner_engineering_3" />
 			<field name="login">yoonmie@alliancemarine.sg</field>
-			<field name="password">yoonmie</field>
 			<field name="signature">--Ms Yoon</field>
 			<field name="company_id" ref="base.main_company" />
 			<field name="company_ids"
@@ -132,20 +65,9 @@
 			<field name="image" type="base64" file="base/static/img/user_demo-image.jpg" />
 		</record>
 
-		<record id="partner_engineering_4" model="res.partner">
+		<record id="streamline_ame_modules.keanu" model="res.users">
 			<field name="name">Mr Keanu</field>
-			<field name="company_id" ref="base.main_company" />
-			<field name="customer" eval="False" />
-			<field name="email">keanu@alliancemarine.sg</field>
-			<field name="street"></field>
-			<field name="city"></field>
-			<field name="zip"></field>
-			<field name="country_id" ref="base.sg" />
-		</record>
-		<record id="user_engineering_4" model="res.users">
-			<field name="partner_id" ref="partner_engineering_4" />
 			<field name="login">keanu@alliancemarine.sg</field>
-			<field name="password">keanu</field>
 			<field name="signature">--Mr Keanu</field>
 			<field name="company_id" ref="base.main_company" />
 			<field name="company_ids"
@@ -154,20 +76,9 @@
 			<field name="image" type="base64" file="base/static/img/user_demo-image.jpg" />
 		</record>
 		<!-- Finance -->
-		<record id="partner_finance_1" model="res.partner">
+		<record id="streamline_ame_modules.uctrade" model="res.users">
 			<field name="name">Ms Julia</field>
-			<field name="company_id" ref="base.main_company" />
-			<field name="customer" eval="False" />
-			<field name="email">uctrade@singnet.com.sg</field>
-			<field name="street"></field>
-			<field name="city"></field>
-			<field name="zip"></field>
-			<field name="country_id" ref="base.sg" />
-		</record>
-		<record id="user_finance_1" model="res.users">
-			<field name="partner_id" ref="partner_finance_1" />
 			<field name="login">uctrade@singnet.com.sg</field>
-			<field name="password">uctrade</field>
 			<field name="signature">--Ms Julia</field>
 			<field name="company_id" ref="base.main_company" />
 			<field name="company_ids"
@@ -176,20 +87,9 @@
 			<field name="image" type="base64" file="base/static/img/user_demo-image.jpg" />
 		</record>
 
-		<record id="partner_finance_2" model="res.partner">
+		<record id="streamline_ame_modules.janewong" model="res.users">
 			<field name="name">Ms Jane Wong</field>
-			<field name="company_id" ref="base.main_company" />
-			<field name="customer" eval="False" />
-			<field name="email">janewong@alliancemarine.sg</field>
-			<field name="street"></field>
-			<field name="city"></field>
-			<field name="zip"></field>
-			<field name="country_id" ref="base.sg" />
-		</record>
-		<record id="user_finance_2" model="res.users">
-			<field name="partner_id" ref="partner_finance_2" />
 			<field name="login">janewong@alliancemarine.sg</field>
-			<field name="password">janewong</field>
 			<field name="signature">--Ms Jane Wong</field>
 			<field name="company_id" ref="base.main_company" />
 			<field name="company_ids"
@@ -198,20 +98,9 @@
 			<field name="image" type="base64" file="base/static/img/user_demo-image.jpg" />
 		</record>
 
-		<record id="partner_finance_3" model="res.partner">
+		<record id="streamline_ame_modules.winnie_fang" model="res.users">
 			<field name="name">Ms Winnie Fang</field>
-			<field name="company_id" ref="base.main_company" />
-			<field name="customer" eval="False" />
-			<field name="email">winnie.fang@alliancemarinem.sg</field>
-			<field name="street"></field>
-			<field name="city"></field>
-			<field name="zip"></field>
-			<field name="country_id" ref="base.sg" />
-		</record>
-		<record id="user_finance_3" model="res.users">
-			<field name="partner_id" ref="partner_finance_3" />
 			<field name="login">winnie.fang@alliancemarine.sg</field>
-			<field name="password">winnie.fang</field>
 			<field name="signature">--Ms Winnie Fang</field>
 			<field name="company_id" ref="base.main_company" />
 			<field name="company_ids"
@@ -220,20 +109,9 @@
 			<field name="image" type="base64" file="base/static/img/user_demo-image.jpg" />
 		</record>
 		<!-- Warehouse -->
-		<record id="partner_warehouse_1" model="res.partner">
+		<record id="streamline_ame_modules.raymondkoh" model="res.users">
 			<field name="name">Mr Raymond Koh</field>
-			<field name="company_id" ref="base.main_company" />
-			<field name="customer" eval="False" />
-			<field name="email">raymondkoh@alliancemarine.sg</field>
-			<field name="street"></field>
-			<field name="city"></field>
-			<field name="zip"></field>
-			<field name="country_id" ref="base.sg" />
-		</record>
-		<record id="user_warehouse_1" model="res.users">
-			<field name="partner_id" ref="partner_warehouse_1" />
 			<field name="login">raymondkoh@alliancemarine.sg</field>
-			<field name="password">raymondkoh</field>
 			<field name="signature">--Mr Raymond Koh</field>
 			<field name="company_id" ref="base.main_company" />
 			<field name="company_ids"
@@ -241,21 +119,9 @@
 			<field name="groups_id" eval="[(6,0,[ref('ame_warehouse')])]" />
 			<field name="image" type="base64" file="base/static/img/user_demo-image.jpg" />
 		</record>
-
-		<record id="partner_warehouse_2" model="res.partner">
+		<record id="streamline_ame_modules.sengli" model="res.users">
 			<field name="name">Mr Seng Li</field>
-			<field name="company_id" ref="base.main_company" />
-			<field name="customer" eval="False" />
-			<field name="email">sengli@outlook.com</field>
-			<field name="street"></field>
-			<field name="city"></field>
-			<field name="zip"></field>
-			<field name="country_id" ref="base.sg" />
-		</record>
-		<record id="user_warehouse_2" model="res.users">
-			<field name="partner_id" ref="partner_warehouse_2" />
 			<field name="login">sengli@outlook.com</field>
-			<field name="password">sengli</field>
 			<field name="signature">--Mr Seng Li</field>
 			<field name="company_id" ref="base.main_company" />
 			<field name="company_ids"
@@ -264,20 +130,9 @@
 			<field name="image" type="base64" file="base/static/img/user_demo-image.jpg" />
 		</record>
 		<!-- Purchase -->
-		<record id="partner_purchase_1" model="res.partner">
+		<record id="streamline_ame_modules.zalina" model="res.users">
 			<field name="name">Ms Zalina</field>
-			<field name="company_id" ref="base.main_company" />
-			<field name="customer" eval="False" />
-			<field name="email">zalina@alliancemarine.sg</field>
-			<field name="street"></field>
-			<field name="city"></field>
-			<field name="zip"></field>
-			<field name="country_id" ref="base.sg" />
-		</record>
-		<record id="user_purchase_1" model="res.users">
-			<field name="partner_id" ref="partner_purchase_1" />
 			<field name="login">zalina@alliancemarine.sg</field>
-			<field name="password">zalina</field>
 			<field name="signature">--Ms Zalina</field>
 			<field name="company_id" ref="base.main_company" />
 			<field name="company_ids"
@@ -285,20 +140,9 @@
 			<field name="groups_id" eval="[(6,0,[ref('ame_purchase')])]" />
 			<field name="image" type="base64" file="base/static/img/user_demo-image.jpg" />
 		</record>
-		<record id="partner_purchase_2" model="res.partner">
+		<record id="streamline_ame_modules.rosita" model="res.users">
 			<field name="name">Ms Rosita</field>
-			<field name="company_id" ref="base.main_company" />
-			<field name="customer" eval="False" />
-			<field name="email">rosita@alliancemarine.sg</field>
-			<field name="street"></field>
-			<field name="city"></field>
-			<field name="zip"></field>
-			<field name="country_id" ref="base.sg" />
-		</record>
-		<record id="user_purchase_2" model="res.users">
-			<field name="partner_id" ref="partner_purchase_2" />
 			<field name="login">rosita@alliancemarine.sg</field>
-			<field name="password">rosita</field>
 			<field name="signature">--Ms Rosita</field>
 			<field name="company_id" ref="base.main_company" />
 			<field name="company_ids"
@@ -306,20 +150,10 @@
 			<field name="groups_id" eval="[(6,0,[ref('ame_purchase')])]" />
 			<field name="image" type="base64" file="base/static/img/user_demo-image.jpg" />
 		</record>
-		<record id="partner_purchase_3" model="res.partner">
+
+		<record id="streamline_ame_modules.liliangoh" model="res.users">
 			<field name="name">Ms Lilian Goh</field>
-			<field name="company_id" ref="base.main_company" />
-			<field name="customer" eval="False" />
-			<field name="email">liliangoh@alliancemarine.sg</field>
-			<field name="street"></field>
-			<field name="city"></field>
-			<field name="zip"></field>
-			<field name="country_id" ref="base.sg" />
-		</record>
-		<record id="user_purchase_3" model="res.users">
-			<field name="partner_id" ref="partner_purchase_3" />
 			<field name="login">liliangoh@alliancemarine.sg</field>
-			<field name="password">liliangoh</field>
 			<field name="signature">--Ms Lilian Goh</field>
 			<field name="company_id" ref="base.main_company" />
 			<field name="company_ids"
@@ -328,20 +162,9 @@
 			<field name="image" type="base64" file="base/static/img/user_demo-image.jpg" />
 		</record>
 		<!-- General -->
-		<record id="partner_general_1" model="res.partner">
+		<record id="streamline_ame_modules.ablim" model="res.users">
 			<field name="name">Mr AB Lim</field>
-			<field name="company_id" ref="base.main_company" />
-			<field name="customer" eval="False" />
-			<field name="email">ablim@alliancemarine.com.sg </field>
-			<field name="street"></field>
-			<field name="city"></field>
-			<field name="zip"></field>
-			<field name="country_id" ref="base.sg" />
-		</record>
-		<record id="user_general_1" model="res.users">
-			<field name="partner_id" ref="partner_general_1" />
 			<field name="login">ablim@alliancemarine.com.sg</field>
-			<field name="password">ablim</field>
 			<field name="signature">--Ms AB Lim</field>
 			<field name="company_id" ref="base.main_company" />
 			<field name="company_ids"
@@ -350,20 +173,9 @@
 			<field name="image" type="base64" file="base/static/img/user_demo-image.jpg" />
 		</record>
 
-		<record id="partner_general_2" model="res.partner">
+		<record id="streamline_ame_modules.ragib_kadribegovic" model="res.users">
 			<field name="name">Mr Ragib</field>
-			<field name="company_id" ref="base.main_company" />
-			<field name="customer" eval="False" />
-			<field name="email">ragib.kadribegovic@alliancemarine.sg</field>
-			<field name="street"></field>
-			<field name="city"></field>
-			<field name="zip"></field>
-			<field name="country_id" ref="base.sg" />
-		</record>
-		<record id="user_general_2" model="res.users">
-			<field name="partner_id" ref="partner_general_2" />
 			<field name="login">ragib.kadribegovic@alliancemarine.sg</field>
-			<field name="password">ragib.kadribegovic</field>
 			<field name="signature">--Mr Ragib</field>
 			<field name="company_id" ref="base.main_company" />
 			<field name="company_ids"
@@ -371,21 +183,9 @@
 			<field name="groups_id" eval="[(6,0,[ref('ame_general')])]" />
 			<field name="image" type="base64" file="base/static/img/user_demo-image.jpg" />
 		</record>
-
-		<record id="partner_general_3" model="res.partner">
+		<record id="streamline_ame_modules.chowkl" model="res.users">
 			<field name="name">Mr Chow</field>
-			<field name="company_id" ref="base.main_company" />
-			<field name="customer" eval="False" />
-			<field name="email">chowkl@alliancemarine.sg</field>
-			<field name="street"></field>
-			<field name="city"></field>
-			<field name="zip"></field>
-			<field name="country_id" ref="base.sg" />
-		</record>
-		<record id="user_general_3" model="res.users">
-			<field name="partner_id" ref="partner_general_3" />
 			<field name="login">chowkl@alliancemarine.sg</field>
-			<field name="password">chowkl</field>
 			<field name="signature">--Mr Chow</field>
 			<field name="company_id" ref="base.main_company" />
 			<field name="company_ids"
@@ -395,20 +195,9 @@
 		</record>
 
 		<!-- Operation -->
-		<record id="partner_operation_1" model="res.partner">
+		<record id="streamline_ame_modules.mohan" model="res.users">
 			<field name="name">Mr Mohan</field>
-			<field name="company_id" ref="base.main_company" />
-			<field name="customer" eval="False" />
-			<field name="email">mohan@alliancemarine.sg</field>
-			<field name="street"></field>
-			<field name="city"></field>
-			<field name="zip"></field>
-			<field name="country_id" ref="base.sg" />
-		</record>
-		<record id="user_operation_1" model="res.users">
-			<field name="partner_id" ref="partner_operation_1" />
 			<field name="login">mohan@alliancemarine.sg</field>
-			<field name="password">mohan</field>
 			<field name="signature">--Mr Mohan</field>
 			<field name="company_id" ref="base.main_company" />
 			<field name="company_ids"
