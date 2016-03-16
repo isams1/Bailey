@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 {
-    'name' : "Streamline AME Modules",
-    'version' : "1.0",
-    'author' : "Streamline Pte Ltd",
+    'name' : 'Commgate AME Modules',
+    'version' : '1.1',
+    'author' : 'Commgate Pte Ltd',
+    'category' : 'Commgate Pte Ltd - MB',
     'description' : '''
         All modules of AME client need to put in here.
     ''',
-    'category' : "Streamline Pte Ltd - AME",
     'depends' : ['base','web','report','account', 'product', 'purchase', 'warehouse_extended', 'report_xls','purchase_double_validation', 'base_report'],
-    'website': 'http://streamline.sg/',
+    'website': 'commgate.net',
     'js': ['static/src/js/datetimepicker.js'],
     'data': [
         'security/res.groups.csv',
@@ -45,7 +45,9 @@
         'base/views/company_view.xml',
         'view/templates.xml',
         'security/ir.model.access.csv',
-
+        
+        'data/group_security.xml',
+        'data/res_user.xml',
     ],
     'pre_init_hook': 'update_null_and_slash_codes',
     'demo' : [],
