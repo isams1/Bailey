@@ -8,8 +8,7 @@
 					<div class="page">
 						<div class="oe_structure" />
 						<div class="row text-center">
-							<br/>
-							<span style="font-size: 18px"><b><u>PURCHASE ORDER</u></b></span>
+							<span style="font-size: 20px"><b><u>PURCHASE ORDER</u></b></span>
 						</div>
 						<div class="row">
 							<br />
@@ -230,19 +229,26 @@
 										</div>
 									</td>
 								</tr>
-								<tr>
-									<td colspan="4" style="border-top: medium solid; border-width: 1px; vertical-align: middle;"/>
-									<td class="text-right" style="border-top: medium solid; border-left: medium solid;border-right: medium solid; border-bottom: medium solid; border-width: 1px; vertical-align: middle;">
-										<strong>TOTAL:</strong>
-									</td>
-									<td class="text-right" style="border-right: medium solid; border-bottom: medium solid; border-width: 1px; vertical-align: middle;">
-										<div style="float: left; width: 100%">
-											<span style="float: left">$</span>
-											<span style="float: right" t-field="o.amount_total" />
-										</div>
-									</td>
-								</tr>
 							</tbody>
+							<tfoot>
+								<tr>
+									<td colspan="6" style="border-top: medium solid; border-width: 1px; vertical-align: middle;" />
+								</tr>
+							</tfoot>
+						</table>
+						<table class="table table-condensed" style="margin-left: 15px;margin-top: -31px;">
+							<tr>
+								<td style="border-top: medium solid; border-width: 1px; vertical-align: middle;width: 80%"/>
+								<td class="text-right" style="border-top: medium solid; border-left: medium solid;border-right: medium solid; border-bottom: medium solid; border-width: 1px; vertical-align: middle;width: 10%">
+									<strong>TOTAL:</strong>
+								</td>
+								<td class="text-right" style="border-top: medium solid; border-right: medium solid; border-bottom: medium solid; border-width: 1px; vertical-align: middle;width: 10%">
+									<div style="float: left; width: 100%">
+										<span style="float: left">$</span>
+										<span style="float: right" t-field="o.amount_total" />
+									</div>
+								</td>
+							</tr>
 						</table>
 						<div class="row">
 							<div class="col-xs-8">

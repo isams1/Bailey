@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <record id="view_picking_inherit_form2_hidden" model="ir.ui.view">
+            <field name="name">stock.picking.form.inherit</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock_account.view_picking_inherit_form2"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//field[@name='invoice_state']" position="attributes">
+                    <attribute name="groups" />
+                </xpath>
+
+                <xpath expr="//field[@name='invoice_state']" position="attributes">
+                    <attribute name="groups">streamline_ame_modules.group_ame_hidden</attribute>
+                </xpath>
+
+                 <xpath expr="//button[@name='%(stock_account.action_stock_invoice_onshipping)d']" position="attributes">
+                    <attribute name="groups">streamline_ame_modules.group_ame_hidden</attribute>
+                </xpath>
+
+            </field>
+        </record>
+    </data>
+</openerp>
