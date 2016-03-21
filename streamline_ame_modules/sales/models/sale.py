@@ -3,6 +3,8 @@ from openerp import models, fields, api, _
 from openerp import SUPERUSER_ID
 import openerp.addons.decimal_precision as dp
 from openerp.exceptions import except_orm
+from lxml import etree
+import simplejson as json
 
 class sale_order(models.Model):
     _inherit = "sale.order"
@@ -12,6 +14,31 @@ class sale_order(models.Model):
         sale_id = super(sale_order, self).create(vals)
         self.action_send_mail(sale_id, vals)
         return sale_id
+    
+    @api.model
+    def fields_view_get(self, view_id=None, view_type='form', context=None, toolbar=False, submenu=False):
+        if context is None:
+            context = {}
+        res = super(sale_order, self).fields_view_get(view_id=view_id, view_type=view_type, toolbar=toolbar, submenu=submenu)
+        
+        my_group_gid = self.env.ref('streamline_ame_modules.ame_general').id
+        current_user_gids = self.env.user.groups_id.mapped('id')
+        if my_group_gid in current_user_gids:
+            doc = etree.XML(res['arch'])
+            if view_type == 'form':
+                nodes = doc.xpath("//form")
+                for node in nodes:
+                    node.set('create', 'false')
+                    node.set('edit', 'false')
+                    node.set('delete', 'false')
+            if view_type == 'tree':
+                nodes = doc.xpath("//tree")
+                for node in nodes:
+                    node.set('create', 'false')
+                    node.set('edit', 'false')
+                    node.set('delete', 'false')
+            res['arch'] = etree.tostring(doc)
+        return res
 
 
     def action_send_mail(self, cr, uid, model_id, vals, context=None):

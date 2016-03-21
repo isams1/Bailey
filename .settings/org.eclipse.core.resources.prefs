@@ -1,4 +1,15 @@
 eclipse.preferences.version=1
+encoding//commgate_debranding/__openerp__.py=utf-8
 encoding//point_of_sale_table/point_of_sale_table.py=utf-8
 encoding//product_property/product_property.py=utf-8
 encoding//sg_account_odoo/res_partner.py=utf-8
+encoding//streamline_ame_modules/__openerp__.py=utf-8
+encoding//streamline_ame_modules/account/models/account.py=utf-8
+encoding//streamline_ame_modules/controllers/main.py=utf-8
+encoding//streamline_ame_modules/products/models/product.py=utf-8
+encoding//streamline_ame_modules/products/models/product_minimum.py=utf-8
+encoding//streamline_ame_modules/sales/models/sale.py=utf-8
+encoding//streamline_ame_modules/stock/models/__init__.py=utf-8
+encoding//streamline_ame_modules/stock/models/stock.py=utf-8
+encoding//streamline_ame_modules/stock/wizard/stock_transfer_details.py=utf-8
+encoding//warehouse_extended/stock.py=utf-8
