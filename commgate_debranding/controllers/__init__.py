@@ -19,37 +19,6 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-{
-    'name' : 'Commgate Debranding',
-    'version' : '1.1',
-    'author' : 'Commgate Pte Ltd',
-    'category' : 'Commgate Pte Ltd - MB',
-    'description':
-        """
-            1. Logo to CommGate Logo
-            2. Powered by CommGate
-            3. My Odoo.com account
-            4. About Odoo
-            5. Odoo Support
-            6. Odoo Title
-            7. Odoo debranding popup 
-            8. Odoo load database
-            -- add to config file : load = web,commgate_debranding
-        """,
-    'license': 'AGPL-3',
-    'depends': [
-        'base',
-        'web',
-        'account'        
-    ],
-    'data': [
-        'view/view.xml',
-        'view/res_partner.xml',
-        'view/res_company.xml',
-        'view/account_config_settings.xml',
-        'view/base_config_settings.xml',
-    ],
-    'qweb': [
-        'static/src/xml/debranding.xml',
-    ],
-}
+
+
+import main
