@@ -14,12 +14,14 @@
         'security/res.groups.csv',
         'security/ame_security.xml',
         'reports/header.xml',
+        'reports/paper.xml',
         'reports/account/wizard/invoice_summary_view.xml',
         'reports/account/wizard/stock_report_view.xml',
         'reports/account/views/report_invoice_summary.xml',
         'reports/account/views/report_stock_report.xml',
         'reports/sale/views/report_saleorder.xml',
         'reports/sale/views/report_saleorder2.xml',
+
         'reports/stock/wizard/product_aging_view.xml',
         'reports/stock/views/report_product_aging.xml',
         'reports/stock/wizard/item_consumption_by_site_view.xml',
@@ -28,9 +30,12 @@
         'reports/stock/views/report_ordered_vs_delivery_qty.xml',
         'reports/stock/wizard/inventory_listing_view.xml',
         'reports/stock/views/report_inventory_listing.xml',
+        'reports/stock/views/define_report.xml',
         'reports/stock/views/report_stockpicking.xml',
+
         'reports/purchase/views/report_purchaseorder.xml',
         'reports/purchase/views/report_purchasequotation.xml',
+
         'reports/menu.xml',
         'products/data/product_sequence.xml',
         'products/views/product_minimum_view.xml',

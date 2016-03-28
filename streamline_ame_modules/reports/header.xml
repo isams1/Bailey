@@ -14,12 +14,56 @@
 				<div class="row" id="table_header">
 					<div style="position: relative;min-height: 1px;padding-right: 15px;padding-left: 115px;float: left;">
 						<t t-if="company.letterhead and not report.get_header(company.id)">
-							<img height="130" width="650"
+							<img height="150" width="680"
 								t-att-src="'data:image/jpg;base64,%s' % company.letterhead" />
 						</t>
 						<t t-if="report.get_header(company.id)">
-							<img height="130" width="650"
+							<img height="150" width="680"
 								t-att-src="'data:image/jpg;base64,%s' % report.get_header(company.id)" />
+						</t>
+					</div>
+				</div>
+			</div>
+		</template>
+
+		<template id="streamline_ame_custom_picking_report_header">
+			<t t-if="o and 'company_id' in o">
+				<t t-set="company" t-value="o.company_id"></t>
+			</t>
+			<t t-if="not o or not 'company_id' in o">
+				<t t-set="company" t-value="res_company"></t>
+			</t>
+
+			<div class="header">
+				<div class="row" id="table_header">
+					<div style="position: relative;min-height: 1px; padding-left:50px;float: left;">
+						<t t-if="company.letterhead and not report.get_header(company.id)">
+							<img t-att-src="'data:image/jpg;base64,%s' % company.letterhead" />
+						</t>
+						<t t-if="report.get_header(company.id)">
+							<img t-att-src="'data:image/jpg;base64,%s' % report.get_header(company.id)" />
+						</t>
+					</div>
+				</div>
+			</div>
+		</template>
+
+		<template id="streamline_ame_custom_report_footer">
+			<t t-if="o and 'company_id' in o">
+				<t t-set="company" t-value="o.company_id"></t>
+			</t>
+			<t t-if="not o or not 'company_id' in o">
+				<t t-set="company" t-value="res_company"></t>
+			</t>
+
+			<div class="footer">
+				<div class="row" id="table_header">
+					<div style="position: relative;min-height: 1px;float: left;">
+						<t t-if="company.letterhead and not report.get_header(company.id)">
+							<img t-att-src="'data:image/jpg;base64,%s' % company.letterfoot" />
+						</t>
+						<t t-if="report.get_header(company.id)">
+							<img t-att-src="'data:image/jpg;base64,%s' % report.get_footer(company.id)" />
 						</t>
 					</div>
 				</div>

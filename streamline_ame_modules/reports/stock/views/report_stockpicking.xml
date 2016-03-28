@@ -4,206 +4,92 @@
         <template id="stock.report_picking">
             <t t-call="report.html_container">
                 <t t-foreach="docs" t-as="o">
-                    <t t-call="streamline_ame_modules.streamline_ame_custom_report_header"/>
+                    <t t-call="streamline_ame_modules.streamline_ame_custom_picking_report_header"/>
                     <div class="page" style="font-size: 12px">
                         <div class="oe_structure"/>
-                        <t t-if="o.sale_id">
-                            <t t-set="sale" t-value="o.sale_id"></t>
-                            <div class="row">
-                                <div class="col-xs-4" style="padding-left: 0px !important; margin-top: 20px;">
-                                    <strong style="font-size: 14pt;">SHIP TO:</strong>
+                        <div class="row">
+                            <div class="col-xs-8" style="padding-left: 50px !important; margin-top: 20px;">
+                                <strong style="font-size: 14pt;">SHIP TO:</strong>
+                                <br />
+                                <t t-if="o.partner_id">
+                                    <strong style="font-size: 13pt;"><span t-field="o.partner_id.name" /></strong>
                                     <br />
-                                    <span t-field="sale.partner_shipping_id.name"></span>
-                                    <br />
-                                    <div t-field="sale.partner_shipping_id"
+                                    <div t-field="o.partner_id"
                                         t-field-options='{"widget": "contact", "fields": ["address"], "no_marker": true}' />
                                     <span>Tel: </span>
-                                    <span t-field="sale.partner_shipping_id.phone"></span>
+                                    <span t-field="o.partner_id.phone"></span>
                                     <span> Fax: </span>
-                                    <span t-field="sale.partner_shipping_id.fax"></span>
+                                    <span t-field="o.partner_id.fax"></span>
                                     <br />
                                     <span>Attention: </span>
-                                    <span t-field="sale.partner_shipping_id.name"></span>
+                                    <span t-field="o.partner_id.name"></span>
                                     <br />
                                     <span>Contact: </span>
-                                    <span t-field="sale.partner_shipping_id.mobile"></span>
+                                    <span t-field="o.partner_id.mobile"></span>
                                     <br />
                                     <span>Email: </span>
-                                    <span t-field="sale.partner_shipping_id.email"></span>
-                                    <br />
-                                    <br />
-                                </div>
-                                <div class="col-xs-4" style="padding-left: 0px !important; margin-top: 20px;">
-                                    <strong style="font-size: 14pt;">ORDER BY:</strong>
-                                    <br />
-                                    <span t-field="sale.partner_id.name"></span>
-                                    <br />
-                                    <div t-field="sale.partner_shipping_id"
-                                        t-field-options='{"widget": "contact", "fields": ["address"], "no_marker": true}' />
-                                    <span>Tel: </span>
-                                    <span t-field="sale.partner_id.phone"></span>
-                                    <span> Fax: </span>
-                                    <span t-field="sale.partner_id.fax"></span>
-                                    <br />
-                                    <span>Attention: </span>
-                                    <span t-field="sale.partner_id.name"></span>
-                                    <br />
-                                    <span>Contact: </span>
-                                    <span t-field="sale.partner_id.mobile"></span>
-                                    <br />
-                                    <span>Email: </span>
-                                    <span t-field="sale.partner_id.email"></span>
-                                    <br />
-                                    <br />
-                                </div>
-                                <div class="col-xs-4" style="margin-top: 20px; padding-left: 0px !important;">
-                                    <strong style="font-size: 14pt;">DELIVERY ORDER</strong>
-                                    <br />
-                                    <span style="display: inline-block; width: 42%;">
-                                        Delivery Order No.
-                                    </span> :
-                                    <span t-field="o.name"></span>
-                                    <br />
-                                    <span style="display: inline-block; width: 42%;">
-                                        Date
-                                    </span>:
-                                    <span
-                                        t-esc="o.date_done and datetime.datetime.strptime(o.date_done, '%Y-%m-%d %H:%M:%S').strftime('%d-%b-%y') or '' " />
-                                    <br />
-                                    <span style="display: inline-block; width: 42%;">
-                                        Sales Quotation No.
-                                    </span>
-                                    <span t-field="sale.name"></span>
-                                    <br />
-                                    <span style="display: inline-block; width: 42%;">
-                                        Sales Person:
-                                    </span>
-                                    <span t-field="sale.user_id" />
-                                    <br />
-                                    <span style="display: inline-block; width: 42%;">
-                                        Customer Ref:
-                                    </span>
-                                    <span t-field="sale.client_order_ref" />
-                                    <br />
-                                    <span style="display: inline-block; width: 42%;">
-                                        Page:
-                                    </span>
-                                    <span></span>
-                                </div>
+                                    <span t-field="o.partner_id.email"></span>
+                                </t>
                             </div>
-                        </t>
+                            <div class="col-xs-4" style="margin-top: 20px; padding-left: 0px !important;">
+                                <strong style="font-size: 14pt;">DELIVERY ORDER</strong>
+                                <br />
+                                <table class="table table-condensed" style="width: 100%;">
+                                    <tr>
+                                        <td style="border: None; width:18%">NO.:</td>
+                                        <td style="border-top: None;border-bottom: medium solid; border-width: 1px; border-color: #cf753e; width:82%">
+                                            <span t-field="o.name" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: None; width:18%">DATE:</td>
+                                        <td style="border-bottom: medium solid; border-width: 1px; border-color: #cf753e; width:82%">
+                                            <span t-esc="o.date_done and datetime.datetime.strptime(o.date_done, '%Y-%m-%d %H:%M:%S').strftime('%d-%b-%y') or '' "/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
 
                         <br/>
                         <table class="table table-condensed" style="width: 100%;">
                             <thead>
-                                <tr>
-                                    <th class="text-left" style="border-top: medium solid;border-bottom: medium solid; border-width: 1px;">
-                                        <strong>ITEM</strong>
-                                    </th>
-                                    <th class="text-left" style="border-top: medium solid;border-bottom: medium solid; border-width: 1px;">
-                                        <strong>QUANTITY</strong>
-                                    </th>
-                                    <th class="text-left" style="border-top: medium solid;border-bottom: medium solid; border-width: 1px;">
-                                        <strong>DESCRIPTION</strong>
-                                    </th>
-                                    <th class="text-left" style="border-top: medium solid;border-bottom: medium solid; border-width: 1px;">
-                                        <strong>REMARKS</strong>
+                                <tr style="height: 30px;">
+                                    <th class="text-left" colspan="4" style="border-top: medium solid;border-bottom: 1px solid #cf753e !important; border-width: 1px; border-color: #cf753e;">
                                     </th>
                                 </tr>
                             </thead>
                             <tbody>
+                                <tr>
+                                    <td class="text-left" colspan="2" style="border:None;">
+                                        <br/>
+                                        <strong>S/NO</strong>
+                                    </td>
+                                    <td class="text-center" style="border:None;">
+                                        <br/>
+                                        <strong>QTY</strong>
+                                    </td>
+                                     <td class="text-left" style="border:None;">
+                                    </td>
+                                </tr>
                                 <tr t-foreach="o.move_lines" t-as="order_line">
-                                    <td class="text-left" style="width: 15%">
-                                        <span t-field="order_line.product_id.default_code"/>
+                                    <td class="text-left" style="border:None; width: 5%">
+                                        <span t-esc="order_line_index + 1"/>
                                     </td>
-                                    <td class="text-left" style="width: 15%">
-                                        <span t-esc="order_line.product_uom_qty"/>
-                                    </td>
-                                    <td style="width: 50%">
+                                    <td class="text-left" style="border:None; width: 60%">
                                         <span t-field="order_line.product_id.name"/>
                                     </td>
-                                    <td class="text-left" style="width: 20%">
+                                    <td class="text-center" style="border:None; width: 25%">
+                                        <span t-esc="order_line.product_uom_qty"/>
+                                        <span t-field="order_line.product_uom"/>
                                     </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <br/>
-                        <t t-if="o.sale_id">
-                            <div class="row">
-                                <div class="col-xs-12">
-                                    <span>
-                                        <b><i>Remarks</i></b><br/>
-                                    </span>
-                                    Base On Sale Order <span t-field="o.sale_id"/>
-                                </div>
-                            </div>
-                            <br/>
-                            <div class="row">
-                                <div class="col-xs-12">
-                                    <span>
-                                        <b><i>Terms &amp; Condition</i></b><br/>
-                                        All goods are to be examined at time of delivery.Anydefects or shortage are to be communicated to us within 7days from date of delivery. Goods sold are not refundable, returnable or exchangeable.
-                                    </span>
-                                </div>
-                            </div>
-                            <br/>
-                            <div class="row">
-                                <div class="col-xs-12">
-                                    <span>
-                                        <b><i>Notes</i></b><br/>
-                                    </span>
-                                    <span t-field="o.note" />
-                                </div>
-                            </div>
-                        </t>
-                        <br />
-                        <table class="table table-condensed" style="width: 100%;">
-                            <tbody>
-                                <tr>
-                                    <td class="text-right" colspan="4" style="border:None;">
-                                        Received the stated quantity in good order and condition.
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="text-left" style="border:None; width: 8%">
-                                    </td>
-                                    <td class="text-left" style="border:None; width: 30%;">
-
-                                    </td>
-                                    <td style="border:None;width: 32%" class="text-right">
-                                        Recipient:
-                                    </td>
-                                    <td class="text-left" style="width: 30%;border-top: None; border-bottom: medium solid; border-width: 1px;">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="text-left" style="border:None; width: 8%">
-                                    </td>
-                                    <td class="text-left" style="border-bottom: None; border-top: None; width: 30%;">
-
-                                    </td>
-                                    <td style="border:None;width: 32%" class="text-right">
-                                        Date:
-                                    </td>
-                                    <td class="text-left" style="width: 30%;border-bottom: medium solid; border-width: 1px;">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="text-left" style="border:None; width: 8%">
-                                        Issued By:
-                                    </td>
-                                    <td class="text-left" style="width: 30%; border-top: None; border-bottom: medium solid; border-width: 1px;">
-
-                                    </td>
-                                    <td style="border-bottom: None; border-top: None; width: 32%" class="text-right">
-                                        Inspected By:
-                                    </td>
-                                    <td class="text-left" style="width: 30%;border-bottom: medium solid; border-width: 1px;">
+                                    <td class="text-left" style="border:None; width: 10%">
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
+                    <t t-call="streamline_ame_modules.streamline_ame_custom_report_footer"/>
                  </t>
             </t>
         </template>
