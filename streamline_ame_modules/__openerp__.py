@@ -28,6 +28,7 @@
         'reports/stock/views/report_ordered_vs_delivery_qty.xml',
         'reports/stock/wizard/inventory_listing_view.xml',
         'reports/stock/views/report_inventory_listing.xml',
+        'reports/stock/views/report_stockpicking.xml',
         'reports/purchase/views/report_purchaseorder.xml',
         'reports/purchase/views/report_purchasequotation.xml',
         'reports/menu.xml',
