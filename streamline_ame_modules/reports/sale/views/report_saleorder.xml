@@ -1,161 +1,179 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
-	<data>
-		<template id="sale.report_saleorder_document">
-			<t t-call="streamline_ame_modules.streamline_ame_custom_report_header" />
-			<div class="page">
-				<div class="oe_structure" />
-				<div class="row">
-					<span>Our Ref: </span>
-					<span t-field="o.client_order_ref"></span>
-					<br />
-					<br />
-					<span t-field="o.create_date" t-field-options='{"format": "dd/MM/y"}'></span>
-					<br />
-					<br />
-					<span t-field="o.partner_invoice_id.name"></span>
-				</div>
-				<div class="row">
-					<div t-field="o.partner_invoice_id"
-						t-field-options='{"widget": "contact", "fields": ["address"], "no_marker": true}' />
-					<div t-field="o.partner_invoice_id"
-						t-field-options='{"widget": "contact", "fields": ["phone"], "no_marker": true}' />
-				</div>
-				<br />
-				<div class="row">
-					<span>Dear Sir</span>
-					<br />
-					<span t-field="o.origin" style="font-weight:bold; text-decoration: underline;"></span>
-				</div>
-				<br />
-				<div class="row">
-					<span>To provide supervision, labour, engineering, materials, and
-						tools to supply and install the followings: </span>
-					<table style="width: 100%;">
-						<thead>
-							<tr style="line-height: 25px">
-								<th colspan="2"></th>
-								<th colspan="3"
-									style="text-align: center; vertical-align:middle; font-weight:normal;">Living Quarters</th>
-								<th colspan="3"
-									style="text-align: center; vertical-align:middle; font-weight:normal;">Machinery Area</th>
-								<th style="font-weight:normal">Total Amount</th>
-							</tr>
-							<tr style="line-height: 25px">
-								<th></th>
-								<th></th>
-								<th style="font-weight:normal">Material</th>
-								<th style="font-weight:normal">Labour</th>
-								<th></th>
-								<th style="font-weight:normal">Material</th>
-								<th style="font-weight:normal">Labour</th>
-								<th></th>
-								<th></th>
-							</tr>
-							<tr style="line-height: 25px">
-								<th></th>
-								<th style="font-weight:normal">
-									<span style="text-decoration: underline;">Scope of Supply/ Work</span>
-								</th>
-								<th style="font-weight:normal">
-									<span style="text-decoration: underline;">By AME</span>
-								</th>
-								<th style="font-weight:normal">
-									<span style="text-decoration: underline;">By AME</span>
-								</th>
-								<th style="font-weight:normal">
-									<span style="text-decoration: underline;">Amount</span>
-								</th>
-								<th style="font-weight:normal">
-									<span style="text-decoration: underline;">By AME</span>
-								</th>
-								<th style="font-weight:normal">
-									<span style="text-decoration: underline;">By AME</span>
-								</th>
-								<th style="font-weight:normal">
-									<span style="text-decoration: underline;">Amount</span>
-								</th>
-								<th style="font-weight:normal"></th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr t-foreach="o.order_line" t-as="l">
-								<td style="padding-top: 25px; width: 3%">
-									<span t-esc="str(1) + '.' + str(l_index + 1)" />
-								</td>
-								<td style="width: 30%;">
-									<span t-field="l.product_id.name_template" />
-								</td>
-								<td style="text-align: center; width: 9%;">
-									<span
-										t-if="l.product_id.product_tmpl_id.living_material_by_ame == True">Yes</span>
-									<span
-										t-if="l.product_id.product_tmpl_id.living_material_by_ame != True">No</span>
-									<br />
-									$
-									<span t-field="l.product_id.product_tmpl_id.living_material_price" />
-									<br />
-									<span t-field="l.product_id.product_tmpl_id.description" />
-								</td>
-								<td style="text-align: center; width: 9%;">
-									<span
-										t-if="l.product_id.product_tmpl_id.living_labour_by_ame == True">Yes</span>
-									<span
-										t-if="l.product_id.product_tmpl_id.living_labour_by_ame != True">No</span>
-									<br />
-									$
-									<span t-field="l.product_id.product_tmpl_id.living_labour_price" />
-								</td>
-								<td style="text-align: center; width: 9%;">
-									<br />
-									$
-									<span
-										t-esc="l.product_id.product_tmpl_id.living_material_price + l.product_id.product_tmpl_id.living_labour_price" />
-								</td>
-								<td style="text-align: center; width: 9%;">
-									<span
-										t-if="l.product_id.product_tmpl_id.machinery_material_by_ame == True">Yes</span>
-									<span
-										t-if="l.product_id.product_tmpl_id.machinery_material_by_ame != True">No</span>
-									<br />
-									$
-									<span t-field="l.product_id.product_tmpl_id.machinery_material_price" />
-								</td>
-								<td style="text-align: center; width: 9%;">
-									<span
-										t-if="l.product_id.product_tmpl_id.machinery_labour_by_ame == True">Yes</span>
-									<span
-										t-if="l.product_id.product_tmpl_id.machinery_labour_by_ame != True">No</span>
-									<br />
-									$
-									<span t-field="l.product_id.product_tmpl_id.machinery_labour_price" />
-								</td>
-								<td style="text-align: center; width: 9%;">
-									<br />
-									$
-									<span
-										t-esc="l.product_id.product_tmpl_id.machinery_material_price + l.product_id.product_tmpl_id.machinery_labour_price" />
-								</td>
-								<td style="text-align: center; width: 11%;">
-									<br />
-									$
-									<span
-										t-esc="l.product_id.product_tmpl_id.living_material_price + l.product_id.product_tmpl_id.living_labour_price + 
-			                        		l.product_id.product_tmpl_id.machinery_material_price + l.product_id.product_tmpl_id.machinery_labour_price" />
-								</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-				<div style="margin-left: 0px !important; width: 100%;">
-					<div style="width: 60%; margin-left: 0px !important; float: left;">
-						<span style="font-weight: bold;">Notes</span>
-						<br />
-						<span t-field="o.note" />
-					</div>
-				</div>
-			</div>
-		</template>
+    <data>
+        <template id="sale.report_saleorder_document">
+            <t t-call="streamline_ame_modules.streamline_ame_custom_report_header"/>
+            <div class="page">
+                <div class="oe_structure"/>
+                <div class="row">
+                    <span>Our Ref:</span>
+                    <span t-field="o.client_order_ref"></span>
+                    <br/>
+                    <br/>
+                    <span t-field="o.create_date" t-field-options='{"format": "dd/MM/y"}'></span>
+                    <br/>
+                    <br/>
+                    <span t-field="o.partner_invoice_id.name"></span>
+                </div>
+                <div class="row">
+                    <div t-field="o.partner_invoice_id"
+                         t-field-options='{"widget": "contact", "fields": ["address"], "no_marker": true}'/>
+                    <div t-field="o.partner_invoice_id"
+                         t-field-options='{"widget": "contact", "fields": ["phone"], "no_marker": true}'/>
+                </div>
+                <br/>
+                <div class="row">
+                    <span>Dear Sir</span>
+                    <br/>
+                    <br/>
+                    <span t-esc="o.origin and '%s - %s'%(o.name, o.origin) or o.name" style="font-weight:bold; text-decoration: underline;"></span>
+                </div>
+                <br/>
+                <div class="row">
+                    <span>To provide supervision, labour, engineering, materials, and
+                        tools to supply and install the followings:
+                    </span>
+                    <table style="width: 100%;">
+                        <thead>
+                            <tr style="line-height: 25px">
+                                <th colspan="2"></th>
+                                <th colspan="3"
+                                    style="border-top: medium solid; border-left: medium solid;; border-right: medium solid; border-bottom: medium solid; border-width: 1px; vertical-align: middle;text-align: center; vertical-align:middle; font-weight:normal;">
+                                    Living Quarters
+                                </th>
+                                <th colspan="3"
+                                    style="border-top: medium solid; border-right: medium solid; border-bottom: medium solid; border-width: 1px; vertical-align: middle;text-align: center; vertical-align:middle; font-weight:normal;">
+                                    Machinery Area
+                                </th>
+                                <th style="border-top: medium solid; border-right: medium solid; border-bottom: medium solid; border-width: 1px; vertical-align: middle;font-weight:normal">
+                                    Total Amount
+                                </th>
+                            </tr>
+                            <tr style="line-height: 25px">
+                                <th></th>
+                                <th></th>
+                                <th style="text-align: right;font-weight:normal">Material</th>
+                                <th style="text-align: right;font-weight:normal">Labour</th>
+                                <th></th>
+                                <th style="text-align: right;font-weight:normal">Material</th>
+                                <th style="text-align: right;font-weight:normal">Labour</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            <tr style="line-height: 25px">
+                                <th></th>
+                                <th style="font-weight:normal">
+                                    <span style="text-decoration: underline;">1) Scope of Supply/ Work</span>
+                                </th>
+                                <th style="text-align: right;font-weight:normal">
+                                    <span style="text-decoration: underline;">By AME</span>
+                                </th>
+                                <th style="text-align: right;font-weight:normal">
+                                    <span style="text-decoration: underline;">By AME</span>
+                                </th>
+                                <th style="text-align: right;font-weight:normal">
+                                    <span style="text-decoration: underline;">Amount</span>
+                                </th>
+                                <th style="text-align: right;font-weight:normal">
+                                    <span style="text-decoration: underline;">By AME</span>
+                                </th>
+                                <th style="text-align: right;font-weight:normal">
+                                    <span style="text-decoration: underline;">By AME</span>
+                                </th>
+                                <th style="text-align: right;font-weight:normal">
+                                    <span style="text-decoration: underline;">Amount</span>
+                                </th>
+                                <th style="font-weight:normal"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-foreach="o.order_line" t-as="l">
+                                <td style="padding-top: 25px; width: 3%">
+                                    <span t-esc="str(1) + '.' + str(l_index + 1)"/>
+                                </td>
+                                <td style="width: 30%;">
+                                    <span t-field="l.name"/>
+                                </td>
+                                <td style="text-align: right; width: 9%;">
+                                    <span
+                                            t-if="l.product_id.living_material_by_ame == True">YES
+                                    </span>
+                                    <span
+                                            t-if="l.product_id.living_material_by_ame != True">NO
+                                    </span>
+                                    <br/>
+                                    <span t-esc="o.currency_id.symbol"/>
+                                    <span t-field="l.product_id.living_material_price"/>
+                                    <br/>
+                                    <span t-field="l.remark"/>
+                                </td>
+                                <td style="text-align: right; width: 9%;">
+                                    <span
+                                            t-if="l.product_id.living_labour_by_ame == True">YES
+                                    </span>
+                                    <span
+                                            t-if="l.product_id.living_labour_by_ame != True">NO
+                                    </span>
+                                    <br/>
+                                    <span t-esc="o.currency_id.symbol"/>
+                                    <span t-field="l.product_id.living_labour_price"/>
+                                </td>
+                                <td style="text-align: right; width: 9%;">
+                                    <br/>
+                                    <span t-esc="o.currency_id.symbol"/>
+                                    <span
+                                            t-esc="l.product_id.living_material_price + l.product_id.living_labour_price"/>
+                                </td>
+                                <td style="text-align: right; width: 9%;">
+                                    <span
+                                            t-if="l.product_id.machinery_material_by_ame == True">YES
+                                    </span>
+                                    <span
+                                            t-if="l.product_id.machinery_material_by_ame != True">NO
+                                    </span>
+                                    <br/>
+                                    <span t-esc="o.currency_id.symbol"/>
+                                    <span t-field="l.product_id.machinery_material_price"/>
+                                </td>
+                                <td style="text-align: right; width: 9%;">
+                                    <span
+                                            t-if="l.product_id.machinery_labour_by_ame == True">YES
+                                    </span>
+                                    <span
+                                            t-if="l.product_id.machinery_labour_by_ame != True">NO
+                                    </span>
+                                    <br/>
+                                    <span t-esc="o.currency_id.symbol"/>
+                                    <span t-field="l.product_id.machinery_labour_price"/>
+                                </td>
+                                <td style="text-align: right; width: 9%;">
+                                    <br/>
+                                    <span t-esc="o.currency_id.symbol"/>
+                                    <span
+                                            t-esc="l.product_id.machinery_material_price + l.product_id.machinery_labour_price"/>
+                                </td>
+                                <td style="text-align: right; width: 11%;">
+                                    <br/>
+                                    <span t-esc="o.currency_id.symbol"/>
+                                    <span
+                                            t-esc="l.product_id.living_material_price + l.product_id.living_labour_price +
+			                        		l.product_id.machinery_material_price + l.product_id.machinery_labour_price"/>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <t t-if="o.note">
+                    <div style="margin-left: 0px !important; width: 100%;">
+                        <div style="width: 60%; margin-left: 0px !important; float: left;">
+                            <span style="font-weight: bold;">Quotation Remarks: </span>
+                            <br/>
+                            <span t-field="o.note"/>
+                        </div>
+                    </div>
+                </t>
+            </div>
+        </template>
 
-	</data>
+    </data>
 </openerp>

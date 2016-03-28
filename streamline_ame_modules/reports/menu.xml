@@ -120,10 +120,19 @@
             name="streamline_ame_modules.report_purchase_order" 
             file="Purchase_Order" 
         />
+
+        <report
+            id="sale.report_sale_order"
+            string="Project Sum Quotation"
+            model="sale.order"
+            report_type="qweb-pdf"
+            file="sale.report_saleorder"
+            name="sale.report_saleorder"
+        />
         
         <report 
             id="report_sale_order_2"
-            string="Quotation to Customer 2 "
+            string="Project Itemise Quotation"
             model="sale.order" 
             report_type="qweb-pdf"
             file="report_saleorder2" 
