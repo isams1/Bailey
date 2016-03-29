@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <template id="stock.report_picking">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="streamline_ame_modules.streamline_ame_custom_picking_report_header"/>
+                    <div class="page" style="font-size: 12px">
+                        <div class="oe_structure"/>
+                        <div class="row">
+                            <div class="col-xs-8" style="padding-left: 50px !important; margin-top: 20px;">
+                                <strong style="font-size: 14pt;">SHIP TO:</strong>
+                                <br />
+                                <t t-if="o.partner_id">
+                                    <strong style="font-size: 13pt;"><span t-field="o.partner_id.name" /></strong>
+                                    <br />
+                                    <div t-field="o.partner_id"
+                                        t-field-options='{"widget": "contact", "fields": ["address"], "no_marker": true}' />
+                                    <span>Tel: </span>
+                                    <span t-field="o.partner_id.phone"></span>
+                                    <span> Fax: </span>
+                                    <span t-field="o.partner_id.fax"></span>
+                                    <br />
+                                    <span>Attention: </span>
+                                    <span t-field="o.partner_id.name"></span>
+                                    <br />
+                                    <span>Contact: </span>
+                                    <span t-field="o.partner_id.mobile"></span>
+                                    <br />
+                                    <span>Email: </span>
+                                    <span t-field="o.partner_id.email"></span>
+                                </t>
+                            </div>
+                            <div class="col-xs-4" style="margin-top: 20px; padding-left: 0px !important;">
+                                <strong style="font-size: 14pt;">DELIVERY ORDER</strong>
+                                <br />
+                                <table class="table table-condensed" style="width: 100%;">
+                                    <tr>
+                                        <td style="border: None; width:18%">NO.:</td>
+                                        <td style="border-top: None;border-bottom: medium solid; border-width: 1px; border-color: #cf753e; width:82%">
+                                            <span t-field="o.name" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: None; width:18%">DATE:</td>
+                                        <td style="border-bottom: medium solid; border-width: 1px; border-color: #cf753e; width:82%">
+                                            <span t-esc="o.date_done and datetime.datetime.strptime(o.date_done, '%Y-%m-%d %H:%M:%S').strftime('%d-%b-%y') or '' "/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+
+                        <br/>
+                        <table class="table table-condensed" style="width: 100%;">
+                            <thead>
+                                <tr style="height: 30px;">
+                                    <th class="text-left" colspan="4" style="border-top: medium solid;border-bottom: 1px solid #cf753e !important; border-width: 1px; border-color: #cf753e;">
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="text-left" colspan="2" style="border:None;">
+                                        <br/>
+                                        <strong><u>S/NO</u></strong>
+                                    </td>
+                                    <td class="text-center" style="border:None;">
+                                        <br/>
+                                        <strong><u>QTY</u></strong>
+                                    </td>
+                                     <td class="text-left" style="border:None;">
+                                    </td>
+                                </tr>
+                                <tr t-foreach="o.move_lines" t-as="order_line">
+                                    <td class="text-left" style="border:None; width: 5%">
+                                        <span t-esc="order_line_index + 1"/>
+                                    </td>
+                                    <td class="text-left" style="border:None; width: 60%">
+                                        <span t-field="order_line.product_id.name"/>
+                                    </td>
+                                    <td class="text-center" style="border:None; width: 25%">
+                                        <span t-esc="order_line.product_uom_qty"/>
+                                        <span t-field="order_line.product_uom"/>
+                                    </td>
+                                    <td class="text-left" style="border:None; width: 10%">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <t t-call="streamline_ame_modules.streamline_ame_custom_report_footer"/>
+                 </t>
+            </t>
+        </template>
+    </data>
+</openerp>
