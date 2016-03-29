@@ -48,6 +48,7 @@
         
         'data/group_security.xml',
         'data/res_user.xml',
+        'data/ir_ui_menu.xml',
         
         'hide_accounting/views/partner_view.xml',
         'hide_accounting/views/sale_order.xml',
