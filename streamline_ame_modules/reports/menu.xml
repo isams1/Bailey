@@ -123,7 +123,7 @@
 
         <report
             id="sale.report_sale_order"
-            string="Project Sum Quotation"
+            string="Scope of Work Quotation"
             model="sale.order"
             report_type="qweb-pdf"
             file="sale.report_saleorder"
@@ -132,7 +132,7 @@
         
         <report 
             id="report_sale_order_2"
-            string="Project Itemise Quotation"
+            string="Itemise Quotation"
             model="sale.order" 
             report_type="qweb-pdf"
             file="report_saleorder2" 
