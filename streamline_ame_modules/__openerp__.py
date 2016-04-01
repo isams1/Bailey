@@ -38,7 +38,7 @@
 
         'reports/menu.xml',
         'products/data/product_sequence.xml',
-        'products/views/product_minimum_view.xml',
+        # 'products/views/product_minimum_view.xml',
         'products/views/email_template_product.xml',
         'products/views/rule_view.xml',
         'products/views/product_view.xml',
