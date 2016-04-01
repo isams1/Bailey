@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<record id="clean_data_view" model="ir.ui.view">
+			<field name="name">clean.data.view</field>
+			<field name="model">clean.data</field>
+			<field name="arch" type="xml">
+				<form string="Clean Data" version="7.0">
+					<group>
+						<p>Clean Database</p>
+					</group>
+					<separator string="" colspan="4" />
+					<footer>
+						<button type="object" name="action_clean_data" 
+							icon="gtk-ok"
+							string="Clean Data" />
+						<button special="cancel" string="Cancel" icon="gtk-cancel"
+							colspan="2" />
+					</footer>
+				</form>
+			</field>
+		</record>
+		<record model="ir.actions.act_window" id="clean_data_action">
+			<field name="name">Clean Data Action</field>
+			<field name="res_model">clean.data</field>
+			<field name="view_mode">form</field>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+			<field name="view_id" ref="clean_data_view" />
+		</record>
+
+		<record model="ir.ui.menu" id="menu_clean_data">
+			<field name="name">Database clean</field>
+			<field name="sequence" eval="10" />
+			<field name="action" ref="clean_data_action" />
+			<field name="parent_id" ref="base.menu_custom" />
+		</record>
+	</data>
+</openerp>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<menuitem id="product.menu_products" action="product.product_normal_action_sell"
+			parent="base.menu_product" groups="base.group_no_one,streamline_ame_modules.ame_sale,streamline_ame_modules.ame_purchase"
+			sequence="10" />
+			
+		<menuitem action="product.product_category_action" id="product.menu_products_category"
+			parent="base.menu_product" sequence="30"
+			groups="base.group_no_one,streamline_ame_modules.ame_sale,streamline_ame_modules.ame_sale,streamline_ame_modules.ame_purchase" />
+
+
+		<record id="base.menu_reporting" model="ir.ui.menu">
+			<field name="groups_id" eval="[(6,0,[ref('ame_sale'), ref('ame_finance'), ref('ame_purchase'), ref('ame_general')])]" />
+		</record>
+	</data>
+</openerp>
