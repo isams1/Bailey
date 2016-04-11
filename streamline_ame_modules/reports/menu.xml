@@ -123,7 +123,7 @@
 
         <report
             id="sale.report_sale_order"
-            string="Scope of Work Quotation"
+            string="Scope of Work Quotatio (PDF)"
             model="sale.order"
             report_type="qweb-pdf"
             file="sale.report_saleorder"

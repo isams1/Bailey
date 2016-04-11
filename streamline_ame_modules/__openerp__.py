@@ -21,6 +21,7 @@
         'reports/account/views/report_stock_report.xml',
         'reports/sale/views/report_saleorder.xml',
         'reports/sale/views/report_saleorder2.xml',
+        'reports/sale/views/sale_order_xls.xml',
 
         'reports/stock/wizard/product_aging_view.xml',
         'reports/stock/views/report_product_aging.xml',
