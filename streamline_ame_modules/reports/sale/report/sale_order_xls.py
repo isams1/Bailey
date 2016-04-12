@@ -85,8 +85,17 @@ class sale_order_xls_parser(report_sxw.rml_parse):
 
 
 _column_sizes = [
-    ('name', 50),
+    ('0', 20),
+    ('1', 20),
+    ('2', 10),
+    ('3', 10),
+    ('4', 10),
+    ('5', 10),
+    ('6', 10),
+    ('7', 10),
+    ('8', 20),
 ]
+import time
 
 
 class sale_order_xls(report_xls):
@@ -98,9 +107,9 @@ class sale_order_xls(report_xls):
 
         basewidth = 100
         img = Image.open(path)
-        wpercent = (basewidth/float(img.size[0]))
-        hsize = int((float(img.size[1])*float(wpercent)))
-        img = img.resize((basewidth,hsize), PIL.Image.ANTIALIAS)
+        wpercent = (basewidth / float(img.size[0]))
+        hsize = int((float(img.size[1]) * float(wpercent)))
+        img = img.resize((basewidth, hsize), PIL.Image.ANTIALIAS)
         img.save(path)
 
         return
@@ -111,7 +120,7 @@ class sale_order_xls(report_xls):
         ws.remove_splits = True
         ws.portrait = 0  # Landscape
         ws.fit_width_to_pages = 1
-        row_pos = 7
+        row_pos = 6
 
         # set print header/footer
         ws.header_str = self.xls_headers['standard']
@@ -132,7 +141,8 @@ class sale_order_xls(report_xls):
         img = Image.merge("RGB", (r, g, b))
         img.save(image_path + "/imagetoadd.bmp")
 
-        ws.insert_bitmap(image_path + "/imagetoadd.bmp", 1, 0, scale_x = 0.2, scale_y =0.5)
+        ws.insert_bitmap(image_path + "/imagetoadd.bmp", 0, 1, scale_x=0.5, scale_y=0.6)
+
         # write empty row to define column sizes
         c_sizes = self.column_sizes
         c_specs = [('empty%s' % i, 1, c_sizes[i], 'text', None)
@@ -141,45 +151,147 @@ class sale_order_xls(report_xls):
         row_pos = self.xls_write_row(
             ws, row_pos, row_data, set_column_size=True)
 
+        cell_format = _xs['bold'] + _xs['underline']
+        so_style = xlwt.easyxf(cell_format)
+
+        cell_format = _xs['bold'] + _xs['borders_all'] + _xs['center']
+        table_title_style = xlwt.easyxf(cell_format)
+
+        cell_format = _xs['right']
+        right_style = xlwt.easyxf(cell_format)
+
+        cell_format = _xs['underline'] + _xs['right']
+        underline_style = xlwt.easyxf(cell_format)
+
         for so in objects:
             c_specs = [
-                ('name', 1, 0, 'text', 'OurRef: %s'%so.client_order_ref),
+                ('name', 9, 0, 'text', 'Our Ref: %s' %(so.client_order_ref and so.client_order_ref or '')),
             ]
             row_data = self.xls_row_template(c_specs, [x[0] for x in c_specs])
             row_pos = self.xls_write_row(ws, row_pos, row_data)
             ws.set_horz_split_pos(row_pos)
 
             c_specs = [
-                ('name', 1, 0, 'text', 'Date: %s'%so.create_date),
+                ('name', 9, 0, 'text', 'Date: %s' % time.strftime('%Y-%m-%d')),
             ]
             row_data = self.xls_row_template(c_specs, [x[0] for x in c_specs])
             row_pos = self.xls_write_row(ws, row_pos, row_data)
 
             c_specs = [
-                ('name', 1, 0, 'text', so.partner_invoice_id.name),
+                ('name', 9, 0, 'text', so.partner_invoice_id.name),
             ]
             row_data = self.xls_row_template(c_specs, [x[0] for x in c_specs])
             row_pos = self.xls_write_row(ws, row_pos, row_data)
 
             c_specs = [
-                ('name', 1, 0, 'text', _p.get_address(so.partner_invoice_id)),
+                ('name', 9, 0, 'text', _p.get_address(so.partner_invoice_id)),
             ]
             row_data = self.xls_row_template(c_specs, [x[0] for x in c_specs])
             row_pos = self.xls_write_row(ws, row_pos, row_data)
 
             c_specs = [
-                ('name', 1, 0, 'text', 'Dear Sir %s'%(so.origin and '%s - %s'%(so.name, so.origin) or so.name)),
+                (
+                'name', 9, 0, 'text', 'Dear Sir %s' % (so.origin and '%s - %s' % (so.name, so.origin) or so.name), None,
+                so_style),
             ]
             row_data = self.xls_row_template(c_specs, [x[0] for x in c_specs])
             row_pos = self.xls_write_row(ws, row_pos, row_data)
 
             c_specs = [
-                ('name', 1, 0, 'text', 'To provide supervision, labour, engineering, materials, and tools to supply and install the followings:'),
+                ('name', 9, 0, 'text',
+                 'To provide supervision, labour, engineering, materials, and tools to supply and install the followings:'),
             ]
             row_data = self.xls_row_template(c_specs, [x[0] for x in c_specs])
             row_pos = self.xls_write_row(ws, row_pos, row_data)
 
+            row_pos += 1
 
+            c_specs = [
+                ('name', 2, 0, 'text', ''),
+                ('living', 3, 0, 'text', 'Living Quarters', None, table_title_style),
+                ('machine', 3, 0, 'text', 'Machinery Area', None, table_title_style),
+                ('total', 1, 0, 'text', 'Total Amount', None, table_title_style),
+            ]
+            row_data = self.xls_row_template(c_specs, [x[0] for x in c_specs])
+            row_pos = self.xls_write_row(ws, row_pos, row_data)
+
+            c_specs = [
+                ('1', 2, 0, 'text', ''),
+                ('2', 1, 0, 'text', 'Material', None, right_style),
+                ('3', 1, 0, 'text', 'Labor', None, right_style),
+                ('4', 1, 0, 'text', ''),
+                ('5', 1, 0, 'text', 'Material', None, right_style),
+                ('6', 1, 0, 'text', 'Labor', None, right_style),
+            ]
+            row_data = self.xls_row_template(c_specs, [x[0] for x in c_specs])
+            row_pos = self.xls_write_row(ws, row_pos, row_data)
+
+            c_specs = [
+                ('1', 2, 0, 'text', '1) Scope of Supply/ Work', None, xlwt.easyxf(_xs['underline'])),
+                ('2', 1, 0, 'text', 'By AME', None, underline_style),
+                ('3', 1, 0, 'text', 'By AME', None, underline_style),
+                ('4', 1, 0, 'text', 'Amount', None, underline_style),
+                ('5', 1, 0, 'text', 'By AME', None, underline_style),
+                ('6', 1, 0, 'text', 'By AME', None, underline_style),
+                ('7', 1, 0, 'text', 'Amount', None, underline_style),
+            ]
+            row_data = self.xls_row_template(c_specs, [x[0] for x in c_specs])
+            row_pos = self.xls_write_row(ws, row_pos, row_data)
+
+            no = 0
+            for l in so.order_line:
+                no += 1
+                c_specs = [
+                    ('1', 2, 0, 'text', '1.%s %s' % (no, l.name), None, xlwt.easyxf(_xs['wrap'])),
+                    ('2', 1, 0, 'text', l.product_id.living_material_by_ame == True and 'YES' or 'No', None,
+                     right_style),
+                    ('3', 1, 0, 'text', l.product_id.living_labour_by_ame == True and 'YES' or 'No', None, right_style),
+                    ('4', 1, 0, 'text', '', None, right_style),
+                    ('5', 1, 0, 'text', l.product_id.machinery_material_by_ame == True and 'YES' or 'No', None,
+                     right_style),
+                    ('6', 1, 0, 'text', l.product_id.machinery_labour_by_ame == True and 'YES' or 'No', None,
+                     right_style),
+                    ('7', 1, 0, 'text', '', None, right_style),
+                ]
+                row_data = self.xls_row_template(c_specs, [x[0] for x in c_specs])
+                row_pos = self.xls_write_row(ws, row_pos, row_data)
+
+                total = l.product_id.living_material_price + l.product_id.living_labour_price + \
+                        l.product_id.machinery_material_price + l.product_id.machinery_labour_price
+                c_specs = [
+                    ('1', 2, 0, 'text', ''),
+                    ('2', 1, 0, 'text', '%s %s' % (so.currency_id.symbol, l.product_id.living_material_price), None,
+                     right_style),
+                    ('3', 1, 0, 'text', '%s %s' % (so.currency_id.symbol, l.product_id.living_labour_price), None,
+                     right_style),
+                    ('4', 1, 0, 'text', '%s %s' % (
+                    so.currency_id.symbol, l.product_id.living_material_price + l.product_id.living_labour_price), None,
+                     right_style),
+                    ('5', 1, 0, 'text', '%s %s' % (so.currency_id.symbol, l.product_id.machinery_material_price), None,
+                     right_style),
+                    ('6', 1, 0, 'text', '%s %s' % (so.currency_id.symbol, l.product_id.machinery_labour_price), None,
+                     right_style),
+                    ('7', 1, 0, 'text', '%s %s' % (
+                    so.currency_id.symbol, l.product_id.machinery_material_price + l.product_id.machinery_labour_price),
+                     None, right_style),
+                    ('8', 1, 0, 'text', '%s %s' % (so.currency_id.symbol, total), None, right_style),
+                ]
+                row_data = self.xls_row_template(c_specs, [x[0] for x in c_specs])
+                row_pos = self.xls_write_row(ws, row_pos, row_data)
+
+                if l.remark:
+                    c_specs = [
+                        ('1', 2, 0, 'text', ''),
+                        ('2', 7, 0, 'text', 'Remarks: %s'%l.remark),
+                    ]
+                    row_data = self.xls_row_template(c_specs, [x[0] for x in c_specs])
+                    row_pos = self.xls_write_row(ws, row_pos, row_data)
+            if so.note:
+                c_specs = [
+                    ('name', 9, 0, 'text', 'Quotation Remarks: %s'%so.note),
+                ]
+                row_data = self.xls_row_template(c_specs, [x[0] for x in c_specs])
+                row_pos = self.xls_write_row(ws, row_pos, row_data)
 
 
 sale_order_xls('report.sale.order.list.xls',
