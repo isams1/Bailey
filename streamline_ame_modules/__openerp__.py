@@ -49,7 +49,6 @@
         'purchase/views/material_view.xml',
         'purchase/views/menu.xml',
         'partner/views/partner_view.xml',
-        'base/views/company_view.xml',
         'view/templates.xml',
         'security/ir.model.access.csv',
         

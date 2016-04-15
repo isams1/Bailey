@@ -14,32 +14,27 @@ class wrapped_streamline_ame_report_inventory_listing(report_sxw.rml_parse):
         })
 
     def _get_data_report(self):
+        company_id = self.pool.get('res.users').browse(self.cr, self.uid, self.uid).company_id.id
         self.cr.execute('''
-        select pp.default_code, pt.description, pu.name uom, rp.name vendor, 
-            case when sq.lot_id is NULL then NULL
-            else (
-                select DISTINCT to_char(tpo.date_order, 'dd/MM/yyyy')
-                from stock_pack_operation tspo
-                inner join stock_move tsm on tsm.picking_id = tspo.picking_id
-                inner join purchase_order_line tpol on tsm.purchase_line_id = tpol.id
-                inner join purchase_order tpo on tpol.order_id = tpo.id
-                where tspo.lot_id is not null
-                and tspo.lot_id = sq.lot_id
-                and tsm.product_id = pp.id
-            ) end date_order
-        from stock_quant sq
-        inner join product_product pp on sq.product_id = pp.id
-        inner join product_template pt on pp.product_tmpl_id = pt.id
-        inner join product_uom pu on pt.uom_id = pu.id
-        inner join product_supplierinfo ps on ps.product_tmpl_id = pt.id
-        inner join res_partner rp on ps.name = rp.id and rp.supplier = 't'
-        inner join stock_picking_type spt on sq.location_id = spt.default_location_dest_id and spt.code = 'incoming'
-        inner join stock_warehouse sw on spt.warehouse_id = sw.id
-        where sw.company_id = 1
-        and sw.partner_id = 1
-        group by 1,2,3,4,5
-        order by pp.default_code
-        ''')
+        WITH  vendor_info AS (
+            SELECT MAX(to_char(tpo.date_order, 'dd/MM/yyyy')) as date_order, rp.name vendor, sq.product_id
+            FROM stock_quant sq
+            INNER JOIN stock_quant_move_rel rel on rel.quant_id = sq.id
+            INNER JOIN stock_move stkm on stkm.id = rel.move_id
+            INNER JOIN purchase_order_line tpol on stkm.purchase_line_id = tpol.id
+            INNER JOIN purchase_order tpo on tpol.order_id = tpo.id
+            INNER JOIN res_partner rp on tpo.partner_id = rp.id and rp.supplier = 't'
+            WHERE sq.company_id = %s
+            group by 2,3)
+
+        SELECT v.date_order, pp.default_code, pt.name, pt.description, pu.name uom, v.vendor
+        FROM product_product pp
+        INNER JOIN product_template pt on pp.product_tmpl_id = pt.id
+        INNER JOIN product_uom pu on pt.uom_id = pu.id
+        LEFT JOIN vendor_info v on v.product_id = pp.id
+        WHERE pt.company_id = %s or pt.company_id is null
+        ORDER BY pp.default_code
+        '''%(company_id, company_id))
         res = self.cr.dictfetchall()
         return res
 

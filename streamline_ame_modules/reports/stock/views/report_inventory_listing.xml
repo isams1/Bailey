@@ -48,7 +48,7 @@
 								<span t-esc="line_ids['default_code']" />
 							</td>
 							<td>
-								<span t-esc="line_ids['description']" />
+								<span t-esc="line_ids['description'] and line_ids['description'] or line_ids['name']" />
 							</td>
 							<td class="text-center">
 								<span t-esc="line_ids['uom']" />
