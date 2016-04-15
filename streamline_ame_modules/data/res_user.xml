@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
-	<data>
+	<data noupdate="1">
 		<!-- ame_sale -->
 		<record id="partner_sale_1" model="res.partner">
 			<field name="name">Mr Sean Tang</field>

@@ -9,11 +9,11 @@ import simplejson as json
 class sale_order(models.Model):
     _inherit = "sale.order"
 
-    @api.model
-    def create(self, vals):
-        sale_id = super(sale_order, self).create(vals)
-        self.action_send_mail(sale_id, vals)
-        return sale_id
+    # @api.model
+    # def create(self, vals):
+    #     sale_id = super(sale_order, self).create(vals)
+    #     self.action_send_mail(sale_id, vals)
+    #     return sale_id
     
     @api.model
     def fields_view_get(self, view_id=None, view_type='form', context=None, toolbar=False, submenu=False):
