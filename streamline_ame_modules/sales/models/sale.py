@@ -14,6 +14,12 @@ class sale_order(models.Model):
     #     sale_id = super(sale_order, self).create(vals)
     #     self.action_send_mail(sale_id, vals)
     #     return sale_id
+
+    def action_button_confirm(self, cr, uid, ids, context=None):
+         for model_id in ids:
+            vals = self.read(cr, uid, model_id, [], context)
+            self.action_send_mail(cr, uid, model_id, vals)
+         return super(sale_order, self).action_button_confirm(cr, uid, ids, context)
     
     @api.model
     def fields_view_get(self, view_id=None, view_type='form', context=None, toolbar=False, submenu=False):
@@ -79,7 +85,7 @@ class sale_order(models.Model):
                 composer_values.update(composer_obj.onchange_template_id(cr, uid, None, *template_values, context=context).get('value', {}))
                 if not composer_values.get('email_from'):
                     composer_values['email_from'] = self.pool.get('res.users').browse(cr, uid, uid, context=context).company_id.email
-                print vals
+
                 composer_values['body'] = composer_values['body']%vals
                 for key in ['attachment_ids', 'partner_ids']:
                     if composer_values.get(key):
