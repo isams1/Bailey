@@ -18,74 +18,44 @@ class wrapped_streamline_ame_report_invoice_summary(report_sxw.rml_parse):
         b = form['date_end']
         
         self.cr.execute('''
-        select to_char(ai.date_invoice, 'dd/MM/yyyy') inv_date, ai."number" inv_no, pp.default_code stock_code, pt.description item_decs, tmp_picking_po.picking_id,
-            substring(sl.complete_name from (length('Physical Locations / ') + strpos(sl.complete_name, 'Physical Locations / '))) location_stock, rp.name co_name,
-          (
-                select max(sp.name)
-                from sale_order so
-                inner join sale_order_line sol on so.id = sol.order_id
-                inner join procurement_group pg on so.procurement_group_id = pg.id
-                inner join stock_picking sp on pg.id = sp.group_id
-            where sol.product_id = ail.product_id
-            ) do_name, 
-            po.name po_name,    pol.price_unit unit_price,
-          (select (COALESCE((select sum(COALESCE(product_qty,0)) 
-                from stock_move 
-                where product_id = sm.product_id and state in ('done', 'transit') and location_dest_id = sm.location_dest_id and product_qty is not null group by product_id), 0) - 
-            COALESCE((select sum(COALESCE(product_qty,0)) 
-                from stock_move 
-                where product_id = sm.product_id and state in ('done', 'transit') and location_id = sm.location_dest_id and product_qty is not null group by product_id), 0)) as qty),
-        
-            pol.price_unit * (select (COALESCE((select sum(COALESCE(product_qty,0)) 
-                from stock_move 
-                where product_id = sm.product_id and state in ('done', 'transit') and location_dest_id = sm.location_dest_id and product_qty is not null group by product_id), 0) - 
-            COALESCE((select sum(COALESCE(product_qty,0)) 
-                from stock_move 
-                where product_id = sm.product_id and state in ('done', 'transit') and location_id = sm.location_dest_id and product_qty is not null group by product_id), 0)) as qty) as amount,
-        
-            0.07 * pol.price_unit * (select (COALESCE((select sum(COALESCE(product_qty,0)) 
-                from stock_move 
-                where product_id = sm.product_id and state in ('done', 'transit') and location_dest_id = sm.location_dest_id and product_qty is not null group by product_id), 0) - 
-            COALESCE((select sum(COALESCE(product_qty,0)) 
-                from stock_move 
-                where product_id = sm.product_id and state in ('done', 'transit') and location_id = sm.location_dest_id and product_qty is not null group by product_id), 0)) as qty) as gst,
-        
-           (
-                    pol.price_unit * (select (COALESCE((select sum(COALESCE(product_qty,0)) 
-                from stock_move 
-                where product_id = sm.product_id and state in ('done', 'transit') and location_dest_id = sm.location_dest_id and product_qty is not null group by product_id), 0) - 
-            COALESCE((select sum(COALESCE(product_qty,0)) 
-                from stock_move 
-                where product_id = sm.product_id and state in ('done', 'transit') and location_id = sm.location_dest_id and product_qty is not null group by product_id), 0)) as qty)
-                ) - 
-            (
-                    0.07 * pol.price_unit * (select (COALESCE((select sum(COALESCE(product_qty,0)) 
-                from stock_move 
-                where product_id = sm.product_id and state in ('done', 'transit') and location_dest_id = sm.location_dest_id and product_qty is not null group by product_id), 0) - 
-            COALESCE((select sum(COALESCE(product_qty,0)) 
-                from stock_move 
-                where product_id = sm.product_id and state in ('done', 'transit') and location_id = sm.location_dest_id and product_qty is not null group by product_id), 0)) as qty)
-                ) as total
-        from account_invoice ai
-        inner join account_invoice_line ail on ai.id = ail.invoice_id
-        INNER JOIN product_product pp on ail.product_id = pp.id
-        INNER JOIN product_template pt on pp.product_tmpl_id = pt.id
-        inner join purchase_invoice_rel pir on pir.invoice_id = ai.id
-        inner join purchase_order po on pir.purchase_id = po.id
-        inner join purchase_order_line pol on po.id = pol.order_id and pol.product_id = ail.product_id
-        left join (
-            SELECT max(picking_id) picking_id, po.id po_id
-          FROM stock_picking p, stock_move m, purchase_order_line pol, purchase_order po
-          WHERE po.id = pol.order_id and pol.id = m.purchase_line_id and m.picking_id = p.id
-          GROUP BY po.id
-        ) tmp_picking_po on tmp_picking_po.po_id = po.id
-        inner join stock_move sm on sm.picking_id = tmp_picking_po.picking_id and ail.product_id = sm.product_id
-        inner join stock_location sl on sl.id = sm.location_dest_id
-        inner join res_partner rp on po.partner_id = rp.id
-        where ai.type='in_invoice'
-        and ai.state='paid'
-        and ai.date_invoice::DATE BETWEEN %s::DATE and %s::DATE
-        order by inv_no
+        SELECT to_char(ai.date_invoice, 'dd/MM/yyyy') inv_date,
+            ai."number" inv_no,
+            pp.default_code stock_code,
+            pt.name item_name,
+            pt.description item_decs,
+                substring(sl.complete_name FROM (length('Physical Locations / ') + strpos(sl.complete_name, 'Physical Locations / '))) location_stock,
+                rp.name co_name,
+                  substring((
+                        SELECT string_agg(sp.name, ', ')
+                    FROM sale_order so
+                    INNER JOIN  sale_order_line sol on so.id = sol.order_id
+                    INNER JOIN  procurement_group pg on so.procurement_group_id = pg.id
+                    INNER JOIN  stock_picking sp on pg.id = sp.group_id
+                    WHERE sol.product_id = ail.product_id
+                    ), 2, 1000) do_name,
+                 po.name po_name,
+                 SUM(ail.price_unit) unit_price,
+                 SUM(ail.quantity) qty,
+                 SUM(ail.price_subtotal) as amount,
+                 SUM(0.07 * ail.price_subtotal) as gst,
+                 SUM(ail.price_subtotal + 0.07 * ail.price_subtotal) as total, project.name
+                FROM account_invoice_line ail
+                INNER JOIN  account_invoice ai on ai.id = ail.invoice_id
+                INNER JOIN  product_product pp on ail.product_id = pp.id
+                INNER JOIN  product_template pt on pp.product_tmpl_id = pt.id
+                INNER JOIN  purchase_invoice_rel pir on pir.invoice_id = ai.id
+                INNER JOIN  purchase_order po on pir.purchase_id = po.id
+                INNER JOIN  purchase_order_line pol on po.id = pol.order_id and pol.product_id = ail.product_id
+                INNER JOIN  stock_move sm on sm.purchase_line_id = pol.id and ail.product_id = sm.product_id
+                INNER JOIN  stock_location sl on sl.id = sm.location_dest_id
+                INNER JOIN  res_partner rp on po.partner_id = rp.id
+                LEFT JOIN streamline_ame_project_project project on po.project_no = project.id
+                WHERE ai.type='in_invoice'
+                and ai.state='paid'
+                and ai.date_invoice::DATE BETWEEN %s::DATE and %s::DATE
+            GROUP BY ai.date_invoice, ai."number", pp.default_code, pt.name, pt.description, sl.complete_name, rp.name, ail.product_id, po.name, project.name
+                order by project.name, inv_no desc
+
         ''',(a, b))
         res = self.cr.dictfetchall()
         return res

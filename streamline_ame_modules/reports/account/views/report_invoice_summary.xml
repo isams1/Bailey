@@ -96,7 +96,7 @@
 								<span t-esc="line_ids['stock_code']" />
 							</td>
 							<td>
-								<span t-esc="line_ids['item_decs']" />
+								<span t-esc="line_ids['item_decs'] and line_ids['item_decs'] or line_ids['item_name']" />
 							</td>
 							<td>
 								<span t-esc="line_ids['location_stock']" />
