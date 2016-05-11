@@ -18,99 +18,58 @@ class wrapped_streamline_ame_report_item_consumption_by_site(report_sxw.rml_pars
             substring(Y.delivered_to from (length('Physical Locations / ') + strpos(Y.delivered_to, 'Physical Locations / '))) delivered_to, 
             Y.delivered_date, COALESCE(Y.delivered_qty_to_site, 0) delivered_qty_to_site, Y.returned_date, COALESCE(Y.returned_qty_to_HQ, 0) returned_qty_to_hq
         FROM
-        (
-        select X.default_code, X.description, X.delivered_from,
-        (
-        select tsl.complete_name
-        from stock_location tsl
-        where tsl.id = X.location_dest_id
-        ) delivered_to,
-        (
-        select sum(COALESCE(A.product_qty, 0))
-        from
-        (
-        select DISTINCT tsm.*
-        from stock_quant tsq
-        inner join stock_quant_move_rel tsqmr on tsq.id = tsqmr.quant_id
-        inner join stock_move tsm on tsm.id = tsqmr.move_id
-        inner join stock_picking_type tspt on tsm.picking_type_id = tspt.id
-        where tsq.lot_id is not null
-        and tspt.code = 'internal'
-        and tsq.product_id = X.product_id
-        and tsm.location_id = X.location_id
-        and tsm.location_dest_id = X.location_dest_id
-        )A) delivered_qty_to_site,
-        (
-        select sum(COALESCE(A.product_qty,0))
-        from
-        (
-        select DISTINCT tsm.*
-        from stock_quant tsq
-        inner join stock_quant_move_rel tsqmr on tsq.id = tsqmr.quant_id
-        inner join stock_move tsm on tsm.id = tsqmr.move_id
-        inner join stock_picking_type tspt on tsm.picking_type_id = tspt.id
-        where tsq.lot_id is not null
-        and tspt.code = 'internal'
-        and tsq.product_id = X.product_id
-        and tsm.location_id = X.location_dest_id
-        and tsm.location_dest_id = X.location_id
-        )A) returned_qty_to_HQ,
-        (
-        select to_char(max(A.date), 'dd-MM-yyyy')
-        from
-        (
-        select DISTINCT tsm.*
-        from stock_quant tsq
-        inner join stock_quant_move_rel tsqmr on tsq.id = tsqmr.quant_id
-        inner join stock_move tsm on tsm.id = tsqmr.move_id
-        inner join stock_picking_type tspt on tsm.picking_type_id = tspt.id
-        where tsq.lot_id is not null
-        and tspt.code = 'internal'
-        and tsq.product_id = X.product_id
-        and tsm.location_id = X.location_id
-        and tsm.location_dest_id = X.location_dest_id
-        )A) delivered_date,
-        (
-        select to_char(max(A.date), 'dd-MM-yyyy')
-        from
-        (
-        select DISTINCT tsm.*
-        from stock_quant tsq
-        inner join stock_quant_move_rel tsqmr on tsq.id = tsqmr.quant_id
-        inner join stock_move tsm on tsm.id = tsqmr.move_id
-        inner join stock_picking_type tspt on tsm.picking_type_id = tspt.id
-        where tsq.lot_id is not null
-        and tspt.code = 'internal'
-        and tsq.product_id = X.product_id
-        and tsm.location_id = X.location_dest_id
-        and tsm.location_dest_id = X.location_id
-        )A) returned_date
-        from
-        (
-        select DISTINCT sm.product_id, pp.name_template, pp.default_code, pt.description, sm.location_id, sm.location_dest_id, sl.complete_name delivered_from
-        from stock_move sm
-        inner join stock_picking_type spt on sm.picking_type_id = spt.id
-        inner join product_product pp on sm.product_id = pp.id
-        inner JOIN product_template pt on pp.product_tmpl_id = pt.id
-        inner join stock_location sl on sm.location_id = sl.id
-        and spt.code = 'internal'
-        where sm.location_id in
-        (
-        select spt.default_location_dest_id
-        from stock_picking_type spt
-        INNER JOIN stock_warehouse sw on spt.warehouse_id = sw.id
-        where sw.company_id = 1
-        and sw.partner_id = 1
-        and spt.code = 'incoming'
-        )
-        and sm.product_id in
-        (
-        select sq.product_id
-        from stock_quant sq
-        where sq.lot_id is not null 
-        ))X)Y
-        where Y.delivered_qty_to_site is not null
-        order by 1
+            (SELECT X.default_code, X.name, X.description, X.delivered_from,
+            X.delivered_to,
+            sum(COALESCE(delivered.product_qty, 0)) as delivered_qty_to_site,
+            sum(COALESCE(returned.product_qty, 0)) as  returned_qty_to_HQ,
+            to_char(max(delivered.date), 'dd-MM-yyyy') as delivered_date,
+            to_char(max(returned.date), 'dd-MM-yyyy') as returned_date
+            FROM
+            (
+                SELECT DISTINCT sm.product_id, pp.name_template as name, pp.default_code, pt.description,
+                spt.default_location_src_id as location_id, spt.default_location_dest_id as location_dest_id,
+                location_src.complete_name delivered_from, location_dest.complete_name delivered_to
+                FROM stock_move sm
+                INNER JOIN  product_product pp on sm.product_id = pp.id
+                INNER JOIN  product_template pt on pp.product_tmpl_id = pt.id
+                INNER JOIN  stock_picking_type spt on sm.picking_type_id = spt.id
+                INNER JOIN  stock_location location_dest on location_dest.id = spt.default_location_dest_id
+                INNER JOIN  stock_location location_src on location_src.id = spt.default_location_src_id
+                WHERE spt.code = 'incoming'
+                    AND sm.company_id = 1
+                --product in warehouse
+                AND sm.product_id in
+                (
+                    SELECT sq.product_id
+                    FROM stock_quant sq
+                    WHERE sq.lot_id is not null
+                )
+            ) as X
+            LEFT JOIN
+            (
+                SELECT tsm.date, tsm.product_id, tsm.location_id, tsm.location_dest_id, tsm.id, tsm.product_qty
+                FROM stock_quant tsq
+                INNER JOIN  stock_quant_move_rel tsqmr on tsq.id = tsqmr.quant_id
+                INNER JOIN  stock_move tsm on tsm.id = tsqmr.move_id
+                GROUP BY tsm.date, tsm.product_id, tsm.location_id, tsm.location_dest_id, tsm.id
+
+            ) AS delivered ON (delivered.product_id = X.product_id
+                    AND delivered.location_id = X.location_id
+                    AND delivered.location_dest_id = X.location_dest_id)
+            LEFT JOIN
+            (
+                SELECT tsm.date, tsm.product_id, tsm.location_id, tsm.location_dest_id, tsm.id, tsm.product_qty
+                FROM stock_quant tsq
+                INNER JOIN  stock_quant_move_rel tsqmr on tsq.id = tsqmr.quant_id
+                INNER JOIN  stock_move tsm on tsm.id = tsqmr.move_id
+                GROUP BY tsm.date, tsm.product_id, tsm.location_id, tsm.location_dest_id, tsm.id
+
+            ) AS returned ON (delivered.product_id = X.product_id
+                    AND delivered.location_id = X.location_dest_id
+                    AND delivered.location_dest_id = X.location_id)
+        GROUP BY X.default_code, X.name, X.description, X.delivered_from, X.delivered_to)Y
+            where Y.delivered_qty_to_site is not null
+            order by 1
         ''')
         res = self.cr.dictfetchall()
         return res
