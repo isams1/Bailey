@@ -36,6 +36,9 @@ class ir_actions_report_xml(models.Model):
                     break
                 if not line.company_id:
                     header = line.header_img
+        company = self.pool.get('res.company').browse(self._cr, self._uid, company_id)
+        if not header and company.letterhead:
+            header = company.letterhead
         return header
 
     def get_footer(self, company_id):
@@ -47,6 +50,9 @@ class ir_actions_report_xml(models.Model):
                     break
                 if not line.company_id:
                     footer = line.footer_img
+        company = self.pool.get('res.company').browse(self._cr, self._uid, company_id)
+        if not footer and company.letterfoot:
+            footer = company.letterfoot
         return footer
 
 class Report(models.Model):
