@@ -32,6 +32,7 @@
     """,
     'depends': ['base','report'],
     'data': [
+        'view/company_view.xml',
         'view/report_view.xml',
         'security/ir.model.access.csv',
         ],
