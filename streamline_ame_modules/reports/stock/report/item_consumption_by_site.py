@@ -9,11 +9,26 @@ class wrapped_streamline_ame_report_item_consumption_by_site(report_sxw.rml_pars
         self.localcontext.update({
             'time': time,
             'get_item_consumption_by_site':self._get_item_consumption_by_site,
+            'get_location': self._get_location,
+            'get_refund_location': self._get_refund_location,
         })
 
-    def _get_item_consumption_by_site(self):
+    def _get_refund_location(self, location_ids, location_id):
+        location_obj = self.pool.get('stock.location')
+        lst_location = {}
+        for location in location_obj.browse(self.cr, self.uid, location_ids):
+            if location.id != location_id:
+                lst_location.update({location.id: location.name})
+        return lst_location
+
+    def _get_location(self, location_id):
+        return self.pool.get('stock.location').browse(self.cr, self.uid, location_id).name
+
+    def _get_item_consumption_by_site(self, form, location_id):
+        print form, location_id
+
         self.cr.execute('''
-        select Y.default_code, Y.description, 
+        select Y.default_code, Y.description, y.name,
             substring(Y.delivered_from from (length('Physical Locations / ') + strpos(Y.delivered_from, 'Physical Locations / '))) delivered_from, 
             substring(Y.delivered_to from (length('Physical Locations / ') + strpos(Y.delivered_to, 'Physical Locations / '))) delivered_to, 
             Y.delivered_date, COALESCE(Y.delivered_qty_to_site, 0) delivered_qty_to_site, Y.returned_date, COALESCE(Y.returned_qty_to_HQ, 0) returned_qty_to_hq
@@ -72,7 +87,7 @@ class wrapped_streamline_ame_report_item_consumption_by_site(report_sxw.rml_pars
             order by 1
         ''')
         res = self.cr.dictfetchall()
-        return res
+        return []
 
 class report_streamline_ame_item_consumption_by_site(osv.AbstractModel):
     _name = 'report.streamline_ame_modules.report_streamline_ame_item_consumption_by_site'
