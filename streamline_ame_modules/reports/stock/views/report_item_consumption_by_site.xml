@@ -2,8 +2,8 @@
 <openerp>
 	<data>
 		<template id="report_streamline_ame_item_consumption_by_site">
-			<t t-call="streamline_ame_modules.streamline_ame_custom_report_header" />
 			<div class="page">
+                <h3><span t-esc="company.name"/></h3>
 				<h2>Item Consumption By Site</h2>
 
 				<div class="row mt32">
@@ -42,6 +42,9 @@
 									<strong>Product Description</strong>
 								</th>
 								<th class="text-center" style="border: 1px solid black;">
+									<strong>Product Category</strong>
+								</th>
+								<th class="text-center" style="border: 1px solid black;">
 									<strong>Qty Delivered</strong>
 								</th>
 								<th class="text-center" style="border: 1px solid black;">
@@ -67,7 +70,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr t-foreach="get_item_consumption_by_site(data['form'], location)" t-as="line_ids"
+							<tr t-foreach="get_item_consumption_by_site(data['form'], location, company.id)" t-as="line_ids"
 								style="page-break-inside:avoid; page-break-after:auto;">
 								<td style="border: 1px solid black;">
 									<span t-esc="line_ids['default_code']" />
@@ -76,27 +79,30 @@
 									<span t-esc="line_ids['description'] and line_ids['description'] or line_ids['name']" />
 								</td>
 								<td style="border: 1px solid black;">
-									<span t-esc="line_ids['delivered_qty_to_site']" />
+									<span t-esc="line_ids['description'] and line_ids['description'] or line_ids['name']" />
 								</td>
 								<td style="border: 1px solid black;">
-									<span t-esc="line_ids['delivered_date']" />
+									<span t-esc="line_ids['stock_in']" />
+								</td>
+								<td style="border: 1px solid black;">
+									<span t-esc="line_ids['in_date']" />
 								</td>
 								<td class="text-center" style="border: 1px solid black;">
-									<span t-esc="line_ids['delivered_qty_to_site']" />
+									<span t-esc="line_ids['out_to_wh']" />
 								</td>
 								<td style="border: 1px solid black;">
-									<span t-esc="line_ids['returned_date']" />
+									<span t-esc="line_ids['out_to_wh_date']" />
 								</td>
 								<t t-foreach="rf_locations.keys()" t-as="rf_id" >
 									<td class="text-center" style="border: 1px solid black;">
-										<span t-esc="line_ids['delivered_qty_to_site']" />
+										<span t-esc="line_ids['out_to_%s'%str(rf_locations[rf_id].lower())]" />
 									</td>
 									<td style="border: 1px solid black;">
-										<span t-esc="line_ids['returned_date']" />
+										<span t-esc="line_ids['out_to_%s_date'%str(rf_locations[rf_id].lower())]" />
 									</td>
 								</t>
 								<td class="text-center" style="border: 1px solid black;">
-									<span t-esc="line_ids['returned_qty_to_hq']" />
+									<span t-esc="line_ids['remain_qty']" />
 								</td>
 							</tr>
 						</tbody>

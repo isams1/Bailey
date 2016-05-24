@@ -3,10 +3,16 @@ from openerp import models, fields
 class streamline_ame_report_wizard_item_consumption_by_site(models.TransientModel):
     _name = 'streamline.ame.report.wizard.item.consumption.by.site'
 
+    def _get_location(self):
+        location = self.env['stock.location'].search([('name', 'in', ('371', '378'))])
+        if location:
+            return location.ids
+        return []
+
     date_from = fields.Date('Date From', required=True)
     date_to = fields.Date('Date To', required=True)
     location_ids = fields.Many2many('stock.location', 'consumption_by_site_loation_rel', 'report_id', 'location_id',
-                                    string='Locations', domain=[('usage', '=', 'internal')])
+                                    string='Locations', domain=[('usage', '=', 'internal')], default=_get_location)
 
     
     def print_report(self, cr, uid, ids, context=None):
