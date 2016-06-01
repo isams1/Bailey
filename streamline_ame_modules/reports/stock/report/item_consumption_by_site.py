@@ -25,9 +25,8 @@ class wrapped_streamline_ame_report_item_consumption_by_site(report_sxw.rml_pars
         return self.pool.get('stock.location').browse(self.cr, self.uid, location_id).name
 
     def _get_item_consumption_by_site(self, form, location_id, company_id):
-        print location_id
         refund_ids = self._get_refund_location(form['location_ids'], location_id)
-        print refund_ids
+        date = ''' AND sm.date BETWEEN '%s' AND '%s' '''%(form['date_from'], form['date_to'])
         select = ''
         refund_select = ''
         refund_sql = ''' '''
@@ -48,14 +47,14 @@ class wrapped_streamline_ame_report_item_consumption_by_site(report_sxw.rml_pars
             refund_sql += '''
                 UNION
         -- out to 378
-                        (SELECT sm.product_id, pt.name, pp.default_code, pt.description, pc.name as categ,
+                    (SELECT sm.product_id, pt.name, pp.default_code, pt.description, pc.name as categ,
                     ''  as in_date, ''  as out_to_wh_date, %s
                     0 as in_qty, 0 as out_to_wh
                     FROM stock_move sm
                     INNER JOIN  product_product pp on sm.product_id = pp.id
                     INNER JOIN  product_template pt on pp.product_tmpl_id = pt.id
                     INNER JOIN  product_category pc on pt.categ_id = pc.id
-                    WHERE sm.company_id = 1
+                    WHERE sm.company_id = %s  %s
                     AND sm.location_dest_id = %s and sm.location_id = %s
                     AND sm.product_id in
                     (
@@ -64,8 +63,8 @@ class wrapped_streamline_ame_report_item_consumption_by_site(report_sxw.rml_pars
                         WHERE sq.lot_id is not null
                     )
                 GROUP BY sm.product_id, pp.default_code, pt.name, pt.description, pc.name, sm.date
-                        )
-            '''%(refund2_select, refund, location_id)
+                    )
+            '''%(refund2_select, company_id, date, refund, location_id)
         remain += ', 0)) as remain_qty,'
 
         sql = '''
@@ -87,7 +86,7 @@ class wrapped_streamline_ame_report_item_consumption_by_site(report_sxw.rml_pars
                     INNER JOIN  product_product pp on sm.product_id = pp.id
                     INNER JOIN  product_template pt on pp.product_tmpl_id = pt.id
                     INNER JOIN  product_category pc on pt.categ_id = pc.id
-                    WHERE sm.company_id = %s
+                    WHERE sm.company_id = %s %s
                     AND sm.location_dest_id = %s and sm.location_id <> %s
                     AND sm.product_id in
                     (
@@ -106,7 +105,7 @@ class wrapped_streamline_ame_report_item_consumption_by_site(report_sxw.rml_pars
                     INNER JOIN  product_product pp on sm.product_id = pp.id
                     INNER JOIN  product_template pt on pp.product_tmpl_id = pt.id
                     INNER JOIN  product_category pc on pt.categ_id = pc.id
-                    WHERE sm.company_id = %s
+                    WHERE sm.company_id = %s  %s
                     AND sm.location_dest_id = 12 and sm.location_id = %s
                     AND sm.product_id in
                     (
@@ -120,7 +119,7 @@ class wrapped_streamline_ame_report_item_consumption_by_site(report_sxw.rml_pars
             ) as X
 
              GROUP BY X.product_id, X.default_code, X.name, X.description, X.categ
-        '''%(select, remain, refund_select, company_id, location_id, location_id, refund_select, company_id, location_id, refund_sql)
+        '''%(select, remain, refund_select, company_id, date, location_id, location_id, refund_select, company_id, date, location_id, refund_sql)
         print sql
         self.cr.execute(sql)
         res = self.cr.dictfetchall()

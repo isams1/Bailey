@@ -9,11 +9,11 @@
 				<div class="row mt32">
 					<div class="col-xs-3">
 						<strong>Start Period: </strong>
-						<span t-esc="data['form']['date_from']" t-field-options='{"format": "dd-MMM-yy"}'></span>
+						<span t-esc="time.strftime('%d-%m-%Y', time.strptime(data['form']['date_from1'], '%Y-%m-%d'))" />
 					</div>
 					<div class="col-xs-3">
 						<strong>End Period: </strong>
-						<span t-esc="data['form']['date_to']" t-field-options='{"format": "dd-MMM-yy"}'></span>
+						<span t-esc="time.strftime('%d-%m-%Y', time.strptime(data['form']['date_to1'], '%Y-%m-%d'))" />
 					</div>
 				</div>
 				<div class="row">
