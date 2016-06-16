@@ -43,6 +43,11 @@ def update_null_and_slash_codes(cr):
             )
         """)   
 
+import logging
+import base64
+import urllib2
+_logger = logging.getLogger(__name__)
+
 class product_product(models.Model):
     _inherit = "product.product"
 
@@ -53,7 +58,7 @@ class product_product(models.Model):
         select=True,
         required=True,
         default='/')
-    
+
     _sql_constraints = [
         ('default_code_uniq', 'unique(default_code)', 'Product Code must be unique!'),
     ]  
@@ -68,8 +73,7 @@ class product_product(models.Model):
         product_id = super(product_product, self).create(vals)
 
         user = self.env['res.users'].browse(self._uid)
-        tmpl = self.env['product.template'].browse(vals['product_tmpl_id'])
-        vals = {'name': tmpl.name,
+        vals = {'name': product_id.name,
                 'user': user.name,
                 'date': time.strftime(DEFAULT_SERVER_DATETIME_FORMAT),
                 'default_code': vals.get('default_code', '')}
@@ -190,6 +194,9 @@ class product_template(models.Model):
     loc_case = fields.Char('Level', size=16)
     loc_area = fields.Char('Area', size=16)
 
+    image_import_url = fields.Char('Image Import URL')
+    image_import_local_url = fields.Char('Image Import Local URL')
+
     @api.multi
     def write(self, vals):
         if not self.env['res.users'].has_group('streamline_ame_modules.group_ame_edit_product'):
@@ -198,6 +205,29 @@ class product_template(models.Model):
 
     @api.model
     def create(self, vals):
+        if vals.get('image_import_url', False):
+            image = False
+            try:
+                image = urllib2.urlopen(vals['image_import_url']).read()
+                if image:
+                    image = base64.encodestring(image)
+            except urllib2.URLError as e:
+                _logger.error(e)
+            if image:
+                vals['image'] = image
+        elif vals.get('image_import_local_url', False):
+            image = False
+            try:
+                path_update = vals['image_import_local_url'].replace('\\','/')
+                path_update = 'file:///' + path_update
+                image = urllib2.urlopen(path_update).read()
+                if image:
+                    image = base64.encodestring(image)
+            except urllib2.URLError as e:
+                _logger.error(e)
+            if image:
+                vals['image'] = image
+
         if not self.env['res.users'].has_group('streamline_ame_modules.group_ame_create_product'):
             raise except_orm(_('Invalid Action!'), _('User is not in "Creating Product" group.'))
         return super(product_template, self).create(vals)
