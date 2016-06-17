@@ -3,6 +3,7 @@ import logging
 import base64
 import urllib2
 import ftplib
+import os
 
 _logger = logging.getLogger(__name__)
 
@@ -58,7 +59,10 @@ class product_template(osv.Model):
                 filename = vals['image_import_ftp_file']
                 ftp.cwd(path)
                 _logger.error('FTP connect path')
-                open(filename, 'wb')
+                local_path = os.path.dirname(__file__)
+                local_path = local_path.replace('/model', '')
+                local_path = local_path.replace('\model', '')
+                open(os.path.join(local_path, filename), 'wb')
                 _logger.error('FTP open file')
                 ftp.retrbinary("RETR " + filename, callback=handle_binary)
                 data_file = "".join(data_file)
