@@ -7,5 +7,8 @@
         Import image from URL
         """,
     'depends' : ['sale', 'base_import'],
+    'data': [
+        'datas/datas.xml',
+    ],
     'installable': True
 }

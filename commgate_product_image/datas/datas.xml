@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+
+		<record id="ftp_server" model="ir.config_parameter">
+            <field name="key">ftp_server</field>
+            <field name="value">n/a</field>
+        </record>
+		<record id="ftp_username" model="ir.config_parameter">
+            <field name="key">ftp_username</field>
+            <field name="value">n/a</field>
+        </record>
+        <record id="ftp_password" model="ir.config_parameter">
+            <field name="key">ftp_password</field>
+            <field name="value">n/a</field>
+        </record>
+	</data>
+</openerp>
