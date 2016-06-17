@@ -205,28 +205,28 @@ class product_template(models.Model):
 
     @api.model
     def create(self, vals):
-        if vals.get('image_import_url', False):
-            image = False
-            try:
-                image = urllib2.urlopen(vals['image_import_url']).read()
-                if image:
-                    image = base64.encodestring(image)
-            except urllib2.URLError as e:
-                _logger.error(e)
-            if image:
-                vals['image'] = image
-        elif vals.get('image_import_local_url', False):
-            image = False
-            try:
-                path_update = vals['image_import_local_url'].replace('\\','/')
-                path_update = 'file:///' + path_update
-                image = urllib2.urlopen(path_update).read()
-                if image:
-                    image = base64.encodestring(image)
-            except urllib2.URLError as e:
-                _logger.error(e)
-            if image:
-                vals['image'] = image
+        # if vals.get('image_import_url', False):
+        #     image = False
+        #     try:
+        #         image = urllib2.urlopen(vals['image_import_url']).read()
+        #         if image:
+        #             image = base64.encodestring(image)
+        #     except urllib2.URLError as e:
+        #         _logger.error(e)
+        #     if image:
+        #         vals['image'] = image
+        # elif vals.get('image_import_local_url', False):
+        #     image = False
+        #     try:
+        #         path_update = vals['image_import_local_url'].replace('\\','/')
+        #         path_update = 'file:///' + path_update
+        #         image = urllib2.urlopen(path_update).read()
+        #         if image:
+        #             image = base64.encodestring(image)
+        #     except urllib2.URLError as e:
+        #         _logger.error(e)
+        #     if image:
+        #         vals['image'] = image
 
         if not self.env['res.users'].has_group('streamline_ame_modules.group_ame_create_product'):
             raise except_orm(_('Invalid Action!'), _('User is not in "Creating Product" group.'))
