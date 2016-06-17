@@ -48,13 +48,18 @@ class product_template(osv.Model):
             ftp_server = self.pool.get('ir.config_parameter').get_param(cr, uid, 'ftp_server')
             ftp_username = self.pool.get('ir.config_parameter').get_param(cr, uid, 'ftp_username')
             ftp_password = self.pool.get('ir.config_parameter').get_param(cr, uid, 'ftp_password')
+            _logger.error('FTP Start')
             ftp = ftplib.FTP(ftp_server)
+            _logger.error('FTP connect')
             ftp.login(ftp_username, ftp_password)
+            _logger.error('FTP login')
             try:
                 path = vals['image_import_ftp_directory']
                 filename = vals['image_import_ftp_file']
                 ftp.cwd(path)
+                _logger.error('FTP connect path')
                 open(filename, 'wb')
+                _logger.error('FTP open file')
                 ftp.retrbinary("RETR " + filename, callback=handle_binary)
                 data_file = "".join(data_file)
                 image = data_file
