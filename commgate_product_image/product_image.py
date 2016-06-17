@@ -66,7 +66,7 @@ class product_template(osv.Model):
                 _logger.error('FTP Error')
             ftp.quit()
 
-        return super(product_template, self).create(vals)
+        return super(product_template, self).create(cr, uid, vals, context)
 
     # def load(self, cr, uid, fields, data, context=None):
     #     data_file = []
