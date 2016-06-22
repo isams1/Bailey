@@ -10,6 +10,10 @@
 						<p>Clean Database</p>
 					</group>
 					<separator string="" colspan="4" />
+					<group>
+						<field name="product_categ" />
+						<field name="product" />
+					</group>
 					<footer>
 						<button type="object" name="action_clean_data" 
 							icon="gtk-ok"

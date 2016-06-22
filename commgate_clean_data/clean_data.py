@@ -8,6 +8,12 @@ _logger = logging.getLogger(__name__)
 class clean_data(osv.osv_memory):
     _name = 'clean.data'
 
+    _columns = {
+        'product': fields.boolean('Remove Product'),
+        'product_categ': fields.boolean('Remove Product Categories'),
+    }
+
+
     def reset_number(self, cr, uid, ids, context=None):
         """ This method restes all running sequence """
         cr.execute("update ir_sequence set number_next=1;")
@@ -21,6 +27,7 @@ class clean_data(osv.osv_memory):
         return True
     
     def action_clean_data(self, cr, uid, ids, context=None):
+        obj = self.browse(cr, uid, ids, context)[0]
         try:
             is_exist = cr.execute('''SELECT EXISTS (
                                     SELECT 1
@@ -105,25 +112,26 @@ class clean_data(osv.osv_memory):
             if is_exist and is_exist[0]['exists']:
                 cr.execute("truncate pos_session cascade; DELETE FROM mail_message WHERE model = 'pos.session';")
 
-            cr.execute('''SELECT EXISTS (
-                                    SELECT 1
-                                    FROM   information_schema.tables
-                                    WHERE  table_schema = 'public'
-                                    AND    table_name = 'product_template'
-                                    );''')
-            is_exist = cr.dictfetchall()
-            if is_exist and is_exist[0]['exists']:
-                cr.execute("truncate product_template cascade; DELETE FROM mail_message WHERE model = 'product.template' or model = 'product.product';")
-
-            cr.execute('''SELECT EXISTS (
-                                    SELECT 1
-                                    FROM   information_schema.tables
-                                    WHERE  table_schema = 'public'
-                                    AND    table_name = 'product_category'
-                                    );''')
-            is_exist = cr.dictfetchall()
-            if is_exist and is_exist[0]['exists']:
-                cr.execute("truncate product_category cascade; DELETE FROM mail_message WHERE model = 'product.category'")
+            if obj.category or obj.product:
+                cr.execute('''SELECT EXISTS (
+                                        SELECT 1
+                                        FROM   information_schema.tables
+                                        WHERE  table_schema = 'public'
+                                        AND    table_name = 'product_template'
+                                        );''')
+                is_exist = cr.dictfetchall()
+                if is_exist and is_exist[0]['exists']:
+                    cr.execute("truncate product_template cascade; DELETE FROM mail_message WHERE model = 'product.template' or model = 'product.product';")
+            if obj.category:
+                cr.execute('''SELECT EXISTS (
+                                        SELECT 1
+                                        FROM   information_schema.tables
+                                        WHERE  table_schema = 'public'
+                                        AND    table_name = 'product_category'
+                                        );''')
+                is_exist = cr.dictfetchall()
+                if is_exist and is_exist[0]['exists']:
+                    cr.execute("truncate product_category cascade; DELETE FROM mail_message WHERE model = 'product.category'")
 
             self.reset_number(cr, uid, ids, context)
         except Exception, e:

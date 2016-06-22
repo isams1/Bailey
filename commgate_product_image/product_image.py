@@ -1,8 +1,11 @@
+# -*- coding: utf-8 -*-
+
 from openerp.osv import osv, fields
 import logging
 import base64
-import urllib2 
+import urllib2
 import ftplib
+import os
 
 _logger = logging.getLogger(__name__)
 
@@ -48,13 +51,22 @@ class product_template(osv.Model):
             ftp_server = self.pool.get('ir.config_parameter').get_param(cr, uid, 'ftp_server')
             ftp_username = self.pool.get('ir.config_parameter').get_param(cr, uid, 'ftp_username')
             ftp_password = self.pool.get('ir.config_parameter').get_param(cr, uid, 'ftp_password')
+
             ftp = ftplib.FTP(ftp_server)
             ftp.login(ftp_username, ftp_password)
+            _logger.error('FTP login')
             try:
                 path = vals['image_import_ftp_directory']
                 filename = vals['image_import_ftp_file']
                 ftp.cwd(path)
-                open(filename, 'wb')
+                _logger.error('FTP connect path')
+
+                local_path = os.path.dirname(__file__)
+                local_path = local_path.replace('/model', '')
+                local_path = local_path.replace('\model', '')
+                open(os.path.join(local_path, filename), 'wb')
+                _logger.error('FTP open file')
+
                 ftp.retrbinary("RETR " + filename, callback=handle_binary)
                 data_file = "".join(data_file)
                 image = data_file
