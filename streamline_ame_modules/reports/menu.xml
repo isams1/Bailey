@@ -81,6 +81,10 @@
             file="Item_Consumption_by_Site"
             menu="False"
          />
+
+        <record id="streamline_ame_report_item_consumption_by_site" model="ir.actions.report.xml">
+            <field name="paperformat_id" ref="paperformat_item_consumption_by_site"/>
+        </record>
          
          <report
             id="streamline_ame_report_ordered_vs_delivery_qty"
