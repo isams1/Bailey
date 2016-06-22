@@ -112,7 +112,7 @@ class clean_data(osv.osv_memory):
             if is_exist and is_exist[0]['exists']:
                 cr.execute("truncate pos_session cascade; DELETE FROM mail_message WHERE model = 'pos.session';")
 
-            if obj.category or obj.product:
+            if obj.product_categ or obj.product:
                 cr.execute('''SELECT EXISTS (
                                         SELECT 1
                                         FROM   information_schema.tables
@@ -122,7 +122,7 @@ class clean_data(osv.osv_memory):
                 is_exist = cr.dictfetchall()
                 if is_exist and is_exist[0]['exists']:
                     cr.execute("truncate product_template cascade; DELETE FROM mail_message WHERE model = 'product.template' or model = 'product.product';")
-            if obj.category:
+            if obj.product_categ:
                 cr.execute('''SELECT EXISTS (
                                         SELECT 1
                                         FROM   information_schema.tables
