@@ -6,6 +6,13 @@
             <field name="model">streamline.ame.report.wizard.item.consumption.by.site</field>
             <field name="arch" type="xml">
                 <form string="Item Consumption By Site">
+                    <group>
+                        <field name="date_from1" />
+                        <field name="date_to1" />
+                        <field name="date_from" invisible="1" />
+                        <field name="date_to" invisible="1"/>
+                        <field name="location_ids" />
+                    </group>
                     <footer>
                         <button name="print_report" type="object" string="Print Report" class="oe_highlight"/>
                         or
