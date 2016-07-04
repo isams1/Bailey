@@ -47,8 +47,10 @@
         'sales/views/email_template_sale_order.xml',
         'purchase/views/purchase_view.xml',
         'purchase/views/material_view.xml',
+        'purchase/views/project_view.xml',
         'purchase/views/menu.xml',
         'partner/views/partner_view.xml',
+
         'view/templates.xml',
         'security/ir.model.access.csv',
         
