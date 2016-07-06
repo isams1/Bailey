@@ -169,6 +169,14 @@ class sale_order_xls(report_xls):
             ]
             row_data = self.xls_row_template(c_specs, [x[0] for x in c_specs])
             row_pos = self.xls_write_row(ws, row_pos, row_data)
+
+            if so.project_no:
+                c_specs = [
+                    ('name', 9, 0, 'text', 'Project No.: %s' %(so.project_no and so.project_no.name or '')),
+                ]
+                row_data = self.xls_row_template(c_specs, [x[0] for x in c_specs])
+                row_pos = self.xls_write_row(ws, row_pos, row_data)
+
             ws.set_horz_split_pos(row_pos)
 
             c_specs = [

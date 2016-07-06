@@ -9,6 +9,8 @@ import simplejson as json
 class sale_order(models.Model):
     _inherit = "sale.order"
 
+    project_no = fields.Many2one('streamline.ame.project.project', 'Project No', readonly=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]})
+
     # @api.model
     # def create(self, vals):
     #     sale_id = super(sale_order, self).create(vals)
