@@ -20,7 +20,7 @@ class streamline_ame_material_take_off(models.Model):
                 if user_group.id == general_id:
                     return True
         except Exception as e:
-            _logger.info(e)
+            log.info(e)
         return result
     
     name = fields.Char(string='Name', size=256, select=True, default='/')

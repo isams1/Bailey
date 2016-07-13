@@ -1,0 +1,38 @@
+<?xml version="1.0" ?>
+<openerp>
+	<data>
+		<record id="view_streamline_ame_project_project_form" model="ir.ui.view">
+            <field name="name">streamline.ame.project.project.form</field>
+            <field name="model">streamline.ame.project.project</field>
+            <field name="arch" type="xml">
+                <form string="Project">
+                	<sheet>
+	                   <group>
+                           <field name="name"/>
+                           <field name="company_id" groups="base.group_multi_company"/>
+	                    </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record id="view_streamline_ame_project_project_tree" model="ir.ui.view">
+            <field name="name">streamline.ame.project.project.tree</field>
+            <field name="model">streamline.ame.project.project</field>
+            <field name="arch" type="xml">
+                <tree string="Project" editable="top">
+                    <field name="name"/>
+                    <field name="company_id" groups="base.group_multi_company"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="action_streamline_ame_project_project_list" model="ir.actions.act_window">
+            <field name="name">Project</field>
+            <field name="res_model">streamline.ame.project.project</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_streamline_ame_project_project_tree"/>
+        </record>
+	</data>
+</openerp>
