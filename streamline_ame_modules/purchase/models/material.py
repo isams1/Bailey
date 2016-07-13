@@ -20,9 +20,9 @@ class streamline_ame_material_take_off(models.Model):
                 if user_group.id == general_id:
                     return True
         except Exception as e:
-            _logger.info(e)
+            logging.getLogger.info(e)
         return result
-    
+
     name = fields.Char(string='Name', size=256, select=True, default='/')
     project_no = fields.Many2one('streamline.ame.project.project', string='Project Name')
     start_date = fields.Date(string='Report Start Date', required=True, default=lambda *a: time.strftime('%Y-%m-%d'))
@@ -55,12 +55,12 @@ class streamline_ame_material_take_off_line(models.Model):
     product_id = fields.Many2one('product.product', required=True, string="Items")
     parent_id = fields.Many2one('streamline.ame.material.take.off', required=True)
     required_qty = fields.Integer(string="Required Qty")
-    purchased_qty = fields.Float(compute='compute_purchased_qty', string="Total Purchased Qty")
     received_qty = fields.Float(compute='compute_received_qty', string="Total Received Qty")
-    
-    
-    
-    
+    purchase_line_id = fields.Many2one('purchase.order.line', 'PO Line')
+    purchase_id = fields.Many2one('purchase.order', 'PO', related='purchase_line_id.order_id')
+    purchased_qty = fields.Float("Purchased Qty", related='purchase_line_id.product_qty')
+    price_unit = fields.Float("Price Unit", related='purchase_line_id.price_unit')
+
     def compute_purchased_qty(self):
         purchase_lines_list = {}
         # get purchase line and calculate qty
@@ -79,34 +79,13 @@ class streamline_ame_material_take_off_line(models.Model):
                 record.purchased_qty = 0.0
         
     def compute_received_qty(self):
-        move_line_list = {}
-        # use query get stock_pciking
-        query = """
-        SELECT picking_id FROM stock_picking p, stock_move m, purchase_order_line pol, purchase_order po
-            WHERE po.id in %s and po.id = pol.order_id and pol.id = m.purchase_line_id and m.picking_id = p.id
-            GROUP BY picking_id, po.id
-        """
-        po_model_list = self.env['purchase.order'].search([('project_no', '=', self[0].parent_id.project_no.id),'|',('state', '=', 'approved'), ('state', '=', 'done')])
-        
-        a = tuple([x.id for x in po_model_list])
-        if len(a) > 0:
-            self.env.cr.execute(query, (a, ))
-            picks = self.env.cr.fetchall()
-            
-            a = ()
-            for pick in picks:
-                a += pick
-            
-            for pick_obj in self.env['stock.picking'].browse(a):
-                for move in pick_obj.move_lines:
-                    if move.state == 'done':
-                        if str(move.product_id.id) in move_line_list:
-                            move_line_list[str(move.product_id.id)] += move.product_qty
-                        else:
-                            move_line_list[str(move.product_id.id)] = move.product_qty
-        
-        for record in self:
-            if str(record.product_id.id) in move_line_list:
-                record.received_qty = move_line_list[str(record.product_id.id)]
+        for line in self:
+            if not line.purchase_line_id:
+                line.received_qty = 0
             else:
-                record.received_qty = 0.0    
+                move_objs = self.env['stock.move']
+                move_ids = move_objs.search([('purchase_line_id', '=', line.purchase_line_id.id), ('state', '=', 'done')])
+                received_qty = 0
+                for move in move_ids:
+                    received_qty += move.product_uom_qty
+                line.received_qty = received_qty

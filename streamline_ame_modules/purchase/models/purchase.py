@@ -68,3 +68,36 @@ class purchase_order(models.Model):
     receiver_tel = fields.Char(string='Receiver Tel', default=_default_receiver_tel)
     receiver_fax = fields.Char(string='Receiver Fax', default=_default_receiver_fax)
     receiver_email = fields.Char(string='Receiver Email', default=_default_receiver_email)
+
+
+    def wkf_approve_order(self, cr, uid, ids, context=None):
+        take_off_obj = self.pool.get('streamline.ame.material.take.off')
+        for po in self.browse(cr, uid, ids, context):
+            if po.project_no:
+                for pol in po.order_line:
+                    if not pol.product_id: continue
+                    take_off_ids = take_off_obj.search(cr, uid, [('project_no', '=', po.project_no.id),
+                                                                 ('line_ids.product_id', '=', pol.product_id.id)])
+                    for take_off in take_off_obj.browse(cr, uid, take_off_ids, context):
+                        for line in take_off.line_ids:
+                            if line.product_id != pol.product_id: continue
+                            if line.purchase_line_id:
+                                line.copy({'purchase_line_id': pol.id})
+                            else:
+                                line.write({'purchase_line_id': pol.id})
+        return super(purchase_order, self).wkf_approve_order(cr, uid, ids, context)
+
+    def wkf_action_cancel(self, cr, uid, ids, context=None):
+        take_off_obj = self.pool.get('streamline.ame.material.take.off')
+        for po in self.browse(cr, uid, ids, context):
+            if po.project_no:
+                for pol in po.order_line:
+                    if not pol.product_id: continue
+                    take_off_ids = take_off_obj.search(cr, uid, [('project_no', '=', po.project_no.id),
+                                                                 ('line_ids.product_id', '=', pol.product_id.id)])
+                    for take_off in take_off_obj.browse(cr, uid, take_off_ids, context):
+                        for line in take_off.line_ids:
+                            if line.product_id != pol.product_id: continue
+                            line.write({'purchase_line_id': False})
+
+        return super(purchase_order, self).wkf_action_cancel(cr, uid, ids, context)
