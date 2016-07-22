@@ -9,5 +9,5 @@ class streamline_ame_project_project(models.Model):
         required=True, default=lambda self: self.env['res.company']._company_default_get('purchase.order'))
 
     _sql_constraints = [
-        ('name_uniq', 'unique (company_id, name)', 'The name of the company must be unique!')
+        ('name_uniq', 'unique (company_id, name)', 'The name of the project must be unique!')
     ]
