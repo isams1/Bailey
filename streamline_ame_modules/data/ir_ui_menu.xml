@@ -13,5 +13,22 @@
 		<record id="base.menu_reporting" model="ir.ui.menu">
 			<field name="groups_id" eval="[(6,0,[ref('ame_sale'), ref('ame_finance'), ref('ame_purchase'), ref('ame_general')])]" />
 		</record>
+
+		<record id="base.menu_management" model="ir.ui.menu">
+			<field name="groups_id" eval="[(6,0,[ref('base.group_system')])]" />
+		</record>
+
+		<record id="base.menu_translation" model="ir.ui.menu">
+			<field name="groups_id" eval="[(6,0,[ref('base.group_system')])]" />
+		</record>
+
+		<record id="base.menu_config" model="ir.ui.menu">
+			<field name="groups_id" eval="[(6,0,[ref('base.group_system')])]" />
+		</record>
+
+		<record id="payment.root_payment_menu" model="ir.ui.menu">
+			<field name="groups_id" eval="[(6,0,[ref('base.group_system')])]" />
+		</record>
+
 	</data>
 </openerp>

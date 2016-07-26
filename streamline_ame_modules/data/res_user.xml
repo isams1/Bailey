@@ -1,6 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
 	<data noupdate="1">
+
+		<record id="partner_sale_admin" model="res.partner">
+			<field name="name">AME HR Manager</field>
+			<field name="company_id" ref="base.main_company" />
+			<field name="customer" eval="False" />
+			<field name="email">hr@alliancemarine.com.sg</field>
+			<field name="country_id" ref="base.sg" />
+		</record>
+
+		<record id="ame_admin_hr_manager" model="res.users">
+			<field name="name">AME HR Manager</field>
+			<field name="partner_id" ref="partner_sale_admin" />
+			<field name="login">hr@alliancemarine.com.sg</field>
+			<field name="company_id" ref="base.main_company" />
+			<field name="company_ids"
+				eval="[(6,0,[ref('base.main_company'), ref('__export__.res_company_11')])]" />
+			<field name="groups_id" eval="[(6,0,[ref('ame_hr_manager')])]" />
+			<field name="image" type="base64" file="base/static/img/user_demo-image.jpg" />
+		</record>
+
 		<!-- ame_sale -->
 		<record id="partner_sale_1" model="res.partner">
 			<field name="name">Mr Sean Tang</field>
