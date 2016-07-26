@@ -24,6 +24,9 @@
                                     <field name="required_qty"/>
                                     <field name="purchased_qty" readonly="1"/>
                                     <field name="received_qty" readonly="1"/>
+                                    <field name="price_unit" readonly="1"/>
+                                    <field name="purchase_id" readonly="1"/>
+                                    <field name="purchase_line_id" invisible="1"/>
                                 </tree>
                             </field>
 	                    	</page>
