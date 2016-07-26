@@ -62,7 +62,7 @@ class purchase_order(models.Model):
             res['arch'] = etree.tostring(doc)
         return res
     
-    project_no = fields.Many2one('streamline.ame.project.project')
+    project_no = fields.Many2one('streamline.ame.project.project', 'Project No', readonly=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]})
     receiver_id = fields.Many2one('res.partner', string="Receiver Name", default=_default_receiver_name)
     receiver_hp = fields.Char(string='Receiver HP', default=_default_receiver_hp)
     receiver_tel = fields.Char(string='Receiver Tel', default=_default_receiver_tel)

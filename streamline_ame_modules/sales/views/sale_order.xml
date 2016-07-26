@@ -17,6 +17,9 @@
         <xpath expr="//field[@name='note']" position="attributes">
             <attribute name="placeholder">Add an internal note...</attribute>
         </xpath>
+        <xpath expr="//field[@name='client_order_ref']" position="after">
+          <field name="project_no"/>
+        </xpath>
       </field>
     </record>
 

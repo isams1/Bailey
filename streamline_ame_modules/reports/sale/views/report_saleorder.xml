@@ -8,6 +8,12 @@
                 <div class="row">
                     <span>Our Ref:</span>
                     <span t-field="o.client_order_ref"></span>
+
+                    <t t-if="o.project_no">
+                        <br/>
+                        <span>Project No.:</span>
+                        <span t-field="o.project_no"></span>
+                    </t>
                     <br/>
                     <br/>
                     <span t-field="o.create_date" t-field-options='{"format": "dd/MM/y"}'></span>
