@@ -9,6 +9,7 @@
             <field name="arch" type="xml">
                 <field name="date_order" position="before">
                 	<field name="project_no" />
+                	<field name="purchase_request_no"/>
                 </field>
                 <xpath expr="//form/sheet/group[1]" position="after">
                 	<group>

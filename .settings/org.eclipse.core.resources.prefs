@@ -8,6 +8,7 @@ encoding//streamline_ame_modules/account/models/account.py=utf-8
 encoding//streamline_ame_modules/controllers/main.py=utf-8
 encoding//streamline_ame_modules/products/models/product.py=utf-8
 encoding//streamline_ame_modules/products/models/product_minimum.py=utf-8
+encoding//streamline_ame_modules/reports/purchase/report/purchase_order.py=utf-8
 encoding//streamline_ame_modules/sales/models/sale.py=utf-8
 encoding//streamline_ame_modules/stock/models/__init__.py=utf-8
 encoding//streamline_ame_modules/stock/models/stock.py=utf-8

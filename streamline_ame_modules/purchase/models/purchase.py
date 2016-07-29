@@ -68,6 +68,7 @@ class purchase_order(models.Model):
     receiver_tel = fields.Char(string='Receiver Tel', default=_default_receiver_tel)
     receiver_fax = fields.Char(string='Receiver Fax', default=_default_receiver_fax)
     receiver_email = fields.Char(string='Receiver Email', default=_default_receiver_email)
+    purchase_request_no = fields.Char(string='PR NO')
 
 
     def wkf_approve_order(self, cr, uid, ids, context=None):

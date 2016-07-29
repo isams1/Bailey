@@ -10,15 +10,16 @@
 				<t t-set="company" t-value="res_company"></t>
 			</t>
 
-			<div class="header">
-				<div class="row" id="table_header">
-					<div style="position: relative;min-height: 1px;padding-right: 15px;padding-left: 115px;float: left;">
+			<div class="header" style="width:100%">
+				<div class="row" id="table_header" style="width:100%">
+					<!-- <div style="position: relative;min-height: 1px;padding-right: 15px;padding-left: 115px;float: left;"> -->
+					<div style="position: relative; width:100%">
 						<t t-if="company.letterhead and not report.get_header(company.id)">
-							<img height="150" width="680"
+							<img height="" width="100%"
 								t-att-src="'data:image/jpg;base64,%s' % company.letterhead" />
 						</t>
 						<t t-if="report.get_header(company.id)">
-							<img height="150" width="680"
+							<img height="" width="110%"
 								t-att-src="'data:image/jpg;base64,%s' % report.get_header(company.id)" />
 						</t>
 					</div>

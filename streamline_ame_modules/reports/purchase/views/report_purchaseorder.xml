@@ -7,38 +7,102 @@
 					<t t-call="streamline_ame_modules.streamline_ame_custom_report_header" />
 					<div class="page">
 						<div class="oe_structure" />
+						<br/>
+						<br/>
+						<br/>
+						<br/>
+						<br/>
+						<br/>
 						<div class="row text-center">
-							<span style="font-size: 20px"><b><u>PURCHASE ORDER</u></b></span>
+							<span style="font-size: 27px"><u>PURCHASE ORDER</u></span>
 						</div>
 						<div class="row">
-							<br />
-							<div class="col-xs-5">
-								<div class="col-xs-4">
-									<span>To:</span>
+							<!-- <br />
+							<div class="col-xs-6">
+								<div class="col-xs-2">
+									<span><p style="word-spacing:12px">To :</p></span>
 								</div>
-								<div class="col-xs-8">
+								<div class="col-xs-10" style="padding-left:0px">
 									<strong>
 										<span t-field="o.partner_id.name"/>
 									</strong>
 								</div>
+							</div> -->
+							
+							
+							
+							<div class="col-xs-6">
+								<div class="col-xs-2" style="font-family:serif;font-size:15px">
+								<div><span>  </span></div>
+								<div>
+									<span style="word-spacing:12px">To :</span>
+								</div>
+								<div>
+									<span style="word-spacing:10px">Add :</span>
+								</div>
+								</div>
+								<div class="col-xs-10" style="padding-left:0px;font-size:15px">
+									<strong>
+									<div>
+										<span t-field="o.partner_id.name"/>
+									</div>
+									<div>
+										<span t-field="o.partner_id.street" style="font-weight:normal"/> <br/>	
+										<span t-field="o.partner_id.street2" style="font-weight:normal"/> <br/>	
+										<span t-field="o.partner_id.city" style="font-weight:normal"/> 
+										<span t-field="o.partner_id.country_id.name" style="font-weight:normal"/>
+										<span t-field="o.partner_id.zip" style="font-weight:normal"/>
+									</div>
+									</strong>
+								</div>
 							</div>
-							<div class="col-xs-2">
+							<div class="col-xs-1">
 							</div>
 							<div class="col-xs-5">
-								<div class="col-xs-4" style="text-align:right">
-									<span>Project: </span>
+								<div class="col-xs-7" style="text-align:right;font-family:serif;font-size: 15px">
+									<div>
+										<span>Project  : </span>
+									</div>
+									<div>
+										<span>PR NO : </span>
+									</div>
+									<div>
+										<span>P.O no  :</span>
+									</div>
+									<div>
+										<span>Date  :</span>
+									</div>
+									<div>
+										<span>Your Ref  :</span>
+									</div>
 								</div>
-								<div class="col-xs-8">
-									<span t-field="o.project_no"/>
+								<div class="col-xs-5" style="padding-left:0px;font-size: 15px">
+									<div>
+										<span t-field="o.project_no"/>
+									</div>
+									<div>
+										<span t-field="o.purchase_request_no"/>
+									</div>
+									
+									<div>
+										<span t-field="o.name"/>
+									</div>
+									<div>
+										<span t-field="o.date_order"/>
+									</div>
+									<div>
+										ABC XYZ
+									</div>
 								</div>
 							</div>
 						</div>
-						<div class="row">
-							<div class="col-xs-5">
-								<div class="col-xs-4">
-									<span>Add:</span>
+						
+					<!--   <div class="row">
+							<div class="col-xs-6">
+								<div class="col-xs-2">
+									
 								</div>
-								<div class="col-xs-8">
+								<div class="col-xs-10" style="padding-left:0px">
 									<span t-field="o.partner_id.street" />
 									<span t-field="o.partner_id.street2" />
 									<span t-field="o.partner_id.city" />
@@ -46,21 +110,21 @@
 									<span t-field="o.partner_id.zip" />
 								</div>
 							</div>
-							<div class="col-xs-2">
+							<div class="col-xs-1">
 							</div>
 							<div class="col-xs-5">
 								<div class="col-xs-4" style="text-align:right">
 									<div style="text-align:right">
-										<span>P.O no:</span>
+										<span>P.O no  :</span>
 									</div>
 									<div style="text-align:right">
-										<span>Date:</span>
+										<span>Date  :</span>
 									</div>
 									<div style="text-align:right">
-										<span>Your Ref:</span>
+										<span>Your Ref  :</span>
 									</div>
 								</div>
-								<div class="col-xs-8">
+								<div class="col-xs-8"  style="padding-left:0px">
 									<span t-field="o.name" />
 									<br />
 									<span t-field="o.date_order" t-field-options='{"format": "dd/MM/y"}' />
@@ -68,30 +132,64 @@
 									<span t-field="o.partner_ref" />
 								</div>
 							</div>
-						</div>
+						</div> -->
 						<br />
 						<div class="row">
-							<div class="col-xs-5">
-								<div class="col-xs-4">
-									Attn:
+							<div class="col-xs-6">
+								<div class="col-xs-2" style="font-family:serif;font-size:15px">
+									<div>
+										<span style="word-spacing:10px">Attn :</span>
+									</div>
+									<div>
+										<span>H/Phone:</span>
+									</div>
+									<div>
+										<span>Email:</span>
+									</div>
 								</div>
-								<div class="col-xs-8">
-									<span
-										t-field="o.partner_id.child_ids and o.partner_id.child_ids[0] or o.partner_id.name" />
-								</div>
+								<div class="col-xs-10" style="padding-left:0px;font-size: 15px">
+									<div>
+										<span
+										t-field="o.partner_id.child_ids and o.partner_id.child_ids[0] or o.partner_id.name" style="font-weight:bold"/>
+									</div>
+									<div>
+										<!--  <span t-esc="get_contacts(o.partner_id, 'mobile')" />-->
+										<span t-field="o.partner_id.phone" style="padding-left:15px"/>
+									</div>
+									<div>
+										<!-- <span t-esc="get_contacts(o.partner_id, 'email')" />-->
+										<span t-field="o.partner_id.email"/>
+									</div>
+								</div>				
 							</div>
-							<div class="col-xs-2">
+							<div class="col-xs-1">
 							</div>
 							<div class="col-xs-5">
-								<div class="col-xs-4" style="text-align:right">
-									<span>Tel:</span>
+								<div class="col-xs-7" style="text-align:right;font-size:15px">
+									<div>
+										<span style="word-spacing:10px">Tel :</span>
+									</div>
+									<div>
+										<span style="word-spacing:10px">Fax :</span>
+									</div>
+									<div>
+										<span><b>PAYMENT TERM: <t t-if="o.payment_term_id"><span t-field="o.payment_term_id.name" /></t></b></span>
+									</div>
 								</div>
-								<div class="col-xs-8">
-									<span t-esc="get_contacts(o.partner_id, 'phone')" />
+								<div class="col-xs-5"  style="font-size:15px">
+									<!--  <span t-esc="get_contacts(o.partner_id, 'phone')" />
+									<span t-esc="get_contacts(o.partner_id, 'fax')" />-->
+									<div>
+										<span t-field="o.partner_id.mobile"/>
+									</div>
+									<div>
+										<span t-field="o.partner_id.fax"/>
+									</div>
 								</div>
+						
 							</div>
 						</div>
-						<div class="row">
+					<!--  <div class="row">
 							<div class="col-xs-5">
 								<div class="col-xs-4">
 									H/Phone:
@@ -104,14 +202,14 @@
 							</div>
 							<div class="col-xs-5">
 								<div class="col-xs-4" style="text-align:right">
-									<span>Fax:</span>
+									<span>Fax  :</span>
 								</div>
 								<div class="col-xs-8">
 									<span t-esc="get_contacts(o.partner_id, 'fax')" />
 								</div>
 							</div>
-						</div>
-						<div class="row">
+						</div> -->
+						<!--  <div class="row">
 							<div class="col-xs-5">
 								<div class="col-xs-4">
 									Email:
@@ -125,7 +223,7 @@
 							<div class="col-xs-5" style="text-align:center">
 								<b>PAYMENT TERM: <t t-if="o.payment_term_id"><span t-field="o.payment_term_id.name" /></t></b>
 							</div>
-						</div>
+						</div> -->
 						<table class="table table-condensed" style="margin-left: 15px;">
 							<thead>
 								<tr>
